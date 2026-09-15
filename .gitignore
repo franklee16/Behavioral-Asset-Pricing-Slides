@@ -1,0 +1,39 @@
+# LaTeX / Beamer build artifacts
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.bbl
+*.blg
+*.synctex.gz
+*.synctex(busy)
+*.synctex*
+*.run.xml
+*.fdb_latexmk
+*.fls
+*.idx
+*.ilg
+*.ind
+*.lof
+*.lot
+_minted-*
+
+# Workflow extraction artifacts (slide content extracted to JSON)
+slide_content.json
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Excluded from this repo (kept locally but not part of the public deck)
+*.pptx
+*.ppt
+*.pptm
+
+# Adjacent folders under Slides/ not part of this deck
+QE Questions/
+WhatILearned_LaTeX/
+What_I_Learned_About_Asset_Pricing.md
+SESSION_REPORT.md
