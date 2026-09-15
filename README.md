@@ -27,6 +27,14 @@ pdflatex LectureN_*.tex   # second pass resolves references
 
 Requires a TeX distribution with `pdflatex` (TeX Live, MiKTeX, or MacTeX). Decks use the Beamer Madrid theme with CityU color accents (CityUBlue, RGB 0,51,102).
 
+## Book
+
+Chapter versions of the lectures, re-typeset as book chapters (11pt, letter, `book` class, biblatex/biber). Chapter 1 (Introduction, converted from Lecture 1) is complete; further chapters will be added as Lectures 2–6 are converted.
+
+- Source: [Book/main.tex](Book/main.tex)
+- Compiled PDF: [Book/main.pdf](Book/main.pdf)
+- See [Book/README.md](Book/README.md) for build instructions and conversion conventions.
+
 ## Data
 
 Lecture 1 uses the Open Source Asset Pricing (OSAP) database:

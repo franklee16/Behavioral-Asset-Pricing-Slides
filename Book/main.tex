@@ -1,0 +1,97 @@
+% ============================================================
+% Behavioral Asset Pricing — PhD Lecture Notes (EF8083)
+% Book master file. Chapter 1 converted from Lecture 1 slides.
+% Compile: pdflatex main && biber main && pdflatex main && pdflatex main
+% ============================================================
+\documentclass[11pt,letterpaper,openany]{book}
+
+% ====== Layout ======
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}
+\setlength{\headheight}{14.5pt}
+
+% ====== Typography ======
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[utf8]{inputenc}
+
+% ====== Math ======
+\usepackage{amsmath, amssymb, amsthm, mathtools}
+\newtheorem{definition}{Definition}[chapter]
+
+% ====== Tables and figures ======
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\usepackage{booktabs}
+\usepackage[flushleft]{threeparttable}
+\usepackage{caption}
+\captionsetup{font=small, labelfont=bf, justification=justified}
+
+% ====== Lists ======
+\usepackage{enumitem}
+
+% ====== Color ======
+\usepackage{xcolor}
+\definecolor{CityUBlue}{RGB}{0, 51, 102}
+
+% ====== Bibliography (biblatex + biber) ======
+\usepackage[backend=biber,
+            style=authoryear,
+            maxcitenames=3,
+            mincitenames=1,
+            maxbibnames=99,
+            giveninits=true,
+            uniquename=false,
+            uniquelist=true,
+            dashed=false,
+            natbib=true]{biblatex}
+\addbibresource{references.bib}
+
+% ====== Hyperref (loaded last) ======
+\usepackage[colorlinks=true,
+            linkcolor=CityUBlue,
+            citecolor=CityUBlue,
+            urlcolor=CityUBlue]{hyperref}
+
+\urlstyle{same}
+
+% ====== Metadata ======
+\title{Behavioral Asset Pricing}
+\author{Frank Weikai Li}
+\date{Department of Economics and Finance\\City University of Hong Kong\\[1em]September 2026}
+
+\begin{document}
+
+% openany-consistent front/main matter: no blank verso pages
+\let\cleardoublepage\clearpage
+
+% ====== Title page ======
+\begin{titlepage}
+\centering
+\vspace*{2in}
+{\Huge\bfseries Behavioral Asset Pricing\par}
+\vspace{0.6in}
+{\Large PhD Lecture Notes\par}
+\vspace{1.2in}
+{\large Frank Weikai Li\par}
+\vspace{0.15in}
+{\normalsize Department of Economics and Finance\\City University of Hong Kong\par}
+\vspace{0.5in}
+{\normalsize September 2026\par}
+\vfill
+\end{titlepage}
+
+\frontmatter
+\tableofcontents
+\listoffigures
+\listoftables
+
+\mainmatter
+
+\input{chapter1_introduction}
+
+% ====== Bibliography ======
+\clearpage
+\printbibliography[heading=bibintoc]
+
+\end{document}

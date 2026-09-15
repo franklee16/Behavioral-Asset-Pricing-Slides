@@ -1,0 +1,471 @@
+% ============================================================
+% Chapter 1 — Introduction
+% Converted from Slides/Lecture1_LaTeX/Lecture1_Intro.tex
+% All figures reproduced in figures/ (original slide assets).
+% ============================================================
+\chapter{Introduction}
+\label{ch:intro}
+
+Every model of asset prices makes claims that data can check. The frictionless rational model---agents with correct beliefs and sensible preferences, trading in markets without impediments---delivers a set of sharp predictions: aggregate market prices should track the rational forecast of future cash flows, expected returns in the cross-section should line up with risk, and investors should hold diversified portfolios and trade only on information. This chapter assembles the facts against which those predictions are judged. None of the facts, taken alone, is a verdict against the rational framework; rational interpretations exist for essentially all of them, and we will state the leading one in each case. What the facts establish, jointly, is the agenda of the rest of this book: a large body of empirical regularities that are awkward for the frictionless rational benchmark, a set of investor behaviors that plausibly generate them, and a set of constraints that prevent rational traders from eliminating them.
+
+The chapter proceeds in four steps. Section~\ref{sec:whatis} defines behavioral finance and situates it among the paradigms of modern finance. Section~\ref{sec:challenges} states the two classical objections to the field and the responses to each. Sections~\ref{sec:aggregate}--\ref{sec:investors} present the facts: the aggregate stock market (Section~\ref{sec:aggregate}), the cross-section of stock returns (Section~\ref{sec:crosssection}), bubbles (Section~\ref{sec:bubbles}), and the trading and portfolio behavior of individual and institutional investors (Section~\ref{sec:investors}). Section~\ref{sec:roadmap} lays out the road ahead.
+
+% ============================================================
+\section{What Is Behavioral Finance?}
+\label{sec:whatis}
+
+\begin{definition}[Deviation from full rationality]
+\label{def:deviation}
+Behavioral finance investigates whether some financial phenomena are the result of less than fully rational thinking.
+\end{definition}
+
+\begin{definition}[Psychological realism]
+\label{def:realism}
+Behavioral finance seeks to understand financial phenomena using models that are \emph{psychologically more realistic} than their predecessors.
+\end{definition}
+
+These two definitions, in the spirit of the surveys by \citet{barberis2003} and \citet{ritter2003}, are complementary rather than competing. Definition~\ref{def:deviation} characterizes the field by its object of study---departures from full rationality---while Definition~\ref{def:realism} characterizes it by its method: whatever the phenomenon, the modeling commitment is to assumptions about human judgment and preference that experimental and survey evidence can support.
+
+To see what is at stake, it helps to place behavioral finance among the three paradigms that organize modern finance. \emph{Traditional finance} studies agents who are fully rational operating in markets without frictions; its workhorses are the capital asset pricing model (CAPM), the efficient market hypothesis, and the consumption-based pricing framework. \emph{Frictional finance} keeps agents fully rational but introduces market imperfections---transaction costs, borrowing and short-sale constraints, information asymmetries---and is institutionally more realistic than the traditional paradigm. \emph{Behavioral finance} relaxes the rationality of some agents and is psychologically more realistic. Table~\ref{tab:paradigms} summarizes the comparison. The categories are not mutually exclusive: realistic models routinely combine frictions with non-rational agents, and much of the field's progress consists of showing that the two ingredients interact---frictions are often the reason irrational demand survives in prices.
+
+\begin{table}[htbp]
+\centering
+\begin{threeparttable}
+\caption{Three paradigms in finance}
+\label{tab:paradigms}
+\begin{tabular}{llll}
+\toprule
+Paradigm & Agents & Market frictions & Source of realism \\
+\midrule
+Traditional finance & Fully rational & None & --- \\
+Frictional finance & Fully rational & Present & Institutional \\
+Behavioral finance & Some less than fully rational & Present or absent & Psychological \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]\small
+\item \textit{Notes:} Behavioral models typically also contain frictions; limits to arbitrage (Section~\ref{sec:challenges}) are the reason non-rational demand can move prices.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+What exactly does ``fully rational'' mean? In the standard usage, rationality has two components. First, agents \emph{update beliefs correctly} on receipt of new information---that is, according to Bayes' rule. Second, agents \emph{make decisions according to sensible preferences}---that is, maximizing expected utility (EU), where the utility function is defined over wealth or consumption. Behavioral finance, correspondingly, studies two families of departures: less than fully rational \emph{beliefs}, meaning systematic deviations from Bayes' rule such as extrapolation and overconfidence; and less than fully rational \emph{preferences}, meaning either non-expected-utility preferences (prospect theory is the leading example) or expected utility defined over arguments other than final wealth or consumption. This two-by-two map---beliefs versus preferences, at the level of individual judgment and at the level of market prices---organizes the applications in the second half of this book.
+
+% ============================================================
+\section{Two Challenges for Behavioral Finance}
+\label{sec:challenges}
+
+\subsection{The Arbitrage Critique}
+
+The oldest objection, associated with \citet{friedman1953}, is that rational agents will quickly undo any effect that irrational agents have on prices. If noise traders push a stock above fundamental value, rational traders have an incentive to sell it short, and in doing so they push the price back. In this view, irrational traders may lose money, but prices stay correct.
+
+The modern response is that this argument assumes away the costs and risks of trading against mispricing. Arbitrage---in the sense used here, trading on price discrepancies that involve risk and capital---is limited: the mispricing can widen before it closes, the arbitrageur's capital is finite and often borrowed, and the ultimate owners of that capital may withdraw it precisely when the trade looks worst. \citet{shleifer1997} formalize these \emph{limits to arbitrage}, and we treat them in depth in the next chapter. The practical implication for this chapter is methodological: when we observe a puzzling pattern in prices, the question is not only ``is there a behavioral mechanism that generates it?'' but also ``why do rational arbitrageurs not eliminate it?'' The answer usually involves the frictions of Table~\ref{tab:paradigms}.
+
+\subsection{The Lack-of-Discipline Critique}
+
+The second objection, pressed most forcefully by \citet{fama1998}, is that behavioral finance is underdisciplined: the psychology literature is vast, and after the fact it is too easy to find some bias that fits any observed pattern. A field that can explain everything explains nothing.
+
+The response is methodological. First, behavioral models earn credibility by generating \emph{new} predictions---relationships in data that were not used to motivate the model---and these predictions must survive out-of-sample tests, just as in any other part of empirical economics. Second, the discipline is enforced collectively and quantitatively: the sheer number of published cross-sectional predictors has forced the field to confront multiple testing and publication bias directly \citep{harvey2016,mclean2016,hou2020}, a development we return to in Section~\ref{sec:bestiary}. The facts surveyed in this chapter should be read with this standard in mind: a fact becomes interesting not when some bias can be cited after the fact, but when a model that predicted it ex ante also predicts something else that turns out to be true.
+
+% ============================================================
+\section{The Road Map}
+\label{sec:roadmap}
+
+The empirical core of this chapter consists of four families of facts. First, \emph{asset pricing}: the aggregate stock market, the cross-section of stock returns, other asset classes, and bubbles. Second, \emph{investor trading and portfolio choice}: how individual investors and institutional investors actually behave. For each fact we ask the same pair of questions: what would the frictionless rational model predict, and what are the leading candidates---rational and behavioral---for explaining the gap?
+
+The chapter closes with the plan for the book. Part II develops limits to arbitrage, the supply side of the story: why mispricing, once created, is not instantly eliminated. Part III develops the psychological foundations and their finance applications: non-standard preferences, biased beliefs, heterogeneous beliefs, and bounded rationality, including psychology-free models that reproduce behavioral pricing patterns with fully rational agents.
+
+% ============================================================
+\section{The Aggregate Stock Market}
+\label{sec:aggregate}
+
+\subsection{Time-Series Predictability}
+\label{sec:predictability}
+
+The first fact is that aggregate stock market returns are predictable in the time series. Valuation ratios such as the price--dividend ratio (P/D) and the price--earnings ratio (P/E) forecast subsequent market returns at long horizons \citep{campbell1988,fama1988}. Figure~\ref{fig:pe_predictability} shows the raw pattern for the U.S. market: when the P/E ratio at the start of the investment period is low, the subsequent ten-year return on the S\&P~500 tends to be high, and when P/E is high, subsequent ten-year returns tend to be low. The fitted line in the figure has a slope of roughly $-5$ percentage points of ten-year return per unit of P/E---an economically large association. This appears to contradict the simplest reading of the efficient market hypothesis, under which expected returns should not vary in a way that public information predicts.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.72\textwidth]{slide08_chart.png}
+\caption[Subsequent ten-year S\&P 500 returns decline with the starting P/E ratio]{Subsequent ten-year returns on the S\&P 500 decline with the starting price--earnings ratio. Each point is one investment period; the fitted line has a slope of approximately $-5$ percentage points of ten-year return per unit of P/E. \textit{Source:} Author's calculations based on U.S. aggregate data.}
+\label{fig:pe_predictability}
+\end{figure}
+
+Predictability per se does not refute rationality: in a rational model, expected returns can vary over time if the price of risk or the quantity of risk varies. The leading rational explanations are exactly of this form. In \emph{rare disaster} models, shifts in the perceived probability of a macroeconomic catastrophe move discount rates even if realized consumption is smooth \citep{rietz1988,barro2006}; in \emph{long-run risk} models, small persistent movements in the growth rate and its volatility carry large pricing implications \citep{bansal2004}; in \emph{habit formation} models, risk aversion moves with consumption relative to habit, generating time-varying discount rates \citep{campbell1999}. The behavioral alternative is that expected-return variation reflects time-varying sentiment---investors extrapolate past returns, so prices are high precisely when optimism is high, and subsequent returns are low \citep{barberis2003}. Distinguishing these accounts empirically is difficult, because both predict the same regression sign; the discriminating evidence, discussed in Part III, comes from surveys of investor expectations: extrapolative beliefs imply that expected returns as reported by investors should be \emph{high} when valuation ratios are high, whereas rational time-varying discount rates imply they should be \emph{low}.
+
+\subsection{Excess Volatility}
+\label{sec:volatility}
+
+The second fact is that the level of stock prices moves too much to be justified by rationally-varying forecasts of the cash flows paid to investors. In an influential test, \citet{shiller1981} compared the real S\&P Composite price index with the \emph{ex post rational price}---the present value of the dividends actually paid subsequently, discounted at a constant rate. If prices equal the rational forecast of discounted future dividends, the realized price should be an unbiased forecast of the ex post rational price and should therefore be \emph{less} volatile, since a forecast averages out the shocks that the realization contains. The data show the opposite. Figure~\ref{fig:shiller} reproduces the comparison: the actual price (solid line) swings over a range several times wider than the smoothly drifting ex post rational price (dashed line), with peaks at 1901, 1929, and the mid-1960s.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{slide09_pic3_Picture_5.png}
+\caption[Excess volatility: the real S\&P price against the ex post rational price]{Excess volatility. The real S\&P Composite price index (solid line) against the ex post rational price (dashed line), defined as the present value of subsequently realized real dividends, both detrended, 1871--1979. The actual index is far more volatile than the present value it is supposed to forecast. \textit{Source:} \citet{shiller1981}.}
+\label{fig:shiller}
+\end{figure}
+
+The volatility and predictability facts are two readings of a single phenomenon, a point made transparent by the present-value identity: a high P/D ratio must forecast higher subsequent dividend growth, a lower expected return, or some combination. In the data, a high P/D ratio does \emph{not} predict higher dividend growth; it predicts a lower price in the future---that is, a lower expected return. Virtually all of the action in valuation ratios comes through the expected-return channel, which is why the time-series predictability of returns and the excess volatility of prices are the same fact stated in levels and in changes. The interpretive battle is therefore also the same: habit, disaster, and long-run-risk models generate discount-rate variation with rational beliefs, while belief-based models generate it with sentiment swings.
+
+\subsection{The Equity Premium Puzzle}
+\label{sec:eqprem}
+
+The third fact concerns the \emph{level} of expected returns rather than their variation. \citet{mehra1985} document that the historical U.S. equity premium---the average return on stocks in excess of the risk-free rate, about 5\% per year over their long sample---is far larger than a simple rational frictionless model with power utility can reproduce. The crux is the covariance: the representative investor's consumption growth is almost uncorrelated with stock returns, so in the consumption-based model the stock market does not look very risky to the representative investor, and the model predicts a very small equity premium. Matching the observed premium requires a coefficient of relative risk aversion far outside the range that independent evidence on risk taking supports; matching the risk-free rate at the same time makes the tension worse.
+
+As with predictability, the rational responses change the risk or the price of risk---rare disasters \citep{rietz1988,barro2006}, long-run risks \citep{bansal2004}, and habit \citep{campbell1999} all raise the model-implied premium by making the relevant risk bigger or the relevant risk aversion state-contingent. The behavioral responses change the preference object: with prospect-theoretic loss aversion and frequent (myopic) evaluation of gains and losses, investors behave as if the stock market is much riskier than consumption risk implies \citep{benartzi1995,barberis2001}. We develop both routes in Part III.
+
+% ============================================================
+\section{The Cross-Section of Stock Returns}
+\label{sec:crosssection}
+
+We now move from the market as a whole to differences in expected returns \emph{across} stocks---the cross-section. Nearly all of the facts below are constructed by the same procedure: sort stocks into portfolios on a firm characteristic measured at date $t$, hold the portfolios, and compare subsequent returns. Under the frictionless rational benchmark, only exposure to systematic risk should earn a premium; a characteristic that predicts returns after controlling for risk, with no risk interpretation, is an \emph{anomaly}. For each anomaly below we state the fact, and then the state of play between the risk-based and mispricing-based readings.
+
+\subsection{Long-Term Reversal, Momentum, and Short-Term Reversal}
+\label{sec:momentum}
+
+\paragraph{Long-term reversal.}
+A stock's cumulative return over the past three to five years \emph{negatively} predicts its future return in the cross-section \citep{debondt1985}. Figure~\ref{fig:reversal} shows the classic evidence: starting from the formation date, the portfolio of past losers (top line) earns steadily higher cumulative returns than the market, while the portfolio of past winners (bottom line) earns steadily lower returns, with the gap approaching 40 percentage points by the end of the five-year horizon. \citet{debondt1985} read this as \emph{overreaction}: extreme past performance prompts extreme expectations, which subsequently correct. A risk-based reading is also possible---perhaps past losers have become genuinely riskier, so their higher returns compensate risk. The difficulty for the risk reading is the gradual, continuing drift in returns long after formation, which is hard to square with a one-time change in risk.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.68\textwidth]{slide12_pic3_Picture_1.jpg}
+\caption[Long-term reversal of loser and winner portfolios]{Long-term reversal. Cumulative returns of portfolios of past ``losers'' and past ``winners'' over 60 months following portfolio formation. Prior losers subsequently outperform prior winners by a wide and persistent margin. \textit{Source:} \citet{debondt1985}.}
+\label{fig:reversal}
+\end{figure}
+
+\paragraph{Momentum.}
+At intermediate horizons the sign flips. A stock's return over the past $k$ months, for $k$ between 3 and 12, \emph{positively} predicts its future return in the cross-section \citep{jegadeesh1993}. Figure~\ref{fig:momentum} shows average monthly returns of decile portfolios sorted on past returns over 1927--2022: the spread between the past-loser decile and the past-winner decile is roughly 1.2 percentage points per month, one of the largest and most persistent regularities in the cross-section.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.78\textwidth]{slide13_chart.png}
+\caption[Average returns of momentum decile portfolios, 1927--2022]{Momentum. Average monthly returns (\%) of decile portfolios sorted on past returns, 1927--2022. Past winners continue to outperform past losers at the 3--12 month horizon. \textit{Source:} Author's calculations based on U.S. decile portfolio data.}
+\label{fig:momentum}
+\end{figure}
+
+Momentum and long-term reversal together are the central interpretive challenge of this literature: a parsimonious account must produce initial continuation and eventual reversal from the same mechanism. The behavioral models of the late 1990s were built for exactly this purpose. In \citet{barberis1998}, news is incorporated slowly because of conservatism and then over-extrapolated because of representativeness, generating underreaction at short horizons and overreaction at long horizons. In \citet{daniel1998}, overconfident investors overreact to private information, and the eventual public revelation of truth produces momentum, reversal, and the predictable pattern of event-driven returns. In \citet{hong1999}, news diffuses slowly across investors, and heterogeneous agents trading at different horizons again generate momentum followed by reversal. Rational accounts exist but must work harder: a single risk-based mechanism that prices the same characteristic with opposite signs at two horizons is difficult to construct.
+
+\paragraph{Short-term reversal.}
+At the shortest horizon the sign flips back. A stock's return over the past week or month \emph{negatively} predicts its future return \citep{jegadeesh1990,lehmann1990}. The leading interpretation of this anomaly is largely rational: compensation for liquidity provision. Short-term reversal strategies buy stocks whose prices were pushed down by liquidity demanders and sell stocks pushed up, in effect selling immediacy; the returns should therefore be high exactly when providing liquidity is expensive. \citet{nagel2012} confirms a sharp prediction of this view: the returns of short-term reversal strategies comove strongly with the VIX index of implied volatility, spiking in the turbulent episodes of 1998, 2002, and 2008--2009, when the marginal value of immediacy was highest (Figure~\ref{fig:nagel}). Short-term reversal is thus the anomaly most comfortably interpreted not as mispricing but as a price for a service---an instructive boundary case for the field.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{slide14_pic2_Picture_6.png}
+\caption[Short-term reversal returns track the VIX]{Short-term reversal and liquidity provision. Three-month moving averages of daily returns on short-term reversal strategies (left axis) track the VIX index of implied volatility (right axis), 1998--2011. Reversal returns are large precisely when liquidity provision is most valuable. \textit{Source:} \citet{nagel2012}.}
+\label{fig:nagel}
+\end{figure}
+
+\subsection{The Value Premium}
+\label{sec:value}
+
+Ratios of fundamentals to price---book-to-market (B/M), earnings-to-price (E/P), and cash flow-to-price (CF/P)---positively predict future returns: cheap (``value'') stocks outperform expensive (``growth'') stocks. Figure~\ref{fig:value} shows average monthly returns of decile portfolios sorted on B/M over 1926--2020; the highest-B/M deciles earn around 1.31\% per month against 0.90\% for the lowest, a premium of roughly 5 percentage points per year. The value premium motivated the Fama--French three-factor model, in which the return on a high-minus-low B/M portfolio is treated as a priced risk factor \citep{fama1993}: on this reading, value stocks earn more because they are riskier in a dimension the market prices \citep{fama1996}. The behavioral alternative is extrapolation: investors extrapolate past growth, leaving the stocks of disappointing firms too cheap and those of successful firms too dear, so that value earns a premium as the expectations gap closes \citep{lakonishok1994}. The two readings remain unresolved and structure much of modern cross-sectional research.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.78\textwidth]{slide15_chart.png}
+\caption[Average returns of B/M decile portfolios, 1926--2020]{The value premium. Average monthly returns (\%) of decile portfolios sorted on book-to-market, 1926--2020. High-B/M (value) stocks earn about 1.31\% per month against 0.90\% for low-B/M (growth) stocks. \textit{Source:} Author's calculations based on U.S. decile portfolio data.}
+\label{fig:value}
+\end{figure}
+
+\subsection{Value and Momentum Everywhere}
+\label{sec:vamomentum}
+
+The value and momentum effects are not confined to U.S. individual stocks. \citet{asness2013} document both effects, with the same structure, within most developed equity markets, across country equity indices, across government bond indices, across currencies, and across commodities. Figure~\ref{fig:amp} shows cumulative returns of value, momentum, and combined (``combo'') strategies in four of these asset classes. Two features stand out. First, value and momentum premia are positive in every asset class examined. Second, the value and momentum strategies are strongly \emph{negatively} correlated everywhere---correlations between about $-0.35$ and $-0.46$ in the classes shown---so the combined strategy has a far higher Sharpe ratio than either leg alone. This universality is itself evidence: whatever generates the two effects, it is not an artifact of one market's institutions or data, and the robust negative correlation between the two premia is a restriction that successful theories must reproduce. It also provides a practical motivation for the multi-asset perspective that recurs throughout this book.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.98\textwidth]{slide16_pic3_Picture_3.png}
+\caption[Value and momentum across four asset classes]{Value and momentum everywhere. Cumulative returns of value, momentum, and combined strategies in country equity indices, currencies, fixed income, and commodities, with Sharpe ratios annotated. Value--momentum correlations range from about $-0.35$ to $-0.46$ across asset classes. \textit{Source:} \citet{asness2013}.}
+\label{fig:amp}
+\end{figure}
+
+\subsection{Issuance, Repurchase, and Asset Growth}
+\label{sec:issuance}
+
+\paragraph{The issuance/repurchase anomaly.}
+Firms' own trading decisions predict their stock returns. Firms that issue equity---through initial public offerings (IPOs) or seasoned equity offerings (SEOs)---subsequently underperform a control group of non-issuing firms \citep{loughran1995}; firms that repurchase equity subsequently outperform \citep{ikenberry1995}. Figures~\ref{fig:ipo} and \ref{fig:seo} show the two sides of the pattern: in every one of the five years after issuance, firms that issued equity earn lower returns than non-issuers, with the SEO gap especially large in the first two years. The natural behavioral reading is that managers exploit mispricing---issuing when their stock is overvalued and repurchasing when it is undervalued, with the subsequent returns reflecting correction. A rational reading is that issuance and repurchase respond to investment opportunities and the cost of capital, so the same pattern could arise without any mispricing; distinguishing the two requires evidence on whether issuance is timed to valuation per se.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.46\textwidth]{slide17_pic4_Picture_6.jpg}
+\caption[IPO firms underperform non-issuers]{The new issues puzzle, IPOs. Annual percentage returns of IPO firms versus non-issuers in each of the five years after issuance. IPO firms underperform in every year. \textit{Source:} \citet{loughran1995}.}
+\label{fig:ipo}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.46\textwidth]{slide17_pic3_Picture_5.jpg}
+\caption[SEO firms underperform non-issuers]{The new issues puzzle, SEOs. Annual percentage returns of SEO firms versus non-issuers in each of the five years after issuance. \textit{Source:} \citet{loughran1995}.}
+\label{fig:seo}
+\end{figure}
+
+\paragraph{The asset growth anomaly.}
+The issuance pattern generalizes to investment itself: firms that grow assets more quickly, or invest more, earn lower subsequent returns \citep{titman2004,cooper2008}. Figure~\ref{fig:assetgrowth} shows mean monthly returns of decile portfolios sorted on asset growth, aligned in event time around the sorting year. Before the sort, high-asset-growth firms are the strong performers---their returns rise toward 4\% per month at year $-2$---which is why they invest. After the sort the ranking inverts: the high-growth decile drops toward the bottom of the cross-section and stays there for years, while low-growth deciles persistently outperform. The behavioral interpretation continues the extrapolation theme---firms invest most when investors have overextrapolated their prospects. The rational interpretation runs through the neoclassical $q$ theory of investment: high investment signals low costs of capital, i.e.\ low expected returns, and investment-based factor models built on this logic absorb a substantial fraction of the anomaly zoo \citep{hou2015,fama2015}.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{slide18_pic3_Picture_2.jpg}
+\caption[Returns around asset-growth portfolio formation]{The asset growth anomaly. Mean monthly returns of decile portfolios sorted on asset growth, by year relative to the portfolio formation year. High-asset-growth firms earn high returns before formation but low returns after; low-growth firms the reverse. \textit{Source:} \citet{titman2004}.}
+\label{fig:assetgrowth}
+\end{figure}
+
+\subsection{Profitability, Quality, and Distress}
+\label{sec:quality}
+
+\paragraph{Profitability and quality.}
+More profitable firms earn \emph{higher} future returns, a fact initially surprising under the intuition that ``good firms are good stocks''---in equilibrium, quality should be priced. Figure~\ref{fig:profit} shows average monthly returns of quintile portfolios sorted on profitability over 1963--2020, rising monotonically from 0.80\% for the least profitable quintile to 1.05\% for the most profitable. Profitability is related to a broader set of \emph{quality} characteristics: \citet{asness2019} construct a quality measure combining profitability, recent growth in profits, low return and earnings volatility, and low leverage, and show that high-quality stocks outperform junk stocks with similar characteristics otherwise. In the rational factor-model tradition, profitability and investment factors are now central: they appear in both the five-factor model of \citet{fama2015} and the $q$-factor model of \citet{hou2015}, where a profitability premium is a priced risk or a reflection of discount-rate differences. The behavioral reading of quality connects it again to extrapolation: investors underprice the persistence of profitability.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.76\textwidth]{slide19_chart.png}
+\caption[Average returns of profitability quintiles, 1963--2020]{The profitability anomaly. Average monthly returns (\%) of quintile portfolios sorted on profitability, 1963--2020. Returns rise monotonically from 0.80\% (least profitable) to 1.05\% (most profitable). \textit{Source:} Author's calculations based on U.S. quintile portfolio data.}
+\label{fig:profit}
+\end{figure}
+
+\paragraph{Financial distress.}
+If the CAPM held, stocks with higher systematic risk would earn higher expected returns, and financial distress---when it raises risk---should be rewarded. The data contradict this logic: financially distressed stocks earn \emph{lower} alphas \citep{campbell2008}. Figure~\ref{fig:distress} shows alphas and mean excess returns of portfolios sorted on model-predicted failure probability: all three measures decline roughly monotonically with distress, and for the most distressed decile the three-factor alpha is around $-24\%$ per year. Distress risk, in other words, is priced with the wrong sign relative to any consumption- or market-beta-based model. Candidate explanations include the lottery-like payoff profile of distressed stocks (Section~\ref{sec:lowrisk} develops the demand side) and the difficulty of shorting exactly those stocks, which leaves them overpriced---another point where frictions and sentiment interact.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.78\textwidth]{slide20_pic3_Picture_5.jpg}
+\caption[Distress risk is priced with the wrong sign]{Distress risk is priced with the wrong sign. CAPM alpha, Fama--French three-factor alpha, and mean excess return of portfolios sorted on model-predicted failure probability, 1981--2003. All three decline sharply with distress; the most distressed portfolio earns a three-factor alpha of roughly $-24\%$. \textit{Source:} \citet{campbell2008}.}
+\label{fig:distress}
+\end{figure}
+
+\subsection{Post-Earnings-Announcement Drift}
+\label{sec:pead}
+
+The surprise in a firm's most recent earnings announcement positively predicts future returns: after good earnings news, returns drift upward for weeks and months; after bad news, they drift downward. The pattern was present at the very birth of empirical capital markets research \citep{ball1968} and has been quantified in the event-study tradition since; Figure~\ref{fig:pead} shows the canonical picture. Cumulative excess returns across ten earnings-surprise deciles fan out monotonically over the 90 trading days after the announcement: the most positive surprise decile has drifted about 8\% higher and the most negative about 7.5\% lower by day 90. Related findings hold for revisions in analysts' consensus forecasts and recommendation changes, which also positively predict subsequent returns.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{slide21_pic3_Picture_2.png}
+\caption[Post-earnings-announcement drift across surprise deciles]{Post-earnings-announcement drift. Cumulative average excess returns of earnings-surprise deciles around the announcement (day 0), from 20 days before to 90 days after. The initial reaction at the announcement is followed by continued drift in the direction of the surprise, ordered monotonically across deciles. \textit{Source:} \citet{rendleman1982}.}
+\label{fig:pead}
+\end{figure}
+
+Drift is the cleanest expression of \emph{underreaction}: prices respond to public news too slowly, and the slow response is itself predictable from the news. The joint-hypothesis caveat applies---an apparent underreaction can be compensation for risk that happens to correlate with news surprises---but drift following an announcement that is public, dated, and of known sign strains that reading. Underreaction to news also fits naturally into the slow-information-diffusion models cited above \citep{hong1999} and into the disposition effect, to which we return in Section~\ref{sec:disposition}: if investors sell winners prematurely after good news, the price impact of the news is delayed \citep{frazzini2006}.
+
+\subsection{Low-Risk Anomalies: Idiosyncratic Volatility and Beta}
+\label{sec:lowrisk}
+
+\paragraph{The idiosyncratic volatility puzzle.}
+Stocks with higher idiosyncratic volatility have \emph{lower} subsequent alphas \citep{ang2006}---the opposite of any compensation logic, since idiosyncratic risk should not be priced at all under the CAPM. Figure~\ref{fig:bbw} shows the long-horizon implication in the low-volatility version of the fact: one dollar invested in 1968 in the lowest-volatility quintile of U.S. stocks compounds to several tens of dollars by 2008, while a dollar in the highest-volatility quintile ends the forty-year period roughly where it started. \citet{baker2011} stress why arbitrage does not correct this: benchmarked institutional investors face constraints on leverage and relative performance, so underpriced boring stocks are unattractive to them while overpriced volatile stocks are not painful enough to short---benchmarks themselves are a limit to arbitrage.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{slide22_pic3_Picture_3.jpg}
+\caption[Growth of one dollar in volatility quintiles, 1968--2008]{The low-volatility anomaly. Growth of one dollar invested in volatility-quintile portfolios, 1968--2008, log scale. The lowest-volatility quintile compounds to several tens of dollars; the highest-volatility quintile ends the period near one dollar. \textit{Source:} \citet{baker2011}.}
+\label{fig:bbw}
+\end{figure}
+
+\paragraph{The beta anomaly.}
+The same flattening appears along the beta dimension. Stocks with higher betas have similar raw returns and lower CAPM alphas than low-beta stocks: the empirical security market line is far too flat relative to the CAPM's prediction \citep{fama2004}. Figure~\ref{fig:ffsml} plots average returns against beta for ten beta-sorted portfolios over 1928--2003 together with the CAPM-predicted line; the portfolios' average returns cluster between roughly 11\% and 14\% across a beta range over which the CAPM predicts a doubling of expected return. \citet{frazzini2014} show that the pattern extends far beyond U.S. stocks---their ``betting against beta'' (BAB) factor, long leveraged low-beta securities and short high-beta securities, earns positive alphas in U.S. and international equities, Treasury bonds of different maturities, credit indices sorted on maturity and rating, commodities, country bonds, and foreign exchange (Figure~\ref{fig:bab}).
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.78\textwidth]{slide23_pic3_Picture_3.jpg}
+\caption[The empirical security market line is too flat]{The empirical security market line is too flat. Average annualized monthly returns of ten value-weight portfolios sorted on prior beta, 1928--2003, against the average returns predicted by the CAPM. Low-beta portfolios earn more, and high-beta portfolios less, than the CAPM implies. \textit{Source:} \citet{fama2004}.}
+\label{fig:ffsml}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1.0\textwidth]{slide24_pic3_Picture_1.jpg}
+\caption[Betting against beta across asset classes]{Betting against beta. Alphas of low-beta versus high-beta portfolios across asset classes: U.S. and international equities (beta-sorted deciles), Treasury bonds by maturity, credit indices by maturity and rating, equity indices, commodities, country bonds, and foreign exchange. Low-beta portfolios earn positive alphas and high-beta portfolios negative alphas almost everywhere. \textit{Source:} \citet{frazzini2014}.}
+\label{fig:bab}
+\end{figure}
+
+The low-risk anomalies illustrate how frictions and preferences blur. \citet{frazzini2014} generate the flat security market line with fully rational agents who face leverage and benchmark constraints: unable to lever, investors reach for beta, bidding up high-beta assets. \citet{baker2011} add the institutional benchmark structure. A complementary behavioral force is demand for lottery-like payoffs---preferences over the shape of the return distribution, not just its moments---which directly prices high-volatility, high-skewness stocks \citep{bali2011}. Note the structural lesson: several of the field's most robust cross-sectional facts now have candidate explanations that are \emph{psychology-free}, a theme of Part III.
+
+\subsection{How Many Anomalies Are There?}
+\label{sec:bestiary}
+
+The phenomena above are not exhaustive; they are the subset with the longest history and the most influence. Table~\ref{tab:characteristics} lists, in summary form, firm-level characteristics with documented predictive power for the cross-section of stock returns and the sign of the relation---reversal, momentum, earnings surprise, size, value ratios, issuance, both volatility measures, and profitability. The full modern catalog runs to hundreds of published predictors, which raises the discipline problem of Section~\ref{sec:challenges} in quantitative form. \citet{harvey2016} argue that with so many factors tried, conventional $t$-statistics of 2 are no longer adequate: the hurdle for a new factor should be closer to 3. \citet{mclean2016} document that anomaly returns decline materially after publication---consistent with both data mining and arbitrage---and \citet{hou2020} replicate hundreds of published anomalies in a common sample and find that a majority are explained by a four-factor model built on investment and profitability. The upshot is not that the anomaly literature collapses, but that its claims must be, and now are, held to replication standards; the open replication infrastructure of \citet{chen2022} is a direct institutional response.
+
+\begin{table}[htbp]
+\centering
+\begin{threeparttable}
+\caption{Firm characteristics with predictive power for stock returns in the cross-section}
+\label{tab:characteristics}
+\begin{tabular}{lc}
+\toprule
+Characteristic & Predictive sign \\
+\midrule
+Past three-year return & $-$ \\
+Past six-month return & $+$ \\
+Past one-month return & $-$ \\
+Earnings surprise & $+$ \\
+Market capitalization & $-$ \\
+Price-to-fundamentals ratio (B/M, E/P, CF/P) & $-$ \\
+Equity issuance & $-$ \\
+Systematic volatility (beta) & $-$ \\
+Idiosyncratic volatility & $-$ \\
+Profitability & $+$ \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]\small
+\item \textit{Notes:} The sign is the direction of the relation between the characteristic and subsequent returns. The table is illustrative, not exhaustive; for the replication status of the modern anomaly catalog see \citet{harvey2016}, \citet{mclean2016}, \citet{hou2020}, and \citet{chen2022}. \textit{Source:} EF8083 course materials.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+% ============================================================
+\section{Bubbles}
+\label{sec:bubbles}
+
+A \emph{bubble} is a situation in which, for a significant period of time, an asset trades at a price that appears to be substantially higher than its rational or frictionless price. Bubbles appear to exhibit a set of recurring characteristics:
+\begin{enumerate}[label=(\roman*),itemsep=1pt]
+  \item The price of the asset rises sharply over some period and then declines, reversing much of the rise.
+  \item During the price rise, there are many reports in the media and from sophisticated investors that the asset is overvalued.
+  \item As the price rises and reaches its peak, trading volume in the asset is abnormally high.
+  \item During the episode, many investors hold highly extrapolative expectations: their expected future return on the asset rises with the asset's past return.
+  \item During the price rise, some sophisticated investors increase their exposure to the asset.
+  \item In the early stages of the price rise, there is positive news about the asset's future fundamentals.
+\end{enumerate}
+
+History offers a long catalog of candidate episodes. Figure~\ref{fig:bubbles} assembles several of the most cited---the tulip mania of the 1630s, the Mississippi and South Sea schemes of 1718--1721, the 1929 stock market and the Great Depression, Japanese equities in the 1980s, the technology bubble of the 1990s, the 2006--2009 financial crisis, and Bitcoin---aligning each price path at its peak. The multiples at peak are striking: tulip prices rose roughly 60-fold from three years before the peak; the Mississippi scheme roughly 45-fold; the technology-laden U.S. market roughly 30-fold. The figure, drawn in January 2021, also documents why the definition above is deliberately cautious: Bitcoin's path had fallen from its peak and then risen again to nearly 200 times its starting price at the chart's right edge, a trajectory that did not yet fit the ``rise and collapse'' template of the historical episodes.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{slide27_pic2_Picture_5.png}
+\caption[Famous bubbles in history, aligned at peak]{Famous bubbles in history. Price paths of eight bubble episodes, expressed as multiples of the starting price and aligned at each episode's peak (year 0): Bitcoin (2014--2021), tulip mania (1634--1637), the Mississippi bubble (1718--1720), the South Sea bubble (1719--1721), the technology bubble (1994--2002), the financial crisis stock market (2006--2009), Japanese stocks (1982--1992), and Great Depression stocks (1929--1932), as of January 9, 2021. \textit{Source:} Convoy Investments, using data from Elliott Wave International, Yale SOM, St.\ Louis Fed (FRED), CoinDesk, and Global Financial Data.}
+\label{fig:bubbles}
+\end{figure}
+
+Two regularities from the list above are especially informative for theory. First, bubbles are accompanied by very high trading volume, which is difficult to generate in a model with common priors and rational expectations: if all investors agree the asset is overvalued, who buys? \citet{hong2007} argue that bubbles are naturally \emph{disagreement} episodes---short-sale constraints prevent pessimists from being expressed in prices, and volume rises because optimists trade against each other as their beliefs, all extrapolative in different degrees, diverge. Figure~\ref{fig:dotcom} shows the dot-com episode in this light: monthly turnover in internet stocks ran near 100\% at the peak, an order of magnitude above turnover in other stocks, while the internet sector's equal-weighted index rose roughly ten-fold from its December 1996 base and collapsed back within two years. Second, sophisticated investors often \emph{ride} the bubble rather than pop it: \citet{brunnermeier2004} show that hedge funds were heavily invested in technology stocks through the late 1990s, reduced their positions before the 2000 collapse, and earned high returns doing so---consistent with arbitrageurs weighing the risk that mispricing widens before it closes. Understanding bubbles is an important challenge because their collapse can trigger severe economic downturns; we return to the mechanics in Part II.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{slide28_pic2_Picture_6.png}
+\caption[Prices and volume in the dot-com bubble]{Prices and volume in the dot-com bubble. Equal-weighted return indexes (right axis, December 1996 $=100$) and monthly turnover (left axis) for internet and non-internet stocks, December 1996--December 2002. Internet turnover approached 100\% per month at the peak, and the internet index rose roughly ten-fold before collapsing. \textit{Source:} \citet{hong2007}.}
+\label{fig:dotcom}
+\end{figure}
+
+% ============================================================
+\section{Investor Trading and Portfolio Choice}
+\label{sec:investors}
+
+The price facts of Sections~\ref{sec:aggregate}--\ref{sec:crosssection} describe outcomes. This section turns to behavior: how individual investors and institutional investors actually trade and choose portfolios. The relevance is direct---behavioral finance needs demand-side mechanisms, and the rational benchmark makes predictions about behavior too.
+
+\subsection{Non-Participation}
+\label{sec:nonparticipation}
+
+Historically, most U.S.\ households held no stock at all: in 1984, only 28\% of households held any equity \citep{mankiw1991}. This is a puzzle for the frictionless rational model of portfolio choice, which predicts that every household should hold at least some stock: equity carries a large premium (Section~\ref{sec:eqprem}), and any household with savings should tilt some of it toward this premium. Rational explanations are available and partly successful: fixed participation costs can deter small savers, and background risk---labor income and undiversifiable real estate exposure---can make equities unattractive for households whose human capital already correlates with market conditions. How much non-participation these forces can quantitatively explain remains debated; we return to preference-based explanations (loss aversion, narrow framing) in Part III.
+
+\subsection{Buying High and Selling Low}
+\label{sec:buyhigh}
+
+A household's actual investment experience is not the return of the assets it holds, but the return of its money: what matters is when funds flowed in and out. \citet{dichev2007} makes this point operational by comparing \emph{buy-and-hold} returns (the return an investor would earn by holding a fixed position) with \emph{dollar-weighted} returns (the internal rate of return on the cash flows actually invested) across 19 major international stock exchanges. The result, reproduced in Figure~\ref{fig:dichev}, is remarkably uniform: in 18 of the 19 countries, the dollar-weighted return is below the buy-and-hold return. In the United States, the buy-and-hold return exceeds the dollar-weighted return by about one percentage point per year (11.5\% versus 10.5\%); the average gap across countries is about 1.5 percentage points per year. Investors as a group earn less than the assets they invest in, because capital flows in after prices have risen and out after prices have fallen---buying high and selling low in the aggregate.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{slide31_chart.png}
+\caption[Dollar-weighted versus buy-and-hold returns in 19 markets]{Buying high and selling low. Annual buy-and-hold and dollar-weighted stock market returns for 19 major international stock exchanges. In 18 of 19 countries the dollar-weighted return is below the buy-and-hold return; the U.S.\ gap is 1.0 percentage point per year (11.5\% vs.\ 10.5\%). \textit{Source:} \citet{dichev2007}, Table 5.}
+\label{fig:dichev}
+\end{figure}
+
+\subsection{Under-Diversification}
+\label{sec:diversification}
+
+Traditional portfolio theory predicts that households should hold well-diversified portfolios, differing at most in the split between the risk-free asset and the market portfolio. The data disagree along four distinct margins.
+
+\paragraph{Home bias.}
+Investors allocate a surprisingly large fraction of their equity holdings to domestic equity. In 1989, households in the U.S., the U.K., and Japan invested 94\%, 82\%, and 98\% of their equity portfolios, respectively, in domestic equities \citep{french1991}---far more than market-capitalization weights imply, and this despite the well-documented cross-country correlation of business cycles being far from perfect.
+
+\paragraph{Local bias.}
+Diversification fails at shorter distances too: the typical U.S.\ household holds about 30\% of its portfolio in stocks headquartered within a 250-mile radius of its home. The natural rational hypothesis is an information advantage in local firms. The evidence is mixed: \citet{ivkovic2005} find that households earn abnormal returns in local stocks, consistent with an information advantage; \citet{seasholes2010} find that purchases of local stocks by individual investors do not systematically outperform, suggesting familiarity rather than information.
+
+\paragraph{Ownership of few individual stocks.}
+Many households hold a handful of stocks rather than a diversified fund. \citet{curcuru2004} report that in 1989, 30\% of U.S.\ equity-owning households allocated more than half of their equity exposure to fewer than 10 stocks. With so few names, the portfolios carry large idiosyncratic risk that could be diversified away at essentially no cost---the aggregate loss from such under-diversification is large relative to the equity premium itself.
+
+\paragraph{Own-company stock.}
+The concentration extends inside the retirement plan, where it is hardest to rationalize by information: \citet{benartzi2001} reports that across a sample of 154 retirement plans, participants allocated 23\% of their discretionary contributions to the stock of their own employer---loading their financial wealth on the same firm that pays their labor income. Figure~\ref{fig:wsj} shows how extreme concentration can become in large plans: among retirement plans with at least \$1 billion in assets at end-2015, fifteen companies' plans held 38.6\% to 65.2\% of plan assets in company stock, with Sherwin-Williams at 65.2\%, Scana at 64.9\%, and Colgate-Palmolive at 60.7\%. The leading behavioral account, developed by \citet{benartzi2001}, is extrapolation of past company stock returns; we return to it in Part III.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{slide33_pic0_Picture_5.jpg}
+\caption[Own-company stock in large retirement plans]{Own-company stock in retirement plans. Company stock as a percentage of total plan assets for a sample of large U.S.\ retirement plans (plan assets of at least \$1 billion as of December 31, 2015). Concentration ranges from 38.6\% (General Electric) to 65.2\% (Sherwin-Williams). \textit{Source:} ``Stocking Up,'' \emph{The Wall Street Journal}, based on BrightScope, Department of Labor, and SEC data.}
+\label{fig:wsj}
+\end{figure}
+
+\subsection{Excessive Trading}
+\label{sec:excessivetrading}
+
+If trading has costs and confers no informational benefit, rational investors should trade rarely. Using account-level data on 66,465 households at a large discount brokerage firm, \citet{barber2000} show that households that trade more earn lower net returns: the gross performance of the portfolios is broadly similar across households, but the costs of trading---commissions and the bid--ask spread---subtract from it at a rate increasing in turnover. Figure~\ref{fig:bo} shows the pattern in summary form, adding mutual funds for comparison: gross returns are similar across turnover groups (roughly 18\% per year across the sample period), while net returns fall from about 18.5\% for the lowest-turnover group to about 11.5\% for the highest. The average individual investor sits in between, earning net returns below an index fund. \citet{barber2000} attribute the pattern to overconfidence: overconfident investors overestimate the precision of their information and therefore trade too much. The interpretation is corroborated by the gender evidence of \citet{barber2001}, who find that men---more overconfident than women in domains such as finance---trade more and thereby reduce their net returns by more than women do.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{slide34_pic3_Picture_2.png}
+\caption[Trading is hazardous to your wealth]{Trading is hazardous to your wealth. Gross returns, net returns, and turnover for mutual funds sorted into quintiles by turnover, the average individual investor, and an S\&P 500 index fund. Gross returns are similar across groups; net returns fall from about 18.5\% per year for the lowest-turnover quintile to about 11.5\% for the highest. \textit{Source:} EF8083 course materials, following \citet{barber2000}.}
+\label{fig:bo}
+\end{figure}
+
+\subsection{The Disposition Effect}
+\label{sec:disposition}
+
+The single most robust fact about individual investor trading is the \emph{disposition effect}: investors have a greater tendency to sell stocks trading at a gain relative to their purchase price than stocks trading at a loss \citep{odean1998}. The clean test uses the proportions of gains and losses that are realized. Define, for a set of accounts and a time period,
+\begin{align*}
+\mathrm{PGR} &= \frac{\text{Realized Gains}}{\text{Realized Gains} + \text{Paper Gains}}, &
+\mathrm{PLR} &= \frac{\text{Realized Losses}}{\text{Realized Losses} + \text{Paper Losses}},
+\end{align*}
+where paper gains (losses) are positions that could have been sold at a gain (loss) and were not. The disposition hypothesis is $\mathrm{PGR} > \mathrm{PLR}$.
+
+Figure~\ref{fig:odean} shows the result for the full data set of \citet{odean1998}: PGR is 0.148 against PLR of 0.098, a difference of 0.050 with a $t$-statistic of $-35$---investors realize gains at roughly 1.5 times the rate at which they realize losses. The counts behind the proportions make the asymmetry vivid: 13{,}883 realized gains against 79{,}658 paper gains, versus 11{,}930 realized losses against 110{,}348 paper losses. A notable internal check is December: PGR falls to 0.108 and PLR rises to 0.128, so that PLR exceeds PGR (difference 0.020, $t = 4.3$)---consistent with year-end tax-loss selling temporarily overriding the reluctance to realize losses.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.75\textwidth]{slide35_pic3_Picture_2.png}
+\caption[The disposition effect: PGR versus PLR]{The disposition effect. Proportions of gains realized (PGR) and losses realized (PLR) for the entire data set of \citet{odean1998}: over the whole year, PGR $=0.148$ versus PLR $=0.098$; in December only, the pattern reverses (PLR $=0.128$ versus PGR $=0.108$), consistent with tax-motivated loss realization. \textit{Source:} \citet{odean1998}.}
+\label{fig:odean}
+\end{figure}
+
+The disposition effect is not an artifact of retail accounts or of stocks. It is present among mutual fund managers \citep{frazzini2006} and, in modified form, in the housing market, where sellers whose expected price is below their purchase price set higher reservation prices and wait longer to sell \citep{genesove2001}. Nor is it easily rationalized: the most obvious potential explanation---that sales of winners reflect informed trading---fails on the data, because the winners investors sell subsequently \emph{outperform} the losers they hold on to \citep{odean1998}. If anything, the optimal tax-motivated strategy pushes the other way (realize losses, defer gains), making the observed behavior costly on two dimensions. The effect is also more pronounced among less sophisticated investors \citep{dhar2006}, and it has pricing consequences: \citet{frazzini2006} links the disposition-driven selling pressure after good news to underreaction and momentum, providing one of the clearest cases where a micro-level behavioral fact predicts a market-level anomaly---exactly the kind of out-of-sample discipline Section~\ref{sec:challenges} demands. The preference-based foundation, prospect theory and loss aversion with reference dependence at the purchase price, is the subject of Part III.
+
+\subsection{Who Trades Against the Anomalies?}
+\label{sec:smartmoney}
+
+If anomalies reflect mispricing, someone must eventually trade against it. \citet{mclean2025} ask who, by measuring the trades of nine classes of market participants against the forecasted returns produced by 130 published anomalies. Figure~\ref{fig:mpr} shows their central table: for each participant group, average trading across stocks sorted into quintiles by forecasted return. The patterns are sharp. Retail investors trade \emph{against} the forecasts: their trading falls from 1.24\% in the lowest forecasted-return quintile to 0.01\% in the highest (spread $-1.23\%$, $t=-2.3$)---they are the buyers of the stocks predicted to do poorly. Short sellers are on the right side, tilting toward low-forecasted-return stocks (spread $+0.62\%$, $t=6.0$), as are hedge funds in the top quintile. Firms themselves are the most aggressive ``smart money'' of all: net firm trading (issuance and repurchase) moves $+11.47$ percentage points ($t=6.2$) from the low-forecasted-return quintile to the high---firms issue when forecasted returns are low and repurchase when they are high, consistent with the market-timing interpretation of Section~\ref{sec:issuance}. The correction of mispricing, in other words, comes primarily from short sellers and from firms---not from the conventional asset managers to whom we now turn.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{slide37_pic3_Picture_6.png}
+\caption[Taking sides on return predictability]{Taking sides on return predictability. Mean trading by participant group (retail investors, mutual funds, banks, insurance companies, wealth managers, hedge funds, other institutions, short sellers, and firms) across quintiles of forecasted stock returns from 130 published anomalies. Retail trading falls with forecasted return; short sellers' and firms' trading rises with it. \textit{Source:} \citet{mclean2025}.}
+\label{fig:mpr}
+\end{figure}
+
+\subsection{Institutional Investors}
+\label{sec:institutions}
+
+\paragraph{Average performance.}
+What should we expect from professional money managers? \citet{berk2004} build the benchmark answer in a fully rational industry equilibrium: skilled managers exist, investors chase skill, and funds flow compete away the rents---so managers' \emph{gross} alpha should be positive on average (they do have skill), while their \emph{net} alpha should be zero on average (fees absorb the skill). The evidence roughly matches the second prediction and strains the first: the gross alpha of mutual funds appears to be positive, but not substantially so. One might be tempted to conclude that small average alphas imply prices are correct---no one earns abnormal profit, so no profit is left on the table. The inference is wrong, and the next two findings show why: exploiting anomalies requires taking positions against them, and that is precisely what institutions, in aggregate, fail to do.
+
+\paragraph{Institutions and the anomalies.}
+\citet{lewellen2011} documents that institutional investors in aggregate essentially hold the market portfolio: despite managing the majority of U.S.\ equity, institutions show no discernible tilt toward well-known anomalies. \citet{edelen2016} sharpen the conclusion with a more striking finding: during the formation periods of anomaly portfolios, institutions have a strong tendency to buy the \emph{overvalued} stocks---the short legs. Figure~\ref{fig:eik} shows their evidence: the change in institutional ownership over formation periods is systematically larger for short-leg stocks than long-leg stocks, with average long-minus-short differences of $-3.0\%$ (change in the number of institutions) and $-1.2\%$ (change in fraction of shares held), both highly significant, and with the notable exception of momentum, where institutions trade \emph{with} the anomaly. Hedge funds and institutions with high turnover exploit anomalies more than other institutions do---consistent with the short-seller evidence of Section~\ref{sec:smartmoney}---but they are too small relative to the market to remove the patterns.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{slide40_chart.png}
+\caption[Institutions trade with the anomalies, not against them]{Institutions trade with the anomalies, not against them. Change in institutional ownership during anomaly portfolio formation periods, 1982--2012, for the long, neutral, and short legs of eight anomalies (NOA, IVA, BM, UMO, GP, OSC, MOM, and their average). The long-minus-short difference is negative and significant for every anomaly except momentum: institutions accumulate the overvalued (short-leg) stocks. \textit{Source:} \citet{edelen2016}, Table 4.}
+\label{fig:eik}
+\end{figure}
+
+Institutional behavior thus closes the loop opened by the arbitrage critique in Section~\ref{sec:challenges}. The agents best positioned to correct mispricing hold, in aggregate, something close to the market portfolio---and tilt, if anything, toward the mispriced side of several anomalies. The reasons are the limits to arbitrage and agency structures of Part II: benchmarking, career risk, leverage constraints, and flows punish concentrated contrarian positions even when they are eventually right.
+
+% ============================================================
+\section{The Road Ahead}
+\label{sec:ahead}
+
+This chapter has assembled facts; the rest of the book is about mechanisms. Three threads run through everything above.
+
+First, the price facts---predictability and excess volatility in the aggregate market, the anomaly families in the cross-section, and bubbles---share a common structure: each admits a rational interpretation built on time-varying risk or risk prices, and a behavioral interpretation built on belief or preference deviations. The state of knowledge differs case by case. Short-term reversal now looks mostly like compensation for liquidity provision; profitability and investment fit partly into rational factor structures; the equity premium, the low-risk anomalies, and post-earnings-announcement drift remain actively contested. The book's working method is to keep both candidate mechanisms explicit and ask what evidence would separate them.
+
+Second, the investor facts identify the demand side. Non-participation, under-diversification, excessive trading, the disposition effect, and buying-high-and-selling-low are each hard for the frictionless model of portfolio choice to absorb, and each maps onto a specific psychological candidate---loss aversion, narrow framing, overconfidence, extrapolation---developed in Part III. The strongest results connect the two levels: the disposition effect predicts pricing patterns \citep{frazzini2006}, and survey-based extrapolative expectations discriminate between sentiment and discount-rate readings of predictability.
+
+Third, the ``who trades against it'' facts identify the supply side. Firms and short sellers take the correct side of forecasted returns; conventional institutions mostly do not \citep{lewellen2011,edelen2016,mclean2025}. Why professional arbitrage is limited---and what those limits imply for how far mispricing can go---is the subject of Part II.
+
+The plan of the book follows this logic:
+\begin{itemize}
+  \item \textbf{Part II. Limits to Arbitrage.} Noise trader risk, short-sale constraints, funding constraints, and agency frictions: why rational capital cannot be relied upon to keep prices at fundamental value.
+  \item \textbf{Part III. Psychological Foundations and Applications.} Non-standard preferences (prospect theory, loss aversion, the disposition effect); biased beliefs (overconfidence, over-extrapolation); heterogeneous beliefs and disagreement; bounded rationality (limited attention, investor sentiment); and psychology-free models that reproduce behavioral pricing patterns with rational agents.
+\end{itemize}
+By the end, every fact in this chapter should be attached to at least one explicit mechanism, and every mechanism to at least one prediction that could have failed.
