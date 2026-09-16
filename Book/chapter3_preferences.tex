@@ -1,0 +1,441 @@
+% ============================================================
+% Chapter 3 — Preferences Under Uncertainty
+% Converted from Slides/Lecture3_LaTeX/Lecture3_Preferences.tex
+% Figures reproduced in figures/ (original slide assets).
+% ============================================================
+\chapter{Preferences Under Uncertainty}
+\label{ch:preferences}
+
+The benchmark model of investor preferences is \emph{expected utility} (EU): agents rank risky prospects by the expectation of a concave utility function defined over final wealth, and the axioms of \citet{vonNeumannMorgenstern1944} justify this ranking. EU is the workhorse of the consumption-based asset pricing literature and the implicit preference assumption behind nearly every quantitative model of asset returns. It also turns out to fit badly. Laboratory experiments run since the 1950s document systematic violations---preferences that are sensitive to framing, asymmetric around a reference point, sensitive to probability in ways that EU does not capture, and resistant---more precisely, averse---to ambiguity. \citet{kahneman1979} proposed \emph{prospect theory} as a descriptive alternative; \citet{tversky1992} sharpened it into a version, \emph{cumulative prospect theory}, that is now the standard behavioral model of choice under risk. This chapter develops that model, surveys the modifications needed to apply it to financial markets, and reviews the asset pricing applications for which it does, and does not, deliver quantitative predictions.
+
+The chapter proceeds in three parts. Sections~\ref{sec:eu}--\ref{sec:eufailures} lay out the rational benchmark and the experimental evidence that breaks it. Sections~\ref{sec:prospect}--\ref{sec:narrow} develop prospect theory: the four pillars (reference dependence, loss aversion, probability weighting, diminishing sensitivity), the fourfold pattern of risk attitudes they imply, and the additional ingredient of \emph{narrow framing} that prospect theory needs to make contact with finance. Sections~\ref{sec:trading}--\ref{sec:ambiguity} trace the applications: trading behavior (Section~\ref{sec:trading}), the cross-section of stock returns (Section~\ref{sec:ptcrosssection}), the aggregate stock market (Section~\ref{sec:ptaggregate}), and ambiguity aversion as a separate psychological departure from EU (Section~\ref{sec:ambiguity}). Section~\ref{sec:contested} catalogues the limits of the theory, and Section~\ref{sec:ptahead} closes the chapter.
+
+% ============================================================
+\section{Expected Utility: The Rational Benchmark}
+\label{sec:eu}
+
+\begin{definition}[Expected utility]
+\label{def:eu}
+An agent has expected-utility preferences if, for any two prospects $X$ and $Y$ with the same probability space,
+\[
+X \succ Y \iff \sum_i p_i U(x_i) > \sum_i q_i U(y_i),
+\]
+where $U$ is a real-valued function, increasing, concave, and defined on outcomes.
+\end{definition}
+
+Definition~\ref{def:eu} assumes that the agent can assign probabilities to outcomes---the \emph{risky} case in the \citet{knight1921} sense. Two properties follow from concavity that drive most of the asset pricing implications. First, $U$ concave means the agent is \emph{risk averse}: the agent prefers the expected value of a gamble to the gamble itself. Second, $U$ is defined over \emph{final wealth}, not over changes in wealth: agents evaluate the new risk together with their pre-existing portfolio and consumption plan, and ask whether the combination is an improvement.
+
+The axiomatic foundation is \citet{vonNeumannMorgenstern1944}. Their four axioms (completeness, transitivity, continuity, and independence) imply that preferences over lotteries can be represented as the expectation of a utility function; the axioms are minimal in the sense that dropping any one allows preferences that EU cannot represent. Of the four, \emph{independence} is the one that the empirical record attacks most consistently, and the one that prospect theory modifies most decisively. Independence says that if $X$ is preferred to $Y$, then the prospect $pX + (1-p)Z$ is preferred to $pY + (1-p)Z$ for any common $Z$ and any $p \in [0,1]$: preferences between two lotteries are unchanged by mixing either of them with the same third lottery.
+
+Concavity of $U$, combined with its definition over final wealth, also commits EU to a specific prediction about how risk attitudes depend on the sign of the gamble: a risk-averse agent with concave $U$ dislikes \emph{all} mean-preserving spreads, both upside and downside. EU with diminishing marginal utility of wealth therefore predicts risk aversion over both gains and losses, and risk neutrality in the limit of small stakes. Both predictions are violated in experimental data.
+
+% ============================================================
+\section{Where Expected Utility Breaks}
+\label{sec:eufailures}
+
+\subsection{The Allais Paradox}
+
+The cleanest violation of independence is \citet{allais1953}. Subjects are offered two paired choices:
+
+\begin{quote}
+\textbf{Choice A.}
+\begin{enumerate}[label=(\Alph*),itemsep=1pt]
+\item A sure \$1{,}000.
+\item A 10\% chance of \$5{,}000, an 89\% chance of \$1{,}000, and a 1\% chance of \$0.
+\end{enumerate}
+\textbf{Choice B.}
+\begin{enumerate}[label=(\Alph*),itemsep=1pt,resume]
+\item A 10\% chance of \$5{,}000 and a 90\% chance of \$0.
+\item A 11\% chance of \$1{,}000 and an 89\% chance of \$0.
+\end{enumerate}
+\end{quote}
+
+The modal choice in A is the sure \$1{,}000; the modal choice in B is the 11\% chance of \$1{,}000. But the modal pattern violates independence: the prospects in B are obtained from those in A by replacing the common 89\% chance of \$1{,}000 with an 89\% chance of \$0, so an EU agent who chose A's first option should choose B's second. The contradiction is robust, replicable, and quantitative: in the \citet{tversky1992} calibration, the violation appears for nearly every parameter choice consistent with the descriptive fit of prospect theory.
+
+\subsection{Common Ratio and Reflection Effects}
+
+Two related violations are the \emph{common ratio effect} and the \emph{reflection effect}. Consider the two prospects
+\[
+(\$4{,}000,\, 0.80) \quad \text{vs.} \quad (\$3{,}000,\text{ certain}),
+\]
+with a common ratio $p = 0.8$. The gamble's expected value, \$3{,}200, exceeds the sure amount, but EU with $U$ concave implies that the second---the certain \$3{,}000---is preferred: that is what risk aversion means. In \citet{kahneman1979}'s Problem 3, 80\% of subjects do choose the sure \$3{,}000. Now multiply both probabilities by $0.25$:
+\[
+(\$4{,}000,\, 0.20) \quad \text{vs.} \quad (\$3{,}000,\, 0.25).
+\]
+Many subjects now reverse and prefer the first, the \$4{,}000 gamble---even though the same risk-aversion logic should still apply. The reversal is the common ratio effect: probability weights are not linear in $p$.
+
+The reflection effect is the sign analogue. Take the loss-domain counterparts of the first pair:
+\[
+(-\$4{,}000,\, 0.80) \quad \text{vs.} \quad (-\$3{,}000,\text{ certain}).
+\]
+Many subjects prefer the gamble, not the certain loss---the opposite of risk aversion. EU with concave $U$ over final wealth cannot produce risk-seeking preferences over losses.
+
+\subsection{Sign, Reference, and Probability: Four Robust Patterns}
+
+\citet{kahneman1979} summarize the violations as four robust patterns:
+\begin{enumerate}[label=(\roman*),itemsep=1pt]
+  \item Reference dependence: outcomes are evaluated as gains and losses, not final states.
+  \item Loss aversion: losses loom larger than equal-sized gains.
+  \item Probability weighting: small probabilities are overweighted, large probabilities underweighted.
+  \item Diminishing sensitivity: the marginal response to changes in outcome diminishes with distance from the reference point, on both sides.
+\end{enumerate}
+
+These are the four pillars of prospect theory. Each is well-documented in laboratory data; each is at odds with EU defined over final wealth; and each, as Sections~\ref{sec:trading}--\ref{sec:ptaggregate} show, has asset pricing implications.
+
+% ============================================================
+\section{Prospect Theory}
+\label{sec:prospect}
+
+\subsection{The Framework}
+
+\citet{kahneman1979} propose the following modification of EU. A prospect is a sequence $(x_i, p_i)$ of outcomes $x_i$ and their objective probabilities $p_i$. To evaluate a prospect, the agent first rewrites the outcome space around a \emph{reference point} (typically the status quo or recent expectation), separating it into gains and losses. The agent then applies two transformations:
+\begin{enumerate}[label=(\roman*),itemsep=1pt]
+  \item A \emph{value function} $v(\cdot)$, defined on gains and losses, with $v(0) = 0$, $v$ concave over gains, convex over losses, and steeper for losses than for gains at every absolute level.
+  \item A \emph{decision-weight function} $w(\cdot)$ that transforms the cumulative probabilities of gains and losses separately into \emph{decision weights}, which then play the role of probabilities in the value computation.
+\end{enumerate}
+The prospect $(x, p; y, q)$, with $x \ge 0 \ge y$ and $p + q \le 1$, has prospect-theory value
+\[
+V \;=\; w(p)\, v(x) \;+\; w(q)\, v(y).
+\]
+The agent accepts the prospect if $V > v(0) = 0$, i.e.\ if the decision-weighted gain and loss values favor taking it.
+
+The framework is \emph{descriptive}: it is meant to capture how agents \emph{actually} decide, not how they \emph{should}. The shift from normative to descriptive is the move that opens the door to finance: a descriptive theory can be wrong about welfare and still be right about behavior, and behavior is what moves prices.
+
+\subsection{The Value Function}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.55\textwidth]{slide13_pic1.png}
+\caption[The prospect-theory value function]{The prospect-theory value function $v(\cdot)$, with reference point at zero. The function is concave over gains, convex over losses, and steeper for losses than for equal-sized gains: a one-unit loss reduces value more than a one-unit gain of the same magnitude increases it. \textit{Source:} \citet{kahneman1979}, Figure~1, reproduced from the original article.}
+\label{fig:valuefunction}
+\end{figure}
+
+Figure~\ref{fig:valuefunction} shows the canonical shape. Three features matter. First, $v(0) = 0$ and the function is $S$-shaped: concave over gains, convex over losses. Second, $v$ is steeper on the loss side than on the gain side: the ratio of slopes at $+x$ and $-x$ is approximately $2{:}1$ in the \citet{tversky1992} calibration. Third, the function is defined on gains and losses, not on final wealth: agents code outcomes relative to a reference point rather than to absolute levels. The first feature (concavity/convexity) delivers risk aversion over moderate-probability gains and risk seeking over moderate-probability losses; the second delivers loss aversion in the sense of Section~\ref{sec:eufailures}; the third makes preferences sensitive to framing in ways that EU defined over final wealth does not allow.
+
+\subsection{Probability Weighting}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.65\textwidth]{slide10_pic1.jpg}
+\caption[The probability weighting function of cumulative prospect theory]{The probability weighting function $w(\cdot)$ of cumulative prospect theory. The solid line is the \citet{tversky1992} estimate, $w(P) = P^\delta/(P^\delta + (1-P)^\delta)^{1/\delta}$ with $\delta = 0.65$; the dotted line is $w(P) = P$. Small probabilities are overweighted (note $w(0.05) \approx 0.12$); moderate-to-high probabilities are underweighted (note $w(0.95) \approx 0.82$). \textit{Source:} \citet{tversky1992}, Figure~2.}
+\label{fig:weighting}
+\end{figure}
+
+The decision-weight function $w(\cdot)$ is the second key departure from EU. Figure~\ref{fig:weighting} shows the canonical form from \citet{tversky1992}: small probabilities are overweighted, large probabilities are underweighted, and the function is inverse-S-shaped. A 1-in-1{,}000 chance of winning \$5{,}000 carries a decision weight near 0.01, not 0.001; the 0.95 chance of winning carries a decision weight near 0.82, not 0.95.
+
+Two clarifications are important for the finance applications. First, decision weights are not beliefs. Subjects who overweight a 1-in-1{,}000 chance in a one-shot gamble are not claiming that the event has 1\% probability; they are claiming that the event matters \emph{to them} as if it had 1\% probability. The distinction matters because asset pricing applications of prospect theory should not be confused with subjective-belief models. Second, the overweighting of small probabilities explains the simultaneous purchase of lotteries and insurance: the lottery is appealing because $w(0.001)$ is much larger than $0.001$; the insurance is appealing because $w(0.001)$ on the loss side is also large, and the loss-side value function makes the loss salient. Both purchases are puzzling under EU.
+
+\subsection{Loss Aversion in Pictures}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.7\textwidth]{slide07_pic1.jpg}
+\caption[Loss aversion: the asymmetric value function]{Loss aversion illustrated. A \$100 loss reduces value by more than a \$100 gain increases it; the ratio at equal magnitude is approximately $2{:}1$ in the standard calibration. The asymmetry is the source of the reluctance to realize losses---a central feature of investor behavior. \textit{Source:} EF8083 course materials, after \citet{kahneman1979}.}
+\label{fig:lossaversion}
+\end{figure}
+
+Figure~\ref{fig:lossaversion} makes the loss-aversion feature concrete. A \$100 gain raises the value function by some amount; a \$100 loss lowers it by approximately twice as much. The asymmetry is not a quirk of small stakes: it is present at the magnitudes that matter for trading behavior, and it is the same asymmetry that generates the \emph{disposition effect} of Section~\ref{sec:trading}. \citet{genesove2001} document the same asymmetry in the housing market (Section~\ref{sec:trading} returns to it).
+
+\subsection{The Fourfold Pattern}
+
+Combining the four pillars produces what \citet{tversky1992} call the \emph{fourfold pattern} of risk attitudes. For prospects involving gains, agents are risk averse over moderate probabilities (the concavity of $v$) but risk seeking over small probabilities (the overweighting of small $p$ by $w$). For prospects involving losses, agents are risk seeking over moderate probabilities (the convexity of $v$) but risk averse over small probabilities. Each combination is well-documented in the experimental record, and none of them is consistent with EU over final wealth.
+
+The pattern also drives a set of asset-pricing predictions that we develop in Sections~\ref{sec:trading}--\ref{sec:ptaggregate}. Risk aversion over gains, combined with overweighting of small probabilities, makes investors dislike safe assets more than EU implies and like lottery-like assets more than EU implies. Risk seeking over moderate-probability losses makes investors reluctant to cut losers, and that reluctance has a price impact when it is widespread.
+
+% ============================================================
+\section{Narrow Framing}
+\label{sec:narrow}
+
+The conceptual question prospect theory raises for finance is: \emph{what is the argument of $v(\cdot)$?} EU has a clean answer: final wealth, or aggregate consumption. Prospect theory's value function is defined over gains and losses; the answer is whatever the agent treats as the relevant gain or loss. In a fully integrated portfolio, the agent would evaluate a new risky asset by combining it with pre-existing positions and computing the gain or loss in total wealth. In practice, most of us do not.
+
+\begin{definition}[Narrow framing]
+\label{def:narrow}
+An agent is said to evaluate a risk in \emph{narrow framing} if she evaluates the risk separately from her other exposures, rather than integrating it into a single evaluation of total wealth.
+\end{definition}
+
+\citet{barberishuangthaler2006} survey the principal evidence. The standard rejection of the gamble $(\$110, 1/2; -\$100, 1/2)$, ubiquitous in laboratory studies, is evidence not only of loss aversion but also of narrow framing: an EU agent with substantial existing wealth would accept the gamble (the gain and loss are nearly symmetric and the stake is small relative to total wealth), and only a narrow-framed evaluation of the gamble on its own makes the rejection rational. \citet{barberis2001} show that narrow framing is the ingredient that turns a descriptive model of risk attitudes into a quantitative asset pricing model. With loss aversion defined over total wealth and integrated evaluation, the model cannot reproduce the equity premium; with narrow framing, the model can.
+
+Narrow framing is closely related to \emph{mental accounting}: investors treat different assets, accounts, and horizons as separate books. The framing assumption is descriptive of how people actually trade; it is the empirical fact that turns prospect theory into an asset pricing model. The price we pay is that prospect theory's asset pricing implications depend on how investors define their reference point and frame their risks, and these choices are partly endogenous and partly outside the model.
+
+% ============================================================
+\section{Prospect Theory and Investor Trading Behavior}
+\label{sec:trading}
+
+The first application is the closest to the laboratory. Loss aversion and the asymmetric value function predict that investors hold losers longer than they hold winners, because realizing a loss crystallizes the negative part of the value function while deferring the loss keeps it as a paper loss that may reverse.
+
+\subsection{The Disposition Effect}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.62\textwidth]{slide20_pic1.jpg}
+\caption[The disposition effect for losses]{Disposition effect, losses. With a value function steeper for losses than for gains, the disutility of realizing a \$10 or \$20 loss exceeds the disutility of holding an equivalent paper loss. The diagram shows the value comparisons at stake: an investor holding a stock at $-\$10$ or $-\$20$ relative to the purchase price is reluctant to realize because doing so crystallizes the loss-side curvature. \textit{Source:} EF8083 course materials, after \citet{odean1998}.}
+\label{fig:disposition_loss}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.62\textwidth]{slide20_pic2.jpg}
+\caption[The disposition effect for gains]{Disposition effect, gains. With a value function concave over gains, the marginal utility of additional gains falls as the gain grows; the diagram shows the value comparison an investor faces when deciding whether to realize a \$10 or \$20 gain. \textit{Source:} EF8083 course materials, after \citet{odean1998}.}
+\label{fig:disposition_gain}
+\end{figure}
+
+\begin{definition}[Proportion of gains and losses realized]
+\label{def:pgr}
+For an investor's account over a period, define
+\[
+\mathrm{PGR} = \frac{\text{Realized Gains}}{\text{Realized Gains} + \text{Paper Gains}}, \qquad
+\mathrm{PLR} = \frac{\text{Realized Losses}}{\text{Realized Losses} + \text{Paper Losses}}.
+\]
+The disposition hypothesis is $\mathrm{PGR} > \mathrm{PLR}$.
+\end{definition}
+
+Figures~\ref{fig:disposition_loss} and \ref{fig:disposition_gain} show the value-function geometry behind the asymmetry. With $v$ steeper on the loss side, the cost of crystallizing a loss is larger than the cost of holding an equivalent paper loss; with $v$ concave over gains, the cost of crystallizing a moderate gain is also smaller than the cost of holding the equivalent paper gain. Both effects push in the same direction: sell winners, hold losers.
+
+\citet{odean1998} tests the prediction on a large discount brokerage dataset. Over the full sample, $\mathrm{PGR} = 0.148$ and $\mathrm{PLR} = 0.098$, a difference of $0.050$ with a $t$-statistic of 35. The pattern is not driven by tax trading or information; \citet{odean1998} shows that the winners investors sell subsequently \emph{outperform} the losers they hold, so the asymmetry is not simply informed selling. \citet{dhar2006} shows that the asymmetry is larger among less sophisticated investors, consistent with the prediction that the underlying preference is a property of the agent, not of the trading environment. \citet{frazzini2006} extends the result to mutual fund managers, and \citet{genesove2001} to the housing market, where sellers with expected prices below their purchase price set higher reservation prices and wait longer to sell---the same disposition effect in a different setting.
+
+The disposition effect is the cleanest case where a micro-level behavioral fact generates a macro-level prediction. \citet{frazzini2006} links the disposition-driven eagerness to sell winners to underreaction to news: when a stock rises on good news, disposition-motivated investors want to sell and lock in the gain, but they can only sell at the depressed price, which moves further after the news; the reverse happens on bad news. The aggregate selling pressure depresses prices at the news and pushes subsequent returns in the direction of the news, producing the post-earnings-announcement drift of Chapter~\ref{ch:intro}.
+
+\subsection{Disposition Effect and Momentum}
+
+The same logic, applied to past returns, generates momentum. \citet{grinblatt2005} formalize the argument in a discrete-time model in which investors form mental accounts around the purchase price and update them as new information arrives. The model produces a momentum effect on the order of magnitude observed in the data, and the channel is the disposition-driven under-reaction of prices to news. \citet{frazzini2006} provides complementary evidence: stocks with high past returns, where disposition-motivated selling pressure should be most active, exhibit the strongest post-earnings-announcement drift.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.7\textwidth]{slide31_pic1.jpg}
+\caption[Stock price response to negative news: capital-loss case]{Stock price response to negative news, capital-loss case. An example stock falls from \$13 to a fundamental value of \$11. Investors holding at a capital loss are reluctant to realize; selling pressure is muted and the price drifts slowly toward fundamental. \textit{Source:} \citet{frazzini2006}, Figure~3.}
+\label{fig:frazzini_neg}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\raisebox{-0.5\height}{\includegraphics[width=0.7\textwidth]{slide31_pic2.jpg}}
+\caption[Stock price response to positive news: capital-gain case]{Stock price response to positive news, capital-gain case. The same stock rises from \$11 to a fundamental value of \$13. Investors holding at a capital gain are eager sellers: the disposition effect pushes them to realize, and the price rises more slowly than a fully rational benchmark would imply. \textit{Source:} \citet{frazzini2006}, Figure~4.}
+\label{fig:frazzini_pos}
+\end{figure}
+
+Figures~\ref{fig:frazzini_neg} and \ref{fig:frazzini_pos} show the geometry. In the capital-loss case (Figure~\ref{fig:frazzini_neg}), investors who bought at \$13 and face a value of \$11 are reluctant to sell; aggregate selling pressure is muted and the price drifts only gradually toward the new fundamental. In the capital-gain case (Figure~\ref{fig:frazzini_pos}), investors who bought at \$11 and face a value of \$13 are eager sellers; aggregate selling pressure is heavy and the price drifts only gradually up. The asymmetry is the momentum effect, and it is a direct consequence of the asymmetric value function combined with narrow framing.
+
+% ============================================================
+\section{Prospect Theory and the Cross-Section of Stock Returns}
+\label{sec:ptcrosssection}
+
+\subsection{Lottery Stocks and the Skewness Premium}
+
+The second application takes the four pillars to asset prices. \citet{barberis2008} build a single-period model with a risk-free asset and $J$ risky assets with multivariate Normal payoffs; all agents have cumulative prospect theory (CPT) preferences and identical beliefs. They then introduce a small, independent, positively skewed security into the economy and ask what the equilibrium price is. EU predicts that the new security earns a positive excess return only insofar as it adds to market risk; with Normal payoffs elsewhere, the new security is a diversifiable addition and EU predicts a price close to the present value of its expected payoff.
+
+CPT predicts something different. Because agents overweight small probabilities, a small chance of a very large payoff is disproportionately valuable to them; some agents will tilt their portfolios toward the new security, accept the loss of diversification, and in equilibrium hold an undiversified position. The pricing consequence is that the new security must earn a \emph{negative} excess return: the equilibrium price is high, the expected return is low, and investors accept the lower expected return because of the positive skewness the security adds.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.65\textwidth]{22.png}
+\caption[Heterogeneous holdings equilibrium in Barberis and Huang (2008)]{A heterogeneous holdings equilibrium. The figure plots the utility an investor with CPT preferences derives from adding a highly positively skewed security to a portfolio of Normally distributed assets, as a function of the share $x$ allocated to the new security. The dashed curve corresponds to a higher mean return on the new security. The investor can choose to lose diversification by taking a large position; the optimal position balances the diversification cost (the dip on the left) against the lottery value of the skewness (the rise on the right). \textit{Source:} \citet{barberis2008}, Figure~3.}
+\label{fig:barberishuang}
+\end{figure}
+
+Figure~\ref{fig:barberishuang} shows the utility from a tilted position for two different mean returns on the new security. The investor is willing to take an undiversified position precisely because the skewness is large; for a Normal security the optimal position would be a near-zero allocation. The model generates both a low premium on positively skewed stocks and a high premium on the aggregate market, which is negatively skewed---a feature to which Section~\ref{sec:aggregate} returns.
+
+\subsection{Tests of the Skewness Channel}
+
+The model's central prediction is that skewness is priced in the cross-section. The empirical challenge is that \emph{past} skewness is not a good measure of \emph{expected future} skewness: realized skewness is noisy and time-varying. Three responses have been developed.
+
+\paragraph{Regression-based expected skewness.}
+\citet{boyer2010} estimate a regression model of expected idiosyncratic skewness using stock characteristics and form portfolios on the prediction. The high-minus-low spread is large and statistically significant, and the prediction sorts returns in the cross-section.
+
+\paragraph{Maximum daily returns.}
+\citet{bali2011} construct a very simple measure: the maximum daily return over the past month (MAX). The economic intuition is that large daily jumps are the events CPT investors overweight, and MAX picks them up.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1.0\textwidth]{slide26_pic1.png}
+\caption[MAX-sorted decile returns]{MAX-sorted decile returns. Decile portfolios are sorted monthly on maximum daily return over the prior month. The high-minus-low return spread is $-1.03\%$ per month on value-weighted portfolios ($t = -2.83$) and $-0.65\%$ on equal-weighted portfolios ($t = -1.83$); the corresponding four-factor alpha spread is $-1.18\%$ ($t = -4.71$). Average daily MAX rises from $1.30\%$ in the low decile to $23.60\%$ in the high decile. \textit{Source:} \citet{bali2011}, Table~1.}
+\label{fig:max}
+\end{figure}
+
+Figure~\ref{fig:max} shows the basic result. The high-minus-low return spread is $-1.03\%$ per month on value-weighted portfolios ($t = -2.83$) and $-0.65\%$ on equal-weighted portfolios ($t = -1.83$); the four-factor alpha spread is $-1.18\%$ ($t = -4.71$). Stocks with the highest maximum daily returns earn the lowest subsequent returns, consistent with the lottery-demand story: CPT investors bid them up, and the overpricing is reversed subsequently. The MAX effect also helps resolve the idiosyncratic volatility puzzle of Chapter~\ref{ch:intro}---idiosyncratic volatility and MAX are correlated, but MAX captures the part of volatility that is driven by extreme upside moves.
+
+\paragraph{Option-implied skewness.}
+\citet{conrad2013} use option prices to back out the implied skewness of the underlying stock and form portfolios on the prediction. The high-minus-low return spread is negative and significant, in line with CPT. The advantage over realized-skewness proxies is that option-implied skewness is forward-looking and not subject to the noise of realized skewness estimates.
+
+\subsection{Lottery Stocks in the Cross-Section}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.55\textwidth]{slide24_pic1.jpg}
+\caption[Excess returns of OTC stocks]{Histogram of annual excess returns of over-the-counter stocks. The distribution has a pronounced right tail: many large positive returns, with returns above 100\% truncated for display. OTC stocks are heavily held by retail investors with a taste for lottery-like payoffs, and earn low subsequent returns. \textit{Source:} \citet{eraker2015}, Figure~1.}
+\label{fig:otc}
+\end{figure}
+
+The skewness story has supporting evidence across a number of asset classes. \citet{eraker2015} document that financially distressed stocks and over-the-counter (OTC) stocks earn low subsequent returns; both classes have positively skewed return distributions (Figure~\ref{fig:otc}) and both are heavily held by retail investors with lottery preferences. \citet{green2012} show that IPOs predicted to have higher expected skewness have higher first-day returns and lower long-run returns---the lottery-feature reading of the new issues puzzle of Chapter~\ref{ch:intro}.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.7\textwidth]{slide23_pic1.jpg}
+\caption[IPO first-day returns by expected skewness]{Expected skewness and average initial returns of IPOs across subperiods. In the high-skewness subsample, first-day returns are systematically higher in every subperiod and the spread is largest in the 1995--2000 technology boom. \textit{Source:} \citet{green2012}, Figure~1.}
+\label{fig:greenhwang}
+\end{figure}
+
+Figure~\ref{fig:greenhwang} shows the IPO evidence. The high-skewness subsample earns higher first-day returns in every subperiod, with the spread largest in 1995--2000. \citet{boyer2014} examine equity options and find that stocks predicted to have more positively skewed payoffs have lower returns---a parallel result in a different asset class. \citet{bali2017} document that high-beta stocks, which have positively skewed returns, earn lower CAPM alphas than low-beta stocks; the beta anomaly of Chapter~\ref{ch:intro} and the lottery-demand story are linked through the same skewed-return channel.
+
+\subsection{Lottery Preference: Evidence from Holdings}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.7\textwidth]{slide27_pic1.png}
+\caption[Aggregate weight in lottery-type stocks over time]{Aggregate weight in lottery-type stocks over time, 1991--1996. The retail weight (solid black line) is consistently above the institutional weight (solid grey line) and the expected-lottery weight (dashed line). The retail weight spikes in late 1991 and again in 1993--1994, consistent with increased demand for lottery-like payoffs when economic conditions deteriorate. \textit{Source:} \citet{kumar2009}, Figure~1.}
+\label{fig:kumar}
+\end{figure}
+
+The model also has predictions about \emph{who} holds lottery-like stocks. \citet{kumar2009} shows that the demand for lottery-type stocks correlates with the demand for state lotteries: in U.S.\ counties with higher per-capita lottery sales, retail investors overweight positively skewed stocks (Figure~\ref{fig:kumar}). Socioeconomic factors associated with lottery expenditure (low income, low education, high unemployment) are also associated with higher investment in lottery-type stocks. \citet{chen2025} use textual analysis to study why analysts and writers recommend short-leg securities and find that the dominant justification is lottery-like features---around 68\% of sell-side analyst reports and 69\% of retail-facing articles frame their recommendation in terms of the upside potential, not safety or recent strong performance.
+
+\subsection{Mutual Fund Flows and Revealed Preference}
+
+A second stream of revealed-preference evidence asks whether prospect theory can predict flows into and out of mutual funds. \citet{han2024} compute the prospect-theory value of each fund's return distribution over the prior period and relate it to subsequent flows. Funds whose past returns generate higher prospect-theory value attract significantly larger future flows---the demand-side analogue of the asset-pricing results. The advantage of the revealed-preference design is that flows are observed at high frequency and the analysis does not depend on a particular equilibrium model.
+
+\subsection{Under-Diversification}
+
+The lottery preference also predicts that retail investors should hold under-diversified portfolios concentrated in positively skewed stocks. \citet{mitton2007} document that under-diversified individuals hold stocks that are more positively skewed than the average stock, exactly the lottery-feature story. \citet{uppal2003} note that the same pattern arises under EU if investors are uncertain about which model to use (model misspecification), so the finding is not by itself evidence for prospect theory over its alternatives.
+
+\subsection{Quantitative Direct Tests}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.65\textwidth]{slide32_pic1.jpg}
+\caption[Barberis--Mukherjee--Wang: PT value and subsequent returns]{Barberis--Mukherjee--Wang (2016). The figure plots a measure of equal-weighted Tversky--Kahneman (TK) prospect-theory value across deciles of that value. Stocks with the highest PT value are the most appealing to investors, are bid up, and earn low subsequent returns; stocks with the lowest PT value earn high subsequent returns. The high-minus-low spread is roughly $-1.2\%$ per month in equal-weighted returns. \textit{Source:} \citet{barberis2016}.}
+\label{fig:barberismw}
+\end{figure}
+
+The most direct test of prospect theory in the cross-section is to compute the prospect-theory value of each stock using its historical return distribution and ask whether high-PT-value stocks underperform subsequently. \citet{barberis2016} do exactly this, computing the Tversky--Kahneman PT value of each stock's prior return distribution and sorting on it. Figure~\ref{fig:barberismw} shows the basic pattern: high-PT-value stocks earn lower subsequent returns, low-PT-value stocks earn higher subsequent returns, and the high-minus-low spread is roughly $-1.2\%$ per month. The interpretation is that CPT investors find high-PT-value stocks appealing (high skewness, high probability of a large gain), tilt toward them, and thereby bid them up; the stocks become overvalued and earn low subsequent returns.
+
+\subsection{Quantitative Performance: \texorpdfstring{\citet{barberis2021}}{Barberis, Jin, and Wang (2021)}}
+
+\citet{barberis2021} push the test further. Using the same parameters as \citet{tversky1992} for $v$ and $w$, the authors compute the prospect-theory value of each stock's return distribution and ask whether the model can predict the cross-sectional alpha of 23 anomaly-sorted decile portfolios. The result is mixed.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.75\textwidth]{slide33_pic1.png}
+\caption[Anomalies for which the PT model performs well]{Anomalies for which the prospect-theory model performs well. The dashed lines are realized annual value-weighted alphas across deciles of four anomalies (momentum, failure probability, idiosyncratic volatility, gross profitability); the solid lines are the model's predicted alphas. The model captures the qualitative shape and, for some anomalies, the magnitude of the cross-sectional alpha pattern. \textit{Source:} \citet{barberis2021}, Figure~5.}
+\label{fig:bjw_good}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.75\textwidth]{slide34_pic1.png}
+\caption[Anomalies for which the PT model performs poorly]{Anomalies for which the prospect-theory model performs poorly. Same construction as Figure~\ref{fig:bjw_good} for expected idiosyncratic skewness, return on assets, maximum daily return, and capital gain overhang. The model's predictions have the right sign for some anomalies but the wrong shape or magnitude. \textit{Source:} \citet{barberis2021}, Figure~6.}
+\label{fig:bjw_bad}
+\end{figure}
+
+For four prominent anomalies---momentum, failure probability, idiosyncratic volatility, and gross profitability---the model's predicted alphas line up with the realized cross-sectional pattern (Figure~\ref{fig:bjw_good}). For seven others---size, value, long-term reversal, short-term reversal, accruals, asset growth, and investment---the model performs poorly (Figure~\ref{fig:bjw_bad}). The authors conclude that PT captures the spirit of the anomalies that are most directly linked to skewness and probability weighting, but the broader anomaly zoo needs more than one preference departure. The result is also a useful methodological lesson: the discipline of Section~\ref{sec:challenges} applies to behavioral models just as it does to rational ones. A model that explains everything in qualitative terms but matches the quantitative cross-section poorly is underdisciplined by the same standard.
+
+\subsection{The Risk--Return Trade-Off}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.65\textwidth]{slide30_pic1.jpg}
+\caption[Reference-dependent preferences and the risk--return trade-off]{Reference-dependent preferences and the risk--return trade-off. The figure reports difference-in-differences estimates of risk--return trade-off coefficients across capital gain overhang (CGO) quintiles. The trade-off is positive for high-CGO stocks (face capital gains, risk-averse) and negative for low-CGO stocks (face capital losses, risk-seeking); the difference is statistically significant. \textit{Source:} \citet{wang2016}, Table~III.}
+\label{fig:wangyan}
+\end{figure}
+
+The asymmetric value function also has implications for the cross-sectional risk--return relation. \citet{wang2016} measure the capital gain overhang (CGO) of each stock---the unrealized gain or loss of the average investor---and ask how the cross-sectional risk--return relation depends on the sign of the overhang. Figure~\ref{fig:wangyan} shows the result: the trade-off is positive among stocks where investors face prior gains (and are therefore risk averse) and negative among stocks where investors face prior losses (and are therefore risk seeking). The two-pronged effect breaks the linear positive risk--return relation that the CAPM predicts, and offers a PT-based reading of the high-risk-low-alpha puzzle of Chapter~\ref{ch:intro}.
+
+% ============================================================
+\section{Prospect Theory and the Aggregate Stock Market}
+\label{sec:ptaggregate}
+
+\subsection{Myopic Loss Aversion and the Equity Premium}
+
+\citet{benartzi1995} propose a parsimonious model of the equity premium puzzle. The three ingredients are (i) prospect-theory preferences, (ii) evaluation of gains and losses \emph{frequently} rather than at the end of an investor's lifetime (the \emph{myopia}), and (iii) narrow framing, so that gains and losses are evaluated separately for each asset rather than aggregated across the portfolio. With these ingredients, the historical distribution of annual U.S.\ stock market returns has approximately the same prospect-theory value as the historical distribution of annual bond returns. The greater volatility of stocks lowers the stock market's prospect value; the much higher mean raises it. The two forces approximately cancel.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.62\textwidth]{slide16_pic1.jpg}
+\caption[Risk--return trade-off with PT utility and capital gains]{Risk--return trade-off with PT utility. The figure plots PT utility against stock price for two stocks purchased at \$20 with current prices \$18 (Stock C) and \$5 (Stock D). Investors holding Stock C at a small capital loss sit just below the reference point, where the value function is steepest; investors holding Stock D at a large capital loss sit deep in the convex loss region, where diminishing sensitivity makes them risk-seeking over additional downside. The two curves show how PT utility varies with the holding-period price under different return distributions. \textit{Source:} \citet{wang2016}, Figure~3.}
+\label{fig:riskreturn}
+\end{figure}
+
+The mechanism is intuitive. EU agents with concave utility over consumption evaluate a stream of returns by the discounted expected utility of consumption, and the relatively small variation in consumption makes stocks look only modestly riskier than bonds. PT agents with frequent evaluation, narrow framing, and steep loss aversion see a stream of annual gains and losses; the loss-aversion parameter $\lambda \approx 2$ makes each loss hurt twice as much as an equivalent gain pleases, and the result is a much larger effective equity premium. The stock market earns a high average return to compensate investors for bearing what prospect theory says is a much more painful stream of year-to-year losses. Figure~\ref{fig:riskreturn} illustrates the geometry for the trade-off within a single holding period.
+
+\subsection{The Role of Narrow Framing}
+
+\citet{barberis2001} extend the analysis to a fully specified consumption-based model with a representative agent who has prospect-theory preferences (without probability weighting). The authors find that narrow framing is a critical ingredient: with loss aversion defined over total-wealth fluctuations and integrated evaluation, the model cannot reproduce the equity premium; with narrow framing, the model can. The intuition is that the stock market has low correlation with the other risks investors face, and an integrated-evaluation EU agent would essentially treat the equity premium as a small premium for a small amount of additional risk. With narrow framing, the stock market risk is evaluated in its own mental account, and the loss aversion that applies to that account can be large. In related work, \citet{barberishuangthaler2006} show that narrow framing also helps explain why many households do not participate in the stock market at all.
+
+\subsection{The Role of Probability Weighting}
+
+\citet{degiorgi2012} add probability weighting to the analysis. The aggregate stock market is negatively skewed: it is subject to occasional large crashes, and the probability of a large crash is small. Under probability weighting, the small probability is overweighted and the prospect value of the stock market falls. Adding probability weighting on top of loss aversion substantially raises the model's predicted equity premium, and it does so without sacrificing the consumption-side fit of the consumption-based model.
+
+\subsection{Reading the Application}
+
+Two features of the equity-premium application deserve emphasis. First, the prospect-theory reading of the equity premium is one of several---rare disasters \citep{barro2006}, long-run risks \citep{bansal2004}, and habit formation \citep{campbell1999} all have candidate mechanisms. The behavioral reading is competitive with the rational ones on this question, not superior to them. Second, prospect theory's strength is that it is also consistent with the cross-sectional evidence (Section~\ref{sec:ptcrosssection}); a model that explains the equity premium but not the cross-section is doing less work than one that explains both.
+
+% ============================================================
+\section{Ambiguity Aversion}
+\label{sec:ambiguity}
+
+\subsection{Risk versus Uncertainty}
+
+The psychological departures from EU surveyed so far assume that the agent can assign probabilities to outcomes. \citet{knight1921} drew the famous distinction between \emph{risk}, where probabilities are known, and \emph{uncertainty}, where they are not. EU was built for risk; the experimental evidence suggests that agents are averse to uncertainty in ways that EU cannot represent.
+
+\subsection{The Ellsberg Paradox}
+
+The cleanest demonstration is \citet{ellsberg1961}. Subjects are shown two urns. Urn C contains 100 balls, 50 red and 50 black. Urn U contains 100 balls of unknown composition, with the number of balls of each color unknown to the subject. Subjects are asked to choose between bets on each urn:
+
+\begin{quote}
+\textbf{Bet R1.} Draw from urn C; win \$100 if red. \quad
+\textbf{Bet R2.} Draw from urn U; win \$100 if red. \\[0.5em]
+\textbf{Bet B1.} Draw from urn C; win \$100 if black. \quad
+\textbf{Bet B2.} Draw from urn U; win \$100 if black.
+\end{quote}
+
+The modal pattern is R1 $\succ$ R2 and B1 $\succ$ B2. In words: subjects prefer to bet on red from the known urn rather than the unknown urn, and the same for black. But the conjunction R1 $\succ$ R2 and B1 $\succ$ B2 implies, under the axioms of subjective expected utility, that the subject behaves as if urn U contains fewer than 50 red balls \emph{and} fewer than 50 black balls---subjective probabilities that sum to less than one, which additive probability rules out. The modal pattern is inconsistent with subjective expected utility and is robust across subject pools and stake sizes.
+
+\subsection{Models of Ambiguity Aversion}
+
+Models of ambiguity aversion modify EU by relaxing the assumption of a single, additive probability measure. The leading approaches are:
+
+\paragraph{Choquet expected utility.}
+\citet{schmeidler1989} drops the additivity axiom of subjective expected utility and replaces the probability measure with a non-additive \emph{capacity}. Agents weight events by capacities that can be sub-additive on ambiguous events, and the resulting preferences are averse to ambiguity.
+
+\paragraph{Maxmin expected utility.}
+\citet{gilboaschmeidler1989} replace the single prior with a set of priors and evaluate each prospect by its worst-case expected utility. The agent is ambiguity averse in the strongest possible sense---she acts as if the worst possible prior is the truth.
+
+\paragraph{Smooth ambiguity aversion.}
+\citet{klibanoff2005} combine a set of priors with a second-order utility function that captures the agent's distaste for ambiguity. The model nests EU as a special case and maxmin EU as a limiting case, and it is among the most tractable for asset pricing applications.
+
+Each model can reproduce the Ellsberg modal pattern; they differ in their out-of-sample predictions, which Section~\ref{sec:ambapplications} develops.
+
+\subsection{Applications to Asset Prices}
+\label{sec:ambapplications}
+
+\citet{epstein2010} survey the asset-pricing applications of ambiguity aversion; we summarize three.
+
+\paragraph{Non-participation.}
+\citet{dow1992} observe that the distribution of stock-market returns is more ambiguous than the distribution of returns on bank deposits or Treasury bills, in the sense that there is a wider range of plausible probability models for the stock market than for the default-free short rate. An ambiguity-averse agent with the option of holding deposits may rationally choose not to participate in the stock market, even when the stock market's expected return is higher. The application is a preference-based candidate for the non-participation puzzle of Chapter~\ref{ch:intro}.
+
+\paragraph{Equity premium.}
+\citet{maenhout2004} builds a recursive utility model in which the agent fears that the reference model of consumption growth is misspecified and chooses portfolios that are robust to such misspecification---a form of ambiguity aversion. Concern about misspecification raises the agent's effective risk aversion, so the model can produce a large equity premium without requiring an implausibly large baseline coefficient of risk aversion.
+
+\paragraph{Under-diversification.}
+\citet{uppal2003} show that under model misspecification or ambiguity, agents view the distribution of returns on stocks whose payoffs they can better estimate as less ambiguous than the distribution of returns on stocks whose payoffs they cannot. Investors accordingly overweight familiar stocks: their own company's stock, local stocks, domestic stocks relative to foreign stocks. The result is a model of \emph{home bias} and \emph{local bias} as ambiguity-averse portfolio choice. The behavioral reading is complementary to the information-based reading discussed in Chapter~\ref{ch:intro}: ambiguity aversion provides a candidate for the part of home bias that information alone cannot explain.
+
+% ============================================================
+\section{What Remains Contested}
+\label{sec:contested}
+
+Two strands of evidence keep the behavioral reading honest.
+
+First, the quantitative success of prospect theory in the cross-section is uneven. \citet{barberis2021} show that the standard Tversky--Kahneman parameterization, when fed the empirical cross-section of anomaly-sorted decile portfolios, predicts the right sign for many anomalies but the right shape for only a handful (Section~\ref{sec:ptcrosssection}). The prospect-theory reading of skewness, probability weighting, and lottery preference fits a narrow but coherent part of the anomaly zoo; the broader zoo requires additional departures or a different architecture.
+
+Second, the aggregate-market applications are competitive with rational explanations. The equity premium puzzle admits prospect-theory, rare-disaster, long-run-risk, and habit-formation resolutions; distinguishing them empirically is difficult because all four predict a large premium and a low risk-free rate. The prospect-theory reading has the comparative advantage that it ties the aggregate market to the cross-section---the same probability weighting that prices lottery-like stocks also pushes the equity premium up because the aggregate market is negatively skewed---but the comparison is a matter of relative fit, not of decisive evidence.
+
+The methodological lesson is the same as in Chapter~\ref{ch:intro}: a behavioral model earns credibility when it predicts something not used to fit it, and when that prediction survives out-of-sample tests. Prospect theory's strongest out-of-sample predictions are the disposition effect and the lottery-related cross-sectional facts (low IPO returns, low returns on MAX stocks, low returns on distressed stocks, the capital-gain-overhang pattern in the risk--return trade-off). The aggregate-market predictions are competitive with rational alternatives and have less discriminative power.
+
+% ============================================================
+\section{The Road Ahead}
+\label{sec:ptahead}
+
+This chapter has developed a non-standard preference model and traced its asset pricing applications. The rest of the book's psychological core develops two complementary departures from the rational benchmark.
+
+Chapter~4 develops \emph{biased beliefs}: systematic departures from Bayes' rule---overconfidence, over-extrapolation, conservatism, representativeness---and their asset pricing implications. The combination of prospect theory with biased beliefs is what most of the survey literature in behavioral finance actually deploys. The chapter also covers heterogeneous-beliefs models and the relationship between preference and belief departures.
+
+Chapter~5 develops \emph{bounded rationality} and \emph{memory-based} approaches: limited attention, salience, the role of narrative, and the way in which investors form beliefs from the stories they remember rather than from a Bayesian aggregation of evidence. These models retain rational beliefs in a thin sense but relax the assumption that all available information is processed.
+
+Together with Chapter~\ref{ch:intro} on the empirical facts, Chapter~\ref{ch:limits} on limits to arbitrage, and the present chapter on preferences, the book develops the building blocks of behavioral asset pricing. The remaining chapters assemble them into specific empirical applications.

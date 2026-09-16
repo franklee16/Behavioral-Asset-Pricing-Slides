@@ -1,0 +1,207 @@
+% ============================================================
+% Chapter 2 — Limits to Arbitrage
+% Converted from Slides/Lecture2_LaTeX/Lecture2_Limits2Arb.tex
+% Figures reproduced in figures/ (original slide assets).
+% ============================================================
+\chapter{Limits to Arbitrage}
+\label{ch:limits}
+
+Section~\ref{sec:challenges} stated the oldest objection to behavioral finance: if irrational investors push prices away from fundamental values, rational investors have every incentive to trade against them, and in doing so to push the prices back. Irrational traders may lose money, but prices stay correct. This \emph{arbitrage critique}, associated with \citet{friedman1953}, is the doorway through which every behavioral claim must pass. A major achievement of behavioral finance in the 1990s was to push back against it---to show that there are \emph{limits to arbitrage}: risks and costs that prevent rational investors from correcting mispricings quickly, easily, or at arbitrary scale. Where those limits bind, irrational demand can move prices significantly and for a long time.
+
+This chapter is the supply side of the behavioral story. Section~\ref{sec:arbdef} fixes terminology: arbitrage, the law of one price, fundamental value, and mispricing. Section~\ref{sec:arbtheory} develops the theory of limited arbitrage---the risks (fundamental risk, noise trader risk, horizon risk, model risk) and the costs (trading costs, shorting costs, information processing costs) that constrain arbitrageurs, drawing on \citet{delong1990} and \citet{shleifer1997}. Section~\ref{sec:arbevidence} examines settings in which the fundamental value is nearly observable---twin shares, equity carve-outs, and index inclusions---and in which substantial, long-lived mispricings have been documented. Section~\ref{sec:arbanomalies} connects limits to arbitrage to the anomaly families of Chapter~\ref{ch:intro}, from correlational amplification tests to quasi-experimental causal evidence. Section~\ref{sec:arbsummary} asks how limited arbitrage is, and what that implies for what follows.
+
+% ============================================================
+\section{Arbitrage, Fundamental Value, and Mispricing}
+\label{sec:arbdef}
+
+Four pieces of terminology organize everything in this chapter. The \emph{fundamental value} of an asset is its price in an economy with rational investors and no frictions---the price that properly reflects all available public information, the efficient market price. In an economy with frictions, or in which some investors are less than fully rational, an asset's price can depart from fundamental value; such a departure is a \emph{mispricing}, or an \emph{inefficiency}. Rational investors who trade against mispricings are conventionally called \emph{arbitrageurs}; their less than fully rational counterparts are \emph{noise traders}.
+
+\begin{definition}[Arbitrage]
+\label{def:arbitrage}
+An arbitrage is an investment strategy that guarantees a positive payoff in some state of the world, with no possibility of a negative payoff, no net investment, and at arbitrary scale.
+\end{definition}
+
+So defined, an arbitrage is a money machine, and its existence is inconsistent with any common notion of equilibrium: if such an opportunity were present, someone would act on it, prices would change, and the opportunity would vanish. Closely related is the \emph{law of one price}: two assets with the same payoff in every state of the world must have the same price. The key to the law of one price is the existence of \emph{perfect substitutes}---assets with exactly the same payoffs---and it underlies much of the design of derivatives, where replication arguments pin down prices exactly.
+
+The textbook definition is the right benchmark, but almost nothing that professionals call ``arbitrage'' satisfies it. Buying an underpriced stock, shorting an overpriced one, and trading a merger's acquirer against its target all require capital, involve risk of loss, and can be scaled only so far. The professional usage refers to trading on price discrepancies that \emph{involve} risk and capital; this chapter follows that usage. The arbitrage critique implicitly assumes arbitrage in the textbook sense---costless, riskless, unlimited. The behavioral response is that real-world arbitrage is none of these things, and that the gap between the two notions of arbitrage is exactly where noise traders live. The magnitude of that gap has been formalized in a large theoretical literature surveyed by \citet{gromb2010}.
+
+% ============================================================
+\section{The Theory of Limited Arbitrage}
+\label{sec:arbtheory}
+
+\subsection{A Taxonomy of Limits}
+
+The arbitrage critique says that correcting a mispricing is easy. In reality it is not: there are risks and costs that limit arbitrageurs' ability and willingness to take the other side of irrational demand. Table~\ref{tab:limits} organizes the standard taxonomy.
+
+\begin{table}[htbp]
+\centering
+\begin{threeparttable}
+\caption{Limits to arbitrage: risks and costs}
+\label{tab:limits}
+\begin{tabular}{lll}
+\toprule
+Limit & Type & Description \\
+\midrule
+Fundamental risk & Risk & Adverse news about the fundamental value \\
+Noise trader risk & Risk & The mispricing worsens before it closes \\
+Horizon risk & Risk & Capital is withdrawn before the correction \\
+Model risk & Risk & The ``fundamental value'' itself is uncertain \\
+Trading costs & Cost & Commissions, bid--ask spreads, price impact \\
+Shorting costs & Cost & Lending fees, short-sale bans, market prohibitions \\
+Information processing costs & Cost & Acquiring and processing fundamental data \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]\small
+\item \textit{Notes:} Following \citet{shleifer1997} and the taxonomy in the EF8083 course materials. The risks are conceptually prior: even with zero transaction costs, each of the four risks alone can deter an arbitrageur.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\subsection{Fundamental Risk}
+
+\emph{Fundamental risk} is the risk that there will be adverse news about the fundamental value of the mispriced asset. It is usually a problem because perfect substitutes are not available for what the arbitrageur really wants to trade. An investor who believes Ford is underpriced can hedge market-wide movements by shorting GM, but GM is not Ford: news about Ford's own fundamentals---its models, its labor contracts, its litigation---arrives unhedged. The hedge strips out the priced factors and leaves exactly the idiosyncratic risk that the trade is concentrated in. Fundamental risk is thus not a footnote to arbitrage but its central occupational hazard, and Section~\ref{sec:arbevidence} shows that mispricings are indeed largest where substitutes are worst.
+
+\subsection{Noise Trader Risk}
+\label{sec:noisetrader}
+
+The deeper limit, emphasized by \citet{delong1990} and \citet{shleifer1997}, is \emph{noise trader risk}: the risk that the mispricing worsens in the short run, forcing the arbitrageur to close out prematurely at a loss. The force behind it is not the security but the capital structure of the arbitrage itself. Real-world arbitrageurs typically manage other people's money, and they use leverage. Both facts make their positions fragile exactly when the trade looks worst.
+
+Consider the sequence. Arbitrageurs act against a mispricing. The mispricing persists---or widens. The clients, observing losses in an account that was sold to them as near-riskless, conclude the manager is incompetent and demand their money back. To deliver the cash, the manager must unwind the position at a loss, realizing exactly the outcome the clients feared. A manager who foresees this possibility will trade less aggressively against the mispricing from the start. The equilibrium consequence, made precise in \citet{delong1990}, is uncomfortable for the classical view: noise trader risk is priced, the mispricing survives, and noise traders are not automatically driven out of the market.
+
+Leverage and short selling compound the problem through the lenders. A fund that borrows to buy an undervalued asset posts the position as collateral; if the mispricing worsens, the lender sees the collateral decline and may call the loan, forcing the sale. A fund that shorts an overvalued asset faces the mirror image: when the asset rises, the lender demands additional margin, and if the fund cannot meet the demand, the short position is closed out at a loss---just before, perhaps, the correction arrives. Every link in this chain---clients, lenders, margin clerks---withdraws support at the moment of maximum drawdown, which is precisely the moment the expected profit of the trade is largest. \citet{shleifer1997} call arbitrage conducted under these conditions \emph{performance-based arbitrage}: the arbitrageur's capital base is a function of the very mispricing he is trying to correct.
+
+\subsection{Arbitrage in Reality}
+
+Noise trader risk is not a theoretical curiosity, and the late 1990s supplied the canonical demonstration. Julian Robertson's Tiger Fund and George Soros's Quantum Fund were among the most celebrated investors of their generation---global macro and value-oriented, exactly the professionals the arbitrage critique has in mind when it says rational traders will correct irrational prices. During the technology boom, both judged internet stocks to be massively overvalued and positioned against them. Figures~\ref{fig:soros} and \ref{fig:soros2} show the consequence: as the overpricing widened rather than closed, both funds sustained deep, prolonged underperformance relative to the market. The Tiger Fund, down and facing redemptions, liquidated in March 2000---within weeks of the peak its positions had anticipated. Soros's Quantum Fund suffered its large losses in the April 2000 technology reversal and subsequently restructured away from the strategy. The bets, in the end, were right; the capital did not survive to collect. This is noise trader risk in the data, and it explains why \citet{brunnermeier2004} find that many hedge funds rode the bubble rather than popped it (Section~\ref{sec:bubbles}).
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.7\textwidth]{slide09_pic1.png}
+\caption[Arbitrage in reality: Tiger and Soros against the market]{Arbitrage in reality. Cumulative performance of the Tiger Fund and George Soros's Quantum Fund relative to the aggregate stock market during the late-1990s technology boom. Positioning against the widening overpricing produced sustained losses for both funds relative to the market. \textit{Source:} EF8083 course materials.}
+\label{fig:soros}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.65\textwidth]{slide10_pic1.png}
+\caption[Arbitrage in reality, continued: Soros]{Arbitrage in reality, continued. Further performance of Soros's Quantum Fund following the period shown in Figure~\ref{fig:soros}, as the mispricing continued to widen before the eventual reversal. \textit{Source:} EF8083 course materials.}
+\label{fig:soros2}
+\end{figure}
+
+\subsection{Costs: Trading, Shorting, and Information}
+
+The risks in Table~\ref{tab:limits} bind even in an environment with no costs; the costs bind on top of them. \emph{Trading costs} include brokerage commissions, bid--ask spreads, and the price impact of the arbitrageur's own orders---at scale, the act of trading moves the very price discrepancy being exploited. \emph{Shorting costs} are more binding still: short selling requires borrowing shares from a lender and paying lending fees, and those fees can be very high for particular stocks in particular periods, precisely the stocks an arbitrageur most wants to short. Short selling is also occasionally banned outright by regulators, as in a number of markets during the 2008 crisis, and some countries do not permit it at all. Because correcting overpricing requires shorting while correcting underpricing requires only cash, shorting costs make limits to arbitrage asymmetric: overpricing is harder to eliminate than underpricing, a point to which Section~\ref{sec:arbanomalies} returns. Finally, \emph{information processing costs}---the cost of acquiring and digesting financial statement data and other fundamentals---are easily overlooked: before a mispricing can be traded against, it must be identified, and identification is itself an expensive activity.
+
+\subsection{The Dynamic Arbitrage Critique}
+\label{sec:dynamic}
+
+The critique has a second, dynamic version. Even if rational traders cannot quickly correct a mispricing, the argument runs, assets will \emph{eventually} become correctly priced, and by trading sub-optimally in the meantime, irrational traders become steadily poorer. Wealth transfers from noise traders to arbitrageurs, the noise traders exit the market, and irrationality becomes irrelevant for prices. This argument generated a sizeable literature on the survival of noise traders, and it is weaker than it first appears. \citet{delong1991} show that noise traders can survive indefinitely: if noise traders hold portfolios that are exposed to the risks other investors dislike, they can earn above-average expected returns on their noise, and the process of losing wealth to arbitrageurs can be slower than the arrival of new noise traders. The exit may take a very long time, and there is no mechanism that stops a new generation of irrational investors from entering the market. The survey evidence on extrapolative expectations assembled later in this book suggests that they reliably do.
+
+One institutional limit deserves separate mention because it does not involve risk or cost at all. Benchmarked institutional investors are evaluated relative to an index, so holding an underpriced stock that is out of the benchmark and declining is career-dangerous even if it is eventually profitable; as Chapter~\ref{ch:intro} discussed for the low-volatility anomaly \citep{baker2011,frazzini2014}, benchmarks themselves function as limits to arbitrage. This connects the theory here to the evidence of Section~\ref{sec:institutions} that institutional investors in aggregate hold something close to the market portfolio and, if anything, accumulate the overvalued sides of anomalies \citep{lewellen2011,edelen2016}.
+
+% ============================================================
+\section{Evidence from Near-Arbitrage Situations}
+\label{sec:arbevidence}
+
+There are good theoretical reasons why arbitrage may be limited. Is there evidence that it is? The cleanest evidence would be a substantial, long-lived mispricing---a price that demonstrably departs from an observable fundamental value and stays departed. Such examples are not easy to document, precisely because fundamental value is usually unobservable and model risk (Table~\ref{tab:limits}) lets a defender of efficiency reprice the fundamental instead of the market. The strategy of the literature is therefore to find settings where the fundamental value is nearly observable, so that the mispricing is a matter of arithmetic rather than modeling: twin shares, equity carve-outs, and index inclusions. Each setting also isolates particular frictions, which is what makes the evidence diagnostic rather than merely anecdotal.
+
+\subsection{Twin Shares}
+
+Twin shares are distinct shares that are claims to the same cash flows. In 1907, Royal Dutch and Shell merged their interests while remaining separate entities: Royal Dutch retained a claim to 60\% of the combined group's cash flows, Shell to 40\%, and the two continued to trade as separate listed companies. If prices equal fundamental values, the market value of Royal Dutch must be 1.5 times the market value of Shell, dollar for dollar, at every date:
+\[
+\text{MV}_{RD} = 1.5 \times \text{MV}_{Shell}.
+\]
+No hedging is required, no model of cash flows is required, and the law of one price applies with essentially perfect substitutes. Figure~\ref{fig:royaldutch} shows the actual deviation from parity over nearly two decades: Royal Dutch traded at discounts to parity on the order of 30\% at the extremes, with the deviation persisting for years at a time. This is about as close as field evidence gets to a controlled demonstration that prices depart from fundamentals and stay departed. \citet{froot1999} add the detail that makes the case behavioral: the two shares traded in different locations (Royal Dutch largely in the United States and the Netherlands, Shell largely in the United Kingdom), and the deviation from parity correlates with relative market conditions in the two trading locations---the same cash flows are priced differently depending on whose demand is dominant where.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{slide14_pic1.png}
+\caption[Royal Dutch/Shell deviations from parity]{Twin shares. Deviation of the Royal Dutch--Shell price ratio from the theoretical 60:40 parity, over the life of the twin-share structure. The two securities are claims to identical cash flows, yet the deviation from parity reaches tens of percent and persists for years. \textit{Source:} EF8083 course materials, following \citet{froot1999}.}
+\label{fig:royaldutch}
+\end{figure}
+
+The same architecture appears in a modern and even starker form in the Chinese market. Dozens of Chinese companies are listed both on the mainland exchanges (A shares) and in Hong Kong (H shares). The two share classes carry identical claims, but mainland investors cannot freely buy H shares and international investors cannot freely buy A shares, so each class is priced by its own investor base. Figure~\ref{fig:ahpremium} shows the result: A shares trade at a persistent premium over H shares of the same companies---the premium is typically large and has persisted for decades. Capital controls are here a legally enforced limit to arbitrage, which is what makes the case so clean: no one can arbitrage the gap because no one is allowed to.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{slide15_pic1.png}
+\caption[The Chinese A--H share premium]{The A--H premium. Price ratio of mainland-listed A shares to Hong Kong-listed H shares of the same Chinese companies. Despite identical claims, A shares trade at a persistent premium over H shares; capital controls prevent the arbitrage that would close the gap. \textit{Source:} EF8083 course materials, based on Hang Seng Stock Connect China AH Premium Index data.}
+\label{fig:ahpremium}
+\end{figure}
+
+\subsection{Equity Carve-Outs}
+
+An equity carve-out occurs when a parent company conducts an initial public offering for shares in a subsidiary while retaining a large ownership stake. Between 1985 and 2000, \citet{mitchell2002} identify 70 cases in which the market value of the parent was less than the value implied by its stake in the subsidiary---cases where the market value of the parent fell below 80\% of the market value of the subsidiary alone, implying that the market ascribed \emph{negative} value to the parent's remaining assets, its ``stub.'' A negative stub means the market's prices cannot all be right, since the sum of the parts is below one of the parts.
+
+The most famous case is 3Com and Palm. In March 2000, 3Com sold 5\% of its subsidiary Palm in an IPO, announcing that it would spin off the remainder to its own shareholders within nine months; each share of 3Com would thereby carry a claim on 1.5 shares of Palm. The arithmetic bounds are tight: since 3Com's other businesses generated positive cash flows and 3Com had substantial net cash, the price of 3Com should have been \emph{at least} 1.5 times the price of Palm. At Palm's post-IPO price of \$95, 3Com should have traded for no less than \$142. It traded at \$81. The market was valuing 3Com \emph{excluding} Palm at about negative \$60 per share---an impossibility, unless one believes a profitable company with cash in the bank was worth less than zero \citep{lamont2003}.
+
+Why was this mispricing not corrected? Every limit in Table~\ref{tab:limits} was present. Shorting Palm was nearly impossible: very few shares were available to borrow, so lendable Palm shares carried extraordinary fees, and the buy side of the trade (going long 3Com) carried fundamental risk---news about 3Com's remaining businesses could and did arrive. \citet{mitchell2002} document that in about 30\% of their negative-stub cases, adverse fundamental news arrived before the gap closed, validating the fundamental-risk concern. Noise trader risk completed the triad: Palm's price moved with the technology mania, and the mispricing did not close until the spin-off approached and the mechanical link between the securities forced convergence.
+
+\subsection{Index Inclusions}
+
+Stocks are regularly added to the S\&P 500 to replace stocks removed through merger or bankruptcy. Crucially, S\&P's stated goal is to create a representative index, not to convey information about the investment value of the included stocks; inclusion is, from the standpoint of fundamentals, a nonevent. Yet both \citet{harris1986} and \citet{shleifer1986} find that included stocks jump in price by about 3.5\% on average around the announcement and execution dates. The two studies part company on what happens next: \citet{shleifer1986} finds that the jump is not reversed, while \citet{harris1986} finds that it reverses within weeks. A nonevent that permanently moves prices implies downward-sloping demand curves for stocks---and, since the information content is nil, the persistent jump is widely viewed as a mispricing. It is evidence of limits to arbitrage because an arbitrageur could, in principle, short the included stock and buy a substitute portfolio.
+
+What limits the correction? The question is empirical, and it has a sharp answer. \citet{wurgler2002} observe that the mispricing can only be arbitraged by shorting the included stock against a hedge of substitute stocks, and the quality of the hedge varies: for some additions, close industry matches exist; for others, any hedge retains large idiosyncratic risk---fundamental risk in the language of Table~\ref{tab:limits}. If arbitrage disciplines the price jump, the jump should be larger for stocks with worse substitutes. This is exactly what they find (Figure~\ref{fig:wurgler}): included stocks with more idiosyncratic risk in the best available hedge jump significantly more upon inclusion. The magnitude of a textbook-style mispricing varies cross-sectionally with the difficulty of the arbitrage, exactly as the theory predicts.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{slide19_pic1.jpg}
+\caption[Index-inclusion jumps increase with hedge risk]{Does arbitrage flatten demand curves for stocks? The price jump upon S\&P 500 inclusion is larger for added stocks whose potential arbitrage hedges carry more idiosyncratic risk, i.e.\ for stocks with worse substitutes. \textit{Source:} \citet{wurgler2002}.}
+\label{fig:wurgler}
+\end{figure}
+
+The index-inclusion evidence has a modern epilogue with an important moral. \citet{greenwood2025} document that the inclusion effect has essentially disappeared: the average abnormal return on addition to the S\&P 500 fell from 7.4\% in the 1990s to less than 1\% over the past decade, even as the share of stock market assets linked to the index grew enormously. The reason is that the supply of arbitrage capital adapted: professional active investors now stand ready to accommodate index-driven demand. Although index trackers still buy on the order of 7--8\% of a stock's float upon addition, total institutional ownership barely moves around index changes---the passive demand is met by active supply, at a much smaller price concession than before. Limits to arbitrage, in other words, are endogenous: they can bind tightly in one decade and relax in the next as the arbitrage industry develops. The finding is doubly useful: it confirms the demand-based reading of the original effect (demand pressure moves prices), while cautioning against treating any measured limit as a constant of nature.
+
+% ============================================================
+\section{Limits to Arbitrage in the Cross-Section of Anomalies}
+\label{sec:arbanomalies}
+
+The near-arbitrage situations of Section~\ref{sec:arbevidence} establish that limits to arbitrage exist. The anomaly families of Chapter~\ref{ch:intro}---Section~\ref{sec:bestiary} in particular---raise the complementary question: if anomalies reflect mispricing, they should be \emph{more pronounced} among stocks where the limits are more severe. This prediction generates cross-sectional tests, and, more recently, quasi-experimental evidence.
+
+\subsection{Amplification Tests}
+
+Two proxies have carried most of the weight. \citet{nagel2005} uses institutional ownership as a proxy for short-sale constraints---institutions are the natural lenders of shares, so stocks with low institutional ownership are hard and expensive to short---and finds that the short legs of anomalies are stronger among stocks with low institutional ownership. \citet{stambaugh2015} use idiosyncratic volatility as a proxy for arbitrage risk---an arbitrageur who shorts an overpriced stock must hedge, and idiosyncratic volatility is exactly the risk the hedge cannot remove---and find that mispricing is amplified among stocks with the highest idiosyncratic volatility (Figure~\ref{fig:syy}). Their central finding sharpens the asymmetry intuition of Section~\ref{sec:arbtheory}: the amplification is concentrated on the short side. Anomalies' overpriced legs are strong precisely where shorting is difficult, while the underpriced legs are comparatively insensitive---consistent with arbitrage being harder on the short side, where trading requires borrowing shares, than on the long side, where it requires only cash.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\textwidth]{slide21_pic1.jpg}
+\caption[Mispricing scores are amplified among high-idiosyncratic-volatility stocks]{Arbitrage asymmetry and the idiosyncratic volatility puzzle. Anomaly-based mispricing scores (net of size and book-to-market effects) across quintiles of idiosyncratic volatility. Overpricing increases sharply with idiosyncratic volatility; underpricing is comparatively insensitive, consistent with the short side of anomalies being harder to arbitrage. \textit{Source:} \citet{stambaugh2015}.}
+\label{fig:syy}
+\end{figure}
+
+\subsection{Causal Evidence: Regulation SHO}
+
+The amplification tests are correlational---severity of limits and severity of mispricing move together, but both could proxy for a third factor. \citet{chu2020} provide causal evidence using Regulation SHO as a quasi-experiment. Between May 2, 2005, and August 6, 2007, the SEC removed short-sale price tests (the uptick rule and related restrictions) for a randomly selected group of pilot stocks within the Russell 3000 index. Random selection delivers clean identification under a differences-in-differences design: construct anomaly long--short portfolios separately for pilot and non-pilot stocks, and compare the return spread for pilot firms relative to control firms, before and during the pilot period.
+
+The results confirm that limits to arbitrage have causal force over the anomalies (Figure~\ref{fig:chu}). Anomalies become significantly weaker for pilot stocks relative to non-pilot stocks during the pilot period, and the effect comes predominantly from the short leg---exactly where relaxed short-sale constraints should bind. Relaxing one limit moves measured mispricing in the predicted direction, on the predicted side of the trade.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{slide23_pic1.jpg}
+\caption[Relaxing short-sale constraints weakens anomalies: Regulation SHO]{The causal effect of limits to arbitrage. Differences-in-differences estimates of anomaly long--short returns for Regulation SHO pilot stocks relative to non-pilot stocks, before and during the pilot program (May 2005--August 2007). Anomalies weaken for pilot stocks, with the effect concentrated in the short leg. \textit{Source:} \citet{chu2020}.}
+\label{fig:chu}
+\end{figure}
+
+\subsection{Information Processing Costs}
+
+The final limit in Table~\ref{tab:limits}---the cost of acquiring and processing information---has direct evidence as well. \citet{bowles2024} show that anomaly returns are concentrated in the first month after the anomaly-relevant information is released: a stock's anomaly characteristics are largely fixed by dated public disclosures (earnings announcements above all), and it is in the window immediately following those disclosures that the predictable returns accrue, with returns decaying quickly thereafter (Figure~\ref{fig:bowles}). If exploiting an anomaly required only capital and nerve, the returns should not be so concentrated in the days when the underlying information is new. Their concentration instead suggests that both investors and arbitrageurs process information slowly, and that the mispricing is harvested by whoever gets to it first---time, as much as capital, is the binding constraint. This is the pricing-side counterpart of the limited-attention evidence developed in Chapter~\ref{ch:bounded}.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.65\textwidth]{slide24_pic1.png}
+\caption[Anomaly returns are concentrated after information release]{Anomaly time. Returns to anomaly strategies are concentrated in the first month after anomaly-relevant information is released and decay quickly thereafter, consistent with information processing costs binding on both noise traders and arbitrageurs. \textit{Source:} \citet{bowles2024}.}
+\label{fig:bowles}
+\end{figure}
+
+Taken together with Chapter~\ref{ch:intro}, the picture is coherent from both ends. On the demand side, retail investors trade against forecasted returns \citep{mclean2025}; on the supply side, the correction of mispricing comes primarily from short sellers and firms, not from conventional asset managers \citep{mclean2025,edelen2016}; and the mispricing that survives is concentrated exactly where the frictions of this chapter are most severe \citep{nagel2005,stambaugh2015,chu2020,bowles2024}.
+
+% ============================================================
+\section{How Limited Is Arbitrage?}
+\label{sec:arbsummary}
+
+The literature on limits to arbitrage has been influential to the point of consensus: there is now wide agreement among academics and practitioners that arbitrage is limited, though disagreement remains about \emph{how} limited. That success was one reason behavioral finance took off in the 1990s---it removed the standing objection that irrational demand could not matter.
+
+Two qualifications keep the consensus honest. First, the limits are real but not boundless, and they move. The disappearing index effect \citep{greenwood2025} shows arbitrage capital adapting to a repeatable, well-understood demand shock until the price impact nearly vanishes; the anomaly literature's post-publication declines \citep{mclean2016} plausibly reflect the same adaptation. A mispricing that is large, salient, and cheap to trade against will attract its own correction. What the limits reliably protect are mispricings that are small relative to transaction and shorting costs, slow to close relative to capital horizons, unhedgeable, or hard to identify---conditions met by the short legs of anomalies among small, volatile stocks with low institutional ownership, not by index additions in 2025.
+
+Second, limits to arbitrage are a necessary condition for behavioral asset pricing, not a sufficient one. They explain why mispricing \emph{survives}; they have almost nothing to say about which direction prices are pushed in the first place. For that, the demand side is required: the preferences, beliefs, and limits to attention that generate systematic trading pressure. That is the subject of the remainder of this book. The discipline this chapter imposes on everything that follows is the reverse of the discipline the arbitrage critique imposed on behavioral finance: whenever an argument is made that irrational investors' demand affects prices, ask not only what generates the demand, but whether arbitrage is truly limited enough to let it.
+

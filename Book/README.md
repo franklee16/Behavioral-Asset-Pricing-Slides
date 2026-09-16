@@ -1,37 +1,52 @@
-# Book — Lecture-to-Chapter Conversions
+# books/ — Lecture-to-Book Chapter Conversions
 
-PhD-level book chapters converted from the EF8083 Beamer lectures. Chapter 1 is
-complete; Chapters 2–6 (Lectures 2–6) can be added later as `chapterN_*.tex`
-and `\input` into `main.tex`.
+PhD-level book chapters converted from the EF8083 Beamer lectures. Chapters 1–5
+are complete (Introduction, Limits to Arbitrage, Preferences Under Uncertainty,
+Biased Beliefs, Bounded Rationality); Chapter 6 (Lecture 6 — Memory) can be
+added later as `chapter6_*.tex` and `\input` into `main.tex`.
 
 ## Files
 
 | File | Description |
 |------|-------------|
 | `main.tex` | Book master file (11pt, letter, book class, biblatex/biber, CityUBlue links) |
-| `chapter1_introduction.tex` | Ch. 1 — Introduction, converted from `../Lecture1_LaTeX/Lecture1_Intro.tex` |
-| `references.bib` | ~60 verified entries (all citations in Ch. 1) |
-| `figures/` | 25 figures copied from `../Lecture1_LaTeX/figures/` (original slide assets) |
-| `main.pdf` | Compiled book (38 pages incl. TOC/LoF/LoT/bibliography) |
+| `chapter1_introduction.tex` | Ch. 1 — Introduction, converted from `Slides/Lecture1_LaTeX/Lecture1_Intro.tex` |
+| `chapter2_limits2arb.tex` | Ch. 2 — Limits to Arbitrage, converted from `Slides/Lecture2_LaTeX/Lecture2_Limits2Arb.tex` |
+| `chapter3_preferences.tex` | Ch. 3 — Preferences Under Uncertainty, converted from `Slides/Lecture3_LaTeX/Lecture3_Preferences.tex` |
+| `chapter4_beliefs.tex` | Ch. 4 — Biased Beliefs, converted from `Slides/Lecture4_LaTeX/Lecture4_Beliefs.tex` |
+| `chapter5_bounded.tex` | Ch. 5 — Bounded Rationality and Psychology-free Models, converted from `Slides/Lecture5_LaTeX/Lecture5_BoundedRationality.tex` |
+| `references.bib` | Verified entries (all citations across Ch. 1–5; ~204 entries as of 2026-09-15) |
+| `figures/` | Figures copied from `Slides/LectureN_LaTeX/figures/` (original slide assets) |
+| `main.pdf` | Compiled book (127 pages, Ch. 1–5) |
 
 ## Build
 
 ```bash
-cd Book
+cd books
 pdflatex main && biber main && pdflatex main && pdflatex main
 ```
 
 Requires MiKTeX (pdflatex + biber). Auto-install is enabled on this machine.
 
+**Biber PATH gotcha:** if biber errors with "directory name is invalid" pointing
+to `C:\Users\frank\miniconda3\python.exe\`, strip the offending path before
+running biber. On Git Bash this works:
+
+```bash
+PATH="/c/Program Files/MiKTeX/miktex/bin/x64:/c/Windows/System32:/c/Windows" \
+  "/c/Program Files/MiKTeX/miktex/bin/x64/biber.exe" main
+```
+
 ## Conversion conventions
 
 - Slide bullets become running prose; figures become floats referenced as
   `Figure~\ref{...}`, each caption carrying a verified source line.
-- Every figure was visually inspected before captioning; numbers stated in the
+- Every figure is visually inspected before captioning; numbers stated in the
   text (PGR/PLR, Dichev gaps, EIK long–short spreads, MPR trading spreads,
-  decile bar values) come from the figure images themselves, not from memory.
-- Table-image from slide 25 was re-typeset as a booktabs table (Table 1.2)
-  instead of embedding the screenshot.
+  MAX t-stats, decile bar values) come from the figure images themselves, not
+  from memory.
+- Table-images (e.g., the Ch. 1 characteristics slide 25) are re-typeset as
+  booktabs tables instead of embedding the screenshot.
 - Deliberate corrections relative to the slides (verified 2026-09-15):
   - Short-term reversal cites Jegadeesh (1990), not "Jegadeesh 1991".
   - Berk and Green is 2004 (AER), not 2005.
@@ -40,12 +55,16 @@ Requires MiKTeX (pdflatex + biber). Auto-install is enabled on this machine.
   - McLean/Pontiff/Reilly (2025) = "Taking Sides on Return Predictability,"
     JFE 173, 104158; Lewellen (2011) = "Institutional Investors and the Limits
     of Arbitrage," JFE 102(1), 62–80.
-- `slide38_chart.png` exists in the lecture figures folder but is not used by
-  the current Lecture 1 `.tex`; it was not copied.
+- `slide38_chart.png` exists in the Lecture 1 figures folder but is not used
+  by the current Lecture 1 `.tex`; it was not copied.
 
-## Adding a chapter (e.g., Lecture 2)
+## Adding a chapter (e.g., Lecture 6)
 
 1. Copy that lecture's figures into `figures/`.
-2. Create `chapter2_limits_to_arbitrage.tex` starting with `\chapter{...}`.
-3. Add `\input{chapter2_limits_to_arbitrage}` in `main.tex` after chapter 1.
+2. Create `chapterN_*.tex` starting with `\chapter{...}`.
+3. Add `\input{chapterN_*}` in `main.tex` after the previous chapter.
 4. Append new entries to `references.bib`; rebuild with the command above.
+5. **Label uniqueness:** chapters share the same `\label{}` namespace
+   (`sec:contested`, `sec:ahead`, `fig:syy`, `fig:pead` collide). Prefix
+   later-chapter labels with a chapter tag (e.g., `sec:attcontested`,
+   `fig:attpead`, `fig:attsyy`) when re-using an earlier-chapter label.

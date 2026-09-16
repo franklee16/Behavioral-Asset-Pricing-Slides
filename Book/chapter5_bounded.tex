@@ -1,0 +1,452 @@
+% ============================================================
+% Chapter 5 — Bounded Rationality and Psychology-free Models
+% Converted from Slides/Lecture5_LaTeX/Lecture5_BoundedRationality.tex
+% Figures reproduced in figures/ (original slide assets).
+% ============================================================
+\chapter{Bounded Rationality and Psychology-free Models}
+\label{ch:bounded}
+
+The behavioral theories developed in Chapters~\ref{ch:preferences} and \ref{ch:beliefs} modify either investors' preferences or their beliefs. They keep intact the assumption that investors process whatever information they do attend to, completely and correctly. This chapter relaxes that assumption in two different ways.
+
+The first half (Sections~\ref{sec:att1}--\ref{sec:attcausal}) develops \emph{bounded rationality}: investors have limited capacity for gathering and processing information, and they end up with a stylized version of the data---one in which salient news is incorporated promptly and subtle news is incorporated slowly or not at all. The systematic consequence is that prices underreact to news, with the degree of underreaction depending on whether the news is prominent or quiet. The behavioral signature is not a wrong belief about cash flows but a slow belief about what has just been released.
+
+The second half (Sections~\ref{sec:cat}--\ref{sec:creditcycle}) develops \emph{psychology-free models}: behavioral predictions that require no psychological assumption at all, beyond the central observation that some investors trade on noisy signals while others have limited capital and short horizons. The standard architecture is \citet{delong1990}: less than fully rational \emph{noise traders} interact with more rational \emph{arbitrageurs} whose corrections of mispricing are themselves imperfect and informative. The framework makes contact with a wide range of facts---the trades of sophisticated agents forecast returns in the direction opposite to the trades of unsophisticated agents, and aggregate \emph{investor sentiment} moves with the cross-sectional and time-series properties of returns---without requiring any assumption about why noise traders are wrong. Section~\ref{sec:attcontested} catalogues what remains contested, and Section~\ref{sec:attahead} closes the chapter.
+
+% ============================================================
+\section{Limited Attention: The General Pattern}
+\label{sec:att1}
+
+\begin{definition}[Limited attention]
+\label{def:limitedatt}
+An investor is said to have limited attention when the cognitive resources available to acquire and process information are scarce relative to the volume of information available. As a consequence, some news items are processed promptly while others are processed slowly, partially, or not at all.
+\end{definition}
+
+The asset pricing prediction of limited attention is sharp: prices should react more weakly to news that is harder to attend to, and more strongly to news that is salient. The underreaction is not a property of investors' beliefs about fundamentals but of their beliefs about what has been released. Limited attention is therefore the natural complement to the Bayesian benchmark: with rational beliefs but bounded processing, prices converge to rational posteriors, only slowly.
+
+The strongest empirical evidence for limited attention in finance comes from the post-earnings-announcement drift (PEAD) literature. Stocks that announce positive earnings surprises drift up after the announcement; stocks that announce negative earnings surprises drift down. The drift begins immediately after the announcement but persists for many months, a pattern that is hard to reconcile with a market that fully and promptly incorporates the information content of the surprise. Two influential studies sharpen the inference by showing that the drift is larger exactly when attention is plausibly scarcer.
+
+\citet{hirshleifer2009} show that PEAD is stronger for firms that announce earnings at the same time as many other firms. When several firms report on the same day, investors' attention is divided across many announcements, and the immediate market reaction to any single announcement is muted; the drift that follows is correspondingly larger. \citet{dellavigna2009} show that PEAD is stronger for firms that announce on Fridays. Friday announcements attract less attention because Friday afternoons compete with the weekend, and the immediate price reaction is weaker; the post-announcement drift is correspondingly larger.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.70\textwidth]{slide04_pic4.jpg}
+\caption[PEAD is stronger when attention is scarce]{\textbf{Attention and PEAD.} The figure illustrates the central evidence: the post-earnings announcement drift is stronger when many firms announce on the same day \citep{hirshleifer2009} or when announcements occur on Fridays \citep{dellavigna2009}. Both patterns point to the immediate market reaction being weaker precisely when investor attention is plausibly more divided. \textit{Source:} EF8083 course materials, after \citet{hirshleifer2009}.}
+\label{fig:attpead}
+\end{figure}
+
+The two findings help discipline the interpretation. An alternative explanation for PEAD is that earnings surprises contain information that the market rationally discounts as noisy, and that the drift is the slow resolution of that uncertainty rather than the slow incorporation of clear news. The Hirshleifer--Lim--Teoh and Della Vigna--Pollet designs vary attention while holding the information content of the surprise roughly constant, which weakens the noisy-information reading: if attention were irrelevant, varying it should not change the size of the drift. The evidence is consistent with limited attention as the binding constraint.
+
+\subsection{The ``Frog in the Pan'' Hypothesis}
+
+A further pattern points to a structural feature of attention: investors notice discrete, salient events better than they notice continuous streams of similar events. \citet{da2014} propose the \emph{frog in the pan} hypothesis: investors are more likely to be inattentive to information that arrives in a stream of small increments than to information that arrives in a single large shock. The reasoning is that a series of small changes is easier to miss than a single large change of the same total magnitude---the same effect that makes it possible to drop a frog into water that is slowly heated, while dropping it into already-boiling water produces an immediate reaction. Momentum, on this account, is the empirical signature of inattention to continuous news: investors fail to update on each small step, the price moves slowly relative to the news, and the next step arrives before the previous one is fully incorporated. The hypothesis predicts that momentum should be stronger when information arrives continuously rather than in discrete announcements, and the data support the prediction: momentum profits are larger in periods of small incremental earnings surprises than in periods of large discrete surprises.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.42\textwidth]{slide05_pic4.jpg}
+\hspace{0.3em}
+\includegraphics[width=0.42\textwidth]{slide05_pic5.png}
+\caption[Frog in the pan: small steps versus large steps]{\textbf{Small steps versus large steps.} Left: under a series of small earnings surprises of the same total magnitude, the price moves only weakly on each step and continues to drift, generating momentum. Right: under a single large surprise, the price moves sharply on impact and continues to mean-revert. The difference is the \emph{frog in the pan} hypothesis of \citet{da2014}. \textit{Source:} EF8083 course materials, after \citet{da2014}.}
+\label{fig:frog}
+\end{figure}
+
+\subsection{Underreaction to Subtle News}
+
+Underreaction is most likely when the news is less salient or more subtle. Three cases illustrate the principle.
+
+\paragraph{Demographic information.} \citet{dellavigna2008} document that investors are slow to recognize the impact of demographic shifts on the future profitability of firms with age-sensitive products. A baby boom today predicts higher demand for toys in six years; in an efficient market the prices of toy-making firms should rise immediately, but they rise only gradually. The information is publicly available and straightforward to compute; the failure to act on it is the predictable signature of attention scarcity rather than of any inference failure.
+
+\paragraph{Technological information.} \citet{hirshleifer2013} use citation patterns in patent data to measure firms' innovative efficiency, and find that investors underreact to the implied information about future productivity. \citet{cohenmalloy2013} use the release dates of the innovation scores that \emph{BusinessWeek} published in its (now-discontinued) annual ranking of the world's most innovative companies to identify when the information became public, and show that the market is slow to incorporate it---an unusually clean case of bounded attention tied to a known publication event.
+
+\paragraph{The absence of news.} A more surprising version of the pattern is that the \emph{absence} of news is itself information. \citet{giglio2014} observe that the passage of time after an announced merger is informative about the probability that the deal will close: as time passes without disruption, the conditional probability of completion rises. Investors should therefore bid up target-firm prices gradually after an announcement; in practice, the price moves sharply on the announcement and drifts up only weakly thereafter. \citet{hongli2019} document the analogous pattern with insider trades: when routine insiders stop trading in the months they are expected to trade, the absence of trading is itself a signal, and the market underreacts to it.
+
+\subsection{Momentum Spillover: Economic Linkages}
+
+A growing literature documents that investors underreact to news of economically linked peers. The pattern is often called the \emph{momentum spillover effect}: positive news for a customer spills over to the supplier and vice versa, but the spillover is incomplete and gradual.
+
+\paragraph{Customer--supplier links.} \citet{cohenfrazzini2008} identify firms' major customers using the regulatory requirement that firms report any customer accounting for more than 10\% of sales. They then show that when a customer announces good news, the supplier's price moves only weakly on the announcement and continues to drift upward for months afterwards. The information is publicly available and easy to compute---the linkage is disclosed in 10-K filings---but the market underreacts.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.55\textwidth]{slide07_pic4.jpg}
+\caption[Momentum spillover across customer-supplier links]{\textbf{Spillover across customer--supplier links.} The figure illustrates the central finding of \citet{cohenfrazzini2008}: when a major customer announces positive earnings news, the supplier's price moves only weakly on impact and continues to drift upward for months. \textit{Source:} EF8083 course materials, after \citet{cohenfrazzini2008}.}
+\label{fig:spillover}
+\end{figure}
+
+\paragraph{Other economic linkages.} The same pattern holds for other types of economic linkages. \citet{moskowitz1999} document industry momentum, in which firms in the same industry comove beyond what their cash flows can justify. \citet{cohenlou2012} show that conglomerate firms are slower than standalone firms to reflect industry news, consistent with the interpretation that complex structures draw less attention. \citet{huang2015} document that multinational firms underreact to foreign industry news; \citet{hoberg2016} use product market peers identified through textual analysis of annual reports; \citet{parsons2020} identify geographic peers as firms headquartered in the same state; \citet{jinli2024} use firms with overlapping geographic establishments. \citet{lee2019} identify technological peers through shared technology classifications, and \citet{alihirshleifer2020} show that firms followed by the same analysts comove more than fundamentals predict. The list is long and the pattern is uniform: when two firms are linked through any economically meaningful channel, the price of one moves only gradually in response to news about the other.
+
+\subsection{Cross-Asset Predictability}
+
+Limited attention also predicts that prices will underreact to information that arrives in markets different from the one being studied. The clearest case is predictability between the debt and equity of the same firm.
+
+\citet{hansubrahmanyamzhou2017} document that the term structure of firms' credit spreads forecasts future firm fundamentals and stock returns: a flatter credit-spread curve predicts higher future earnings and higher subsequent stock returns. \citet{addoummurfin2020} document that the prices of syndicated loans carry information for equity prices; investors in the equity market appear to fail to unravel the information embedded in loan prices, and predictability flows from the loan market to the equity market.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.55\textwidth]{slide09_pic4.png}
+\caption[Loan prices and equity returns]{\textbf{Loan prices forecast equity returns.} The figure illustrates the central finding of \citet{addoummurfin2020}: prices of syndicated loans contain useful information about the borrowing firms, but equity investors fail to incorporate the information, generating predictability from loan markets to equity markets. \textit{Source:} \citet{addoummurfin2020}, reproduced from the original article.}
+\label{fig:loan}
+\end{figure}
+
+The source of underreaction across asset classes is plausibly \emph{market segmentation}. Both debt and equity are claims to the same underlying cash flows, but the investor populations are different: many investors trade in equity markets but not in the leveraged loan market, and vice versa. The information that arrives in one market is not promptly incorporated into the other because the two markets are dominated by different sets of participants. \citet{hansubrahmanyamzhou2017} provide supporting evidence: the predictability from credit spreads to stock returns is weaker for firms whose equity is held by mutual funds that also trade debt securities, where the overlap in investor populations reduces the segmentation.
+
+\paragraph{Other asset classes.} \citet{baedazurita2023} show that U.S.\ equity investors of multinational firms underreact to currency shocks in the countries where the firms operate. \citet{holauwers2023} document that aggregate positions of traders in the commodity futures market can predict the cross-section of stock returns of commodity producers. The unifying theme is that any information that arrives in a market other than the one being studied is incorporated slowly: the investor populations are different, the data feeds are different, and the cognitive bandwidth to process them all is finite.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.50\textwidth]{slide11_pic4.png}
+\caption[Commodity futures and stock returns]{\textbf{Commodity futures forecast commodity-producer returns.} The figure illustrates the central finding of \citet{holauwers2023}: aggregate positions of commodity futures traders predict the cross-section of stock returns for commodity-producing firms. \textit{Source:} \citet{holauwers2023}, reproduced from the original article.}
+\label{fig:commodity}
+\end{figure}
+
+% ============================================================
+\section{Buying versus Selling: Asymmetric Attention}
+\label{sec:att2}
+
+A second set of facts concerns the differential role of attention in buying versus selling decisions. The argument is intuitive: an investor who is not already holding a stock must decide whether to buy, and buying decisions are driven by salience and attention; an investor who already holds a stock can sell at any time without having to search for the stock, and selling decisions are driven by liquidity needs and private considerations rather than by salience. \citet{barberodean2008} test this prediction directly. The data come from a large discount brokerage account: individuals are heavy net buyers of attention-grabbing stocks (those with extreme returns, high volume, or recent news), but their selling decisions show essentially no relation to these same attention measures.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.50\textwidth]{slide12_pic4.jpg}
+\caption[Attention and individual buying versus selling]{\textbf{Attention and individual buying vs.\ selling.} Stocks with extreme returns, high volume, or news announcement draw strong net buying interest from individual investors but no comparable selling interest. The asymmetry reflects the role of attention in search for new positions. \textit{Source:} EF8083 course materials, after \citet{barberodean2008}.}
+\label{fig:buysell}
+\end{figure}
+
+The implication is that attention matters asymmetrically for prices. The strongest price effects should be on the buy side---the side where investors must actively choose to enter---and the implication extends to asset pricing more broadly: any mechanism that operates through increased demand will be amplified by attention, while any mechanism that operates through increased selling pressure will be relatively muted.
+
+% ============================================================
+\section{Slow Information Diffusion: The Hong--Stein Mechanism}
+\label{sec:att3}
+
+A structural model of limited attention is \citet{hong1999}. The model combines two types of investors who each process only part of the available information:
+\begin{itemize}
+\item \emph{Newswatchers}, who process only private firm-specific signals.
+\item \emph{Momentum traders}, who process only past price changes and whose demand is an increasing function of past returns.
+\end{itemize}
+Newswatchers update gradually because information diffuses slowly through the newswatcher population: at any date only a fraction of newswatchers have observed the signal, so the price response is partial, and the next newswatcher to observe it pushes the price further in the same direction. In an economy with only newswatchers, the dynamics would produce pure momentum: prices drift in the direction of the news until all newswatchers have updated. The momentum traders add a second effect: they buy as prices rise, and because they continue to buy even after the private information is fully incorporated, the price eventually overshoots. The combination produces both short-horizon momentum (the newswatchers' gradual incorporation) and long-horizon reversal (the momentum traders' overshoot).
+
+\citet{honglimstein2000} test the central prediction. If momentum arises from slow diffusion of private information, the effect should be stronger where newswatcher coverage is thinner. The data confirm the prediction: momentum is stronger among small stocks and stocks with low analyst coverage, exactly the stocks where the newswatcher population is plausibly smaller and information diffuses more slowly.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.55\textwidth]{slide14_pic4.jpg}
+\caption[Momentum and information diffusion]{\textbf{Momentum is stronger where news is thinner.} The figure illustrates the central evidence of \citet{honglimstein2000}: momentum profits are larger for small stocks and stocks with low analyst coverage, consistent with the slow-diffusion hypothesis of \citet{hong1999}. \textit{Source:} EF8083 course materials, after \citet{honglimstein2000}.}
+\label{fig:hls}
+\end{figure}
+
+% ============================================================
+\section{The Causal Effect of Attention on Asset Prices}
+\label{sec:attcausal}
+
+The evidence reviewed so far establishes that attention is correlated with underreaction, but correlation is not causation. Investor attention is endogenous to stock fundamentals---the same firms that attract attention may also be the ones with the strongest news---and identifying a causal effect requires an exogenous source of variation in attention.
+
+\citet{chenawy2023} provide such variation by exploiting a peculiarity of the Chinese stock market. On Chinese trading screens, the order in which stocks are displayed is determined by the stock's listing code, which is essentially randomly assigned at the time of listing. Investors are more likely to pay attention to neighboring stocks if they have positive investment experience with the focal stock---a behavioral spillover identified in earlier work---and the authors use the random listing code as an instrument for the set of stocks that any given investor observes.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.50\textwidth]{slide15_pic4.png}
+\caption[Attention spillover in the Chinese stock market]{\textbf{Attention spillover in China.} The figure illustrates the identification strategy of \citet{chenawy2023}: listing codes are randomly assigned in China, which randomizes the stocks displayed next to any given focal stock and creates plausibly exogenous variation in the attention paid to neighbours. \textit{Source:} \citet{chenawy2023}, reproduced from the original article.}
+\label{fig:china_att}
+\end{figure}
+
+Because attention leads to excessive buying demand, stocks displayed next to those with higher returns in the past two weeks earn higher returns in the following week, with the effect reverting over the long run. The pattern is exactly what limited attention predicts: more attention raises the price in the short run, and the price subsequently corrects. The random listing-code variation is the cleanest identification of the causal effect of attention on prices in the literature.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.55\textwidth]{slide16_pic4.png}
+\caption[Causal evidence on attention]{\textbf{More attention, higher price, subsequent reversal.} The figure shows that stocks displayed next to high-return neighbours earn higher returns in the following week (consistent with attention-driven buying) and revert over longer horizons (consistent with bounded rationality rather than new information). \textit{Source:} \citet{chenawy2023}, reproduced from the original article.}
+\label{fig:china_att2}
+\end{figure}
+
+% ============================================================
+\section{Category Thinking and Excess Comovement}
+\label{sec:cat}
+
+A basic feature of human cognition is that we put things into categories and form beliefs at the level of categories rather than at the level of individual objects \citep{rosch1978}. With thousands of individual securities and mutual funds, investors plausibly simplify their decision-making by putting financial assets into categories. We routinely use labels such as ``value stocks,'' ``growth stocks,'' ``small-cap stocks,'' and ``Chinese internet stocks,'' and the labels structure beliefs, expectations, and flows. The asset pricing question is whether category-based thinking affects prices.
+
+\citet{barberisshleifer2003} develop a model in which some investors put assets into categories and form beliefs about the assets' future returns at the category level. A news shock that affects a category---say, news that ``value stocks are good buys''---pushes demand up for all stocks in the category, even though the news is not directly informative about any individual member. The novel prediction is \emph{excess return comovement}: returns of assets in the same category comove more than can be explained by fundamentals, driven by correlated demand shocks that share a category label but no information.
+
+\subsection{Evidence for Excess Comovement}
+
+A sizeable literature supports the prediction. \citet{barberiswurgler2005} document comovement among stocks in the S\&P~500 index: a stock that is added to the index experiences a large increase in its loading on S\&P returns---a change in covariance that is hard to explain on fundamental grounds, since the stock's cash flows are unchanged by inclusion. \citet{greenwood2008} and \citet{boyer2011} confirm the pattern with different samples and identification strategies. \citet{pirinsky2006} document comovement among firms headquartered in the same state; \citet{greenhwang2009} among stocks with similar price levels; \citet{israelsen2016} among firms covered by similar sets of analysts; \citet{antonpolk2014} among stocks held by a common set of mutual funds; and \citet{hameed2019} among dividend-paying stocks. The list is long enough that category thinking has acquired a status comparable to limited attention: it is one of the few behavioral mechanisms for which the evidence is broad, replicated, and quantitatively meaningful.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.42\textwidth]{slide20_pic4.png}
+\hspace{0.3em}
+\includegraphics[width=0.42\textwidth]{slide20_pic5.png}
+\caption[Index inclusion and excess comovement]{\textbf{Index inclusion raises covariance with the index.} The figure illustrates the central finding of \citet{barberiswurgler2005}: when a stock is added to the S\&P~500, its loading on S\&P returns increases sharply---a change in covariance that cannot be explained by fundamentals. \textit{Source:} \citet{barberiswurgler2005}, reproduced from the original article.}
+\label{fig:bsw}
+\end{figure}
+
+% ============================================================
+\section{Psychology-free Approaches: The De Long--Shleifer--Summers--Waldmann Framework}
+\label{sec:psychfree}
+
+The approaches developed so far have all been rooted in a specific psychology: a cognitive bias, an emotional response, or a category. Some behavioral finance models produce testable predictions without appealing to any particular psychology, and these models form a distinct---and in many ways the most theoretically parsimonious---branch of the literature.
+
+The standard architecture is \citet{delong1990}. There are two types of investors. Some are \emph{noise traders}---investors whose demand for an asset is driven by factors other than its fundamental value (sentiment, fashion, liquidity shocks, idiosyncratic beliefs). Others are more rational and are conventionally called \emph{arbitrageurs}. Arbitrageurs observe the noise traders' demand and trade against it, but their ability to do so is constrained by the limits of Chapter~\ref{ch:limits}: noise trader risk, fundamental risk, horizon risk, and the costs of trading.
+
+The framework yields a set of testable predictions without further psychological assumptions:
+
+\begin{enumerate}
+\item \textbf{Level of mispricing.} Mispricing is larger for assets whose valuation is more uncertain---the more the fundamental value is in dispute, the more room noise-trader demand has to push prices away from it.
+\item \textbf{Arbitrage difficulty.} Mispricing is larger for assets whose characteristics make arbitrage more difficult---stocks with high idiosyncratic volatility, low institutional ownership, or expensive short selling.
+\item \textbf{Informative arbitrage.} Arbitrageurs' actions in correcting mispricing are themselves informative about future returns. When arbitrageurs buy an underpriced stock, they expect the price to rise as the mispricing closes; their trades forecast returns.
+\end{enumerate}
+
+Each prediction has generated a large empirical literature. Sections~\ref{sec:sophisticated}--\ref{sec:sentiment} develop the sophisticated-trader, noise-trader, and sentiment branches in turn.
+
+% ============================================================
+\section{Actions of Sophisticated Agents}
+\label{sec:sophisticated}
+
+If some assets are mispriced, the trades of sophisticated investors who act against the mispricing should predict returns. The framework has been tested using four classes of sophisticated agents: firm managers, short sellers, hedge funds, and analysts.
+
+\paragraph{Firm managers.} The key assumption is that firm managers can detect and respond to market mispricing. Two types of managerial action generate testable predictions. \emph{Issuance and repurchase} decisions change the supply of shares in response to investor demand: when a stock is overpriced, managers issue more shares, and when it is underpriced, they repurchase. \emph{Corporate insider trading}---managers' personal transactions in their own firms' stocks---similarly predicts future returns, with insider purchases forecasting positive returns and insider sales forecasting negative returns.
+
+\paragraph{Short sellers.} Short sellers are classic arbitrageurs in the \citet{delong1990} framework. \citet{asquithpathakritter2005} document that stocks with heavy short interest have low subsequent returns, consistent with the overpricing being identified (and partly corrected) by sophisticated traders.
+
+\paragraph{Hedge funds.} \citet{chendahuang2018} construct a measure of \emph{net arbitrage trading} (NAT) by hedge funds and show that NAT strongly predicts stock returns in the cross-section. The pattern is consistent with hedge funds betting against overvalued stocks and earning profits as the overpricing subsequently closes.
+
+\paragraph{Analysts.} \citet{leeso2017} document that abnormal analyst coverage---sudden additions of analyst coverage---positively predicts subsequent returns, consistent with the interpretation that analyst attention identifies underpriced stocks that subsequently revert as the information is incorporated.
+
+\subsection{Aggregate Predictions}
+
+The same logic applies at the aggregate level. When sophisticated agents' actions are aggregated to the market level, they should predict market returns in the same direction as at the stock level. \citet{bakerwurgler2000} show that the share of equity issues in total equity and debt issues negatively predicts market returns---when firms issue equity to take advantage of perceived overpricing, the aggregate issuance ratio is high and the subsequent market return is low. \citet{seyhun1998} document that aggregate insider trading positively forecasts market returns. \citet{rapachringgenbergzhou2016} document that aggregate short interest negatively forecasts market returns.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.50\textwidth]{slide24_pic3.png}
+\caption[Equity issuance and market returns]{\textbf{Equity issuance forecasts market returns.} The figure illustrates the central finding of \citet{bakerwurgler2000}: the share of equity issues in total equity and debt issues negatively predicts future market returns, consistent with managers timing the market by issuing equity when the market is overvalued. \textit{Source:} EF8083 course materials, after \citet{bakerwurgler2000}.}
+\label{fig:eqissue}
+\end{figure}
+
+% ============================================================
+\section{Actions of Noise Traders}
+\label{sec:noise}
+
+If some assets are mispriced, the trades of unsophisticated agents should \emph{negatively} predict returns: the noise traders buy at the peak and sell at the trough, and the resulting patterns reverse. Three influential studies establish the prediction.
+
+\citet{frazzinilamont2008} document that stocks held by mutual funds with large inflows over the previous three years have low subsequent returns. The mechanism is that fund inflows push up the prices of the stocks held by the recipient funds; the inflow-driven price increase subsequently reverses as flows subside.
+
+\citet{barberodeanzhu2009} and \citet{hvidkjaer2008} document the same pattern at the individual investor level. Stocks heavily bought by individual investors in the previous year perform poorly in the following year. The key data innovation is the use of small trades in the TAQ dataset to identify individual investors and the Lee--Ready algorithm to classify trades as buys or sells. The implied flow--return relation is large and statistically robust.
+
+\citet{daengelberggao2011} document the same pattern using Google search volume as a measure of attention. Higher attention, as captured by aggregate search volume for a stock's ticker, correlates with abnormal retail buying and elevated initial prices, with the price subsequently reverting.
+
+The pattern across the three studies is consistent and unified: any measure of unsophisticated buying pressure predicts subsequent low returns, and any measure of unsophisticated selling pressure predicts subsequent high returns. The mirror-image pattern in Section~\ref{sec:sophisticated}---sophisticated trades predict returns in the opposite direction---closes the loop. Mispricing is identified by sophisticated traders and unwound as the noise traders' demand fades.
+
+% ============================================================
+\section{Investor Sentiment and the Stock Market}
+\label{sec:sentiment}
+
+A more aggregate version of the noise-trader argument is \emph{investor sentiment}. Sentiment is a market-wide, time-varying component of demand that is not driven by fundamentals. The empirical challenge is that sentiment is unobservable, and the literature has converged on a small set of proxies.
+
+\subsection{The Baker--Wurgler Sentiment Index}
+
+\citet{bakerwurgler2006} construct a sentiment index as the principal component of six proxies drawn from market data:
+\begin{itemize}
+\item \textbf{Trading volume} (TTURN): the natural logarithm of the NYSE turnover ratio, detrended by its five-year moving average.
+\item \textbf{Closed-end fund discount} (CEFD): the average difference between the net asset values of closed-end stock fund shares and their market prices.
+\item \textbf{IPO activity} (NIPO): the number of IPOs.
+\item \textbf{First-day returns} (RIPO): the average first-day return on IPOs.
+\item \textbf{Equity issuance} (EIT): the ratio of equity issues to total equity and debt issues by all corporations.
+\item \textbf{Dividend premium} (DP): the difference between the average market-to-book ratios of dividend payers and nonpayers.
+\end{itemize}
+Each of these measures has been proposed by prior studies as capturing investor sentiment; the principal-component construction aggregates them into a single monthly index.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.80\textwidth]{27.png}
+\caption[The Baker--Wurgler sentiment index]{\textbf{The Baker--Wurgler sentiment index.} Monthly time series of the sentiment index constructed from the six proxies above. The index rises during periods of perceived market overheating (the late 1990s, 2017--2021) and falls during periods of perceived market pessimism (2008, 2022). \textit{Source:} EF8083 course materials, after \citet{bakerwurgler2006}.}
+\label{fig:bw}
+\end{figure}
+
+\citet{huangjiangtuzhou2015} refine the construction by replacing the principal-component step with a partial least squares (PLS) regression. PLS extracts the linear combination of the six proxies that best predicts one-year-ahead aggregate market returns, which is the economic target the index is supposed to capture. The PLS index has stronger in-sample and out-of-sample predictive power than the original sentiment indices.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.55\textwidth]{slide28_pic4.png}
+\caption[The PLS sentiment index]{\textbf{The PLS sentiment index.} The refined index of \citet{huangjiangtuzhou2015} uses partial least squares to extract the linear combination of the six proxies that most efficiently forecasts one-year-ahead market returns. The refined index has greater predictive power than the original. \textit{Source:} \citet{huangjiangtuzhou2015}, reproduced from the original article.}
+\label{fig:pls}
+\end{figure}
+
+\subsection{Sentiment and Aggregate Market Returns}
+
+\citet{bakerwurgler2007} show that sentiment predicts market returns with a negative sign: high sentiment today forecasts low market returns over the next one to three years. The pattern is consistent with the mispricing interpretation: high sentiment is associated with elevated prices that subsequently revert, and the reversion shows up as low future returns.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.55\textwidth]{slide29_pic4.jpg}
+\caption[Sentiment and market returns]{\textbf{Sentiment predicts low future market returns.} The figure illustrates the central finding of \citet{bakerwurgler2007}: periods of high sentiment forecast low market returns over the subsequent one to three years. \textit{Source:} \citet{bakerwurgler2007}, reproduced from the original article.}
+\label{fig:sentret}
+\end{figure}
+
+\subsection{The Role of Uncertainty}
+
+\citet{birru2022} sharpen the inference by showing that the return predictability of investor sentiment is much greater when uncertainty is high. The mechanism is that sentiment has the largest effect on asset prices precisely when valuations are most subjective, which is precisely when disagreement about the fundamental is most pronounced. The finding is consistent with the De Long--Shleifer--Summers--Waldmann prediction that mispricing is larger when valuation is more uncertain.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.50\textwidth]{slide30_pic4.png}
+\caption[Sentiment and uncertainty]{\textbf{Sentiment matters more in uncertain times.} The figure illustrates the central finding of \citet{birru2022}: the predictive power of the sentiment index for market returns is sharply larger in periods of high uncertainty, consistent with the interpretation that mispricing is largest when fundamental value is most disputed. \textit{Source:} \citet{birru2022}, reproduced from the original article.}
+\label{fig:sentunc}
+\end{figure}
+
+\subsection{Cross-Sectional Implications}
+
+The De Long--Shleifer--Summers--Waldmann framework also predicts a cross-sectional implication. When market-wide sentiment is high, stocks that are hard to arbitrage and difficult to value should be overpriced most, and should earn the lowest subsequent returns. \citet{bakerwurgler2006} test the prediction by sorting stocks into hard-to-arbitrage categories (small, young, volatile, unprofitable, non-dividend-paying) and find that the predictive coefficient of sentiment is largest for these categories and near zero for the easy-to-arbitrage categories (large, mature, stable, profitable, dividend-paying).
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.50\textwidth]{slide31_pic4.jpg}
+\caption[Sentiment and cross-sectional returns]{\textbf{Sentiment effects concentrate in hard-to-arbitrage stocks.} The figure illustrates the cross-sectional prediction: the predictive coefficient of sentiment for subsequent returns is large and significant for small, young, volatile, unprofitable, and non-dividend-paying stocks, and close to zero for the easy-to-arbitrage counterparts. \textit{Source:} EF8083 course materials, after \citet{bakerwurgler2006}.}
+\label{fig:crosssent}
+\end{figure}
+
+\subsection{Sentiment and Anomalies}
+
+\citet{stambaughyuyuan2012} sharpen the cross-sectional argument with a theoretical and empirical point: anomalies should be amplified following high sentiment. The theoretical reason is asymmetry: the effect of sentiment should be stronger for overpricing than for underpricing, because short-sale constraints make the short leg harder to correct. Empirically, the authors show that long--short anomaly returns are significantly larger following periods of high sentiment, with the effect concentrated on the short leg.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.50\textwidth]{slide32_pic4.jpg}
+\caption[Sentiment and anomalies]{\textbf{Sentiment amplifies anomalies on the short side.} The figure illustrates the central finding of \citet{stambaughyuyuan2012}: long--short anomaly returns are larger following high-sentiment periods, with the amplification concentrated on the short leg---exactly the side where short-sale constraints bind. \textit{Source:} \citet{stambaughyuyuan2012}, reproduced from the original article.}
+\label{fig:attsyy}
+\end{figure}
+
+\subsection{The Day-of-the-Week Effect}
+
+\citet{birru2018} provides a more granular look at the same mechanism. Long--short anomaly returns are systematically related to the day of the week: they are largest on Monday and smallest on Friday. The pattern is most pronounced when the short leg is speculative---that is, when the overpricing is most sensitive to investor mood. The result is consistent with a psychology literature documenting that mood rises over the weekend and falls at the start of the work week; the day-of-week effect on anomalies is the asset-pricing counterpart of mood-induced variation in risk-taking.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.50\textwidth]{slide33_pic4.jpg}
+\caption[Day of week and anomaly returns]{\textbf{Monday up, Friday down.} The figure illustrates the day-of-the-week effect on long--short anomaly returns documented by \citet{birru2018}: returns are largest on Mondays and smallest on Fridays, with the effect strongest when the short leg is most speculative. \textit{Source:} \citet{birru2018}, reproduced from the original article.}
+\label{fig:dow}
+\end{figure}
+
+\subsection{The Risk--Return Trade-off}
+
+\citet{shenyuzhao2017} document that sentiment also affects the cross-sectional risk--return trade-off. When sentiment is high, sentiment-driven investors tend to require a smaller compensation for the risk they bear---they are more willing to bear risk because they are optimistic about it. In addition, riskier stocks are more subject to sentiment shifts and become more overpriced. Together with short-sale constraints, this mechanism attenuates or even reverses the risk--return trade-off during high-sentiment periods.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.55\textwidth]{slide34_pic3.png}
+\caption[Sentiment and the risk-return trade-off]{\textbf{The risk--return trade-off reverses in high-sentiment periods.} The figure illustrates the finding of \citet{antonioudoukassubrahmanyam2016} (and conceptually related work of \citet{shenyuzhao2017}): during high-sentiment periods, the security market line flattens or reverses, because sentiment-driven investors require less compensation for risk and riskier stocks are more subject to sentiment shifts. \textit{Source:} EF8083 course materials, after \citet{antonioudoukassubrahmanyam2016}.}
+\label{fig:rro}
+\end{figure}
+
+A related strand of evidence concerns characteristic-based factor betas. \citet{chenfactor2025} examine characteristic-beta-sorted portfolios (e.g., momentum beta) and find that high-beta portfolios yield higher returns than low-beta portfolios following high-sentiment periods. The result suggests that characteristic-based factor beta is more likely a proxy for the level of mispricing than for exposure to systematic risk.
+
+\subsection{Other Measures of Aggregate Sentiment}
+
+The Baker--Wurgler index and its refinements are the canonical sentiment measure, but a number of alternative constructions have appeared in the literature. They share a common feature: each attempts to capture investor mood or belief using a source of data other than equilibrium asset prices.
+
+\paragraph{FEARS.} \citet{daengelberggao2014} aggregate the volume of Google search queries related to household concerns and construct the Financial and Economic Attitudes Revealed by Search (FEARS) index. The advantages over the Baker--Wurgler proxies are threefold. The index is more transparent (the underlying search terms are visible). It is higher frequency (daily, rather than monthly). It reveals attitudes rather than inquiring about them: the index is based on what investors choose to search for, not on what they report in a survey.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.50\textwidth]{slide36_pic4.png}
+\caption[FEARS and asset returns]{\textbf{FEARS.} The figure illustrates the central patterns documented by \citet{daengelberggao2014}: FEARS is negatively related to contemporaneous returns and positively related to future returns; it also predicts temporary increases in volatility and mutual fund flows out of equity funds and into bond funds. \textit{Source:} EF8083 course materials, after \citet{daengelberggao2014}.}
+\label{fig:fears}
+\end{figure}
+
+\paragraph{Manager sentiment.} \citet{jiangetal2019} construct a manager sentiment index from the aggregated textual tone in 10-K filings, 10-Q filings, and conference call transcripts. Manager sentiment is a strong negative predictor of future aggregate stock market returns---a finding that is interesting precisely because managers are sophisticated agents whose communications are observable to investors. The result suggests that even sophisticated agents' revealed sentiment (as opposed to their actions) carries incremental information for prices.
+
+\paragraph{Aggregate short interest.} Short sellers are sophisticated investors who can correct mispricing induced by sentiment traders; the aggregate short-interest position is therefore a contrarian signal. \citet{rapachringgenbergzhou2016} and others document that short interest aggregated to the market level is a strong contrarian predictor of future market returns.
+
+\paragraph{Leveraged ETF flows.} \citet{davies2022} constructs a Speculative Sentiment Index (SSI) based on the difference between share change in leveraged-long ETFs and share change in leveraged-short ETFs. The index captures the speculative component of market demand: leveraged ETFs are heavily traded by investors who bet on the direction of future market movement, and the difference in flows between the long and short sides is a clean measure of speculative demand. A one-standard-deviation increase in the monthly index is associated with a 1.14--1.67\% decline in broad-market stock returns over the next month.
+
+\paragraph{Music sentiment.} \citet{edmans2022} propose a real-time, continuous measure of national sentiment based on the positivity of songs that individuals choose to listen to. Music sentiment has three attractive properties as a sentiment measure: it is real-time, language-free, and comparable across countries, and exogenous to financial market events. Music sentiment is positively correlated with same-week equity market returns and negatively correlated with next-week returns; it also predicts increases in net mutual fund flows and a rise in stock market volatility. Music sentiment is negatively associated with government bond returns, consistent with a flight to safety when sentiment deteriorates.
+
+% ============================================================
+\section{Credit Market Sentiment}
+\label{sec:credit}
+
+Equity market sentiment is one thing; credit market sentiment is another. The two are conceptually distinct because debt and equity are claims to different parts of the cash-flow distribution and trade in markets with different investor populations.
+
+\citet{greenwoodhanson2013} construct a sentiment measure for the credit market by comparing the credit quality of high-issuance firms with that of low-issuance firms. The intuition is that a significant decline in issuers' credit quality is a reliable signal of credit market overheating. The implementation uses the issuers' credit ratings: high-issuance firms whose credit quality has fallen relative to low-issuance firms are the firms most likely to have been financed by overheated credit markets.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.55\textwidth]{slide42_pic4.png}
+\caption[Credit market sentiment]{\textbf{Credit market sentiment.} The figure illustrates the central finding of \citet{greenwoodhanson2013}: periods in which firms with falling credit quality are heavily issuing debt are periods of credit market overheating, with subsequent low excess bond returns. \textit{Source:} \citet{greenwoodhanson2013}, reproduced from the original article.}
+\label{fig:credit}
+\end{figure}
+
+The economic magnitudes are substantial. A one-standard-deviation increase in the issuer credit-quality differential implies cumulative excess bond returns that fall by 7.30 percentage points over the following two years.
+
+\subsection{Credit Sentiment and Economic Growth}
+
+Credit market overheating is associated with a higher probability of a future financial crisis and a subsequent economic downturn. \citet{schularicktaylor2012} document that credit growth is a robust predictor of financial crises in a long historical sample. \citet{lopezsalidosteinzakrajsek2017} document the same pattern in U.S.\ postwar data. \citet{baronxiong2017} show that bank credit expansion predicts increased bank equity crash risk: despite the elevated crash risk, credit expansion predicts lower mean bank equity returns over the subsequent one to three years. Bank credit expansion is distinct from equity market sentiment as captured by the dividend yield, suggesting that credit and equity markets are only partially integrated.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.50\textwidth]{slide44_pic4.png}
+\caption[Credit expansion and economic downturns]{\textbf{Credit expansion forecasts economic downturns.} The figure illustrates the central finding of \citet{lopezsalidosteinzakrajsek2017}: rapid credit expansion forecasts subsequent economic downturns with high probability, and credit-based sentiment measures have greater macroeconomic significance than equity-based measures. \textit{Source:} \citet{lopezsalidosteinzakrajsek2017}, reproduced from the original article.}
+\label{fig:credgd}
+\end{figure}
+
+\subsection{Predictable Financial Crises}
+
+\citet{greenwoodhansonshleifersorensen2022} formalize the crisis-prediction argument using data on financial crises around the world. The combination of rapid credit and asset price growth over the prior three years---the \emph{R-zone}---is associated with a 40\% probability of entering a financial crisis within the next three years. The pattern is robust across countries and over more than a century of data.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.70\textwidth]{slide46_pic4.png}
+\caption[The R-zone and financial crises]{\textbf{The R-zone predicts crises.} The figure illustrates the central finding of \citet{greenwoodhansonshleifersorensen2022}: countries in the R-zone (rapid credit growth and asset price growth over the prior three years) face a 40\% probability of entering a financial crisis within the next three years. \textit{Source:} \citet{greenwoodhansonshleifersorensen2022}, reproduced from the original article.}
+\label{fig:crisis}
+\end{figure}
+
+\subsection{Credit versus Equity Sentiment}
+
+Empirical measures of credit market sentiment are only modestly correlated with measures of equity market sentiment. The low correlation suggests that equity and credit markets should not be thought of as fully integrated: each market has its own investor population, its own information flows, and its own sentiment dynamics. The macroeconomic implication is important: measures of expected returns on the stock market (such as Shiller's CAPE) do not predict future GDP growth, while measures of credit market overheating do. Credit market sentiment therefore has potentially greater macroeconomic significance than equity market sentiment.
+
+\subsection{Determinants of Credit Market Sentiment}
+
+A number of variables track the credit sentiment cycle. Short-term rates are low or have fallen in the recent past, consistent with ``reaching for yield.'' Term and credit spreads are low or have fallen. Past default rates have been low or falling. Investors flow into high-yield bond funds. Intermediary balance sheets are strong. The pattern is consistent with both frictional and behavioral interpretations: low rates push intermediaries into riskier assets, but the same low rates also feed the optimistic beliefs that justify the risk-taking.
+
+\subsection{An Early Indicator}
+
+\citet{benrephaelchoigoldstein2021} document an early indicator of credit booms based on intra-family flow shifts towards high-yield bond mutual funds. The advantage of intra-family flows is that they capture investors' deliberate asset allocation decisions rather than saving or investment decisions: when an investor moves money from one fund in a family to a higher-yielding fund in the same family, the move is more likely to reflect an active allocation choice. The intra-family flow indicator leads other measures of credit overheating (growth in financial intermediary balance sheets, increases in the share of high-yield issuers, downturns in credit spreads), suggesting that the credit boom originates in an increase in investors' demand for high-yield bonds, possibly due to biased perceptions of default risk.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.45\textwidth]{slide49_pic4.png}
+\caption[Intra-family flows as early indicators]{\textbf{Intra-family flows predict credit booms.} The figure illustrates the central finding of \citet{benrephaelchoigoldstein2021}: intra-family flow shifts towards high-yield bond mutual funds lead other indicators of credit-market overheating, suggesting that the credit cycle originates in investors' demand for high-yield bonds. \textit{Source:} \citet{benrephaelchoigoldstein2021}, reproduced from the original article.}
+\label{fig:intra}
+\end{figure}
+
+% ============================================================
+\section{A Behavioral Account of the Credit Cycle}
+\label{sec:creditcycle}
+
+The credit cycle has a long historical narrative. \citet{kindleberger1978} describes the Minsky--Kindleberger cycle of credit expansion and reversal, in which investor optimism grows during the boom and turns to panic during the bust. The full behavioral model is developed in \citet{bordalo2018} and \citet{greenwoodhansonjin2024}.
+
+The key feature of the model is \emph{reflexivity}---the feedback loop between investors' biased perceptions and market outcomes. The mechanism is the following. Investors hold extrapolative beliefs based on borrowers' recent default history: during a boom, investors extend credit on attractive terms because borrowers have paid back in the past. Even if borrowers' fundamental position deteriorates, this may not be directly visible for a while because borrowers roll over their debt at low rates. The terms at which new credit is extended remain favorable, and the market perceives the issuers as healthy. When the reckoning eventually comes---when refinancing conditions tighten, when a default actually arrives, or when a fundamental shock hits---markets overreact in the opposite direction, and the recovery is delayed by the gradual unfreezing of credit.
+
+The behavioral account of the credit cycle has the structure of a bounded-rationality model in which beliefs adapt slowly and credit conditions are persistent. It predicts the leading indicators documented above: rapid credit and asset price growth, followed by an elevated probability of crisis, followed by slow recovery. It also predicts the cross-asset pattern of returns during the boom and bust phases, with bond and equity returns both reversing sharply at the turning point.
+
+% ============================================================
+\section{What Remains Contested}
+\label{sec:attcontested}
+
+Three strands of evidence keep the bounded-rationality and psychology-free programs honest.
+
+\emph{First, the causal evidence is thinner than the correlational evidence.} The Hirshleifer--Lim--Teoh and Della Vigna--Pollet designs on PEAD, the Chen--An--Wang--Yu identification on attention spillover, and the Cohen--Frazzini customer--supplier spillover---each provides a quasi-experimental wedge on a particular mechanism. The wedges are convincing for the specific mechanisms they target, but they do not aggregate into a comprehensive identification of all bounded-rationality phenomena. The bulk of the evidence remains correlational, and the rational-alternative interpretations have to be ruled out by argument rather than by design.
+
+\emph{Second, the bounded-rationality reading competes with rational information-based alternatives in several applications.} The PEAD evidence, on the noisy-information reading, is the slow resolution of uncertainty rather than the slow incorporation of clear news; the Hong--Stein model itself, while parsimonious, is structurally similar to a model in which information diffuses slowly through a fully rational population. The bounded-rationality reading is favored by the attention-manipulation evidence (Hirshleifer--Lim--Teoh, Della Vigna--Pollet, Chen--An--Wang--Yu) but is not uniquely supported by it.
+
+\emph{Third, the psychology-free framework is silent on the source of noise-trader demand.} The De Long--Shleifer--Summers--Waldmann architecture makes contact with a wide range of facts without requiring any assumption about why noise traders are wrong. The strength of the framework is also its limitation: it does not adjudicate among the competing sources of noise-trader demand, and the predictions of the framework depend on how the noise-trader component is modeled. When the framework is used to interpret sentiment indices (Baker--Wurgler, FEARS, manager sentiment), the inference is from the predictive coefficient on subsequent returns; when it is used to interpret sophisticated-agent trades (insiders, short sellers, hedge funds), the inference is from the correlation of trades with subsequent returns. The two inferences are correlated and reinforce one another, but neither pins down the underlying source of noise-trader demand.
+
+The methodological lesson is the same as in earlier chapters: a behavioral or psychology-free model earns credibility when it predicts something not used to fit it, and when that prediction survives out-of-sample tests. The strongest out-of-sample predictions of this chapter are the cross-sectional amplification of anomalies following high sentiment \citep{stambaughyuyuan2012}, the predictability of credit returns from credit-market sentiment measures \citep{greenwoodhanson2013}, the EDGAR-style identifications of the De Long--Shleifer--Summers--Waldmann channel \citep{chang2022}, and the causal evidence on attention from the Chinese listing-code instrument \citep{chenawy2023}. The rest of the literature is competitive with rational alternatives.
+
+% ============================================================
+\section{The Road Ahead}
+\label{sec:attahead}
+
+This chapter has developed the third psychological ingredient of behavioral asset pricing: bounded rationality. Limited attention produces underreaction to subtle news; category thinking produces excess comovement; and the psychology-free framework produces a wide range of sentiment-driven return patterns with a minimum of psychological assumptions. Combined with the prospect-theory departures of Chapter~\ref{ch:preferences} and the biased-beliefs departures of Chapter~\ref{ch:beliefs}, the book now has the three psychological ingredients needed for most of behavioral finance.
+
+The final chapter assembles these ingredients into a specific class of models that have come to play an outsized role in modern behavioral asset pricing: \emph{memory-based} approaches. The premise is that investors form views about future cash flows not from a Bayesian aggregation of all available evidence but from the cases they most easily retrieve from memory. The same bounded-rationality machinery that produced limited attention in Chapter~\ref{ch:bounded} produces memory-based beliefs when the bias is in what investors remember rather than in how they process what they attend to. Memory-based models are the natural endpoint of a behavioral program that began with departures from expected utility (Chapter~\ref{ch:preferences}) and continued through biased beliefs (Chapter~\ref{ch:beliefs}) and bounded attention (Chapter~\ref{ch:bounded}). The final chapter develops the memory-based models and the asset pricing evidence they generate.
+
+Together with the four preceding chapters, the book develops the building blocks of behavioral asset pricing. The remaining chapter applies them to one of the most recent and rapidly expanding branches of the field: the role of memory in forming beliefs and the implications for prices.
