@@ -105,8 +105,8 @@ The framework is \emph{descriptive}: it is meant to capture how agents \emph{act
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.55\textwidth]{slide13_pic1.png}
-\caption[The prospect-theory value function]{The prospect-theory value function $v(\cdot)$, with reference point at zero. The function is concave over gains, convex over losses, and steeper for losses than for equal-sized gains: a one-unit loss reduces value more than a one-unit gain of the same magnitude increases it. \textit{Source:} \citet{kahneman1979}, Figure~1, reproduced from the original article.}
+\includegraphics[width=0.55\textwidth]{value_function.jpg}
+\caption[The prospect-theory value function]{The prospect-theory value function $v(\cdot)$, with the reference point at zero and a kink at the origin. The function is concave over gains, convex over losses, and steeper for losses than for equal-sized gains: a one-unit loss reduces value more than a one-unit gain of the same magnitude increases it. \textit{Source:} EF8083 course materials, after \citet{kahneman1979}.}
 \label{fig:valuefunction}
 \end{figure}
 
@@ -246,12 +246,12 @@ The model's central prediction is that skewness is priced in the cross-section. 
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=1.0\textwidth]{slide26_pic1.png}
-\caption[MAX-sorted decile returns]{MAX-sorted decile returns. Decile portfolios are sorted monthly on maximum daily return over the prior month. The high-minus-low return spread is $-1.03\%$ per month on value-weighted portfolios ($t = -2.83$) and $-0.65\%$ on equal-weighted portfolios ($t = -1.83$); the corresponding four-factor alpha spread is $-1.18\%$ ($t = -4.71$). Average daily MAX rises from $1.30\%$ in the low decile to $23.60\%$ in the high decile. \textit{Source:} \citet{bali2011}, Table~1.}
+\includegraphics[width=0.85\textwidth]{MaxRet_decile_bar.png}
+\caption[MAX-sorted decile returns, OSAP replication]{MAX-sorted decile portfolios: average monthly value-weighted returns, 1926--2024. Portfolios are sorted monthly on MAX, the maximum daily return over the prior month; decile~1 (red) is high MAX (lottery-like) and decile~10 (green) is low MAX. The high-MAX decile earns the lowest average return, 0.20\% per month ($t = 0.8$); the low-MAX decile earns 0.83\% per month ($t = 7.5$). The low-MAX-minus-high-MAX spread is 0.63\% per month ($t = 2.9$). \textit{Source:} Open Source Asset Pricing replication \citep{chen2022} of the MAX sort in \citet{bali2011}.}
 \label{fig:max}
 \end{figure}
 
-Figure~\ref{fig:max} shows the basic result. The high-minus-low return spread is $-1.03\%$ per month on value-weighted portfolios ($t = -2.83$) and $-0.65\%$ on equal-weighted portfolios ($t = -1.83$); the four-factor alpha spread is $-1.18\%$ ($t = -4.71$). Stocks with the highest maximum daily returns earn the lowest subsequent returns, consistent with the lottery-demand story: CPT investors bid them up, and the overpricing is reversed subsequently. The MAX effect also helps resolve the idiosyncratic volatility puzzle of Chapter~\ref{ch:intro}---idiosyncratic volatility and MAX are correlated, but MAX captures the part of volatility that is driven by extreme upside moves.
+Figure~\ref{fig:max} shows the basic result in the Open Source Asset Pricing data, which extend the \citet{bali2011} sample by four decades. Stocks with the highest maximum daily returns earn the lowest subsequent returns, consistent with the lottery-demand story: CPT investors overweight the extreme upside day, bid the stock up, and the overpricing is worked off subsequently. \citet{bali2011} further show that MAX exhibits strong negative return predictability and helps resolve the idiosyncratic volatility puzzle of Chapter~\ref{ch:intro}---idiosyncratic volatility and MAX are correlated, but MAX captures the part of volatility that is driven by extreme upside moves.
 
 \paragraph{Option-implied skewness.}
 \citet{conrad2013} use option prices to back out the implied skewness of the underlying stock and form portfolios on the prediction. The high-minus-low return spread is negative and significant, in line with CPT. The advantage over realized-skewness proxies is that option-implied skewness is forward-looking and not subject to the noise of realized skewness estimates.
@@ -330,12 +330,19 @@ For four prominent anomalies---momentum, failure probability, idiosyncratic vola
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.65\textwidth]{slide30_pic1.jpg}
-\caption[Reference-dependent preferences and the risk--return trade-off]{Reference-dependent preferences and the risk--return trade-off. The figure reports difference-in-differences estimates of risk--return trade-off coefficients across capital gain overhang (CGO) quintiles. The trade-off is positive for high-CGO stocks (face capital gains, risk-averse) and negative for low-CGO stocks (face capital losses, risk-seeking); the difference is statistically significant. \textit{Source:} \citet{wang2016}, Table~III.}
+\includegraphics[width=0.9\textwidth]{Table3_return_vs_risk_by_CGO.png}
+\caption[Reference-dependent preferences and the risk--return trade-off]{Reference-dependent preferences and the risk--return trade-off. The table reports estimates of risk--return trade-off coefficients across capital gain overhang (CGO) portfolios. The trade-off is positive for high-CGO stocks, in which investors face prior gains and are risk averse, and negative for low-CGO stocks, in which investors face prior losses and are risk seeking; the difference is statistically significant. \textit{Source:} \citet{wang2016}, Table~III.}
 \label{fig:wangyan}
 \end{figure}
 
 The asymmetric value function also has implications for the cross-sectional risk--return relation. \citet{wang2016} measure the capital gain overhang (CGO) of each stock---the unrealized gain or loss of the average investor---and ask how the cross-sectional risk--return relation depends on the sign of the overhang. Figure~\ref{fig:wangyan} shows the result: the trade-off is positive among stocks where investors face prior gains (and are therefore risk averse) and negative among stocks where investors face prior losses (and are therefore risk seeking). The two-pronged effect breaks the linear positive risk--return relation that the CAPM predicts, and offers a PT-based reading of the high-risk-low-alpha puzzle of Chapter~\ref{ch:intro}.
+
+\subsection{My Research: Stock Splits as Behavioral Signals}
+\label{sec:splits}
+
+The loss-aversion machinery of this chapter also speaks to corporate events, not only to portfolio choice. \citet{licuipangxie} ask why stock splits can serve as a credible positive signal to the market even though the direct costs of implementing a split are trivial. The question bites because standard signaling logic requires a signal to be costly: a nearly free signal should be sent by everyone and convey nothing. Their answer is loss aversion on the investor side. Retail investors treat a stock split as good news, and the split raises their expectations about future firm fundamentals and price appreciation. Because investors evaluate subsequent outcomes relative to that elevated reference point, missing the raised expectations triggers a disproportionately large price decline: the split is mechanically cheap, but its expected cost in the loss domain is large. In equilibrium, only managers with favorable information find it worthwhile to split---loss aversion is what makes the cheap signal costly in expectation, and therefore credible.
+
+The evidence comes from China. Investors turn more optimistic after splits, higher split ratios bring stronger market reactions, and the prices of splitting firms fall harder when the firms subsequently miss the elevated expectations. The connection to this chapter is direct: splits work as signals \emph{because} investors evaluate outcomes as gains and losses relative to an elevated reference point, which is precisely the reference-dependent value function of Section~\ref{sec:prospect}.
 
 % ============================================================
 \section{Prospect Theory and the Aggregate Stock Market}

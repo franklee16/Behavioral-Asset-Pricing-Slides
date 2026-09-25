@@ -29,8 +29,8 @@ The strongest empirical evidence for limited attention in finance comes from the
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.70\textwidth]{slide04_pic4.jpg}
-\caption[PEAD is stronger when attention is scarce]{\textbf{Attention and PEAD.} The figure illustrates the central evidence: the post-earnings announcement drift is stronger when many firms announce on the same day \citep{hirshleifer2009} or when announcements occur on Fridays \citep{dellavigna2009}. Both patterns point to the immediate market reaction being weaker precisely when investor attention is plausibly more divided. \textit{Source:} EF8083 course materials, after \citet{hirshleifer2009}.}
+\includegraphics[width=0.48\textwidth]{friday_EA.png}
+\caption[PEAD is stronger for Friday announcements]{\textbf{Friday announcements drift more.} The figure illustrates the Della Vigna--Pollet evidence: earnings announcements made on Fridays exhibit a weaker immediate market reaction but a stronger post-earnings announcement drift than announcements on other weekdays, because Friday announcements attract less investor attention. \textit{Source:} EF8083 course materials, after \citet{dellavigna2009}.}
 \label{fig:attpead}
 \end{figure}
 
@@ -42,10 +42,8 @@ A further pattern points to a structural feature of attention: investors notice 
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.42\textwidth]{slide05_pic4.jpg}
-\hspace{0.3em}
-\includegraphics[width=0.42\textwidth]{slide05_pic5.png}
-\caption[Frog in the pan: small steps versus large steps]{\textbf{Small steps versus large steps.} Left: under a series of small earnings surprises of the same total magnitude, the price moves only weakly on each step and continues to drift, generating momentum. Right: under a single large surprise, the price moves sharply on impact and continues to mean-revert. The difference is the \emph{frog in the pan} hypothesis of \citet{da2014}. \textit{Source:} EF8083 course materials, after \citet{da2014}.}
+\includegraphics[width=0.48\textwidth]{slide05_pic4.jpg}
+\caption[The frog in the pan]{\textbf{The frog in the pan.} Information arriving as a series of frequent small changes attracts less attention than the same information arriving as an infrequent large change. Investors are inattentive to the continuous stream, so the price drifts with the news instead of jumping, and momentum emerges. \textit{Source:} EF8083 course materials, after \citet{da2014}.}
 \label{fig:frog}
 \end{figure}
 
@@ -57,7 +55,13 @@ Underreaction is most likely when the news is less salient or more subtle. Three
 
 \paragraph{Technological information.} \citet{hirshleifer2013} use citation patterns in patent data to measure firms' innovative efficiency, and find that investors underreact to the implied information about future productivity. \citet{cohenmalloy2013} use the release dates of the innovation scores that \emph{BusinessWeek} published in its (now-discontinued) annual ranking of the world's most innovative companies to identify when the information became public, and show that the market is slow to incorporate it---an unusually clean case of bounded attention tied to a known publication event.
 
-\paragraph{The absence of news.} A more surprising version of the pattern is that the \emph{absence} of news is itself information. \citet{giglio2014} observe that the passage of time after an announced merger is informative about the probability that the deal will close: as time passes without disruption, the conditional probability of completion rises. Investors should therefore bid up target-firm prices gradually after an announcement; in practice, the price moves sharply on the announcement and drifts up only weakly thereafter. \citet{hongli2019} document the analogous pattern with insider trades: when routine insiders stop trading in the months they are expected to trade, the absence of trading is itself a signal, and the market underreacts to it.
+\paragraph{The absence of news.} A more surprising version of the pattern is that the \emph{absence} of news is itself information. \citet{giglio2014} observe that the passage of time after an announced merger is informative about the probability that the deal will close: as time passes without disruption, the conditional probability of completion rises. Investors should therefore bid up target-firm prices gradually after an announcement; in practice, the price moves sharply on the announcement and drifts up only weakly thereafter.
+
+\subsection{My Research: The Information Content of Sudden Insider Silence}
+
+\citet{hongli2019} study the same logic---underreaction to the absence of an expected event---in the setting of corporate insider trading. Some insiders trade on a regular calendar: they buy or sell in the same months year after year, for liquidity and diversification reasons. The paper identifies these \emph{routine} insiders from their calendar trading patterns and treats a sudden stop in their trading as a deviation from routine---an event that carries information precisely because nothing happened. The premise is that routine insiders strategically stay silent when they hold private information: an insider who would ordinarily sell, but knows bad news is coming, has a reason to stop selling.
+
+The empirical patterns bear out the interpretation. Silence after routine selling predicts positive future returns and fundamentals, and silence after routine buying predicts negative ones; a long--short strategy that trades on sudden silence earns 6--10\% annually. The returns concentrate at earnings announcements---when the private information the silence concealed is revealed---and are stronger where information environments are poor and arbitrage is costly, exactly the conditions under which underreaction should survive. The result extends the subtle-news evidence of this section: what investors fail to process is not a buried disclosure but the nonoccurrence of an expected trade, which is hard to recognize as informative without deliberate attention to the insider's own history.
 
 \subsection{Momentum Spillover: Economic Linkages}
 
@@ -67,12 +71,18 @@ A growing literature documents that investors underreact to news of economically
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.55\textwidth]{slide07_pic4.jpg}
+\includegraphics[width=0.55\textwidth]{l5_slide07_pic4.jpg}
 \caption[Momentum spillover across customer-supplier links]{\textbf{Spillover across customer--supplier links.} The figure illustrates the central finding of \citet{cohenfrazzini2008}: when a major customer announces positive earnings news, the supplier's price moves only weakly on impact and continues to drift upward for months. \textit{Source:} EF8083 course materials, after \citet{cohenfrazzini2008}.}
 \label{fig:spillover}
 \end{figure}
 
 \paragraph{Other economic linkages.} The same pattern holds for other types of economic linkages. \citet{moskowitz1999} document industry momentum, in which firms in the same industry comove beyond what their cash flows can justify. \citet{cohenlou2012} show that conglomerate firms are slower than standalone firms to reflect industry news, consistent with the interpretation that complex structures draw less attention. \citet{huang2015} document that multinational firms underreact to foreign industry news; \citet{hoberg2016} use product market peers identified through textual analysis of annual reports; \citet{parsons2020} identify geographic peers as firms headquartered in the same state; \citet{jinli2024} use firms with overlapping geographic establishments. \citet{lee2019} identify technological peers through shared technology classifications, and \citet{alihirshleifer2020} show that firms followed by the same analysts comove more than fundamentals predict. The list is long and the pattern is uniform: when two firms are linked through any economically meaningful channel, the price of one moves only gradually in response to news about the other.
+
+\subsection{My Research: Geographic and Scope Links}
+
+Two of my own papers push the momentum-spillover literature one step further by asking whether investors underreact even when the linkage itself is the subtle information. \citet{jinli2024} link firms through overlapping establishment locations---the places where sales are actually generated---rather than through headquarters. Because firms report establishment-level activity only in dispersed regulatory filings, computing a firm's geographic footprint requires assembling information across sources, which is exactly the kind of processing to which investors are inattentive. Returns and fundamentals of geography-linked peers predict focal-firm returns, and the predictability is stronger for low-attention firms, for costly-to-arbitrage stocks, and during high-sentiment periods---the same conditioning variables that amplify the underreaction patterns documented throughout this section.
+
+A companion working paper with Li Jin asks the same question about \emph{scope similarity}: firms whose product-market scope overlaps, in the sense of \citet{hoberg2016}, but that sit in different industries and therefore never appear in the same industry list. Investors are slow to incorporate news about scope peers, and a long--short portfolio that buys firms whose scope peers recently outperformed earns 8.9\% per year in five-factor alpha. The common lesson of both papers is that the named linkages of the spillover literature---customers, industries, states---are only the easiest cases; the underlying phenomenon is that any economically meaningful connection whose computation is costly will be processed slowly.
 
 \subsection{Cross-Asset Predictability}
 
@@ -82,7 +92,7 @@ Limited attention also predicts that prices will underreact to information that 
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.55\textwidth]{slide09_pic4.png}
+\includegraphics[width=0.55\textwidth]{l5_slide09_pic4.png}
 \caption[Loan prices and equity returns]{\textbf{Loan prices forecast equity returns.} The figure illustrates the central finding of \citet{addoummurfin2020}: prices of syndicated loans contain useful information about the borrowing firms, but equity investors fail to incorporate the information, generating predictability from loan markets to equity markets. \textit{Source:} \citet{addoummurfin2020}, reproduced from the original article.}
 \label{fig:loan}
 \end{figure}
@@ -152,7 +162,7 @@ Because attention leads to excessive buying demand, stocks displayed next to tho
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.55\textwidth]{slide16_pic4.png}
+\includegraphics[width=0.55\textwidth]{l5_slide16_pic4.png}
 \caption[Causal evidence on attention]{\textbf{More attention, higher price, subsequent reversal.} The figure shows that stocks displayed next to high-return neighbours earn higher returns in the following week (consistent with attention-driven buying) and revert over longer horizons (consistent with bounded rationality rather than new information). \textit{Source:} \citet{chenawy2023}, reproduced from the original article.}
 \label{fig:china_att2}
 \end{figure}
@@ -235,6 +245,12 @@ If some assets are mispriced, the trades of unsophisticated agents should \emph{
 
 The pattern across the three studies is consistent and unified: any measure of unsophisticated buying pressure predicts subsequent low returns, and any measure of unsophisticated selling pressure predicts subsequent high returns. The mirror-image pattern in Section~\ref{sec:sophisticated}---sophisticated trades predict returns in the opposite direction---closes the loop. Mispricing is identified by sophisticated traders and unwound as the noise traders' demand fades.
 
+\subsection{My Research: Information Acquisition via EDGAR Search}
+
+\citet{lisun2022} study the same cross-section of demand, but from the information-acquisition side rather than the trading side. SEC EDGAR server logs record the number of distinct IP addresses that search each firm's filings, which makes observable---for the entire market, at firm-month frequency---a direct measure of costly information acquisition. When abnormal EDGAR search is high, more investors are paying the cost of reading a firm's filings; the paper shows that abnormal EDGAR search predicts future returns and fundamentals, and that a long--short portfolio sorted on it earns 80 basis points per month with no long-run reversal. Predictability is stronger for larger and lengthier filings, the filings that cost more to process, consistent with endogenous information acquisition: investors search more when the payoff to processing is higher.
+
+The comparison with the Google-search evidence of \citet{daengelberggao2011} in this section is instructive. Google search volume measures what grabs retail investors' attention---a stock that is already salient---and the attention-driven buying it flags reverses. EDGAR search measures deliberate, costly processing by investors who choose to read filings, and the demand it foreshadows does not reverse. Attention and acquisition are two sides of bounded rationality operating in opposite directions on prices: the first pushes them away from fundamentals, the second pulls them back.
+
 % ============================================================
 \section{Investor Sentiment and the Stock Market}
 \label{sec:sentiment}
@@ -256,8 +272,8 @@ Each of these measures has been proposed by prior studies as capturing investor 
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.80\textwidth]{27.png}
-\caption[The Baker--Wurgler sentiment index]{\textbf{The Baker--Wurgler sentiment index.} Monthly time series of the sentiment index constructed from the six proxies above. The index rises during periods of perceived market overheating (the late 1990s, 2017--2021) and falls during periods of perceived market pessimism (2008, 2022). \textit{Source:} EF8083 course materials, after \citet{bakerwurgler2006}.}
+\includegraphics[width=0.85\textwidth]{BW_sentiment_index.png}
+\caption[The Baker--Wurgler sentiment index]{\textbf{The Baker--Wurgler sentiment index.} Two-panel monthly time series, 1965--2025, with NBER recession shading: the raw sentiment index (top panel) and the orthogonalized index that purges macroeconomic conditions (bottom panel). \textit{Source:} EF8083 course materials, using the updated Baker--Wurgler index series after \citet{bakerwurgler2006} and \citet{huangjiangtuzhou2015}.}
 \label{fig:bw}
 \end{figure}
 
@@ -309,8 +325,8 @@ The De Long--Shleifer--Summers--Waldmann framework also predicts a cross-section
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.50\textwidth]{slide32_pic4.jpg}
-\caption[Sentiment and anomalies]{\textbf{Sentiment amplifies anomalies on the short side.} The figure illustrates the central finding of \citet{stambaughyuyuan2012}: long--short anomaly returns are larger following high-sentiment periods, with the amplification concentrated on the short leg---exactly the side where short-sale constraints bind. \textit{Source:} \citet{stambaughyuyuan2012}, reproduced from the original article.}
+\includegraphics[width=0.75\textwidth]{sentiment_anomaly.png}
+\caption[Sentiment and anomalies]{\textbf{Sentiment amplifies anomalies on the short side.} The figure illustrates the central finding of \citet{stambaughyuyuan2012}: long--short anomaly returns are larger following high-sentiment periods than following low-sentiment periods, and the amplification concentrates in the short legs---the overpriced stocks that short-sale constraints prevent arbitrageurs from correcting. \textit{Source:} EF8083 course materials, after \citet{stambaughyuyuan2012}.}
 \label{fig:attsyy}
 \end{figure}
 
@@ -331,8 +347,8 @@ The De Long--Shleifer--Summers--Waldmann framework also predicts a cross-section
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.55\textwidth]{slide34_pic3.png}
-\caption[Sentiment and the risk-return trade-off]{\textbf{The risk--return trade-off reverses in high-sentiment periods.} The figure illustrates the finding of \citet{antonioudoukassubrahmanyam2016} (and conceptually related work of \citet{shenyuzhao2017}): during high-sentiment periods, the security market line flattens or reverses, because sentiment-driven investors require less compensation for risk and riskier stocks are more subject to sentiment shifts. \textit{Source:} EF8083 course materials, after \citet{antonioudoukassubrahmanyam2016}.}
+\includegraphics[width=0.70\textwidth]{sentiment_macrofactor.png}
+\caption[Sentiment and the risk-return trade-off]{\textbf{The risk--return trade-off weakens when sentiment is high.} The figure illustrates the mechanism and evidence of \citet{shenyuzhao2017}: during high-sentiment periods, sentiment-driven investors require less compensation for bearing risk and riskier stocks are more subject to sentiment-driven overpricing, so the cross-sectional relation between risk and expected returns flattens or even reverses. \textit{Source:} EF8083 course materials, after \citet{shenyuzhao2017}.}
 \label{fig:rro}
 \end{figure}
 
@@ -412,7 +428,7 @@ A number of variables track the credit sentiment cycle. Short-term rates are low
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.45\textwidth]{slide49_pic4.png}
+\includegraphics[width=0.45\textwidth]{l5_slide49_pic4.png}
 \caption[Intra-family flows as early indicators]{\textbf{Intra-family flows predict credit booms.} The figure illustrates the central finding of \citet{benrephaelchoigoldstein2021}: intra-family flow shifts towards high-yield bond mutual funds lead other indicators of credit-market overheating, suggesting that the credit cycle originates in investors' demand for high-yield bonds. \textit{Source:} \citet{benrephaelchoigoldstein2021}, reproduced from the original article.}
 \label{fig:intra}
 \end{figure}
@@ -439,7 +455,7 @@ Three strands of evidence keep the bounded-rationality and psychology-free progr
 
 \emph{Third, the psychology-free framework is silent on the source of noise-trader demand.} The De Long--Shleifer--Summers--Waldmann architecture makes contact with a wide range of facts without requiring any assumption about why noise traders are wrong. The strength of the framework is also its limitation: it does not adjudicate among the competing sources of noise-trader demand, and the predictions of the framework depend on how the noise-trader component is modeled. When the framework is used to interpret sentiment indices (Baker--Wurgler, FEARS, manager sentiment), the inference is from the predictive coefficient on subsequent returns; when it is used to interpret sophisticated-agent trades (insiders, short sellers, hedge funds), the inference is from the correlation of trades with subsequent returns. The two inferences are correlated and reinforce one another, but neither pins down the underlying source of noise-trader demand.
 
-The methodological lesson is the same as in earlier chapters: a behavioral or psychology-free model earns credibility when it predicts something not used to fit it, and when that prediction survives out-of-sample tests. The strongest out-of-sample predictions of this chapter are the cross-sectional amplification of anomalies following high sentiment \citep{stambaughyuyuan2012}, the predictability of credit returns from credit-market sentiment measures \citep{greenwoodhanson2013}, the EDGAR-style identifications of the De Long--Shleifer--Summers--Waldmann channel \citep{chang2022}, and the causal evidence on attention from the Chinese listing-code instrument \citep{chenawy2023}. The rest of the literature is competitive with rational alternatives.
+The methodological lesson is the same as in earlier chapters: a behavioral or psychology-free model earns credibility when it predicts something not used to fit it, and when that prediction survives out-of-sample tests. The strongest out-of-sample predictions of this chapter are the cross-sectional amplification of anomalies following high sentiment \citep{stambaughyuyuan2012}, the predictability of credit returns from credit-market sentiment measures \citep{greenwoodhanson2013}, the EDGAR-based evidence on information acquisition and disagreement \citep{lisun2022,chang2022}, and the causal evidence on attention from the Chinese listing-code instrument \citep{chenawy2023}. The rest of the literature is competitive with rational alternatives.
 
 % ============================================================
 \section{The Road Ahead}

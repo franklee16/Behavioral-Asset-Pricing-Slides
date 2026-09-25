@@ -15,9 +15,9 @@ added later as `chapter6_*.tex` and `\input` into `main.tex`.
 | `chapter3_preferences.tex` | Ch. 3 — Preferences Under Uncertainty, converted from `../Lecture3_LaTeX/Lecture3_Preferences.tex` |
 | `chapter4_beliefs.tex` | Ch. 4 — Biased Beliefs, converted from `../Lecture4_LaTeX/Lecture4_Beliefs.tex` |
 | `chapter5_bounded.tex` | Ch. 5 — Bounded Rationality and Psychology-free Models, converted from `../Lecture5_LaTeX/Lecture5_BoundedRationality.tex` |
-| `references.bib` | Verified entries (all citations across Ch. 1–5; ~204 entries as of 2026-09-15) |
-| `figures/` | Figures copied from `../LectureN_LaTeX/figures/` (original slide assets) |
-| `main.pdf` | Compiled book (127 pages, Ch. 1–5) |
+| `references.bib` | Verified entries (all citations across Ch. 1–5; 226 entries as of 2026-09-25) |
+| `figures/` | Figures copied from `../LectureN_LaTeX/figures/` (original slide assets). Note: Lectures 4 and 5 share some filenames with different content — the plain filename holds the Lecture 4 version; Lecture 5 versions live under `l5_`-prefixed names (referenced only by `chapter5_bounded.tex`) |
+| `main.pdf` | Compiled book (146 pages, Ch. 1–5) |
 
 ## Build
 
@@ -38,7 +38,7 @@ Requires a TeX distribution with `pdflatex` and `biber` (TeX Live, MiKTeX, or Ma
   from memory.
 - Table-images (e.g., the Ch. 1 characteristics slide 25) are re-typeset as
   booktabs tables instead of embedding the screenshot.
-- Deliberate corrections relative to the slides (verified 2026-09-15):
+- Deliberate corrections relative to the slides (verified 2026-09-15, extended 2026-09-25):
   - Short-term reversal cites Jegadeesh (1990), not "Jegadeesh 1991".
   - Berk and Green is 2004 (AER), not 2005.
   - Quality Minus Junk cited as Asness, Frazzini, and Pedersen (2019, RAST).
@@ -46,6 +46,11 @@ Requires a TeX distribution with `pdflatex` and `biber` (TeX Live, MiKTeX, or Ma
   - McLean/Pontiff/Reilly (2025) = "Taking Sides on Return Predictability,"
     JFE 173, 104158; Lewellen (2011) = "Institutional Investors and the Limits
     of Arbitrage," JFE 102(1), 62–80.
+  - Guo/Li/Wei (JFE 2020) cited in published author order Guo, Li, and Wei,
+    correcting the deck's "Li, Guo, and Wei" (added 2026-09-25).
+- Chapters were re-synced to the 2026-09-25 slide revisions (paper-quality
+  figures replace legacy screenshots; LTCM case study, index effect, learning
+  costs, and *My Research* sections added in Ch. 2–5).
 - `slide38_chart.png` exists in the Lecture 1 figures folder but is not used
   by the current Lecture 1 `.tex`; it was not copied.
 

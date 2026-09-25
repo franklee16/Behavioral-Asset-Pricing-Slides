@@ -29,7 +29,7 @@ Requires a TeX distribution with `pdflatex` (TeX Live, MiKTeX, or MacTeX). Decks
 
 ## Book
 
-Chapter versions of the lectures, re-typeset as a single book (11pt, letter, `book` class, biblatex/biber). Chapters 1–5 (from Lectures 1–5) are complete — 127 pages; Chapter 6 (Memory) can be added later.
+Chapter versions of the lectures, re-typeset as a single book (11pt, letter, `book` class, biblatex/biber). Chapters 1–5 (from Lectures 1–5) are complete — 146 pages; Chapter 6 (Memory) can be added later. Chapter content is kept in sync with the lecture decks (last synced 2026-09-25), including the *My Research* sections in Chapters 2–5.
 
 - Source: [Book/main.tex](Book/main.tex)
 - Compiled PDF: [Book/main.pdf](Book/main.pdf)

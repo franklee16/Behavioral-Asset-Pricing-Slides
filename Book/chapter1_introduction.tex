@@ -1,7 +1,10 @@
 % ============================================================
 % Chapter 1 — Introduction
 % Converted from Slides/Lecture1_LaTeX/Lecture1_Intro.tex
-% All figures reproduced in figures/ (original slide assets).
+% Synced with revised deck 2026-09-25: paper-quality OSAP figures
+% (CAPE, Mom12m, BM, GP, ShareIss, Accruals/NOA, OScore), OP2025 and
+% Jensen-Kelly-Pedersen replication exhibits, updated bubble chart,
+% Dichev (2007) and McLean-Pontiff-Reilly (2025) redrawn exhibits.
 % ============================================================
 \chapter{Introduction}
 \label{ch:intro}
@@ -81,12 +84,12 @@ The chapter closes with the plan for the book. Part II develops limits to arbitr
 \subsection{Time-Series Predictability}
 \label{sec:predictability}
 
-The first fact is that aggregate stock market returns are predictable in the time series. Valuation ratios such as the price--dividend ratio (P/D) and the price--earnings ratio (P/E) forecast subsequent market returns at long horizons \citep{campbell1988,fama1988}. Figure~\ref{fig:pe_predictability} shows the raw pattern for the U.S. market: when the P/E ratio at the start of the investment period is low, the subsequent ten-year return on the S\&P~500 tends to be high, and when P/E is high, subsequent ten-year returns tend to be low. The fitted line in the figure has a slope of roughly $-5$ percentage points of ten-year return per unit of P/E---an economically large association. This appears to contradict the simplest reading of the efficient market hypothesis, under which expected returns should not vary in a way that public information predicts.
+The first fact is that aggregate stock market returns are predictable in the time series. Valuation ratios such as the price--dividend ratio (P/D) and the cyclically adjusted price--earnings ratio (CAPE) forecast subsequent market returns at long horizons \citep{campbell1988,fama1988}. Figure~\ref{fig:pe_predictability} shows the raw pattern for the U.S.\ market: each point is a month between 1881 and 2016, with the Shiller CAPE ratio on the horizontal axis and the annualized real return on the S\&P~500 over the following ten years on the vertical axis. When CAPE is low, subsequent ten-year real returns tend to be high; when CAPE is high, they tend to be low, ranging over this sample from 20\% to below $-6\%$ per year. The fitted line is $y = 13.0 - 0.38x$ with an $R^2$ of 0.23: a ten-point increase in CAPE is associated with almost four percentage points per year of lower subsequent real return. This appears to contradict the simplest reading of the efficient market hypothesis, under which expected returns should not vary in a way that public information predicts.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.72\textwidth]{slide08_chart.png}
-\caption[Subsequent ten-year S\&P~500 returns decline with the starting P/E ratio]{Subsequent ten-year returns on the S\&P~500 decline with the starting price--earnings ratio. Each point is one investment period; the fitted line has a slope of approximately $-5$ percentage points of ten-year return per unit of P/E. \textit{Source:} Author's calculations based on U.S. aggregate data.}
+\includegraphics[width=0.72\textwidth]{cape_vs_10yr_real_return.png}
+\caption[Subsequent ten-year real S\&P~500 returns decline with the starting CAPE ratio]{Subsequent ten-year returns decline with the starting valuation ratio. Scatter of the Shiller CAPE ratio against the subsequent ten-year annualized real return on the S\&P~500, 1,629 monthly observations, 1881--2016 (the ten-year forward window ends the sample in 2016). The fitted line is $y = 13.0 - 0.38x$, $R^2 = 0.23$. \textit{Source:} Author's calculations based on Robert Shiller's \emph{Irrational Exuberance} data.}
 \label{fig:pe_predictability}
 \end{figure}
 
@@ -109,7 +112,12 @@ The volatility and predictability facts are two readings of a single phenomenon,
 \subsection{The Equity Premium Puzzle}
 \label{sec:eqprem}
 
-The third fact concerns the \emph{level} of expected returns rather than their variation. \citet{mehra1985} document that the historical U.S. equity premium---the average return on stocks in excess of the risk-free rate, about 6\% per year over their long sample---is far larger than a simple rational frictionless model with power utility can reproduce. The crux is the covariance: the representative investor's consumption growth is almost uncorrelated with stock returns, so in the consumption-based model the stock market does not look very risky to the representative investor, and the model predicts a very small equity premium. Matching the observed premium requires a coefficient of relative risk aversion far outside the range that independent evidence on risk taking supports; matching the risk-free rate at the same time makes the tension worse.
+The third fact concerns the \emph{level} of expected returns rather than their variation. \citet{mehra1985} document that the historical U.S. equity premium---the average return on stocks in excess of the risk-free rate, about 6\% per year over their long sample---is far larger than a simple rational frictionless model with power utility can reproduce. The consumption-based benchmark makes the tension precise. In the lognormal approximation, the risk premium on any asset $i$ satisfies
+\begin{equation*}
+E_t[r_{i,t+1}] - r_{f,t} + \frac{\sigma^2_{i,t}}{2}
+   = \gamma\,\mathrm{Cov}_t\!\left(r_{i,t+1},\, \Delta c_{t+1}\right),
+\end{equation*}
+where $\gamma$ is the coefficient of relative risk aversion. The crux is the covariance term: the representative investor's consumption growth is almost uncorrelated with stock returns, so in the consumption-based model the stock market does not look very risky to the representative investor, and the model predicts a very small equity premium. Matching the observed premium requires a coefficient of relative risk aversion far outside the range that independent evidence on risk taking supports; matching the risk-free rate at the same time makes the tension worse.
 
 As with predictability, the rational responses change the risk or the price of risk---rare disasters \citep{rietz1988,barro2006}, long-run risks \citep{bansal2004}, and habit \citep{campbell1999} all raise the model-implied premium by making the relevant risk bigger or the relevant risk aversion state-contingent. The behavioral responses change the preference object: with prospect-theoretic loss aversion and frequent (myopic) evaluation of gains and losses, investors behave as if the stock market is much riskier than consumption risk implies \citep{benartzi1995,barberis2001}. We develop both routes in Part III.
 
@@ -133,12 +141,12 @@ A stock's cumulative return over the past three to five years \emph{negatively} 
 \end{figure}
 
 \paragraph{Momentum.}
-At intermediate horizons the sign flips. A stock's return over the past $k$ months, for $k$ between 3 and 12, \emph{positively} predicts its future return in the cross-section \citep{jegadeesh1993}. Figure~\ref{fig:momentum} shows average monthly returns of decile portfolios sorted on past returns over 1927--2022: the past-winner decile outperforms the past-loser decile by roughly 1.2 percentage points per month, one of the largest and most persistent regularities in the cross-section.
+At intermediate horizons the sign flips. A stock's return over the past $k$ months, for $k$ between 3 and 12, \emph{positively} predicts its future return in the cross-section \citep{jegadeesh1993}. Figure~\ref{fig:momentum} shows average monthly returns of value-weighted decile portfolios sorted on past 12-month returns over 1927--2024: average returns rise almost monotonically across deciles, with the past-winner decile earning 1.46\% per month against 0.09\% for the past-loser decile---a spread of 1.37 percentage points per month ($t = 5.6$), one of the largest and most persistent regularities in the cross-section.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.78\textwidth]{slide13_chart.png}
-\caption[Average returns of momentum decile portfolios, 1927--2022]{Momentum. Average monthly returns (\%) of decile portfolios sorted on past returns, 1927--2022. Past winners continue to outperform past losers at the 3--12 month horizon. \textit{Source:} Author's calculations based on U.S. decile portfolio data.}
+\includegraphics[width=0.78\textwidth]{Mom12m_decile_bar.png}
+\caption[Average returns of momentum decile portfolios, 1927--2024]{Momentum. Average monthly value-weighted returns (\%) of decile portfolios sorted on past 12-month returns (Mom12m), 1927--2024. Decile 1 holds past losers, decile 10 past winners; the winner-minus-loser spread averages 1.37\% per month ($t=5.6$). \textit{Source:} Author's calculations based on Open Source Asset Pricing decile portfolio data \citep{chen2022}.}
 \label{fig:momentum}
 \end{figure}
 
@@ -157,12 +165,12 @@ At the shortest horizon the sign flips back. A stock's return over the past week
 \subsection{The Value Premium}
 \label{sec:value}
 
-Ratios of fundamentals to price---book-to-market (B/M), earnings-to-price (E/P), and cash flow-to-price (CF/P)---positively predict future returns: cheap (``value'') stocks outperform expensive (``growth'') stocks. Figure~\ref{fig:value} shows average monthly returns of decile portfolios sorted on B/M over 1926--2020; the highest-B/M decile earns around 1.31\% per month against 0.90\% for the lowest, a premium of roughly 5 percentage points per year. The value premium motivated the Fama--French three-factor model, in which the return on a high-minus-low B/M portfolio is treated as a priced risk factor \citep{fama1993}: on this reading, value stocks earn more because they are riskier in a dimension the market prices \citep{fama1996}. The behavioral alternative is extrapolation: investors extrapolate past growth, leaving the stocks of disappointing firms too cheap and those of successful firms too dear, so that value earns a premium as the expectations gap closes \citep{lakonishok1994}. The two readings remain unresolved and structure much of modern cross-sectional research.
+Ratios of fundamentals to price---book-to-market (B/M), earnings-to-price (E/P), and cash flow-to-price (CF/P)---positively predict future returns: cheap (``value'') stocks outperform expensive (``growth'') stocks. Figure~\ref{fig:value} shows average monthly returns of value-weighted decile portfolios sorted on B/M over 1951--2024: average returns rise almost monotonically across deciles, from 0.88\% per month for the lowest-B/M (growth) decile to 1.36\% for the highest-B/M (value) decile---a premium of 0.48 percentage points per month ($t = 3.2$), or nearly six percentage points per year. The value premium motivated the Fama--French three-factor model, in which the return on a high-minus-low B/M portfolio is treated as a priced risk factor \citep{fama1993}: on this reading, value stocks earn more because they are riskier in a dimension the market prices \citep{fama1996}. The behavioral alternative is extrapolation: investors extrapolate past growth, leaving the stocks of disappointing firms too cheap and those of successful firms too dear, so that value earns a premium as the expectations gap closes \citep{lakonishok1994}. The two readings remain unresolved and structure much of modern cross-sectional research.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.78\textwidth]{slide15_chart.png}
-\caption[Average returns of B/M decile portfolios, 1926--2020]{The value premium. Average monthly returns (\%) of decile portfolios sorted on book-to-market, 1926--2020. High-B/M (value) stocks earn about 1.31\% per month against 0.90\% for low-B/M (growth) stocks. \textit{Source:} Author's calculations based on U.S. decile portfolio data.}
+\includegraphics[width=0.78\textwidth]{BM_decile_bar.png}
+\caption[Average returns of B/M decile portfolios, 1951--2024]{The value premium. Average monthly value-weighted returns (\%) of decile portfolios sorted on book-to-market, 1951--2024. Decile 1 holds growth (low B/M) stocks, decile 10 value (high B/M) stocks; the value-minus-growth spread averages 0.48\% per month ($t=3.2$). \textit{Source:} Author's calculations based on Open Source Asset Pricing decile portfolio data \citep{chen2022}.}
 \label{fig:value}
 \end{figure}
 
@@ -198,6 +206,16 @@ Firms' own trading decisions predict their stock returns. Firms that issue equit
 \label{fig:seo}
 \end{figure}
 
+\paragraph{Net share issuance.}
+The firm-level events generalize to a clean accounting signal: net share issuance itself. \citet{daniel2006} and \citet{pontiff2008} show that the change in a firm's shares outstanding negatively predicts its subsequent returns, both in the U.S.\ and internationally. Figure~\ref{fig:shareiss} shows the pattern in quintile portfolios: for one-year net issuance (1927--2024), the low-issuance quintile earns 1.41\% per month against 0.87\% for the high-issuance quintile, a spread of 0.54 percentage points per month ($t=6.1$); for five-year net issuance (1931--2024) the comparable spread is 0.44 percentage points per month ($t=5.0$). Issuance is thus among the most robust cross-sectional predictors, and it is the same fact as the IPO and SEO evidence stated in a form observable for every firm in every year.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{ShareIss_quintile_bar.png}
+\caption[Net share issuance negatively predicts returns]{Net share issuance. Average monthly value-weighted returns (\%) of quintile portfolios sorted on one-year (left; \citealp{pontiff2008}) and five-year (right; \citealp{daniel2006}) net share issuance. Quintile 1 holds high-issuance firms, quintile 5 low-issuance firms. The low-minus-high-issuance spread averages 0.54\% per month ($t=6.1$) for one-year issuance, 1927--2024, and 0.44\% per month ($t=5.0$) for five-year issuance, 1931--2024. \textit{Source:} Author's calculations based on Open Source Asset Pricing quintile portfolio data \citep{chen2022}.}
+\label{fig:shareiss}
+\end{figure}
+
 \paragraph{The asset growth anomaly.}
 The issuance pattern generalizes to investment itself: firms that grow assets more quickly, or invest more, earn lower subsequent returns \citep{titman2004,cooper2008}. Figure~\ref{fig:assetgrowth} shows mean monthly returns of decile portfolios sorted on asset growth, aligned in event time around the sorting year. Before the sort, high-asset-growth firms are the strong performers---their returns rise toward 4\% per month at year $-2$---which is why they invest. After the sort, the ranking inverts: the high-growth decile drops toward the bottom of the cross-section and stays there for years, while low-growth deciles persistently outperform. The behavioral interpretation continues the extrapolation theme---firms invest most when investors have over-extrapolated their prospects. The rational interpretation runs through the neoclassical $q$ theory of investment: high investment signals low costs of capital, i.e.\ low expected returns, and investment-based factor models built on this logic absorb a substantial fraction of the anomaly zoo \citep{hou2015,fama2015}.
 
@@ -212,12 +230,12 @@ The issuance pattern generalizes to investment itself: firms that grow assets mo
 \label{sec:quality}
 
 \paragraph{Profitability and quality.}
-More profitable firms earn \emph{higher} future returns, a fact initially surprising under the intuition that ``good firms are good stocks''---in equilibrium, quality should be priced. Figure~\ref{fig:profit} shows average monthly returns of quintile portfolios sorted on profitability over 1963--2020, rising monotonically from 0.80\% for the least profitable quintile to 1.05\% for the most profitable. Profitability is related to a broader set of \emph{quality} characteristics: \citet{asness2019} construct a quality measure combining profitability, recent growth in profits, low return and earnings volatility, and low leverage, and show that high-quality stocks outperform junk stocks with otherwise similar characteristics. In the rational factor-model tradition, profitability and investment factors are now central: they appear in both the five-factor model of \citet{fama2015} and the $q$-factor model of \citet{hou2015}, where a profitability premium is a priced risk or a reflection of discount-rate differences. The behavioral reading of quality connects it again to extrapolation: investors underprice the persistence of profitability.
+More profitable firms earn \emph{higher} future returns, a fact initially surprising under the intuition that ``good firms are good stocks''---in equilibrium, quality should be priced. Figure~\ref{fig:profit} shows average monthly returns of value-weighted decile portfolios sorted on gross profitability over 1951--2024: returns rise from 0.66\% per month for the least profitable decile to 1.22\% for the most profitable, a spread of 0.56 percentage points per month ($t=3.5$). Profitability is related to a broader set of \emph{quality} characteristics: \citet{asness2019} construct a quality measure combining profitability, recent growth in profits, low return and earnings volatility, and low leverage, and show that high-quality stocks outperform junk stocks with otherwise similar characteristics. In the rational factor-model tradition, profitability and investment factors are now central: they appear in both the five-factor model of \citet{fama2015} and the $q$-factor model of \citet{hou2015}, where a profitability premium is a priced risk or a reflection of discount-rate differences. The behavioral reading of quality connects it again to extrapolation: investors underprice the persistence of profitability.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.76\textwidth]{slide19_chart.png}
-\caption[Average returns of profitability quintiles, 1963--2020]{The profitability anomaly. Average monthly returns (\%) of quintile portfolios sorted on profitability, 1963--2020. Returns rise monotonically from 0.80\% (least profitable) to 1.05\% (most profitable). \textit{Source:} Author's calculations based on U.S. quintile portfolio data.}
+\includegraphics[width=0.76\textwidth]{GP_decile_bar.png}
+\caption[Average returns of gross-profitability deciles, 1951--2024]{The profitability anomaly. Average monthly value-weighted returns (\%) of decile portfolios sorted on gross profitability, 1951--2024. Returns rise from 0.66\% per month in the least profitable decile to 1.22\% in the most profitable (spread 0.56\% per month, $t=3.5$). \textit{Source:} Author's calculations based on Open Source Asset Pricing decile portfolio data \citep{chen2022}.}
 \label{fig:profit}
 \end{figure}
 
@@ -229,6 +247,37 @@ If the CAPM held, stocks with higher systematic risk would earn higher expected 
 \includegraphics[width=0.78\textwidth]{slide20_pic3_Picture_5.jpg}
 \caption[Distress risk is priced with the wrong sign]{Distress risk is priced with the wrong sign. CAPM alpha, Fama--French three-factor alpha, and mean excess return of portfolios sorted on model-predicted failure probability, 1981--2003. All three decline sharply with distress; the most distressed portfolio earns a three-factor alpha of roughly $-24\%$. \textit{Source:} \citet{campbell2008}.}
 \label{fig:distress}
+\end{figure}
+
+The same conclusion emerges from an older, accounting-based distress measure. \citet{dichev1998} sorts stocks on the O-score, an accounting-based measure of bankruptcy probability, and finds that high-O-score (distressed) stocks subsequently \emph{underperform} safe stocks, again with the wrong sign for a risk story. Figure~\ref{fig:oscore} shows the Open Source Asset Pricing version of this sort, which is binary rather than decile-based: over 1972--2024, the high-O-score portfolio earns 0.24\% per month---statistically indistinguishable from zero ($t=0.7$)---against 1.16\% per month ($t=5.2$) for the low-O-score portfolio, a long-short spread of 0.92 percentage points per month ($t=4.2$). Whether distress is measured by a model-predicted failure probability or by a raw accounting score, distressed stocks are not rewarded; they are penalized.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{oscore.png}
+\caption[The O-score financial-distress anomaly]{The O-score financial-distress anomaly. Left: cumulative returns (log scale, \$1 base) of high-O-score (distressed), low-O-score (safe), and low-minus-high portfolios, 1972--2024 (636 months). Right: average monthly returns with 95\% confidence intervals. The distressed portfolio earns 0.24\% per month ($t=0.7$) against 1.16\% ($t=5.2$) for the safe portfolio; the long-short spread averages 0.92\% per month ($t=4.2$). \textit{Source:} Author's calculations based on Open Source Asset Pricing portfolio data \citep{chen2022}, following \citet{dichev1998}.}
+\label{fig:oscore}
+\end{figure}
+
+\subsection{Accruals and Net Operating Assets}
+\label{sec:accruals}
+
+The anomalies above act through prices; the accrual anomaly acts through the accounting statement that feeds prices. \citet{sloan1996} starts from the decomposition of earnings into cash flow and accruals,
+\begin{equation*}
+E_t = \underbrace{CF_t}_{\substack{\text{cash flow,} \\ \text{persists}}} + \underbrace{Acc_t}_{\substack{\text{accruals,} \\ \text{mean-revert}}},
+\end{equation*}
+where the cash portion of earnings tends to persist while the non-cash portion---receivables, inventory, and similar items---tends to reverse. Investors who extrapolate total earnings without making this distinction overprice high-accrual firms and underprice low-accrual firms; as the accruals reverse, prices correct. In \citeauthor{sloan1996}'s sample, a strategy long low-accrual and short high-accrual stocks earns roughly 10\% per year of abnormal return.
+
+\citet{hirshleifer2004} extend the logic from the flow to the stock, ranking firms by net operating assets,
+\begin{equation*}
+\mathrm{NOA} = (\mathrm{TA} - \mathrm{Cash}) - (\mathrm{TL} - \mathrm{Debt}),
+\end{equation*}
+the accumulated balance-sheet position that past accruals have built up. A bloated NOA is a durable footprint of past earnings management, and it is less noisy than a single year of accruals, which ordinary real expansions also generate; accordingly, high-NOA firms underperform low-NOA firms by roughly 15--17\% per year, and the stock measure subsumes much of the one-year flow effect. Figure~\ref{fig:accrualsnoa} shows both patterns in the Open Source Asset Pricing data: the high-accrual decile earns 0.85\% per month against 1.24\% for the low-accrual decile (spread 0.38\% per month, $t=6.1$, 1952--2024), and the high-NOA decile earns 0.51\% against 1.25\% for the low-NOA decile (spread 0.74\% per month, $t=6.1$, 1963--2024). The raw-spread magnitudes are smaller than the abnormal returns reported in the original studies, but the sign and the statistical significance agree.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{Accruals_NOA_decile_bar.png}
+\caption[The accrual and net operating asset anomalies]{The accrual and net operating asset anomalies. Average monthly value-weighted returns (\%) of decile portfolios sorted on accruals (left; \citealp{sloan1996}, 1952--2024) and net operating assets (right; \citealp{hirshleifer2004}, 1963--2024). Decile 1 holds high-accrual (high-NOA) firms, decile 10 the opposite. High-accrual firms earn 0.85\% per month against 1.24\% for low-accrual firms (spread 0.38\%, $t=6.1$); high-NOA firms earn 0.51\% against 1.25\% for low-NOA firms (spread 0.74\%, $t=6.1$). \textit{Source:} Author's calculations based on Open Source Asset Pricing decile portfolio data \citep{chen2022}.}
+\label{fig:accrualsnoa}
 \end{figure}
 
 \subsection{Post-Earnings-Announcement Drift}
@@ -280,7 +329,23 @@ The low-risk anomalies illustrate how frictions and preferences blur. \citet{fra
 \subsection{How Many Anomalies Are There?}
 \label{sec:bestiary}
 
-The phenomena above are not exhaustive; they are the subset with the longest history and the most influence. Table~\ref{tab:characteristics} lists, in summary form, firm-level characteristics with documented predictive power for the cross-section of stock returns and the sign of the relation---reversal, momentum, earnings surprise, size, value ratios, issuance, both volatility measures, and profitability. The full modern catalog runs to hundreds of published predictors, which raises the discipline problem of Section~\ref{sec:challenges} in quantitative form. \citet{harvey2016} argue that with so many factors tried, conventional $t$-statistics of 2 are no longer adequate: the hurdle for a new factor should be closer to 3. \citet{mclean2016} document that anomaly returns decline materially after publication---consistent with both data mining and arbitrage---and \citet{hou2020} replicate hundreds of published anomalies in a common sample and find that a majority are explained by a four-factor model built on investment and profitability. The upshot is not that the anomaly literature collapses, but that its claims must be, and now are, held to replication standards; the open replication infrastructure of \citet{chen2022} is a direct institutional response.
+The phenomena above are not exhaustive; they are the subset with the longest history and the most influence. Table~\ref{tab:characteristics} lists, in summary form, firm-level characteristics with documented predictive power for the cross-section of stock returns and the sign of the relation---reversal, momentum, earnings surprise, size, value ratios, issuance, accruals, both volatility measures, and profitability. The full modern catalog runs to hundreds of published predictors, which raises the discipline problem of Section~\ref{sec:challenges} in quantitative form. \citet{harvey2016} argue that with so many factors tried, conventional $t$-statistics of 2 are no longer adequate: the hurdle for a new factor should be closer to 3. \citet{mclean2016} document that anomaly returns decline materially after publication---consistent with both data mining and arbitrage---and \citet{hou2020} replicate hundreds of published anomalies in a common sample and find that a majority are explained by a four-factor model built on investment and profitability.
+
+The upshot is not that the anomaly literature collapses, but that its claims must be, and now are, held to replication standards---and on that score the news is good. \citet{chen2022} construct the Open Source Cross-Sectional Asset Pricing dataset, an open replication of the published catalog, and find that the catalog largely survives. Figure~\ref{fig:osap} plots the $t$-statistic of each predictor's replicated long-short return against the $t$-statistic reported in the original study: the points cluster along the 45-degree line, with a fitted relation $t_{\text{reproduction}} = 0.2 + 0.89\, t_{\text{original}}$ and an $R^2$ of 84\%---replicated signals come back about one-tenth weaker, on average, but overwhelmingly present. \citet{jensen2023} extend the exercise globally and reach the same verdict: most anomalies replicate out of sample in international markets, and the alpha magnitudes closely align with those in the U.S. Figure~\ref{fig:jkp} shows their central comparison, U.S.\ factor alphas against world ex-U.S.\ alphas; factors that earn high alphas in the U.S.\ tend to earn high alphas elsewhere, a strong restriction on data-mining stories, since a purely mined pattern has no reason to travel across markets. Both datasets are publicly available---Open Source Asset Pricing for the U.S.\ market and the Global Factor Returns data of \citet{jensen2023} for international markets---and every fact in this section can be re-examined with them.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.72\textwidth]{OP2025.png}
+\caption[Replication $t$-statistics track the original studies]{Open source replication. $t$-statistic of each predictor's replicated long-short return against the $t$-statistic reported in the original study, Open Source Asset Pricing dataset (October 2025 release). Each point is one published predictor, colored by predictor category; the dotted line is the 45-degree line. The fitted relation is $t_{\text{reproduction}} = 0.2 + 0.89\, t_{\text{original}}$ with $R^2 = 84\%$. \textit{Source:} \citet{chen2022}, Open Source Asset Pricing project.}
+\label{fig:osap}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\textwidth]{replication_crisis.png}
+\caption[U.S. and world ex-U.S.\ factor alphas align]{Is there a replication crisis in finance? OLS alphas of U.S.\ factors against their world ex-U.S.\ counterparts, each world factor a capitalization-weighted average of the factor across the other sample countries. Blue circles mark factors significant in the original study; red triangles those for which the original paper did not find a significant effect on average returns. The dotted line is the 45-degree line; the fitted regression is $y = 0.79 + 0.67x$ with $R^2 = 0.37$. \textit{Source:} \citet{jensen2023}, Figure 7.}
+\label{fig:jkp}
+\end{figure}
 
 \begin{table}[htbp]
 \centering
@@ -298,6 +363,8 @@ Earnings surprise & $+$ \\
 Market capitalization & $-$ \\
 Price-to-fundamentals ratio (B/M, E/P, CF/P) & $-$ \\
 Equity issuance & $-$ \\
+Net share issuance & $-$ \\
+Accruals / net operating assets & $-$ \\
 Systematic volatility (beta) & $-$ \\
 Idiosyncratic volatility & $-$ \\
 Profitability & $+$ \\
@@ -323,12 +390,12 @@ A \emph{bubble} is a situation in which, for a significant period of time, an as
   \item In the early stages of the price rise, there is positive news about the asset's future fundamentals.
 \end{enumerate}
 
-History offers a long catalog of candidate episodes. Figure~\ref{fig:bubbles} assembles several of the most cited---the tulip mania of the 1630s, the Mississippi and South Sea schemes of 1718--1721, the 1929 stock market and the Great Depression, Japanese equities in the 1980s, the technology bubble of the 1990s, the 2006--2009 financial crisis, and Bitcoin---aligning each price path at its peak. The multiples at peak are striking: tulip prices rose roughly 60-fold from three years before the peak; the Mississippi scheme roughly 45-fold; the technology-laden U.S. market roughly 30-fold. The figure, drawn in January 2021, also documents why the definition above is deliberately cautious: Bitcoin's path had fallen from its peak and then risen again to nearly 200 times its starting price at the chart's right edge, a trajectory that did not yet fit the ``rise and collapse'' template of the historical episodes.
+History offers a long catalog of candidate episodes. Figure~\ref{fig:bubbles} assembles the most cited---the tulip mania of 1634--1637, the Mississippi (1718--1720) and South Sea (1719--1721) schemes, the Great Depression stock market of 1929, Japanese equities of 1982--1992, the technology bubble of 1994--2002, and the 2006--2009 financial crisis---aligning each price path at its peak. Bitcoin is shown on the same scale as of September 2026: after peaking at \$126,198 in October 2025, it stood at \$84,453 on September 23, 2026, roughly 30\% below its peak. The figure also documents why the definition above is deliberately cautious: an episode qualifies as a bubble only after the collapse, and a price path that has risen extraordinarily but fallen only part of the way back---Bitcoin at the chart's right edge---does not yet fit the ``rise and collapse'' template of the historical episodes.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.8\textwidth]{slide27_pic2_Picture_5.png}
-\caption[Famous bubbles in history, aligned at peak]{Famous bubbles in history. Price paths of eight bubble episodes, expressed as multiples of the starting price and aligned at each episode's peak (year 0): Bitcoin (2014--2021), tulip mania (1634--1637), the Mississippi bubble (1718--1720), the South Sea bubble (1719--1721), the technology bubble (1994--2002), the financial crisis stock market (2006--2009), Japanese stocks (1982--1992), and Great Depression stocks (1929--1932), as of January 9, 2021. \textit{Source:} Convoy Investments, using data from Elliott Wave International, Yale SOM, St.\ Louis Fed (FRED), CoinDesk, and Global Financial Data.}
+\includegraphics[width=0.8\textwidth]{bubble_chart.png}
+\caption[Famous bubbles in history, aligned at peak]{Famous bubbles in history. Price paths of eight bubble episodes---tulip mania (1634--1637), the Mississippi bubble (1718--1720), the South Sea bubble (1719--1721), the Great Depression stock market (1929), Japanese stocks (1982--1992), the technology bubble (1994--2002), the 2006--2009 financial crisis, and Bitcoin---expressed as multiples of the starting price and aligned at each episode's peak (year 0), as of September 23, 2026. \textit{Source:} Convoy Investments, using daily data from Coinbase and FRED (Federal Reserve Economic Data).}
 \label{fig:bubbles}
 \end{figure}
 
@@ -359,8 +426,8 @@ A household's actual investment experience is not the return of the assets it ho
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{slide31_chart.png}
-\caption[Dollar-weighted versus buy-and-hold returns in 19 markets]{Buying high and selling low. Annual buy-and-hold and dollar-weighted stock market returns for 19 major international stock exchanges. In 18 of 19 countries the dollar-weighted return is below the buy-and-hold return; the U.S.\ gap is 1.0 percentage point per year (11.5\% versus 10.5\%). \textit{Source:} \citet{dichev2007}, Table 5.}
+\includegraphics[width=0.9\textwidth]{dichev2007_dollar_weighted_returns.png}
+\caption[Dollar-weighted versus buy-and-hold returns]{Buying high and selling low. Panel A: actual (dollar-weighted) versus buy-and-hold returns for the United States, NYSE/AMEX over 1926--2002 and NASDAQ over 1973--2002. Panel B: annualized buy-and-hold and dollar-weighted stock market returns for the major international markets of the sample, 1973--2004. Dollar-weighted returns sit below buy-and-hold returns in almost every market. \textit{Source:} \citet{dichev2007}, Figure 1.}
 \label{fig:dichev}
 \end{figure}
 
@@ -424,12 +491,12 @@ The disposition effect is not an artifact of retail accounts or of stocks. It is
 \subsection{Who Trades Against the Anomalies?}
 \label{sec:smartmoney}
 
-If anomalies reflect mispricing, someone must eventually trade against it. \citet{mclean2025} ask who trades against forecasted returns, measuring the trades of nine classes of market participants against the forecasted returns produced by 130 published anomalies. Figure~\ref{fig:mpr} shows their central table: for each participant group, average trading across stocks sorted into quintiles by forecasted return. The patterns are sharp. Retail investors trade \emph{against} the forecasts: their trading falls from 1.24\% in the lowest forecasted-return quintile to 0.01\% in the highest (spread $-1.23\%$, $t=-2.3$)---they are the buyers of the stocks predicted to do poorly. Short sellers are on the right side, tilting toward low-forecasted-return stocks (spread $+0.62\%$, $t=6.0$), as are hedge funds in the top forecasted-return quintile. Firms themselves are the most aggressive ``smart money'' of all: net firm trading (issuance and repurchase) moves $+11.47$ percentage points ($t=6.2$) from the low-forecasted-return quintile to the high---firms issue when forecasted returns are low and repurchase when they are high, consistent with the market-timing interpretation of Section~\ref{sec:issuance}. The correction of mispricing, in other words, comes primarily from short sellers and from firms---not from the conventional asset managers to whom we now turn.
+If anomalies reflect mispricing, someone must eventually trade against it. \citet{mclean2025} ask who trades against forecasted returns, measuring the trades of nine classes of market participants against the forecasted returns produced by 130 published anomalies. Figure~\ref{fig:mpr} shows their central exhibit: for each participant group, average trading across stocks sorted into quintiles by forecasted return. The patterns are sharp. Retail investors trade \emph{against} the forecasts: their trading falls from 1.24\% in the lowest forecasted-return quintile to 0.01\% in the highest (spread $-1.23\%$, $t=-2.3$)---they are the buyers of the stocks predicted to do poorly. Short sellers are on the right side, tilting toward low-forecasted-return stocks (spread $+0.62\%$, $t=6.0$), as are hedge funds in the top forecasted-return quintile. Firms themselves are the most aggressive ``smart money'' of all: net firm trading (issuance and repurchase) moves $+11.47$ percentage points ($t=6.2$) from the low-forecasted-return quintile to the high---firms issue when forecasted returns are low and repurchase when they are high, consistent with the market-timing interpretation of Section~\ref{sec:issuance}. The correction of mispricing, in other words, comes primarily from short sellers and from firms---not from the conventional asset managers to whom we now turn.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.95\textwidth]{slide37_pic3_Picture_6.png}
-\caption[Taking sides on return predictability]{Taking sides on return predictability. Mean trading by participant group (retail investors, mutual funds, banks, insurance companies, wealth managers, hedge funds, other institutions, short sellers, and firms) across quintiles of forecasted stock returns from 130 published anomalies. Retail trading falls with forecasted return; short sellers' and firms' trading rises with it. \textit{Source:} \citet{mclean2025}.}
+\includegraphics[width=0.95\textwidth]{mclean2025_table4A_forecasted_return_trading.png}
+\caption[Taking sides on return predictability]{Taking sides on return predictability. Average trading in the year before forecasted-return portfolio formation. Panel A: mean trading by participant group (retail investors, mutual funds, banks, insurance companies, wealth management, hedge funds, other institutions, short sellers, and institutions in aggregate) across quintiles of forecasted stock returns built from 130 published anomalies. Panel B: firms' net share issuance across the same quintiles---firms issue most where forecasted returns are lowest. \textit{Source:} \citet{mclean2025}, Table 4, Panel A.}
 \label{fig:mpr}
 \end{figure}
 

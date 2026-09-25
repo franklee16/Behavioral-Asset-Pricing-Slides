@@ -1,7 +1,10 @@
 % ============================================================
-% Chapter 4 — Biased Beliefs
+% Chapter 4 --- Biased Beliefs
 % Converted from Slides/Lecture4_LaTeX/Lecture4_Beliefs.tex
 % Figures reproduced in figures/ (original slide assets).
+% Synced with revised deck 2026-09-25: individualism, DOX, SPF
+% dispersion, resale-option, forecast-dispersion, beta/alpha and
+% Hong--Sraer figures; two "My Research" subsections added.
 % ============================================================
 \chapter{Biased Beliefs}
 \label{ch:beliefs}
@@ -23,11 +26,19 @@ The representativeness heuristic is useful in many settings: the prediction that
 
 \subsection{Base-Rate Neglect}
 
-The standard demonstration is the ``Steve'' problem. Subjects read a personality sketch of a fictional person---shy, withdrawn, helpful, neat, with little interest in people---and are asked whether Steve is more likely a librarian or a farmer. The modal answer is that Steve is a librarian, even though the base rates in the U.S.\ population differ by a factor of more than 20: there are roughly 20 times more farmers than librarians. The vivid description is treated as evidence about Steve's occupation and the base-rate evidence is largely ignored. A Bayesian agent would combine the description with the base rates, and the base rates would dominate; a representativeness judge treats only the description.
+The standard demonstration is the ``Steve'' problem. Subjects read a personality sketch of a fictional person---very shy and withdrawn, invariably helpful, but with little interest in people or in the world of reality; a meek and tidy soul with a need for order and structure and a passion for detail---and are asked whether Steve is more likely to be a librarian or a lawyer. The modal answer is librarian, because the description resembles the librarian stereotype. But there are many more lawyers than librarians in the U.S., and a Bayesian would let that base rate dominate. The question asks about the posterior odds on the left of
+\[
+\frac{p(\text{librarian}\mid\text{data})}{p(\text{lawyer}\mid\text{data})}
+=
+\frac{p(\text{data}\mid\text{librarian})}{p(\text{data}\mid\text{lawyer})}
+\cdot
+\frac{p(\text{librarian})}{p(\text{lawyer})},
+\]
+and representativeness judges answer using only the likelihood ratio, the first term on the right. The prior odds are dropped, and with them the information that should dominate the answer. Base-rate neglect is the neglect of the second factor in a Bayes calculation the judge never performs.
 
 \subsection{Sample-Size Neglect}
 
-The second violation is the failure to weight evidence by the sample size from which it is drawn. A sequence of three heads from a fair coin is taken as strong evidence that the coin is biased toward heads, even though the posterior probability of bias after three flips is still close to the prior. The same judgment applied to a sequence of thirty heads would be more defensible. \citet{gilovich1985} document the consequence in basketball: fans and players judge a player who has made a few shots in a row to be ``hot,'' and adjust their expectations of his next shot upward. The empirical evidence in large samples is that the hot hand is largely a myth---shot-level success rates are essentially uncorrelated with the recent history of makes and misses. \citet{gilovich1985} read the phenomenon as representativeness: fans expect a short streak of makes to be representative of a player's true ability, and they expect the next shot to reflect that true ability. In finance, the same bias is the source of over-extrapolation, to which Section~\ref{sec:overextrapolation} returns.
+The second violation is the failure to weight evidence by the sample size from which it is drawn. A sequence of three heads from a fair coin is taken as strong evidence that the coin is biased toward heads, even though the posterior probability of bias after three flips is still close to the prior. The same judgment applied to a sequence of thirty heads would be more defensible. \citet{gilovich1985} document the consequence in basketball: fans and players judge a player who has made a few shots in a row to be ``hot,'' and adjust their expectations of his next shot upward. The empirical evidence in large samples is that the hot hand is largely a myth---shot-level success rates are essentially uncorrelated with the recent history of makes and misses---although \citet{millersanjurjo2018} later identified a selection bias in the standard tests that works against finding streaks, softening the original verdict. \citet{gilovich1985} read the phenomenon as representativeness: fans expect a short streak of makes to be representative of a player's true ability, and they expect the next shot to reflect that true ability. In finance, the same bias is the source of over-extrapolation, to which Section~\ref{sec:overextrapolation} returns.
 
 % ============================================================
 \section{Overconfidence}
@@ -47,7 +58,7 @@ The overprecision finding extends to professional investors. \citet{bendavid2013
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.55\textwidth]{slide07_pic4.jpg}
-\caption[CFO overprecision: confidence-interval coverage]{\textbf{CFO overprecision.} The figure compares the realized one-year-ahead S\&P~500 return to the distribution reported by surveyed CFOs. The realized return falls inside the executives' 80\% confidence interval only about 36\% of the time, roughly half the nominal coverage. \textit{Source:} \citet{bendavid2013}, reproduced from the original article.}
+\caption[CFO overprecision: subjective volatility too low]{\textbf{CFO overprecision.} Kernel densities of the one-year S\&P~500 return volatility implied by CFOs' survey responses, plotted against the historical distribution of realized one-year volatility over 1950--2000 and 2001--2011. The CFO-implied densities sit well inside the historical ones: executives' subjective return distributions are far too tight, which is why the realized return falls inside their 80\% confidence intervals only about 36\% of the time. \textit{Source:} \citet{bendavid2013}.}
 \label{fig:cfo}
 \end{figure}
 
@@ -75,7 +86,7 @@ Overconfidence has direct trading implications. \citet{odean1999} showed that th
 \includegraphics[width=0.42\textwidth]{slide09_pic3.png}
 \hspace{0.3em}
 \includegraphics[width=0.42\textwidth]{slide09_pic4.png}
-\caption[Gender, overconfidence, and trading]{\textbf{Boys will be boys.} Men trade more frequently than women (left) and earn lower net returns as a result (right). The pattern is consistent with laboratory evidence that men are more overconfident than women. \textit{Source:} EF8083 course materials, after \citet{barber2001} and \citet{lundeberg1994}.}
+\caption[Gender, overconfidence, and trading]{\textbf{Boys will be boys.} Regression evidence from \citet{barber2001}: men, and single men in particular, trade at higher monthly turnover, earn lower net returns, and hold more volatile portfolios than women---the pattern predicted if men are the more overconfident sex \citep{lundeberg1994}. \textit{Source:} \citet{barber2001} and \citet{lundeberg1994}.}
 \label{fig:gender}
 \end{figure}
 
@@ -83,12 +94,12 @@ Overconfidence has direct trading implications. \citet{odean1999} showed that th
 
 \citet{daniel1998} develop a formal model in which overconfidence interacts with \emph{self-attribution bias} to produce momentum. Investors are overconfident about private signals they themselves generate (e.g., their own research) but less so about public signals. Positive returns reinforce their overconfidence through self-attribution---a streak of good calls is attributed to skill, a streak of bad calls to bad luck---and they continue to trade on their private signals with growing positions. Eventually, the public information that contradicts their private view arrives, and prices partially correct. The dynamics produce short-horizon continuation (momentum) followed by partial reversal as information is revealed.
 
-The model predicts that momentum should be stronger in environments where overconfidence is culturally or institutionally more pronounced. \citet{chui2010} test this prediction using Hofstede's individualism index as a proxy for cultural variation in overconfidence. Individualism, in Hofstede's framework, captures the extent to which a society rewards individual initiative and self-promotion relative to group cohesion---a pattern that maps naturally onto overplacement. The data confirm the prediction: momentum profits are reliably larger in more individualistic countries, both at the country level and for individual firms operating in more individualistic environments.
+The model predicts that momentum should be stronger in environments where overconfidence is culturally or institutionally more pronounced. \citet{chui2010} test this prediction using Hofstede's individualism index as a proxy for cultural variation in overconfidence. Individualism, in Hofstede's framework, captures the extent to which a society rewards individual initiative and self-promotion relative to group cohesion---a pattern that maps naturally onto overplacement. The data confirm the prediction: over February 1984--June 2003, the winner-minus-loser momentum profit for country-average portfolios rises with individualism, from the bottom 30\% to the top 30\% of the individualism ranking, with a high-minus-low spread of 0.65\% per month ($t = 4.3$).
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.55\textwidth]{slide11_pic4.jpg}
-\caption[Momentum and individualism]{\textbf{Momentum and individualism.} The figure shows momentum profits sorted by Hofstede individualism scores across countries. Momentum is stronger in more individualistic societies, consistent with the overconfidence reading of the \citet{daniel1998} model. \textit{Source:} \citet{chui2010}, reproduced from the original article.}
+\includegraphics[width=0.9\textwidth]{TableIV_PanelA_Momentum_and_Individualism.png}
+\caption[Momentum profits by individualism]{\textbf{Momentum and individualism.} Winner and loser returns and winner-minus-loser momentum profits for country-average portfolios grouped by Hofstede's individualism index (bottom 30\%, medium, top 30\%), February 1984--June 2003. Momentum profits rise with individualism; the high-minus-low spread in the momentum profit is 0.65\% per month ($t = 4.30$). \textit{Source:} EF8083 course materials, based on \citet{chui2010}.}
 \label{fig:ctw}
 \end{figure}
 
@@ -130,23 +141,27 @@ Over-extrapolation is the most widely applied idea in behavioral finance. It is 
 
 \subsection{Measuring the Degree of Extrapolation: DOX}
 
-\citet{cassella2018} propose a formal measure of the weight investors place on recent returns. Their measure, called \emph{DOX} for degree of extrapolation, is the complement of a parameter $\lambda$ in a forecaster's representation of next-period expected return as a discounted weighted average of past returns. Lower $\lambda$ implies faster forgetting of past observations and heavier weight on the most recent return.
+\citet{cassella2018} propose a formal measure of the weight investors place on recent returns. Their measure, called \emph{DOX} for degree of extrapolation, is the complement of a parameter $\lambda$ in a forecaster's representation of next-period expected return as a weighted average of past returns,
+\begin{equation}
+\mathit{Exp}_t = a + b \sum_{i=0}^{\infty} w_i\, R_{t-(i+1)\Delta t,\; t-i\Delta t},
+\qquad
+w_i = \frac{\lambda^{i}}{\sum_{k=0}^{\infty} \lambda^{k}}, \quad 0 \le \lambda < 1,
+\end{equation}
+so that $\mathrm{DOX} = 1-\lambda$. A lower $\lambda$ places more weight on the most recent observations; earlier observations contribute less and less to the extrapolator's expectation. Estimating $\lambda$ recursively from survey data yields a time series for DOX rather than a constant: investors extrapolate more in some periods than in others (Figure~\ref{fig:dox}).
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.42\textwidth]{slide16_pic4.png}
-\hspace{0.3em}
-\includegraphics[width=0.42\textwidth]{slide16_pic5.png}
-\caption[DOX: degree of extrapolation]{\textbf{Degree of extrapolation.} The two panels show the time series of the extrapolation parameter estimated from survey data, together with its correlation with subsequent realized market returns. Higher DOX (lower $\lambda$) corresponds to investors placing heavier weight on recent observations. \textit{Source:} \citet{cassella2018}.}
+\includegraphics[width=0.55\textwidth]{slide16_pic4.png}
+\caption[DOX: degree of extrapolation]{\textbf{Degree of extrapolation.} The recursively estimated DOX time series for the principal component of the survey return expectations, 1992:1--2013:12. DOX varies over time: the weight investors place on past returns is a state variable, not a fixed parameter. \textit{Source:} \citet{cassella2018}.}
 \label{fig:dox}
 \end{figure}
 
-DOX enters asset prices through the predictability of returns by price-scaled fundamentals (dividend yield, book-to-market, earnings-to-price). When DOX is high, investors quickly forget the price changes that drove valuations up; they remain willing to extrapolate from the most recent observation; and high valuation ratios carry less information about low future returns. When DOX is low, investors remember past prices more completely; high valuation ratios are more informative about low future returns. The DOX measure is therefore not just a description of beliefs but a state variable that conditions the predictability of returns---and \citet{cassella2018} document that the conditional predictability is present in the data.
+DOX enters asset prices through the predictability of returns by price-scaled fundamentals (dividend yield, book-to-market, earnings-to-price). The predictability is contingent on the DOX. When DOX is high, investors more quickly ``forget'' the positive price changes that drove up valuations, and their beliefs mean-revert faster; as a result, high valuations are \emph{more} strongly associated with low future returns. When DOX is low, extrapolative beliefs persist longer and valuation ratios forecast less. The DOX measure is therefore not just a description of beliefs but a state variable that conditions the predictability of returns---and \citet{cassella2018} document that the conditional predictability is present in the data.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.55\textwidth]{slide17_pic4.png}
-\caption[Predictability of returns conditional on DOX]{\textbf{DOX and predictability.} The figure plots the slope from predictive regressions of subsequent returns on the price--dividend ratio, conditional on the estimated DOX measure. The slope is steeper (more predictability) when DOX is low: investors remember the past better, and high valuations more strongly forecast low future returns. \textit{Source:} \citet{cassella2018}.}
+\caption[Predictability of returns conditional on DOX]{\textbf{DOX and predictability.} Predictive regressions of subsequent returns on price-scaled variables, conditional on the estimated DOX measure. The slope is steeper (more predictability) when DOX is high: investors forget the price run-up faster, beliefs mean-revert faster, and high valuations more strongly forecast low future returns. \textit{Source:} \citet{cassella2018}.}
 \label{fig:dox_cond}
 \end{figure}
 
@@ -160,6 +175,11 @@ A parallel stream of evidence concerns the extrapolation of fundamentals rather 
 \caption[LTG expectations, the price--dividend ratio, and returns]{\textbf{Fundamentals extrapolation.} The figure overlays a measure of long-term earnings-growth (LTG) expectations (red) with the price--dividend ratio (green) and five-year-ahead realized stock returns (black). LTG expectations track the price--dividend ratio and predict low subsequent returns, consistent with extrapolative beliefs. \textit{Source:} \citet{bordalo2023}.}
 \label{fig:ltg}
 \end{figure}
+
+\subsection{My Research: Na\"ive Earnings Growth Extrapolation}
+\label{sec:myresearch_ytd}
+
+\citet{cuizhang2021} study fundamentals extrapolation in a setting where the extrapolated quantity is unusually visible: Chinese earnings announcements. China reports quarterly earnings on a year-to-date basis, which makes cumulative YTD growth highly salient to investors even though the YTD measure contains stale earnings information---earlier quarters' results roll mechanically into the cumulative number. Stocks with the strongest past YTD earnings growth run up in the five days before announcements and reverse afterward: investors extrapolate the salient YTD growth into the upcoming announcement and are disappointed when the ``growth'' turns out to be old news. The pattern concentrates in small, retail-heavy, low-analyst-coverage stocks, and retail buying demand rises in the run-up to announcements. The paper is the cross-sectional counterpart of \citet{bordalo2023} on the aggregate market: fundamentals extrapolation that distorts the prices of individual stocks around earnings news rather than the valuation of the market as a whole.
 
 % ============================================================
 \section{Other Biases: Conservatism, Anchoring, and Feelings}
@@ -187,13 +207,24 @@ Two related biases affect how investors \emph{search} for and \emph{interpret} e
 \emph{Anchoring} is the tendency, in forming numerical estimates of uncertain quantities, to adjust insufficiently from some initial value (the ``anchor''), even when the anchor is generated randomly and is clearly irrelevant \citep{kahneman1974}.
 \end{definition}
 
-In the canonical demonstration, \citet{kahneman1974} spin a wheel of fortune in front of subjects to produce a random number, ask subjects whether the percentage of African nations in the United Nations is greater or less than that number, and then ask them to estimate the actual percentage. Estimates of the latter are systematically shifted toward the random anchor. The financial applications include IPO pricing (where the initial price range functions as an anchor for analysts), analyst price targets, and merger valuations (where the announced offer price anchors subsequent negotiation).
+In the canonical demonstration, \citet{kahneman1974} spin a wheel of fortune in front of subjects to produce a random number, ask subjects whether the percentage of African nations in the United Nations is greater or less than that number, and then ask them to estimate the actual percentage. The random anchor moves the estimates even though the subjects watch it being generated: those who compared their estimate to 10 subsequently estimated 25 percent, while those who compared it to 60 estimated 45 percent. The financial applications include IPO pricing (where the initial price range functions as an anchor for analysts), analyst price targets, and merger valuations (where the announced offer price anchors subsequent negotiation).
+
+The application with the cleanest evidence is anchoring on the 52-week high. \citet{george2004} show that nearness to the 52-week high predicts future returns: a stock trading close to its high earns anomalously high subsequent returns, because traders are slow to react to good news when the price is already near a salient reference point. The same anchor contributes to the momentum effect---prices drift upward as the anchor itself rises.
 
 \subsection{The Effect of Feelings}
 
 A more recent strand of research investigates how feelings affect beliefs and preferences. \emph{Affective feelings}---mood and emotion---shift judgments in ways unrelated to the evidence: a happier mood produces more optimistic assessments, a sadder mood more pessimistic. \citet{edmans2006} document the case in finance: when the national soccer team loses a World Cup elimination match, the national stock market falls significantly the next trading day, with the effect concentrated in countries where soccer is more important. The economic mechanism is not information about fundamentals but mood: disappointing sports news worsens the national mood and depresses risk-taking.
 
-\citet{wang2020} extend the argument to a starker exogenous shock. Terrorist attacks raise aggregate risk aversion, as proxied by flows out of equity mutual funds and into government bond funds. The effect is larger in the days immediately following the attack and decays over time. Both findings point to a direct channel from affective feelings to beliefs about risk and, through beliefs, to portfolio choices.
+Two environmental results reinforce the mood channel. \citet{hirshleifer2003} find higher stock market returns on sunnier days: sunshine improves mood, improved mood raises optimism about future cash flows, and the optimism is priced. \citet{kamstra2003} link the seasonal pattern in returns to Seasonal Affective Disorder: fewer hours of daylight induce a mild depression, which raises risk aversion and lowers returns through the winter months.
+
+\citet{wang2020} extend the argument to a starker exogenous shock. Terrorist attacks raise aggregate risk aversion, as proxied by flows out of equity mutual funds and into government bond funds. The effect is larger in the days immediately following the attack and decays over time. Both findings point to a direct channel from affective feelings to beliefs about risk and, through beliefs, to portfolio choices. They also suggest a mechanism that can amplify market fluctuations: if the stock market rises, investors' mood improves, their judgments about the economy's prospects become more positive, and they push the market up still further.
+
+\subsection{My Research: Air Pollution and Carbon Divestment}
+\label{sec:myresearch_pollution}
+
+Belief shifts triggered by exogenous stimuli reach professionals, and they can overshoot. \citet{huynh2025} study mutual fund managers exposed to local air pollution. Managers experiencing pollution underweight the stocks of high-emission firms, and the effect strengthens for environmentally conscious managers and for managers surprised by the pollution---that is, when the stimulus is salient, managers revise their beliefs about carbon risk. The divestment is costly: the carbon-intensive stocks managers sell subsequently outperform the stocks bought in their place. Like soccer losses and terrorist attacks, pollution is an exogenous stimulus that shifts beliefs; the difference is that here the professionals \emph{overreact}, selling carbon-intensive stocks by more than fundamentals justify.
+
+\subsection{Cognitive Feelings}
 
 \emph{Cognitive feelings} are about the ease with which information is processed rather than the mood that processing leaves behind. \citet{zajonc1968} and \citet{bornstein1989} document the basic result: people prefer stimuli that are familiar, easily processed, and fluently retrieved, even when the preference has no informational basis. \citet{uppal2003} formalize the asset pricing version: under ambiguity aversion or model misspecification, investors view stocks whose payoffs they can better estimate as less ambiguous, and overweight them. The applications are \emph{home bias} (domestic stocks are more familiar than foreign stocks) and \emph{local bias} (stocks headquartered nearby are more familiar than distant ones), both of which Chapter~\ref{ch:intro} documents.
 
@@ -201,7 +232,16 @@ A more recent strand of research investigates how feelings affect beliefs and pr
 \section{Heterogeneous Beliefs: Sources}
 \label{sec:hetsources}
 
-The biases of Sections~\ref{sec:representativeness}--\ref{sec:otherbiases} all keep the \emph{representative investor} assumption intact: a single agent, possibly with systematically distorted beliefs, faces the asset pricing problem. The next two sections drop that assumption and work with heterogeneous beliefs---different agents holding different views about asset values, with the average belief unbiased. The departure is consequential. Asymmetric information alone cannot sustain rational disagreement: under common priors, a Bayesian agent who is offered a trade recognizes that the offer itself reflects information he does not have, and revises his beliefs until the apparent gains from trade vanish. The \citet{milgrom1981} no-trade theorem formalizes the result: with common priors and rational updating, agents who observe the same signals agree to agree, and no trade takes place. Heterogeneous beliefs in the rational sense must therefore come from somewhere beyond asymmetric information. The literature has identified three sources.
+The biases of Sections~\ref{sec:representativeness}--\ref{sec:otherbiases} all keep the \emph{representative investor} assumption intact: a single agent, possibly with systematically distorted beliefs, faces the asset pricing problem. The next two sections drop that assumption and work with heterogeneous beliefs---different agents holding different views about asset values, with the average belief unbiased. The departure is consequential. Asymmetric information alone cannot sustain rational disagreement: under common priors, a Bayesian agent who is offered a trade recognizes that the offer itself reflects information he does not have, and revises his beliefs until the apparent gains from trade vanish. The \citet{milgrom1981} no-trade theorem formalizes the result: with common priors and rational updating, agents who observe the same signals agree to agree, and no trade takes place. Heterogeneous beliefs in the rational sense must therefore come from somewhere beyond asymmetric information: from differences in prior beliefs, which \citet{morris1995} argues are reasonable for genuinely new phenomena, or from differences in how agents process the same information. The empirically important sources of such differences are the subject of this section.
+
+The magnitude of the phenomenon is easy to underestimate. Figure~\ref{fig:spf} plots disagreement among respondents to the Survey of Professional Forecasters: the interquartile range across forecasters of one-quarter-ahead forecasts of annualized quarterly growth in real GDP, corporate profits, and CPI inflation. These are professionals, surveyed at the same moment, answering the same question with the same public data---and the disagreement is wide in every period. People regularly hold different beliefs about almost everything, from political views and sports events to economic outcomes and asset returns.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{spf_dispersion.png}
+\caption[Disagreement among professional forecasters]{\textbf{Even professionals disagree.} Interquartile range across respondents to the Survey of Professional Forecasters of one-quarter-ahead forecasts of annualized quarterly growth in real GDP, corporate profits, and CPI inflation (Philly Fed variables D2 and D1), 1968--2026. Forecasters answering the same question at the same time, with the same public data, disagree widely. \textit{Source:} Author's calculations based on the Federal Reserve Bank of Philadelphia Survey of Professional Forecasters.}
+\label{fig:spf}
+\end{figure}
 
 \subsection{Experience Effects}
 
@@ -212,7 +252,9 @@ The biases of Sections~\ref{sec:representativeness}--\ref{sec:otherbiases} all k
 \label{fig:experience}
 \end{figure}
 
-\citet{malmendier2016} document a clean case in inflation expectations. Survey respondents overweight the inflation they experienced during their own lifetimes when forming expectations of future inflation: respondents born in the 1930s report higher inflation expectations in 2010 than respondents born in the 1970s, even though the cohort born later has experienced more inflation in absolute terms. Younger respondents update their beliefs more quickly in response to recent news; older respondents update more slowly and rely more heavily on their formative experiences. The same mechanism---overweighting personally experienced events---produces persistent cross-sectional dispersion in beliefs about any quantity for which the historical record is long.
+One important source of heterogeneous beliefs is personal experience. When forming beliefs, a rational individual should take account of all available information; mounting evidence instead suggests that people overweight what they have lived through. \citet{malmendier2011} show that whether a household participates in the stock market, and how much it invests, depends on the stock market returns the household experienced over its lifetime: cohorts that lived through poor markets stay underweight equities for decades, and the effect of experienced returns fades only slowly as new experience accumulates.
+
+\citet{malmendier2016} document a clean case in inflation expectations. Survey respondents overweight the inflation they experienced during their own lifetimes when forming expectations of future inflation: respondents born in the 1930s report higher inflation expectations in 2010 than respondents born in the 1970s, even though the cohort born later has experienced more inflation in absolute terms. Younger respondents update their beliefs more quickly in response to recent news; older respondents update more slowly and rely more heavily on their formative experiences. \citet{kuchler2019} extend the experience logic with individual-level data: people's beliefs about aggregate housing prices and unemployment depend strongly on the economic conditions they have experienced locally, even though the aggregate outcomes are public information. The same mechanism---overweighting personally experienced events---produces persistent cross-sectional dispersion in beliefs about any quantity for which the historical record is long.
 
 \begin{figure}[htbp]
 \centering
@@ -240,7 +282,7 @@ The third source is the one emphasized by \citet{daniel1998}. Two agents with th
 \section{Heterogeneous Beliefs with Short-Sale Constraints}
 \label{sec:hetwithssc}
 
-Heterogeneous beliefs alone do not have interesting pricing effects. If two agents disagree about an asset's value, the optimist wants to buy and the pessimist wants to sell. Without frictions, the two positions can be unwound and the price lies at a weighted average of the two beliefs. The overpricing and underpricing cancel out, and the equilibrium expected return is the rational expected return under the average belief. Heterogeneous beliefs become interesting when pessimists cannot fully express their view---in the canonical case, because short-selling is constrained.
+Heterogeneous beliefs alone do not have interesting pricing effects. If two agents disagree about an asset's value, the optimist wants to buy and the pessimist wants to sell. Without frictions, the two positions can be unwound and the price lies at a weighted average of the two beliefs. The overpricing and underpricing cancel out, and the equilibrium expected return is the rational expected return under the average belief. What dispersion does generate is volume: investors trade because they disagree about asset values, and higher dispersion of beliefs means higher trading volume. \citet{grinblatt2009}, using Finnish data that link brokerage records to aptitude tests, show that more overconfident individuals---those whose self-reported confidence exceeds what their test performance justifies---trade more. Heterogeneous beliefs become interesting for \emph{prices} when pessimists cannot fully express their view---in the canonical case, because short-selling is constrained.
 
 \subsection{Static Argument: Miller (1977)}
 
@@ -259,19 +301,26 @@ The argument is static, in the sense that it does not require beliefs to change 
 
 The dynamic version of the argument adds a \emph{resale option}. \citet{harrison1978} show that an agent with optimistic beliefs about an asset is willing to pay more than his buy-and-hold valuation, because there is a positive probability that future information will make his view the prevailing one, at which point he can resell to a future optimist at a still higher price. The resale option is valuable precisely because beliefs are heterogeneous: in a homogeneous-belief world there is no one to resell to. With short-sale constraints preventing pessimists from driving the price down, the resale option adds a \emph{bubble component} to the price that can persist even when all agents know the asset is overvalued relative to fundamental value.
 
-The following example, drawn from the \citet{harrison1978} framework, illustrates the magnitude of the resale-option effect.
+The following example, drawn from the \citet{harrison1978} framework, illustrates the magnitude of the resale-option effect (Figure~\ref{fig:resale}).
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.7\textwidth]{resale_option.png}
+\caption[The resale-option example]{\textbf{The resale-option example.} Valuations and prices in the two-agent, two-state example. Both agents' buy-and-hold valuations at $t=0$ are 50, yet both are willing to pay 57.5, because each expects to resell to the more optimistic agent at $t=1$: at 90 in state $u$, above $B$'s valuation of 75, or at 25 in state $d$, above $A$'s valuation of 10. \textit{Source:} EF8083 course materials.}
+\label{fig:resale}
+\end{figure}
 
 \begin{quote}
-\textbf{Worked example.} Two risk-neutral agents $A$ and $B$ trade a risky asset at $t = 0, 1, 2$. The interest rate is zero and short-selling is prohibited. The asset pays 90 in state $u$ and 25 in state $d$ at $t = 2$, and each state has probability $1/2$, so the buy-and-hold (hold-to-maturity) value of the asset is $(90 + 25)/2 = 57.5$. At $t = 1$ a public signal arrives that is only weakly informative about the state, but the two agents interpret it asymmetrically: agent $A$ treats good news as confirmation of state $u$ and values the asset at 90, while remaining at 57.5 after bad news; agent $B$ treats bad news as confirmation of state $d$ and values the asset at 25, while remaining at 57.5 after good news. Good and bad news arrive with probability $1/2$ each. Because short-selling is prohibited, the $t = 1$ price is set by the more optimistic agent: 90 after good news, 57.5 after bad. At $t = 0$, the asset therefore trades at
+\textbf{Worked example.} Two risk-neutral agents $A$ and $B$ trade a risky asset at $t = 0, 1, 2$. The interest rate is zero and short-selling is prohibited. At $t = 1$ a public signal arrives---good news (state $u$) or bad news (state $d$), each with probability $1/2$---and the two agents interpret it asymmetrically. After good news, agent $A$ values the asset at 90 and agent $B$ at 75; after bad news, agent $A$ values it at 10 and agent $B$ at 25. Each agent's buy-and-hold valuation at $t = 0$ is therefore $(90+10)/2 = 50$ for $A$ and $(75+25)/2 = 50$ for $B$: without the option to resell, the two agents agree the asset is worth 50. With short-selling prohibited, the $t = 1$ price is set by the more optimistic agent: 90 in state $u$ and 25 in state $d$. At $t = 0$, both agents are therefore willing to pay
 \[
-\tfrac{1}{2} \cdot 90 + \tfrac{1}{2} \cdot 57.5 \;=\; 73.75,
+\tfrac{1}{2} \cdot 90 + \tfrac{1}{2} \cdot 25 \;=\; 57.5,
 \]
-which exceeds the buy-and-hold value of 57.5. The excess 16.25 is the resale-option premium: an agent pays more than the asset is worth holding because holding carries the option of reselling to a future optimist. (The example abstracts from discounting.)
+\emph{above} either agent's buy-and-hold valuation. The excess 7.5 is the resale-option premium. Each agent expects to resell the asset to the other at a price above his own valuation: $B$ expects to resell to $A$ at 90 in state $u$, which exceeds his valuation of 75, and $A$ expects to resell to $B$ at 25 in state $d$, which exceeds his valuation of 10. The resale option enters both agents' initial willingness to pay: a speculative bubble component.
 \end{quote}
 
 \subsection{Bubble Characteristics}
 
-The bubble component of \citet{harrison1978} has properties that match observed bubble episodes. \citet{scheinkman2003} formalize the result: the magnitude of the resale-option premium is increasing in the volatility of beliefs (the more agents disagree, the larger the option value) and decreasing in the asset float (more shares available to short against means a looser constraint and a smaller bubble). Both predictions are directional: the larger the dispersion of beliefs, the larger the bubble; the more shares available for trading, the smaller the bubble. The predictions are exactly the dimensions on which \citet{xiong2011} take the model to Chinese warrant data (Section~\ref{sec:hetprices}).
+The bubble component of \citet{harrison1978} has properties that match observed bubble episodes. \citet{scheinkman2003} formalize the result. First, the resale-option premium is determined by fluctuations in agents' beliefs: the more likely beliefs are to flip between optimists and pessimists, the more the agents trade and the more valuable the resale option---which is why bubbles tend to coincide with trading frenzies. Second, the premium depends on asset float: with more shares available for trading, the bubble is smaller. The mechanism runs through downward-sloping demand curves. An owner can sell his share only if a buyer's belief passes his own by a sufficient margin; a larger float makes it less likely that enough sufficiently optimistic buyers exist, and the resale option is worth less. The predictions are exactly the dimensions on which \citet{xiong2011} take the model to Chinese warrant data (Section~\ref{sec:hetprices}).
 
 % ============================================================
 \section{Heterogeneous Beliefs and Asset Prices}
@@ -310,12 +359,12 @@ The most rigorous empirical test of the heterogeneous-beliefs-with-short-sale-co
 
 \subsection{Cross-Sectional Stock Returns}
 
-The heterogeneous-beliefs model with short-sale constraints also predicts a cross-sectional return pattern: assets that investors disagree about more should be more overpriced, and should earn lower subsequent returns. \citet{diether2003} test the prediction using analyst forecast dispersion as the disagreement measure. They form portfolios sorted on the cross-sectional standard deviation of analyst earnings forecasts and find that high-dispersion stocks earn significantly lower returns than low-dispersion stocks over the subsequent twelve months, even after controlling for size, book-to-market, and momentum. The return spread is consistent with the overpricing mechanism: disagreement is high precisely for stocks where some analysts are optimistic and others are pessimistic, and the short-sale constraint prevents the pessimists from fully expressing their view.
+The heterogeneous-beliefs model with short-sale constraints also predicts a cross-sectional return pattern: assets that investors disagree about more should be more overpriced, and should earn lower subsequent returns. \citet{diether2003} test the prediction using analyst forecast dispersion as the disagreement measure. They form portfolios sorted on the cross-sectional standard deviation of analyst earnings forecasts and find that high-dispersion stocks earn significantly lower returns than low-dispersion stocks over the subsequent twelve months, even after controlling for size, book-to-market, and momentum. The return spread is consistent with the overpricing mechanism: disagreement is high precisely for stocks where some analysts are optimistic and others are pessimistic, and the short-sale constraint prevents the pessimists from fully expressing their view. Figure~\ref{fig:dms} shows the pattern in the Open Source Asset Pricing data: over 1976--2024, the low-dispersion quintile out-earns the high-dispersion quintile by a statistically significant spread.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.50\textwidth]{slide42_pic4.jpg}
-\caption[Analyst disagreement and subsequent returns]{\textbf{Cross-sectional disagreement.} The figure shows average returns of portfolios sorted on the cross-sectional dispersion of analyst earnings forecasts. High-dispersion stocks earn lower subsequent returns, consistent with the overpricing prediction of the heterogeneous-beliefs model. \textit{Source:} \citet{diether2003}, reproduced from the original article.}
+\includegraphics[width=0.7\textwidth]{ForecastDispersion_quintile_bar.png}
+\caption[Analyst disagreement and subsequent returns]{\textbf{Cross-sectional disagreement.} Average monthly value-weighted returns (\%) of quintile portfolios sorted on analyst earnings-forecast dispersion, 1976--2024; quintile 1 holds the highest-dispersion stocks. Low-dispersion stocks outperform high-dispersion stocks (spread $t = 3.2$), consistent with the overpricing prediction of the heterogeneous-beliefs model with short-sale constraints. \textit{Source:} Author's calculations based on Open Source Asset Pricing quintile portfolio data \citep{chen2022}, after \citet{diether2003}.}
 \label{fig:dms}
 \end{figure}
 
@@ -325,22 +374,46 @@ The same mechanism predicts a relation at the aggregate level: when aggregate di
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.45\textwidth]{slide43_pic4.png}
-\hspace{0.3em}
 \includegraphics[width=0.45\textwidth]{slide43_pic5.png}
-\caption[Aggregate disagreement and market returns]{\textbf{Aggregate disagreement.} The figure plots aggregate analyst forecast dispersion (value-weighted) against subsequent aggregate market returns. High-disagreement periods are followed by low market returns, consistent with the heterogeneous-beliefs overpricing mechanism operating at the aggregate level. \textit{Source:} \citet{yu2011}, reproduced from the original article.}
+\hspace{0.3em}
+\includegraphics[width=0.45\textwidth]{slide43_pic4.png}
+\caption[Aggregate disagreement and market returns]{\textbf{Aggregate disagreement.} Left: the time series of aggregate analyst forecast dispersion, measured as the value-weighted average of stock-level dispersion. Right: a nonparametric estimate of expected market returns against aggregate disagreement, with pointwise 95\% confidence bands; expected returns decline as disagreement rises. High-disagreement periods are followed by low market returns, consistent with the heterogeneous-beliefs overpricing mechanism operating at the aggregate level. \textit{Source:} \citet{yu2011}, reproduced from the original article.}
 \label{fig:yu}
 \end{figure}
 
 \subsection{Risk--Return Tradeoff}
 
-The same logic produces a prediction about the risk--return relation that goes the wrong way under standard theory. \citet{sharpe1964} and the CAPM that follows from it predict that higher risk is rewarded with higher expected return. In the heterogeneous-beliefs model, the opposite can occur: when investors disagree about a stock, the optimists set the price and the pessimists are sidelined by the short-sale constraint, so higher disagreement is associated with \emph{higher} price and \emph{lower} expected return. The negative risk--return relation is one of the empirical regularities of Chapter~\ref{ch:intro}.
+Another important application of the same logic is the risk--return tradeoff. Standard theory predicts that higher risk is rewarded with higher expected return: \citet{sharpe1964} and the CAPM that follows from it imply an upward-sloping security market line. Empirically, the relation between risk and return is often negative instead. Heterogeneous-beliefs models explain the anomaly: when investors disagree about a stock, the optimists set the price and the pessimists are sidelined by the short-sale constraint, so higher disagreement is associated with a \emph{higher} price and a \emph{lower} expected return. The negative risk--return relation is one of the empirical regularities of Chapter~\ref{ch:intro}. Figure~\ref{fig:alphabeta} shows the pattern in beta-sorted portfolios: average CAPM alphas decline with beta across the ten BetaFP decile portfolios, with cross-sectional fit $\alpha = 1.178 - 0.178\,\beta$ and $R^2 = 0.95$. High-beta stocks do not earn commensurately high returns; measured against the CAPM, they are overpriced.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\textwidth]{slide45_pic2.png}
-\caption[Risk--return intuition]{\textbf{Risk--return intuition.} The figure illustrates the heterogeneous-beliefs channel: with short-sale constraints, the pessimist is sidelined when investors disagree, and only the optimist's valuation enters the price. Higher disagreement raises the price and lowers the expected return. \textit{Source:} EF8083 course materials.}
-\label{fig:riskret_intuition}
+\includegraphics[width=0.6\textwidth]{beta.png}
+\caption[CAPM alphas decline with beta]{\textbf{Alpha versus beta.} Average monthly CAPM alphas against CAPM betas for the ten beta-sorted (BetaFP) decile portfolios, Open Source Asset Pricing data, 1928--2024 ($N = 1{,}161$ months; market proxy: equal-weighted mean of the deciles, no risk-free rate available). The fitted line $\alpha = 1.178 - 0.178\,\beta$ ($R^2 = 0.95$) slopes down: high-beta portfolios earn lower alphas, the high-beta--low-alpha pattern that standard theory cannot produce. \textit{Source:} Author's calculations based on Open Source Asset Pricing decile portfolio data \citep{chen2022}.}
+\label{fig:alphabeta}
+\end{figure}
+
+\citet{hong2016} turn the observation into a model of the \emph{high-beta--low-alpha puzzle}. Write each asset's payoff as its beta times the aggregate cash flow plus idiosyncratic noise,
+\[
+d_i = \beta_i(Z) + e_i .
+\]
+Suppose agents disagree about the aggregate cash flow $Z$: optimists expect $Z+\delta$, pessimists $Z-\delta$. The disagreement passes through beta. High-beta assets are more sensitive to disagreement about aggregate cash flows than low-beta assets, so optimists expect $\beta_i(Z+\delta)$ and pessimists $\beta_i(Z-\delta)$: high-beta assets experience more divergence of opinion. With short-sale constraints, the amplified divergence overprices high-beta assets relative to low-beta assets. In a slogan, \emph{beta amplifies aggregate disagreement}.
+
+The model delivers sharp predictions about the shape of the security market line. When aggregate disagreement is low, the CAPM holds and the SML slopes upward. When aggregate disagreement is high, the SML takes an inverted-U shape---expected returns initially increase with beta and then decrease as overpricing of high-beta assets dominates. Stock-level disagreement should increase with beta, especially when aggregate disagreement is high. \citet{hong2016} measure aggregate disagreement as the lagged-beta-weighted average of stock-level analyst forecast dispersion (Figure~\ref{fig:hs_fig1}) and test the predictions in beta-decile portfolios split by high and low disagreement months (Figure~\ref{fig:specbeta}).
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.5\textwidth]{slide45_pic2.png}
+\caption[Aggregate disagreement, Hong and Sraer measure]{\textbf{Aggregate disagreement.} The time series of aggregate disagreement from \citet{hong2016}: each month, the lagged-beta-weighted average across stocks of the standard deviation of analyst forecasts of the stock's long-run EPS growth, December 1981--February 2014, CRSP stocks excluding penny stocks and microcaps. \textit{Source:} \citet{hong2016}, reproduced from the original article.}
+\label{fig:hs_fig1}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.48\textwidth]{slide46_pic3.png}
+\hspace{0.3em}
+\includegraphics[width=0.48\textwidth]{slide46_pic4.jpg}
+\caption[Speculative betas in the data]{\textbf{Speculative betas in the data.} Left: average three-month excess returns of equal-weighted beta-decile portfolios during low and high aggregate-disagreement months. Right: the equal-weighted average dispersion of analyst earnings forecasts by beta decile during low and high aggregate-disagreement months. The panels are the empirical counterpart of the model's predictions that stock-level disagreement rises with beta and that the shape of the security market line depends on aggregate disagreement. \textit{Source:} \citet{hong2016}.}
+\label{fig:specbeta}
 \end{figure}
 
 \subsection{Macro Factors and Disagreement}
@@ -360,16 +433,14 @@ The same logic produces a prediction about the risk--return relation that goes t
 
 The cross-sectional and time-series correlations of Section~\ref{sec:hetprices} are consistent with the heterogeneous-beliefs model, but the same correlations admit other readings. A stock with high analyst dispersion is also a stock with high uncertainty, high trading volume, and high media attention; the overpricing interpretation must compete with risk-based and information-based alternatives. Distinguishing the channels requires exogenous variation in disagreement.
 
-\citet{chang2022} provide such variation by exploiting the staggered rollout of the SEC's EDGAR electronic disclosure system. As EDGAR access was extended to subsets of firms during the 1990s, the cost of acquiring public information about those firms fell. The authors argue that lower information costs reduce the dispersion of beliefs: as more investors access the same public information, disagreement about what the firm is worth shrinks. They then use the staggered rollout as a quasi-experiment to identify the effect of disagreement on stock prices.
+\citet{chang2022} provide such variation by exploiting the staggered rollout of the SEC's EDGAR electronic disclosure system. Before EDGAR, investors could access firms' mandatory filings only at high cost, either by subscribing to commercial data providers or by physically visiting the SEC's reference rooms. Beginning in April 1993, the SEC required U.S.\ firms to file their mandatory disclosures electronically through the EDGAR system, and it randomly assigned firms to one of ten implementation waves, staggering inclusion over the three-year period between 1993 and 1996. The rollout therefore moves information-acquisition costs exogenously across firms and time. The authors argue that lower information costs reduce the dispersion of beliefs: as more investors access the same public information, disagreement about what the firm is worth shrinks. EDGAR inclusion helps resolve disagreement around information events, leading to price corrections and lower crash risk.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.30\textwidth]{slide49_pic4.png}
+\includegraphics[width=0.40\textwidth]{slide49_pic4.png}
 \hspace{0.2em}
-\includegraphics[width=0.30\textwidth]{slide49_pic5.png}
-\hspace{0.2em}
-\includegraphics[width=0.30\textwidth]{slide49_pic6.png}
-\caption[EDGAR rollout and disagreement]{\textbf{Causal evidence on disagreement.} The three panels document the EDGAR rollout (left), the associated decline in analyst forecast dispersion (center), and the corresponding change in stock prices (right). Stocks whose information costs fell with EDGAR experienced both lower disagreement and lower prices, consistent with the overpricing mechanism of the heterogeneous-beliefs model. \textit{Source:} \citet{chang2022}, reproduced from the original article.}
+\includegraphics[width=0.40\textwidth]{slide49_pic5.png}
+\caption[EDGAR rollout and disagreement]{\textbf{Causal evidence on disagreement.} Evidence from the EDGAR quasi-experiment of \citet{chang2022}: as staggered EDGAR inclusion lowers information-acquisition costs, disagreement resolves around information events, prices correct, and crash risk falls (right: crash-risk regressions using NCSKEW). \textit{Source:} \citet{chang2022}, reproduced from the original article.}
 \label{fig:chang}
 \end{figure}
 
@@ -379,18 +450,20 @@ The central finding is that the rollout of EDGAR, by lowering information costs 
 \section{Do People Ever Learn?}
 \label{sec:stakes}
 
-The biases of Sections~\ref{sec:representativeness}--\ref{sec:otherbiases} are persistent; they are part of the cognitive and emotional machinery that evolution built into human decision-making. Many of them have survival value (overconfidence increases the willingness to act, which has positive selection consequences), and the kinds of financial decisions in which they matter most are recent on evolutionary timescales. People can, and do, learn to mitigate some biases through training, debiasing, and rule-based decision-making---but the mitigation is partial.
+The biases of Sections~\ref{sec:representativeness}--\ref{sec:otherbiases} are persistent; they are part of the cognitive and emotional machinery that evolution built into human decision-making. Many of the most persistent behavioral biases are mental shortcuts with survival value: loss aversion increases survival probability, and overconfidence increases effort and trust within one's community. The kinds of financial decisions in which the biases matter most are recent on evolutionary timescales. Do people simply learn their way out of them? Only to a limited extent.
 
-The most direct evidence comes from comparing investor behavior under different stakes. \citet{sui2025} ran a randomized intervention in which investors simultaneously traded stocks in real accounts using their own money and in a simulated setting with no personal financial consequence. The two arms of the study produced sharply different behavior: in the low-stakes simulated setting, investors traded less, diversified more, and earned higher returns. In the high-stakes real setting, the same investors exhibited more of the overtrading, concentration, and overconfidence that the behavioral literature documents.
+Do highly trained professionals exhibit the biases? Yes, and sometimes professionals do worse. CEOs and founders are more overconfident than the average person---selection into those roles rewards confidence, and success at the top of the distribution reinforces it. Expertise does not immunize judgment; it supplies the wrong mental models with more resources.
+
+The most direct evidence compares investor behavior under different stakes. \citet{sui2025} use a unique setting in which investors trade stocks in real accounts with their own money and simultaneously in a simulated setting where the personal stakes are lower. Within-investor estimation shows that the same investors exhibit stronger biases---disposition effect, lottery preference, extrapolation, underdiversification, local bias---and perform worse in the higher-stakes real accounts than in the simulated accounts. Investors do better when they care less. The explanation is uncomfortable for the debiasing view: individuals carry incorrect mental models, and greater attention and effort in the high-stakes setting lead to the more careful \emph{application} of those incorrect models. Trying harder makes the biases worse, not better.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.55\textwidth]{slide51_pic4.png}
-\caption[Stakes and investor biases]{\textbf{Investors do better when they care less.} In a randomized intervention, investors trading in a low-stakes simulated setting traded less, diversified more, and earned higher returns than the same investors trading in high-stakes real accounts with their own money. The result is consistent with biased beliefs being magnified by the emotional salience of the stakes. \textit{Source:} \citet{sui2025}, reproduced from the original article.}
+\includegraphics[width=0.7\textwidth]{slide51_pic4.png}
+\caption[Stakes and investor biases]{\textbf{Investors do better when they care less.} For each bias---disposition effect, lottery preference, extrapolation, underdiversification, local bias---the table reports the mean across investors' real accounts, the mean in their simulated accounts, and the within-investor difference with $t$-statistics and Wilcoxon $p$-values ($N$: number of investors). Biases are systematically stronger in the real, higher-stakes accounts. \textit{Source:} \citet{sui2025}, reproduced from the original article.}
 \label{fig:sui}
 \end{figure}
 
-The finding has two implications for the behavioral asset pricing program. First, it provides a clean experimental handle on the role of stakes in producing the patterns the literature documents. The biases are not arbitrary; they are sensitive to the emotional context in which decisions are made, and the emotional context is in turn sensitive to the size of the stake. Second, it raises a methodological point that recurs in the chapter: behavioral biases are not fixed properties of the investor. They are properties of the investor \emph{in context}, and the context matters for how strongly they affect trading and prices.
+The finding has two implications for the behavioral asset pricing program. First, the biases are not diluted by stakes; they are magnified. The emotional salience of real money leads investors to apply their (incorrect) mental models more carefully, so raising the stakes deepens rather than corrects the distortion. Second, it raises a methodological point that recurs in the chapter: behavioral biases are not fixed properties of the investor. They are properties of the investor \emph{in context}, and the context matters for how strongly they affect trading and prices.
 
 % ============================================================
 \section{What Remains Contested}
