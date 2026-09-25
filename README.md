@@ -15,7 +15,7 @@ Instructor: Frank Weikai Li (weikaili@cityu.edu.hk)
 | 5 | Bounded Rationality — limited attention, investor sentiment | [Lecture5_LaTeX/Lecture5_BoundedRationality.tex](Lecture5_LaTeX/Lecture5_BoundedRationality.tex) |
 | 6 | Memory and Markets — associative memory, memory-based beliefs | [Lecture6_LaTeX/Lecture6_Memory.tex](Lecture6_LaTeX/Lecture6_Memory.tex) |
 
-Each folder contains the LaTeX source, the compiled PDF, and figure assets. Lectures 1–5 include *Your Instructor's Research* frames that connect the instructor's own published papers and working papers to the topic on the surrounding slides.
+Each folder contains the LaTeX source, the compiled PDF, and figure assets. Lectures 2–5 include *My Research* frames that connect the instructor's own published papers and working papers to the topic on the surrounding slides.
 
 ## Compilation
 
