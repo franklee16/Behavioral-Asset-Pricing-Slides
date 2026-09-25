@@ -1,4 +1,4 @@
-# books/ — Lecture-to-Book Chapter Conversions
+# Book/ — Lecture-to-Book Chapter Conversions
 
 PhD-level book chapters converted from the EF8083 Beamer lectures. Chapters 1–5
 are complete (Introduction, Limits to Arbitrage, Preferences Under Uncertainty,
@@ -10,32 +10,23 @@ added later as `chapter6_*.tex` and `\input` into `main.tex`.
 | File | Description |
 |------|-------------|
 | `main.tex` | Book master file (11pt, letter, book class, biblatex/biber, CityUBlue links) |
-| `chapter1_introduction.tex` | Ch. 1 — Introduction, converted from `Slides/Lecture1_LaTeX/Lecture1_Intro.tex` |
-| `chapter2_limits2arb.tex` | Ch. 2 — Limits to Arbitrage, converted from `Slides/Lecture2_LaTeX/Lecture2_Limits2Arb.tex` |
-| `chapter3_preferences.tex` | Ch. 3 — Preferences Under Uncertainty, converted from `Slides/Lecture3_LaTeX/Lecture3_Preferences.tex` |
-| `chapter4_beliefs.tex` | Ch. 4 — Biased Beliefs, converted from `Slides/Lecture4_LaTeX/Lecture4_Beliefs.tex` |
-| `chapter5_bounded.tex` | Ch. 5 — Bounded Rationality and Psychology-free Models, converted from `Slides/Lecture5_LaTeX/Lecture5_BoundedRationality.tex` |
+| `chapter1_introduction.tex` | Ch. 1 — Introduction, converted from `../Lecture1_LaTeX/Lecture1_Intro.tex` |
+| `chapter2_limits2arb.tex` | Ch. 2 — Limits to Arbitrage, converted from `../Lecture2_LaTeX/Lecture2_Limits2Arb.tex` |
+| `chapter3_preferences.tex` | Ch. 3 — Preferences Under Uncertainty, converted from `../Lecture3_LaTeX/Lecture3_Preferences.tex` |
+| `chapter4_beliefs.tex` | Ch. 4 — Biased Beliefs, converted from `../Lecture4_LaTeX/Lecture4_Beliefs.tex` |
+| `chapter5_bounded.tex` | Ch. 5 — Bounded Rationality and Psychology-free Models, converted from `../Lecture5_LaTeX/Lecture5_BoundedRationality.tex` |
 | `references.bib` | Verified entries (all citations across Ch. 1–5; ~204 entries as of 2026-09-15) |
-| `figures/` | Figures copied from `Slides/LectureN_LaTeX/figures/` (original slide assets) |
+| `figures/` | Figures copied from `../LectureN_LaTeX/figures/` (original slide assets) |
 | `main.pdf` | Compiled book (127 pages, Ch. 1–5) |
 
 ## Build
 
 ```bash
-cd books
+cd Book
 pdflatex main && biber main && pdflatex main && pdflatex main
 ```
 
-Requires MiKTeX (pdflatex + biber). Auto-install is enabled on this machine.
-
-**Biber PATH gotcha:** if biber errors with "directory name is invalid" pointing
-to `C:\Users\frank\miniconda3\python.exe\`, strip the offending path before
-running biber. On Git Bash this works:
-
-```bash
-PATH="/c/Program Files/MiKTeX/miktex/bin/x64:/c/Windows/System32:/c/Windows" \
-  "/c/Program Files/MiKTeX/miktex/bin/x64/biber.exe" main
-```
+Requires a TeX distribution with `pdflatex` and `biber` (TeX Live, MiKTeX, or MacTeX).
 
 ## Conversion conventions
 

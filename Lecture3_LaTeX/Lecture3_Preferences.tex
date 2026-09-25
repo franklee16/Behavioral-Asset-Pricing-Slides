@@ -142,8 +142,8 @@
 \begin{columns}[T]
 \begin{column}{0.50\textwidth}
 \begin{itemize}
-\item Turns out that we hate about losses twice as much as we like an equal-sized gain
-\item we hate losing
+\item Turns out that we hate losses about twice as much as we like an equal-sized gain
+\item We hate losing
 \end{itemize}
 \end{column}
 \begin{column}{0.48\textwidth}
@@ -204,7 +204,7 @@
 \begin{frame}{Putting it All Together: Prospect Theory}
 \begin{itemize}
 \item \textbf{``Prospect Theory''}
-\item The original version (Kahneman and Tversky, 1979) consider the gamble $(x, p; y, q)$
+\item The original version (Kahneman and Tversky, 1979) considers the gamble $(x, p; y, q)$
 \item Under EU, it is assigned the value:
 \[
 p \cdot U(W + x) + q \cdot U(W + y)
@@ -315,7 +315,7 @@ w(p) \cdot v(x) + w(q) \cdot v(y)
 
 \begin{frame}{Narrow Framing}
 \begin{itemize}
-\item \textbf{Crucial question:} what should the argument of $v(\cdot)$ be?
+\item \textbf{Key question:} what should the argument of $v(\cdot)$ be?
   \begin{itemize}
   \item This is a question about ``framing''
   \end{itemize}
@@ -347,12 +347,13 @@ w(p) \cdot v(x) + w(q) \cdot v(y)
   \begin{itemize}
   \item Try to address the high risk -- low alphas and momentum/PEAD puzzle
   \item New prediction: the pricing of skewness
-  \item Probability weighting and diminishing sensitivity play the most critical role
+  \item Probability weighting and diminishing sensitivity play the central role
   \end{itemize}
 \item \textbf{The aggregate stock market}
   \begin{itemize}
   \item Try to address the equity premium, non-participation, excess volatility, and predictability puzzles
-  \item Loss aversion plays a key role; but probability weighting also matters
+  \item Loss aversion plays a key role
+  \item But probability weighting also matters
   \end{itemize}
 \end{itemize}
 \end{frame}
@@ -380,7 +381,8 @@ w(p) \cdot v(x) + w(q) \cdot v(y)
 \begin{frame}{The Cross-section}
 \textbf{Barberis and Huang (AER 2008), Stock as Lotteries\ldots}
 \begin{itemize}
-\item Single period model; a risk-free asset and $J$ risky assets with multivariate Normal payoffs
+\item Single period model
+\item A risk-free asset and $J$ risky assets with multivariate Normal payoffs
 \item Agents have identical expectations about security payoffs
 \item Agents have identical cumulative prospect theory preferences
 \end{itemize}
@@ -388,7 +390,7 @@ w(p) \cdot v(x) + w(q) \cdot v(y)
 \textbf{Now introduce a small, independent, positively skewed security into the economy:}
 \begin{itemize}
 \item Obtain a novel prediction: the new security earns a negative excess return
-\item Skewness itself is priced, in contrast to EU model where only coskewness with market matters
+\item Skewness itself is priced, in contrast to the EU model where only coskewness with the market matters
 \end{itemize}
 \vspace{0.5em}
 \textbf{Equilibrium involves heterogeneous holdings:}
@@ -401,18 +403,25 @@ w(p) \cdot v(x) + w(q) \cdot v(y)
 
 % --- Slide 22: Cross-section, ctd. ---
 \begin{frame}{The Cross-section, ctd.}
+\begin{columns}[T]
+\begin{column}{0.55\textwidth}
 \begin{itemize}
-\item Lose diversification
-\item Idiosyncratic skewness outweigh the loss of diversification
+\item When investors increase allocation to the lottery-stocks, they lose diversification benefits
+\item But when allocation get larger, the positive idiosyncratic skewness outweighs the loss of diversification
 \end{itemize}
-\vfill
+\end{column}
+\begin{column}{0.42\textwidth}
 \centering
-\includegraphics[width=0.50\textwidth]{figures/22.png}
-\hfill\footnotesize Barberis and Huang (2008)
+\includegraphics[width=\textwidth]{figures/22.png}\\
+\footnotesize Barberis and Huang (2008)
+\end{column}
+\end{columns}
 \end{frame}
 
 % --- Slide 23: IPO Application ---
-\begin{frame}[shrink=5]{The Cross-section, ctd.}
+\begin{frame}{The Cross-section, ctd.}
+\begin{columns}[T]
+\begin{column}{0.55\textwidth}
 \textbf{Applications:}
 \begin{itemize}
 \item Low long-run return on IPOs
@@ -421,9 +430,12 @@ w(p) \cdot v(x) + w(q) \cdot v(y)
   \item Green and Hwang (2012): IPOs predicted to be more positively skewed have higher first-day returns and lower long-run returns
   \end{itemize}
 \end{itemize}
-\vfill
+\end{column}
+\begin{column}{0.42\textwidth}
 \centering
-\includegraphics[width=0.50\textwidth]{figures/slide23_pic1.jpg}
+\includegraphics[width=\textwidth]{figures/slide23_pic1.jpg}
+\end{column}
+\end{columns}
 \end{frame}
 
 % --- Slide 24: More Applications ---
@@ -459,7 +471,7 @@ w(p) \cdot v(x) + w(q) \cdot v(y)
 \end{frame}
 
 % --- Slide 25: Under-diversification ---
-\begin{frame}{The Cross-section, ctd.}
+\begin{frame}[shrink=5]{The Cross-section, ctd.}
 \textbf{Applications, ctd.}
 \begin{itemize}
 \item Under-diversification
@@ -482,11 +494,11 @@ w(p) \cdot v(x) + w(q) \cdot v(y)
 \begin{itemize}
 \item Bali, Cakici, and Whitelaw (2011) construct a very simple measure of lottery feature for individual stocks
 \item \textbf{MAX:} maximum daily return over the past one month
-\item Strong negative return predictability of MAX and help resolve the idiosyncratic volatility puzzle
+\item MAX exhibits strong negative return predictability and helps resolve the idiosyncratic volatility puzzle
 \end{itemize}
 \vfill
 \centering
-\includegraphics[width=0.65\textwidth]{figures/slide26_pic1.png}
+\includegraphics[width=0.45\textwidth]{figures/MaxRet_decile_bar.png}
 \end{frame}
 
 % --- Slide 27: Lottery Preference Evidence ---
@@ -496,11 +508,11 @@ w(p) \cdot v(x) + w(q) \cdot v(y)
 \item At the aggregate level, individual investors prefer stocks with lottery features
 \item The demand for lottery-type stocks increases during economic downturns
 \item Socioeconomic factors that induce greater lottery expenditure are associated with greater investment in lottery-type stocks
-\item Lottery investment levels are higher in regions with favourable lottery environments
+\item Lottery investment levels are higher in regions with favorable lottery environments
 \end{itemize}
 \vfill
 \centering
-\includegraphics[width=0.50\textwidth]{figures/slide27_pic1.png}
+\includegraphics[width=0.40\textwidth]{figures/slide27_pic1.png}
 \end{frame}
 
 % --- Slide 28: Lottery Preference Evidence, ctd. ---
@@ -518,7 +530,7 @@ w(p) \cdot v(x) + w(q) \cdot v(y)
 \begin{itemize}
 \item This only works if the security is highly skewed
   \begin{itemize}
-  \item Otherwise, would need too undiversified a position in order to add skewness to the portfolio
+  \item Otherwise, an investor would need an excessively undiversified position in order to add skewness to the portfolio
   \end{itemize}
 \item \textbf{Note:}
   \begin{itemize}
@@ -539,13 +551,14 @@ w(p) \cdot v(x) + w(q) \cdot v(y)
 \item This may help explain the high risk -- low alpha puzzle
 \item Wang, Yan, and Yu (JFE, 2016):
   \begin{itemize}
+  \item Following Grinblatt and Han (2005), first construct stock-level capital gain overhand (CGO) which simply proxy for whether investors collectively have capital gain for this stock 
   \item Cross-sectional risk-return trade-off is positive among stocks in which investors face prior gains
   \item But becomes negative among stocks in which investors face prior losses
   \end{itemize}
 \end{itemize}
 \vfill
 \centering
-\includegraphics[width=0.70\textwidth]{figures/slide30_pic1.jpg}
+\includegraphics[width=0.80\textwidth]{figures/slide30_pic1.jpg}
 \end{frame}
 
 % --- Slide 31: Disposition Effect and Momentum ---
@@ -556,7 +569,7 @@ w(p) \cdot v(x) + w(q) \cdot v(y)
   \begin{itemize}
   \item Grinblatt and Han (2005): Momentum; Frazzini (2006): PEAD
   \end{itemize}
-\item When a stock experiences good news and increases in value relative to the purchase price, investors want to sell it to lock in the gain, which depresses its price and leads to higher subsequent return
+\item When a stock experiences good news and increases in value relative to the purchase price, investors want to sell it to lock in the gain, which depresses its price and leads to higher subsequent returns
 \item When bad news is released and price goes down relative to the purchase price, disposition investors are reluctant to sell, leading to underreaction and lower future return
 \end{itemize}
 \vfill
@@ -572,7 +585,7 @@ w(p) \cdot v(x) + w(q) \cdot v(y)
 \begin{itemize}
 \item Investors evaluate the attractiveness of individual stocks based on prospect theory
 \item They compute the prospect theory value for each stock using its historical return distribution
-\item Stock with high prospect theory value are more appealing to investors
+\item Stocks with high prospect theory values are more appealing to investors
 \item Investors tilt toward these stocks, causing the stocks to become overvalued and to earn lower subsequent returns
 \end{itemize}
 \vfill
@@ -581,42 +594,68 @@ w(p) \cdot v(x) + w(q) \cdot v(y)
 \end{frame}
 
 % --- Slide 33: BJW 2021 ---
-\begin{frame}[shrink=5]{Prospect Theory and Stock Market Anomalies}
+\begin{frame}{Prospect Theory and Stock Market Anomalies}
+\begin{columns}[T]
+\begin{column}{0.50\textwidth}
 \textbf{Barberis, Jin, and Wang (JF 2021):}
 \begin{itemize}
 \item Use prospect theory to make quantitative predictions about an asset's average return
 \item Based on empirical estimates of the asset's return volatility, return skewness, and past capital gain
 \item Compare the model predicted alphas with actual alphas of anomaly-sorted decile portfolios
 \end{itemize}
-\vfill
+\end{column}
+\begin{column}{0.47\textwidth}
 \centering
-\includegraphics[width=0.55\textwidth]{figures/slide33_pic1.png}
+\includegraphics[width=\textwidth]{figures/slide33_pic1.png}
+\end{column}
+\end{columns}
 \end{frame}
 
 % --- Slide 34: BJW 2021, ctd. ---
-\begin{frame}[shrink=5]{Prospect Theory and Stock Market Anomalies, ctd.}
+\begin{frame}{Prospect Theory and Stock Market Anomalies, ctd.}
+\begin{columns}[T]
+\begin{column}{0.50\textwidth}
 \begin{itemize}
 \item However, the model performs poorly on the size, value, long-term reversal, short-term reversal, accrual, asset growth, and investment anomalies
 \end{itemize}
-\vfill
+\end{column}
+\begin{column}{0.47\textwidth}
 \centering
-\includegraphics[width=0.55\textwidth]{figures/slide34_pic1.png}
+\includegraphics[width=\textwidth]{figures/slide34_pic1.png}
+\end{column}
+\end{columns}
 \end{frame}
 
 % --- Slide 35: Mutual Fund Flows ---
 \begin{frame}{Prospect Theory: Revealed Preferences from Mutual Fund Flows}
 \begin{itemize}
 \item Previous studies mainly test the asset pricing implications of prospect theory
-\item But prospect theory also makes prediction about investor demand for certain assets
-\item Han, Sui and Yang (JFE forthcoming) evaluate prospect theory using mutual fund flows, which directly reveal investor preference/demand across assets
+\item But prospect theory also makes predictions about investor demand for certain assets
+\item Han, Sui and Yang (JFE 2026) evaluate prospect theory using mutual fund flows, which directly reveal investor preference/demand across assets
 \item They document funds whose past returns generate higher prospect theory value attract significantly larger future flows
 \end{itemize}
+\end{frame}
+
+
+% --- Slide 19a: Instructor's research ---
+\begin{frame}[shrink=5]{My Research: Stock Splits as Behavioral Signals}
+	\begin{itemize}
+		\item \textbf{Li, Cui, Pang, and Xie (Financial Management, forthcoming)}
+		\begin{itemize}
+			\item We try to explain why stock splits can be a credible positive signal to markets, even though the costs of implementing stock splits is trivial 
+			\item Model: retail investors are loss averse and treat stock splits as good news
+			\item A split raises expectations about future firm fundamentals and price appreciation, while missing those expectations triggers disproportionately large price declines
+			\item In equilibrium, only managers with favorable information use splits to signal: loss aversion makes splits credible
+			\item Evidence from China: investors turn more optimistic after splits, higher split ratios bring stronger market reactions, and splitting firms' prices fall harder when they miss elevated expectations
+		\end{itemize}
+		\item \textbf{Connection:} an application of loss aversion (this lecture) to corporate events: splits work as signals \emph{because} investors evaluate outcomes as gains and losses relative to an elevated reference point
+	\end{itemize}
 \end{frame}
 
 % --- Slide 36: Aggregate Stock Market ---
 \section{The Aggregate Stock Market}
 
-\begin{frame}{The Aggregate Stock Market}
+\begin{frame}[shrink=5]{The Aggregate Stock Market}
 \begin{itemize}
 \item Can prospect theory help us understand the properties of, and attitudes to, the aggregate stock market?
   \begin{itemize}
@@ -633,13 +672,13 @@ w(p) \cdot v(x) + w(q) \cdot v(y)
 \end{frame}
 
 % --- Slide 37: Benartzi and Thaler ---
-\begin{frame}{The Aggregate Stock Market, ctd.}
+\begin{frame}[shrink=5]{The Aggregate Stock Market, ctd.}
 \textbf{Benartzi and Thaler (1995):}
 \begin{itemize}
 \item Prospect theory value of the historical distribution of annual US stock market returns is approximately equal to the prospect theory value of the historical distribution of annual US bond market returns
 \item On one hand, the greater volatility of stock market return serves to lower their prospect value relative to that of bond market returns
 \item On the other hand, the much higher average return of the stock market serves to increase the prospect theory value of the stock market
-\item Benartzi and Thaler (1995) shows that these two forces cancel out
+\item Benartzi and Thaler (1995) show that these two forces cancel out
 \item Stock market earns a high average return so that it can be competitive with the bond market in the eyes of prospect theory investors
 \end{itemize}
 \end{frame}
@@ -652,7 +691,7 @@ w(p) \cdot v(x) + w(q) \cdot v(y)
 \end{frame}
 
 % --- Slide 39: Role of Narrow Framing ---
-\begin{frame}{The Aggregate Stock Market, ctd.}
+\begin{frame}[shrink=5]{The Aggregate Stock Market, ctd.}
 \textbf{The role of narrow framing}
 \begin{itemize}
 \item Barberis, Huang, and Santos (2001) find that narrow framing is a critical ingredient
@@ -665,7 +704,7 @@ w(p) \cdot v(x) + w(q) \cdot v(y)
 \vspace{0.5em}
 \textbf{The role of probability weighting}
 \begin{itemize}
-\item De Giorgi and Legg (2012) bring probability weighting and they show it can significantly increase the equity premium
+\item De Giorgi and Legg (2012) introduce probability weighting and show that it can significantly increase the equity premium
   \begin{itemize}
   \item Because the aggregate stock market is negatively skewed: it is subject to occasional large crashes
   \item Under probability weighting, investors overweight this left-tail outcome, which makes the stock market all the less appealing
@@ -699,7 +738,7 @@ w(p) \cdot v(x) + w(q) \cdot v(y)
   \item Bet B1: draw a ball from urn C, get \$100 if Black
   \item Bet B2: draw a ball from urn U, get \$100 if Black
   \end{itemize}
-\item The modal participant choices are R1 and B1, suggesting he believes there are both more red and black balls in Urn C than Urn U
+\item The modal participants choose R1 and B1, suggesting they believe there are both more red balls and more black balls in Urn C than in Urn U
 \end{itemize}
 \end{frame}
 

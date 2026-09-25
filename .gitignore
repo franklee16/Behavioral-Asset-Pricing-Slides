@@ -19,6 +19,7 @@
 *.lof
 *.lot
 _minted-*
+build/
 
 # Workflow extraction artifacts (slide content extracted to JSON)
 slide_content.json

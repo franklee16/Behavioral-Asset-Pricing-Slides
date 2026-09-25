@@ -23,6 +23,7 @@
 \usepackage{tikz}
 \usepackage{appendixnumberbeamer}
 
+
 % ====== Settings ======
 \setbeamertemplate{navigation symbols}{}
 \graphicspath{{figures/}{../../Figures used in slides/}}
@@ -42,27 +43,44 @@
 \titlepage
 \end{frame}
 
-% --- Slide 2: Overview ---
+% --- Slide 2: About Me ---
+\begin{frame}{About Me}
+\begin{itemize}
+  \item Ph.D.\ in Finance, HKUST
+  \item CFA charterholder since 2021
+  \item Associate Professor of Finance
+  \item Prior to joining CityU, taught at Singapore Management University for 8 years
+  \item Research in behavioral finance, asset pricing, and ESG, published in top journals
+  \item Consultant to quant funds (Magnum Research Global, Heritage Capital Management)
+  \item LinkedIn: \href{https://www.linkedin.com/in/weikai-li-ph-d-cfa-9aa65231/}{weikai-li-ph-d-cfa}
+  \quad Website: \href{https://sites.google.com/view/frankweikaili/home}{sites.google.com/view/frankweikaili}
+  \item Course materials (slides and teaching notes): \href{https://github.com/franklee16/Behavioral-Asset-Pricing-Slides/tree/main}{github.com/franklee16/Behavioral-Asset-Pricing-Slides}
+\end{itemize}
+\end{frame}
+
+% --- Slide 3: Overview ---
 \section{Overview}
 
 \begin{frame}{Overview}
 \begin{itemize}
 \item \textbf{Definition 1:}
   \begin{itemize}
-  \item Behavioural Finance investigates whether some financial phenomena are the result of less than fully rational thinking
+  \item Behavioral finance investigates whether some financial phenomena are the result of less than fully rational thinking
   \end{itemize}
 \item \textbf{Three paradigms in finance:}
-\item Traditional finance
   \begin{itemize}
-  \item Agents are rational and there are no frictions
-  \end{itemize}
-\item Frictional finance
-  \begin{itemize}
-  \item Agents are rational but there are frictions
-  \end{itemize}
-\item Behavioral finance
-  \begin{itemize}
-  \item Some agents are less than fully rational
+  \item \textbf{Traditional finance}
+    \begin{itemize}
+    \item Agents are rational and there are no frictions
+    \end{itemize}
+  \item \textbf{Frictional finance}
+    \begin{itemize}
+    \item Agents are rational but there are frictions
+    \end{itemize}
+  \item \textbf{Behavioral finance}
+    \begin{itemize}
+    \item Some agents are less than fully rational
+    \end{itemize}
   \end{itemize}
 \end{itemize}
 \end{frame}
@@ -78,7 +96,7 @@
     \item Where the utility function is defined over wealth or consumption
     \end{itemize}
   \end{itemize}
-\item \textbf{In behavioural finance, then:}
+\item \textbf{In behavioral finance, then:}
   \begin{itemize}
   \item We study less than fully rational beliefs
     \begin{itemize}
@@ -93,34 +111,32 @@
 \end{frame}
 
 % --- Slide 4: Overview, ctd. ---
-\begin{frame}{Overview, ctd.}
+\begin{frame}{Overview, ctd.\ --- Three Paradigms}
 \begin{itemize}
 \item \textbf{Definition 2:}
   \begin{itemize}
   \item Behavioral finance tries to understand financial phenomena using models that are \emph{psychologically more realistic} than their predecessors
   \end{itemize}
 \item \textbf{Three paradigms in finance:}
-\item \textbf{Traditional finance}
   \begin{itemize}
-  \item Very basic, psychologically and institutionally
-  \end{itemize}
-\item \textbf{Frictional finance}
-  \begin{itemize}
-  \item More realistic, institutionally
-  \end{itemize}
-\item \textbf{Behavioral finance}
-  \begin{itemize}
-  \item More realistic, psychologically
+  \item \textbf{Traditional finance}
     \begin{itemize}
-    \item More psychologically realistic assumptions about beliefs
-    \item More psychologically realistic assumptions about preferences
+    \item Very basic, both psychologically and institutionally
+    \end{itemize}
+  \item \textbf{Frictional finance}
+    \begin{itemize}
+    \item More realistic institutionally, but still psychologically simple
+    \end{itemize}
+  \item \textbf{Behavioral finance}
+    \begin{itemize}
+    \item More psychologically realistic about beliefs and preferences
     \end{itemize}
   \end{itemize}
 \end{itemize}
 \end{frame}
 
 % --- Slide 5: Challenges ---
-\begin{frame}{Challenges for Behavioural Finance}
+\begin{frame}{Challenges for Behavioral Finance}
 \begin{itemize}
 \item \textbf{The arbitrage critique}
   \begin{itemize}
@@ -132,11 +148,13 @@
   \end{itemize}
 \item \textbf{The lack-of-discipline critique}
   \begin{itemize}
-  \item Claim: behavioural finance is ``underdisciplined''; it is too easy to find psychology that fits the facts
+  \item Claim: behavioral finance is ``underdisciplined''
+  \item It is too easy to find psychology that fits the facts
     \begin{itemize}
     \item Address this by testing new predictions
     \end{itemize}
   \end{itemize}
+\item \textbf{Discussion:} Which critique is harder to dismiss --- the arbitrage critique or the lack-of-discipline critique? Why?
 \end{itemize}
 \end{frame}
 
@@ -200,13 +218,15 @@
 \end{column}
 \begin{column}{0.46\textwidth}
 \centering
-\includegraphics[width=\textwidth]{figures/slide08_chart.png}
+\includegraphics[width=\textwidth]{figures/cape_vs_10yr_real_return.png}
 
 \vspace{0.3em}
 \footnotesize
-\textbf{Rational explanations?}\\
-Rationally-changing forecasts of future risk --- ``rare disaster'' and long-run risk model\\[0.3em]
-Time-varying risk aversion like the habit formation model (Campbell and Cochrane, 1999)
+\textbf{Rational explanations?}
+\begin{itemize}
+\item Rationally-changing forecasts of future risk --- ``rare disaster'' and long-run risk model
+\item Time-varying risk aversion like the habit formation model (Campbell and Cochrane, 1999)
+\end{itemize}
 \end{column}
 \end{columns}
 \end{frame}
@@ -237,10 +257,16 @@ Time-varying risk aversion like the habit formation model (Campbell and Cochrane
 \begin{itemize}
 \item {\large \textbf{The equity premium puzzle}}
   \begin{itemize}
-  \item The historical equity premium (5\%) is much higher than predicted by a simple rational, frictionless model with power utility preferences (Mehra and Prescott, 1985)
+  \item The historical equity premium (5-6\%) is much higher than predicted by a simple rational, frictionless model with power utility preferences (Mehra and Prescott, 1985)
   \item The covariance of stock market returns with consumption growth is small
   \item The representative investor does not view the stock market as very risky, and requires a very low equity premium
   \end{itemize}
+  
+  \textbf{Risk premium (lognormal approximation) under consumption-based asset pricing models:} 
+  \begin{equation*}
+  	E_t[r_{i,t+1}] - r_{f,t} + \frac{\sigma^2_{i,t}}{2}
+  	= \gamma\; \mathrm{Cov}_t(r_{i,t+1},\, \Delta c_{t+1})
+  \end{equation*}
 \end{itemize}
 \end{frame}
 
@@ -255,7 +281,7 @@ Time-varying risk aversion like the habit formation model (Campbell and Cochrane
 \end{frame}
 
 % --- Slide 12: Cross-section, ctd. ---
-\begin{frame}{The Cross-Section, ctd.}
+\begin{frame}{The Cross-Section\ --- Long-term reversal}
 \begin{columns}[T]
 \begin{column}{0.50\textwidth}
 \begin{itemize}
@@ -275,7 +301,7 @@ Time-varying risk aversion like the habit formation model (Campbell and Cochrane
 \end{frame}
 
 % --- Slide 13: Cross-section, ctd. ---
-\begin{frame}{The Cross-Section, ctd.}
+\begin{frame}{The Cross-Section\ --- Momentum}
 \begin{itemize}
 \item \textbf{Momentum}
   \begin{itemize}
@@ -285,11 +311,11 @@ Time-varying risk aversion like the habit formation model (Campbell and Cochrane
 \end{itemize}
 \vfill
 \centering
-\includegraphics[width=0.55\textwidth]{figures/slide13_chart.png}
+\includegraphics[width=0.60\textwidth]{figures/Mom12m_decile_bar.png}
 \end{frame}
 
 % --- Slide 14: Cross-section, ctd. ---
-\begin{frame}{The Cross-Section, ctd.}
+\begin{frame}{The Cross-Section\ --- Short-term reversal}
 \begin{columns}[T]
 \begin{column}{0.50\textwidth}
 \begin{itemize}
@@ -310,7 +336,7 @@ Time-varying risk aversion like the habit formation model (Campbell and Cochrane
 \end{frame}
 
 % --- Slide 15: Cross-section, ctd. ---
-\begin{frame}{The Cross-Section, ctd.}
+\begin{frame}{The Cross-Section\ --- Value premium}
 \begin{itemize}
 \item \textbf{The value premium}
   \begin{itemize}
@@ -319,11 +345,11 @@ Time-varying risk aversion like the habit formation model (Campbell and Cochrane
 \end{itemize}
 \vfill
 \centering
-\includegraphics[width=0.7\textwidth]{figures/slide15_chart.png}
+\includegraphics[width=0.7\textwidth]{figures/BM_decile_bar.png}
 \end{frame}
 
 % --- Slide 16: Cross-section, ctd. ---
-\begin{frame}[shrink=5]{The Cross-Section, ctd.}
+\begin{frame}[shrink=5]{The Cross-Section\ --- Value \& momentum across asset classes}
 \begin{itemize}
 \item The value and momentum effects also exist in other asset classes (Asness, Moskowitz, and Pedersen, 2013)
   \begin{itemize}
@@ -336,7 +362,7 @@ Time-varying risk aversion like the habit formation model (Campbell and Cochrane
 \end{frame}
 
 % --- Slide 17: Cross-section, ctd. ---
-\begin{frame}{The Cross-Section, ctd.}
+\begin{frame}{The Cross-Section\ --- Issuance/repurchase}
 \begin{itemize}
 \item \textbf{The issuance/repurchase anomaly}
   \begin{itemize}
@@ -351,8 +377,22 @@ Time-varying risk aversion like the habit formation model (Campbell and Cochrane
 \includegraphics[width=0.38\textwidth]{figures/slide17_pic3_Picture_5.jpg}
 \end{frame}
 
+
+\begin{frame}{The Cross-Section\ --- Issuance/repurchase}
+	\begin{itemize}
+		\item \textbf{The issuance/repurchase anomaly}
+		\begin{itemize}
+			\item Daniel and Titman (2006) and McLean and Pontiff (2008) show net share issuance negatively predict returns, both in US and globally   
+		\end{itemize}
+	\end{itemize}
+	\vfill
+	\centering
+	\includegraphics[width=0.70\textwidth]{figures/ShareIss_quintile_bar.png}
+\end{frame}
+
+
 % --- Slide 18: Cross-section, ctd. ---
-\begin{frame}{The Cross-Section, ctd.}
+\begin{frame}{The Cross-Section\ --- Asset growth / investment}
 \begin{itemize}
 \item \textbf{The asset growth / investment anomaly}
   \begin{itemize}
@@ -365,9 +405,9 @@ Time-varying risk aversion like the habit formation model (Campbell and Cochrane
 \end{frame}
 
 % --- Slide 19: Cross-section, ctd. ---
-\begin{frame}{The Cross-Section, ctd.}
+\begin{frame}{The Cross-Section\ --- Profitability}
 \begin{itemize}
-\item \textbf{The Profitability anomaly:} more profitable firms (quintile 5) earn higher returns than less profitable firms (quintile 1)
+\item \textbf{The Profitability anomaly:} more profitable firms earn higher returns than less profitable firms 
 \item Profitability is related to a broad set of \emph{Quality} characteristics
   \begin{itemize}
   \item Asness, Frazzini, \& Pedersen (2019) suggest a multiple dimensional gauge of quality: profitability, recent growth in profits, low return and earnings volatility, and low leverage
@@ -375,11 +415,11 @@ Time-varying risk aversion like the habit formation model (Campbell and Cochrane
 \end{itemize}
 \vfill
 \centering
-\includegraphics[width=0.60\textwidth]{figures/slide19_chart.png}
+\includegraphics[width=0.60\textwidth]{figures/GP_decile_bar.png}
 \end{frame}
 
 % --- Slide 20: Cross-section, ctd. ---
-\begin{frame}{The Cross-Section, ctd.}
+\begin{frame}{The Cross-Section\ --- Financial distress}
 \begin{itemize}
 \item \textbf{The financial distress anomaly}
   \begin{itemize}
@@ -391,8 +431,60 @@ Time-varying risk aversion like the habit formation model (Campbell and Cochrane
 \includegraphics[width=0.50\textwidth]{figures/slide20_pic3_Picture_5.jpg}
 \end{frame}
 
+
+% --- Slide 20: Cross-section, ctd. ---
+\begin{frame}{The Cross-Section\ --- Financial distress}
+	\begin{itemize}
+		\item \textbf{The financial distress anomaly}
+		\begin{itemize}
+			\item Similar findings based on OScore measure of financial distress 
+		\end{itemize}
+	\end{itemize}
+	\vfill
+	\centering
+	\includegraphics[width=0.70\textwidth]{figures/oscore.png} 
+\end{frame}
+
+
+% Accrual & NOA Anomalies - one-page slide, compile with pdflatex
+
+\begin{frame}{The Cross-Section\ --- Accrual and Net Operating Asset}
+	\footnotesize
+	
+	\textbf{Accrual anomaly (Sloan, 1996).} Split earnings by how they are generated:
+	\[
+	E_t = \underbrace{CF_t}_{\text{cash, persists}} + \underbrace{TA_t}_{\text{accruals, mean-reverts}}
+	\]
+	Investors extrapolate $E_t$ uniformly, so they \alert{overprice high-accrual firms} (receivables, inventory) and underprice low-accrual firms. As accruals reverse, prices correct: long low / short high accruals $\Rightarrow \approx 10\%$/yr abnormal return.
+	
+	\medskip
+	\textbf{NOA anomaly (Hirshleifer, Hou, Teoh \& Zhang, 2004).} Rank firms by the \emph{stock} of accumulated accruals:
+	\[
+	\text{NOA} = (TA - Cash) - (TL - Debt)
+	\]
+	A bloated NOA is a permanent footprint of \alert{past earnings management}. High-NOA firms underperform low-NOA firms by $\approx 15\!-\!17\%$/yr.
+	
+	\medskip
+	\textbf{Connection: flow vs.\ stock.}
+	\begin{itemize}
+		\item Sloan = \emph{flow} ($\Delta$ accruals, one year); NOA = \emph{stock} (cumulative balance-sheet position) — and NOA \alert{subsumes} the one-year effect.
+		\item Single-year accruals are noisy (real expansions also build inventory); the accumulated stock isolates persistent accounting aggressiveness.
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}{The Cross-Section\ --- Accrual and Net Operating Asset}
+	\begin{itemize}
+		\item \textbf{The Accrual and Net Operating Asset Anomaly}
+	\end{itemize}
+	\vfill
+	\centering
+	\includegraphics[width=0.70\textwidth]{figures/Accruals_NOA_decile_bar.png} 
+\end{frame} 
+
+
 % --- Slide 21: Cross-section, ctd. ---
-\begin{frame}[shrink=5]{The Cross-Section, ctd.}
+\begin{frame}[shrink=5]{The Cross-Section\ --- Post-earnings announcement drift}
 \begin{columns}[T]
 \begin{column}{0.50\textwidth}
 \begin{itemize}
@@ -414,7 +506,7 @@ Time-varying risk aversion like the habit formation model (Campbell and Cochrane
 \end{frame}
 
 % --- Slide 22: Cross-section, ctd. ---
-\begin{frame}{The Cross-Section, ctd.}
+\begin{frame}{The Cross-Section\ --- Idiosyncratic volatility}
 \begin{columns}[T]
 \begin{column}{0.50\textwidth}
 \begin{itemize}
@@ -427,13 +519,13 @@ Time-varying risk aversion like the habit formation model (Campbell and Cochrane
 \begin{column}{0.48\textwidth}
 \centering
 \includegraphics[width=\textwidth]{figures/slide22_pic3_Picture_3.jpg}\\[0.2em]
-\footnotesize Baker, Bradley and Wurgler (2011, FAJ)
+\footnotesize Baker, Bradley, and Wurgler (2011, FAJ)
 \end{column}
 \end{columns}
 \end{frame}
 
 % --- Slide 23: Cross-section, ctd. ---
-\begin{frame}{The Cross-Section, ctd.}
+\begin{frame}{The Cross-Section\ --- Beta anomaly}
 \begin{columns}[T]
 \begin{column}{0.50\textwidth}
 \begin{itemize}
@@ -453,7 +545,7 @@ Time-varying risk aversion like the habit formation model (Campbell and Cochrane
 \end{frame}
 
 % --- Slide 24: Cross-section, ctd. ---
-\begin{frame}{The Cross-Section, ctd.}
+\begin{frame}{The Cross-Section\ --- Betting against beta}
 \begin{itemize}
 \item Similar findings in other countries and other asset classes (Frazzini and Pedersen, 2014)
 \item \textbf{Betting against beta} is highly profitable
@@ -463,13 +555,28 @@ Time-varying risk aversion like the habit formation model (Campbell and Cochrane
 \includegraphics[width=0.50\textwidth]{figures/slide24_pic3_Picture_1.jpg}
 \end{frame}
 
-% --- Slide 25: Cross-section, ctd. ---
-\begin{frame}{The Cross-Section, ctd.}
-\centering
-\textbf{Firm-level characteristics with predictive power for stock returns in the cross-section}
-\vfill
-\includegraphics[width=0.55\textwidth]{figures/slide25_pic3_Picture_6.png}
+
+% --- Slide 24: Cross-section, ctd. ---
+\begin{frame}{Are Anomalies Fake?}
+	\begin{itemize}
+		\item Some studies (Harvey, Liu and Zhu, 2016; Hou, Xue and Zhang, 2020) criticize the anomaly zoo, aruging most anomalies are results of data mining and probably fake 
+		\item Still a few influential studies (Chen and Zimmermann, 2022; Jensen et al, 2023) show anomalies do replicate independently 
+	\end{itemize}
+	\vfill
+	\centering
+	\includegraphics[width=0.50\textwidth]{figures/OP2025.png}
 \end{frame}
+
+
+\begin{frame}{Are Anomalies Fake?}
+	\begin{itemize}
+		\item Jensen et al (2023) show further that most anomalies can replicate out-of-sample in other markets and the alpha magnitudes closely align with US 
+	\end{itemize}
+	\vfill
+	\centering
+	\includegraphics[width=0.50\textwidth]{figures/replication_crisis.png}
+\end{frame}
+
 
 % --- Slide 26: Bubbles ---
 \section{Bubbles}
@@ -494,7 +601,7 @@ Time-varying risk aversion like the habit formation model (Campbell and Cochrane
 \begin{frame}[shrink=5]{Famous Bubbles in History}
 \vfill
 \centering
-\includegraphics[width=0.6\textwidth]{figures/slide27_pic2_Picture_5.png}
+\includegraphics[width=0.6\textwidth]{figures/bubble_chart.png}
 \vfill
 \end{frame}
 
@@ -509,6 +616,7 @@ Time-varying risk aversion like the habit formation model (Campbell and Cochrane
   \begin{itemize}
   \item Their collapse can trigger severe economic downturns
   \end{itemize}
+\item \textbf{Discussion:} Can rational models with time-varying risk aversion reproduce the bubble pattern?
 \end{itemize}
 \end{column}
 \begin{column}{0.48\textwidth}
@@ -571,7 +679,7 @@ Time-varying risk aversion like the habit formation model (Campbell and Cochrane
 \end{itemize}
 \vfill
 \centering
-\includegraphics[width=0.65\textwidth]{figures/slide31_chart.png}
+\includegraphics[width=0.65\textwidth]{figures/dichev2007_dollar_weighted_returns.png} 
 \end{frame}
 
 % --- Slide 32: Individual Investors, ctd. ---
@@ -582,7 +690,7 @@ Time-varying risk aversion like the habit formation model (Campbell and Cochrane
 \item \textbf{Under-diversification: Home bias}
   \begin{itemize}
   \item Investors allocate a surprisingly large fraction of their equity holdings to domestic equity
-  \item In 1989, U.S., U.K., and Japanese households invested 94\%, 82\% and 98\% of their equity holdings in domestic equity (French and Poterba, 1991)
+  \item In 1989, U.S., U.K., and Japanese households invested 94\%, 82\%, and 98\% of their equity holdings in domestic equity (French and Poterba, 1991)
   \end{itemize}
 \item \textbf{Under-diversification: Local bias}
   \begin{itemize}
@@ -652,22 +760,21 @@ Time-varying risk aversion like the habit formation model (Campbell and Cochrane
 \item A similar effect is present among mutual fund managers (Frazzini, 2006) and also in the housing market (Genesove and Mayer, 2001)
 \item The most obvious potential explanations, e.g.\ informed trading, fail to capture important features of the data
   \begin{itemize}
-  \item Subsequent return of winners that people sell is higher than that of losers they hold on to
+  \item Subsequent returns of winners that people sell are higher than those of losers they hold on to
   \end{itemize}
-\item The disposition effect is more pronounced among less sophisticated investors (Dhar and Zhu, 2006)
+\item The disposition effect is more pronounced among less sophisticated investors (Dhar and Zhu, 2006) 
 \end{itemize}
 \end{frame}
 
 % --- Slide 37: Individual Investors, ctd. ---
 \begin{frame}{Individual Investors, ctd.}
 \begin{itemize}
-\item \textbf{Trading against anomalies---forecast returns}
-\item Firms and short sellers tend to be the smart money---both sell stocks with \textbf{low-forecasted returns}
+\item Firms and short sellers tend to be the smart money---both sell stocks with \textbf{low-forecasted returns}, retail investors systematically take the wrong side, and institutions are largely noise 
 \end{itemize}
 \vfill
 \centering
-\includegraphics[width=0.85\textwidth]{figures/slide37_pic3_Picture_6.png}\\[0.2em]
-\footnotesize McLean, Pontiff and Reilly (JFE 2025)
+\includegraphics[width=0.85\textwidth]{figures/mclean2025_table4A_forecasted_return_trading.png}\\[0.2em]
+\footnotesize McLean, Pontiff, and Reilly (JFE 2025)
 \end{frame}
 
 % --- Slide 38: Institutional Investors ---
@@ -685,7 +792,7 @@ Time-varying risk aversion like the habit formation model (Campbell and Cochrane
   \item In practice, the gross alpha of mutual funds appears to be positive, but not substantially so
   \item Does this suggest there is no mispricing?
     \begin{itemize}
-    \item No one earns abnormal profit equivalent to price is correct?
+    \item No one earns abnormal profit, consistent with price being correct
     \end{itemize}
   \end{itemize}
 \end{itemize}
@@ -697,19 +804,35 @@ Time-varying risk aversion like the habit formation model (Campbell and Cochrane
 \item \textbf{Trading against anomalies}
   \begin{itemize}
   \item Lewellen (2011) finds that institutional investors in aggregate essentially hold the market portfolio, with no discernible tilt to take advantage of well-known stock return anomalies
-  \item Edelen, Ince and Kadlec (2016) find more striking result that institutions have a strong tendency to buy overvalued stocks during portfolio formation
-  \item Hedge funds and institutions with high turnover seem to exploit anomalies more than other institutions
+  \item Also shown in McLean, Pontiff, and Reilly (2025) 
+  \item Edelen, Ince, and Kadlec (2016) find more striking result that institutions have a strong tendency to buy overvalued stocks during portfolio formation
+  \item Some heterogeneity do exist: Hedge funds and institutions with high turnover seem to exploit anomalies more than other institutions
   \end{itemize}
 \end{itemize}
 \end{frame}
 
-% --- Slide 40: Institutional Investors, ctd. ---
-\begin{frame}{Institutional Investors, ctd.}
-\vfill
-\centering
-\includegraphics[width=0.65\textwidth]{figures/slide40_chart.png}\\[0.3em]
-\footnotesize Edelen, Ince, and Kadlec (2016)
-\vfill
+% --- Slide 41: Closing / preview of Lecture 2 ---
+\section{Closing}
+\begin{frame}{Today and Next Time}
+\begin{itemize}
+\item \textbf{Today}: a survey of empirical facts in asset pricing
+  \begin{itemize}
+  \item Aggregate market: predictability, excess volatility, equity-premium puzzle
+  \item Cross-section: significant return spread between stocks of different characteristics, which cannot be accounted for by risk exposure 
+  \item Useful datasets to play yourself: Open source cross sectional asset pricing for US markets and Global Factor Returns for global markets 
+  \item Bubbles, individual investors, institutional investors
+  \end{itemize}
+\item \textbf{Open question}: \emph{why} do these anomalies persist?
+  \begin{itemize}
+  \item Rational explanations? (time-varying risk aversion or hidden risk exposure)
+  \item Limits to arbitrage? 
+  \item Behavioral mechanisms? (biased beliefs, non-standard preferences)
+  \end{itemize}
+\item \textit{Next (Lecture 2)}: Limits to Arbitrage
+  \begin{itemize}
+  \item Why rational traders may not undo mispricing --- even when they see it
+  \end{itemize}
+\end{itemize}
 \end{frame}
 
 \end{document}

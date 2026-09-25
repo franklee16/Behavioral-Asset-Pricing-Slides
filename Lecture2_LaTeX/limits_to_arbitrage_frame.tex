@@ -1,0 +1,69 @@
+% =====================================================================
+%  Limits to Arbitrage: Return Decomposition & Fundamental Risk
+%  一个自包含的 beamer frame，可直接 \input 进你的主文档
+%  主色：墨蓝 (ink blue)，强调色：朱砂 (cinnabar red)
+%  若已加载个人品牌包，可删除下面的 \definecolor 两行
+% =====================================================================
+
+\begin{frame}{Limits to Arbitrage: Why Firm-Specific Risk Cannot Be Hedged}
+
+% 若主文档未定义，取消注释以下两行：
+% \definecolor{inkblue}{RGB}{27,47,79}    % 墨蓝
+% \definecolor{cinnabar}{RGB}{192,44,36}  % 朱砂
+
+\small
+
+\textbf{\textcolor{inkblue}{1. Return decomposition: industry exposure + firm-specific risk}}
+\vspace{0.4em}
+
+For firm $i$ and its same-industry peer $j$:
+\[
+r_{it} = \alpha_i + \underbrace{\beta_i r_{I,t}}_{\text{industry exposure}} + \underbrace{\varepsilon_{it}}_{\text{firm-specific}}, \qquad
+r_{jt} = \alpha_j + \beta_j r_{I,t} + \varepsilon_{jt},
+\]
+where $\mathrm{Corr}(\varepsilon_{it},\varepsilon_{jt}) = \rho_{ij}$ measures how close a substitute $j$ is for $i$.
+
+\vspace{0.6em}
+
+\textbf{\textcolor{inkblue}{2. Arbitrage portfolio: industry factor cancels}}
+\vspace{0.4em}
+
+With $i$ overvalued ($\theta_{it} > 0$), go long $j$, short $i$:
+\[
+r^{arb}_t \;=\; r_{jt} - \frac{\beta_j}{\beta_i}\, r_{it}
+\;=\; \Big(\alpha_j - \tfrac{\beta_j}{\beta_i}\alpha_i\Big) \;+\;
+\underbrace{\Big(\varepsilon_{jt} - \tfrac{\beta_j}{\beta_i}\,\varepsilon_{it}\Big)}_{\text{unhedgeable firm-specific risk}} .
+\]
+
+\vspace{0.4em}
+
+Residual variance: with $\beta_i = \beta_j$ and $\sigma_{\varepsilon_i}=\sigma_{\varepsilon_j}=\sigma_\varepsilon$,
+\[
+\boxed{\; \sigma^2_{arb} = 2\,\sigma_\varepsilon^2\,(1-\rho_{ij}) \;}
+\]
+\[
+\text{Perfect substitute: } \rho_{ij} \to 1 \;\Rightarrow\; \sigma^2_{arb} \to 0
+\qquad \text{vs.} \qquad
+\textcolor{cinnabar}{\text{No close substitute: } \rho_{ij} \ll 1 \;\Rightarrow\; \sigma^2_{arb} \approx 2\sigma_\varepsilon^2}
+\]
+
+\vspace{0.4em}
+
+\textbf{\textcolor{inkblue}{3. Risk aversion bounds the position}}
+\vspace{0.4em}
+
+\[
+x^{*} = \frac{\theta_{it}}{\gamma\,\sigma^2_{arb}} = \frac{\theta_{it}}{2\gamma\,\sigma_\varepsilon^2 (1-\rho_{ij})},
+\qquad
+\frac{\partial x^{*}}{\partial \rho_{ij}} > 0, \quad \frac{\partial x^{*}}{\partial \sigma_\varepsilon^2} < 0
+\]
+
+\begin{center}
+\begin{beamercolorbox}[rounded=true,sep=4pt]{block body}
+\centering\small
+\textcolor{cinnabar}{\textbf{Takeaway:}} No close substitute $\Rightarrow$ fundamental risk remains
+$\Rightarrow$ positions bounded $\Rightarrow$ mispricing $\theta_{it}$ persists.
+\end{beamercolorbox}
+\end{center}
+
+\end{frame}

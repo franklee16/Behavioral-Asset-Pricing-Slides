@@ -1,0 +1,102 @@
+% =====================================================================
+%  Case Study: LTCM (1994–1998)
+%  两个自包含 beamer frames，可直接 \input 进主文档
+%  依赖：amsmath；颜色 inkblue / cinnabar（若品牌包已定义则无需重复）
+% =====================================================================
+
+% 若主文档未定义，取消注释：
+% \definecolor{inkblue}{RGB}{27,47,79}    % 墨蓝
+% \definecolor{cinnabar}{RGB}{192,44,36}  % 朱砂
+
+% ---------------------------------------------------------------------
+\begin{frame}[shrink=10]{Case Study: Long-Term Capital Management (1994--1998)}
+
+\small
+
+\textbf{\textcolor{inkblue}{The fund.}}
+\vspace{0.3em}
+
+\begin{itemize}
+  \item Founded 1994 by John Meriwether; principals included Myron Scholes and Robert Merton (Nobel 1997).
+  \item Strategy: \emph{convergence trades} --- long cheap securities, short rich ones, betting spreads revert:
+        swap spreads, Treasury on-the-run/off-the-run, merger arbitrage, Russia/Emerging-market debt.
+  \item Peak equity: $\approx$ \$4.8bn (early 1998); balance sheet $>$ \$100bn;
+        off-balance-sheet derivatives notional in the \emph{trillions}.
+        Leverage: $>$ 25$\times$ (far higher counting derivatives).
+  \item Positions were small per-trade, but \textcolor{cinnabar}{massively correlated}: all were short-liquidity,
+        short-volatility bets on spread convergence.
+\end{itemize}
+
+\vspace{0.5em}
+
+\textbf{\textcolor{inkblue}{The collapse (Aug--Sep 1998).}}
+\vspace{0.3em}
+
+\begin{itemize}
+  \item Trigger: Russia defaults (Aug 17, 1998) $\Rightarrow$ global flight to liquidity and quality.
+  \item Spreads \emph{diverge} instead of converging; LTCM's losses $\approx$ \$4.5bn in weeks.
+  \item Banks raise margin requirements $\Rightarrow$ forced deleveraging into falling markets
+        (liquidity spiral).
+  \item Sept 23, 1998: Fed brokers a \$3.6bn private recapitalization by 14 banks
+        --- fund deemed too interconnected to fail.
+\end{itemize}
+
+\end{frame}
+
+% ---------------------------------------------------------------------
+\begin{frame}[shrink=10]{LTCM Through the Lens of Limits to Arbitrage}
+
+\small
+
+LTCM's trades were \emph{convergence} trades --- each had a substitute, but \textbf{no perfect one}.
+
+\vspace{0.5em}
+
+\begin{columns}[T]
+
+\column{0.52\textwidth}
+\textbf{\textcolor{inkblue}{1. Fundamental risk: imperfect substitutes}}
+\vspace{0.3em}
+
+On-the-run vs.\ off-the-run Treasuries differ in liquidity, not just price:
+\[
+\sigma^2_{arb} = 2\,\sigma_\varepsilon^2 (1 - \rho_{ij}) > 0
+\]
+In a crisis, $\rho_{ij} \to 0$: the ``substitute'' stops hedging exactly when it matters most.
+
+\vspace{0.6em}
+
+\textbf{\textcolor{inkblue}{2. Noise-trader / wealth risk}}
+\vspace{0.3em}
+
+Sentiment shocks (flight to quality) moved prices \emph{further} from fair value before convergence:
+\[
+x^{arb} = \frac{\theta}{2\gamma\,\sigma_p^2}\; \to\; 0
+\quad \text{as} \; \sigma_p^2 \uparrow
+\]
+LTCM's own capital shrank with losses $\Rightarrow$ forced unwinding at the worst moment.
+
+\column{0.48\textwidth}
+\textbf{\textcolor{inkblue}{3. Margin constraints \& liquidity spiral}}
+\vspace{0.3em}
+
+\[
+E_t[r_j] = R_f + \gamma\,\sigma_j^2\, x_j + \textcolor{cinnabar}{\mu\, m_j}
+\]
+As margins $m_j$ rose, $\mu > 0$ $\Rightarrow$ forced fire sales $\Rightarrow$ spreads widen further
+$\Rightarrow$ deeper losses: a \emph{feedback loop}.
+
+\vspace{0.8em}
+
+\begin{beamercolorbox}[rounded=true,sep=4pt]{block body}
+\small
+\textbf{Lesson:} Even a ``riskless'' arbitrage is exposed to
+\textbf{(i)} substitute imperfection, \textbf{(ii)} funding/wealth risk,
+\textbf{(iii)} margin spirals.
+Leverage amplifies all three.
+\textcolor{cinnabar}{\emph{The market can stay irrational longer than LTCM could stay liquid.}}
+\end{beamercolorbox}
+
+\end{columns}
+
+\end{frame}

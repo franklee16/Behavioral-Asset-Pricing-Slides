@@ -5,6 +5,8 @@
 \definecolor{CityUBlue}{RGB}{0, 51, 102}
 \definecolor{CityULightBlue}{RGB}{0, 102, 179}
 \definecolor{CityUGold}{RGB}{198, 163, 0}
+\definecolor{inkblue}{RGB}{27,47,79}    % ink blue
+\definecolor{cinnabar}{RGB}{192,44,36}  % cinnabar red
 \usecolortheme[named=CityUBlue]{structure}
 \setbeamercolor{title}{fg=white, bg=CityUBlue}
 \setbeamercolor{frametitle}{fg=white, bg=CityUBlue}
@@ -47,6 +49,8 @@
 
 \begin{frame}{Overview}
 \begin{itemize}
+\item \textit{Recap (Lecture 1)}: Return anomalies persist despite these are all simple strategies using public information 
+\item \textit{Today}: Why rational arbitrageurs do not fully correct these anomalies?
 \item Behavioral finance applications to asset pricing posit that irrational investors affect prices
 \item There is a classic critique of this idea
   \begin{itemize}
@@ -57,7 +61,7 @@
   \item As soon as irrational investors move prices, this creates an attractive opportunity for rational investors
   \item The rational investors trade against the mispricing, quickly eliminating it (``arbitrage'')
   \end{itemize}
-\item A major achievement of behavioural finance is to successfully push back against the arbitrage critique
+\item A major achievement of Behavioral finance is to successfully push back against the arbitrage critique
   \begin{itemize}
   \item i.e.\ to show that there are ``limits to arbitrage''
   \end{itemize}
@@ -100,9 +104,22 @@
 \item \textbf{Law of one price}
   \begin{itemize}
   \item Two assets with the same payoff in every state must have the same price
-  \item Key to law of one price is perfect substitutes (exact same payoffs)
+  \item Key to the law of one price is perfect substitutes (exactly the same payoffs)
   \item Underlies much of the design of derivatives
   \end{itemize}
+\end{itemize}
+\end{frame}
+
+% --- Slide 4b: Arbitrage, formally ---
+\begin{frame}{Arbitrage, Formally}
+An arbitrage is a portfolio with payoffs $V_s$ across states $s$ satisfying:
+\[
+V_0 \leq 0, \quad V_s \geq 0 \;\; \forall s, \quad \Pr[V_s > 0] > 0
+\]
+\begin{itemize}
+\item $V_0 \leq 0$: zero (or negative) net investment today
+\item $V_s \geq 0$ for all $s$: no possibility of a loss in any future state
+\item $\Pr[V_s > 0] > 0$: strictly positive probability of a gain in some state
 \end{itemize}
 \end{frame}
 
@@ -129,21 +146,84 @@
 \end{frame}
 
 % --- Slide 6: Fundamental risk ---
-\begin{frame}{Limits to Arbitrage: Theory, ctd.}
+\begin{frame}[shrink=5]{Limits to Arbitrage: Theory, ctd.}
 \begin{itemize}
 \item \textbf{Fundamental risk}
   \begin{itemize}
   \item The risk that there will be adverse news about the fundamental value of the mispriced asset
   \item Usually a problem because perfect substitutes are not available for what you really want to trade on
     \begin{itemize}
-    \item E.g., You think Ford is underpriced, but your best hedge against unexpected changes is GM
+    \item E.g., suppose you think Ford is underpriced; your best hedge against unexpected changes is GM
+    \item So you long Ford and short GM
+    \item This strategy is immune to auto industry shocks common to both Ford and GM
+    \item However, this is not risk-free arbitrage as you are exposed to fundamental risks that ford's fundamentals may further deteriorate relative to GM
     \end{itemize}
   \end{itemize}
 \end{itemize}
 \end{frame}
 
+% --- Slide 6b: Fundamental risk, formalized ---
+\begin{frame}[shrink=20]{Limits to Arbitrage: Why Firm-Specific Risk Cannot Be Hedged}
+
+\small
+
+\textbf{\textcolor{inkblue}{1. Return decomposition: industry exposure + firm-specific risk}}
+\vspace{0.4em}
+
+For firm $i$ and its same-industry peer $j$:
+\[
+r_{it} = \alpha_i + \underbrace{\beta_i r_{I,t}}_{\text{industry exposure}} + \underbrace{\varepsilon_{it}}_{\text{firm-specific}}, \qquad
+r_{jt} = \alpha_j + \beta_j r_{I,t} + \varepsilon_{jt},
+\]
+where $\mathrm{Corr}(\varepsilon_{it},\varepsilon_{jt}) = \rho_{ij}$ measures how close a substitute $j$ is for $i$.
+
+\vspace{0.6em}
+
+\textbf{\textcolor{inkblue}{2. Arbitrage portfolio: industry factor cancels}}
+\vspace{0.4em}
+
+With $i$ overvalued ($\theta_{it} > 0$), go long $j$, short $i$:
+\[
+r^{arb}_t \;=\; r_{jt} - \frac{\beta_j}{\beta_i}\, r_{it}
+\;=\; \Big(\alpha_j - \tfrac{\beta_j}{\beta_i}\alpha_i\Big) \;+\;
+\underbrace{\Big(\varepsilon_{jt} - \tfrac{\beta_j}{\beta_i}\,\varepsilon_{it}\Big)}_{\text{unhedgeable firm-specific risk}} .
+\]
+
+\vspace{0.4em}
+
+Residual variance: with $\beta_i = \beta_j$ and $\sigma_{\varepsilon_i}=\sigma_{\varepsilon_j}=\sigma_\varepsilon$,
+\[
+\boxed{\; \sigma^2_{arb} = 2\,\sigma_\varepsilon^2\,(1-\rho_{ij}) \;}
+\]
+\[
+\text{Perfect substitute: } \rho_{ij} \to 1 \;\Rightarrow\; \sigma^2_{arb} \to 0
+\qquad \text{vs.} \qquad
+\textcolor{cinnabar}{\text{No close substitute: } \rho_{ij} \ll 1 \;\Rightarrow\; \sigma^2_{arb} \approx 2\sigma_\varepsilon^2}
+\]
+
+\vspace{0.4em}
+
+\textbf{\textcolor{inkblue}{3. Risk aversion bounds the position}}
+\vspace{0.4em}
+
+\[
+x^{*} = \frac{\theta_{it}}{\gamma\,\sigma^2_{arb}} = \frac{\theta_{it}}{2\gamma\,\sigma_\varepsilon^2 (1-\rho_{ij})},
+\qquad
+\frac{\partial x^{*}}{\partial \rho_{ij}} > 0, \quad \frac{\partial x^{*}}{\partial \sigma_\varepsilon^2} < 0
+\]
+
+\begin{center}
+\begin{beamercolorbox}[rounded=true,sep=4pt]{block body}
+\centering\small
+\textcolor{cinnabar}{\textbf{Takeaway:}} No close substitute $\Rightarrow$ fundamental risk remains
+$\Rightarrow$ positions bounded $\Rightarrow$ mispricing $\theta_{it}$ persists.
+\end{beamercolorbox}
+\end{center}
+
+\end{frame}
+
 % --- Slide 7: Noise trader risk ---
-\begin{frame}{Limits to Arbitrage: Theory, ctd.}
+\begin{frame}[shrink=5]{Limits to Arbitrage: Theory, ctd.}
 \begin{itemize}
 \item \textbf{Noise trader risk} (De Long et al., 1990; Shleifer and Vishny, 1997)
   \begin{itemize}
@@ -155,14 +235,14 @@
   \item Arbitrageurs engage in arbitrage in reaction to a stock mispricing
   \item Mispricing persists for an extended period
   \item Clients deem the arbitrageur incompetent and demand fund withdrawal
-  \item To deliver cash, manager must unwind the position at a loss
+  \item To deliver cash, the manager must unwind the position at a loss
   \item This threat causes managers to be less prone to take advantage of these opportunities, exacerbating the problem of pricing inefficiency
   \end{itemize}
 \end{itemize}
 \end{frame}
 
 % --- Slide 8: Leverage and short selling ---
-\begin{frame}{Limits to Arbitrage: Theory, ctd.}
+\begin{frame}[shrink=5]{Limits to Arbitrage: Theory, ctd.}
 \begin{itemize}
 \item Hedge funds' use of leverage and short selling compound the problem
   \begin{itemize}
@@ -174,21 +254,24 @@
   \item If the fund cannot meet this demand, the short position will be closed out at a loss
   \item A fund manager who foresees these potential outcomes will trade less aggressively ex-ante against the mispricing
   \end{itemize}
+  \item Real-world case: the failure of LTCM
 \end{itemize}
 \end{frame}
 
-% --- Slide 9: Arbitrage In Reality ---
-\section{Arbitrage In Reality}
+\input{ltcm_case_frames.tex}
 
-\begin{frame}[shrink=5]{Arbitrage In Reality}
+% --- Slide 9: Arbitrage in Reality ---
+\section{Arbitrage in Reality}
+
+\begin{frame}[shrink=5]{Arbitrage in Reality}
 \vfill
 \centering
 \includegraphics[width=0.65\textwidth]{figures/slide09_pic1.png}
 \vfill
 \end{frame}
 
-% --- Slide 10: Arbitrage In Reality, ctd. ---
-\begin{frame}[shrink=5]{Arbitrage In Reality, ctd.}
+% --- Slide 10: Arbitrage in Reality, ctd. ---
+\begin{frame}[shrink=5]{Arbitrage in Reality, ctd.}
 \vfill
 \centering
 \includegraphics[width=0.75\textwidth]{figures/slide10_pic1.png}
@@ -196,7 +279,7 @@
 \end{frame}
 
 % --- Slide 11: Trading costs ---
-\begin{frame}{Limits to Arbitrage: Theory, ctd.}
+\begin{frame}[shrink=5]{Limits to Arbitrage: Theory, ctd.}
 \begin{itemize}
 \item \textbf{Trading costs}
   \begin{itemize}
@@ -206,20 +289,25 @@
   \end{itemize}
 \item \textbf{Shorting cost}
   \begin{itemize}
-  \item Short selling involves borrowing shares from a lender, and need to pay lending fees
+  \item Short selling involves borrowing shares from a lender, and the seller needs to pay lending fees
   \item The lending fees could be very high for certain stocks in certain periods
-  \item Short selling are occasionally banned by regulators
+  \item Short selling is occasionally banned by regulators
   \item Some countries do not allow short selling at all
   \end{itemize}
-\item \textbf{Information processing cost}
-  \begin{itemize}
-  \item Acquiring and processing financial statement data
-  \end{itemize}
+ \item \textbf{Learning cost}
+   \begin{itemize}
+ 	\item Arbitrageurs need to first be aware of the existence of anomalies 
+ 	\item McLean and Pontiff (JF 2016) show that academic publication of anomalies help disseminate the anomalies and reduce its profitability 
+ \end{itemize}
+ \item \textbf{Information processing cost}
+ \begin{itemize}
+ 	\item Even though arbitrageurs are aware of the anomalies, they need to process necessary data at low cost in order to trade on it 
+ \end{itemize}
 \end{itemize}
 \end{frame}
 
 % --- Slide 12: Dynamic arbitrage critique ---
-\begin{frame}{Limits to Arbitrage: Theory, ctd.}
+\begin{frame}[shrink=5]{Limits to Arbitrage: Theory, ctd.}
 \begin{itemize}
 \item Thus far, we have examined the ``static'' version of the arbitrage critique
 \item There is also a dynamic version, which says:
@@ -231,8 +319,9 @@
 \item This idea has generated a sizeable literature on the ``survival of noise traders''
 \item How compelling is the dynamic arbitrage critique?
   \begin{itemize}
-  \item It may take a very long time for irrational traders to exit market
-  \item New generation of irrational investors enter the market
+  \item It may take a very long time for irrational traders to exit the market (longer than most arbitrageurs' performance evaluation horizons) 
+  \item Noise traders typically have other sources of income (labor incomes) to subsidize their investment loss 
+  \item A new generation of irrational investors enters the market
   \end{itemize}
 \end{itemize}
 \end{frame}
@@ -240,7 +329,7 @@
 % --- Slide 13: Evidence ---
 \section{Limits to Arbitrage: Evidence}
 
-\begin{frame}{Limits to Arbitrage: Evidence}
+\begin{frame}[shrink=5]{Limits to Arbitrage: Evidence}
 \begin{itemize}
 \item There are good theoretical reasons why arbitrage may be limited
   \begin{itemize}
@@ -285,7 +374,7 @@
 \begin{column}{0.48\textwidth}
 \centering
 \includegraphics[width=\textwidth]{figures/slide14_pic1.png}\\[0.2em]
-\footnotesize This is a long-lived mispricing, and is therefore also evidence that it is hard to correct a mispricing
+\textit{\footnotesize Long-lived mispricing: hard to correct.}
 \end{column}
 \end{columns}
 \end{frame}
@@ -298,19 +387,20 @@
 \item \textbf{Example: AH Premium}
   \begin{itemize}
   \item Dozens of Chinese companies' stocks are listed in both China's domestic stock market (A shares) and Hong Kong stock market (H shares)
-  \item A shares are usually traded at premium over H shares of the same company
+  \item A shares are usually traded at premium over H shares of the same company (persistently) 
   \end{itemize}
 \end{itemize}
 \end{column}
 \begin{column}{0.48\textwidth}
 \centering
-\includegraphics[width=\textwidth]{figures/slide15_pic1.png}
+\includegraphics[width=\textwidth]{figures/slide15_pic1.png}\\[0.2em]
+\footnotesize AH premium, Chinese A vs.\ H shares
 \end{column}
 \end{columns}
 \end{frame}
 
 % --- Slide 16: Equity carve-outs ---
-\begin{frame}{Equity Carve-Outs}
+\begin{frame}[shrink=5]{Equity Carve-Outs}
 \begin{itemize}
 \item Mitchell, Pulvino, and Stafford (2002) study equity carve-outs between 1985 and 2000
   \begin{itemize}
@@ -329,24 +419,28 @@
 \end{itemize}
 \end{frame}
 
-% --- Slide 17: Palm/3Com ---
-\begin{frame}{Equity Carve-Outs, ctd.}
+% --- Slide 17: Palm/3Com (worked) ---
+\begin{frame}[shrink=10]{Equity Carve-Outs, ctd.}
 \begin{itemize}
-\item \textbf{Palm/3Com}
+\item \textbf{Palm/3Com} (March 2000)
   \begin{itemize}
-  \item 3Com sells 5\% of Palm in IPO, will spin off remainder in 9 months
-  \item 1 Share of 3Com will own 1.5 Shares of Palm
-  \item $P_{Palm} = \$95$
-  \item $P_{3Com}$ should be $\geq \$142$
-  \item $P_{3Com} = \$81$
-  \item Value of 3Com excluding Palm $= -\$60$ !!
-  \item Very few shares of Palm available to short
+  \item 3Com IPOs 5\% of Palm; will spin off the remaining 95\% in 9 months
+  \item Each 3Com share will own 1.5 shares of Palm post-spinoff
   \end{itemize}
+\item \textbf{Worked arithmetic:}
+  \begin{itemize}
+  \item $P_{Palm} = \$95$ (observed)
+  \item Lower bound on $P_{3Com}$: $1.5 \times \$95 = \$142.50$
+  \item $P_{3Com} = \$81$ (observed)
+  \item Implied stub value: $P_{3Com} - 1.5 \cdot P_{Palm} = 81 - 142.50 = -\$61.50$
+  \end{itemize}
+\item \textbf{Discussion:} The market values 3Com's non-Palm assets at $<\$0$. Why doesn't an arbitrageur short 3Com and buy Palm?
+\item \textbf{Limits at work:} very few Palm shares available to short
 \end{itemize}
 \end{frame}
 
 % --- Slide 18: Index inclusions ---
-\begin{frame}{Index Inclusions}
+\begin{frame}[shrink=5]{Index Inclusions}
 \begin{itemize}
 \item Stocks are regularly added to the S\&P 500 index to replace other stocks that have been removed due to merger or bankruptcy
 \item \textbf{Facts:} both on the announcement and execution days, the included stocks jump significantly in price by 3.5\% on average, and the jump is not reversed
@@ -372,36 +466,50 @@
 \end{itemize}
 \vfill
 \centering
-\includegraphics[width=0.60\textwidth]{figures/slide19_pic1.jpg}
+\includegraphics[width=0.60\textwidth]{figures/slide19_pic1.jpg}\\[0.2em]
+\footnotesize Wurgler and Zhuravskaya (2002)
 \end{frame}
 
 % --- Slide 20: Disappearing index effect ---
 \begin{frame}{The Disappearing Index Effect}
 \begin{itemize}
-\item The abnormal return associated with a stock being added to the S\&P 500 has fallen from an average of 7.4\% in the 1990s to less than 1\% over the past decade (Greenwood and Sammon JF 2025)
+\item The abnormal return associated with a stock being added to the S\&P 500 has fallen from an average of 7.4\% in the 1990s to less than 1\% over the past decade (Greenwood and Sammon, 2025)
 \item This has occurred despite a significant increase in the share of stock market assets linked to the index
 \item The main reason is professional active investors provide liquidity to accommodate the demand of passive indexers
-\item Although index trackers now buy about 7--8\% upon index addition, total institutional ownership barely moves around index changes
 \end{itemize}
 \end{frame}
 
+% --- Slide 19: Index inclusions, ctd. ---
+\begin{frame}{The Disappearing Index Effect, ctd.} 
+	\vfill
+	\centering
+	\includegraphics[width=0.60\textwidth]{figures/index_effect_time.png}\\[0.2em]
+	\footnotesize Greenwood and Sammon (2025 JF) 
+\end{frame}
+
+
+
 % --- Slide 21: Anomalies ---
-\begin{frame}[shrink=5]{Anomalies}
+\begin{frame}{Anomalies}
+\begin{columns}
+\column{0.48\textwidth}
 \begin{itemize}
 \item If anomalies are the result of mispricing, they should be more pronounced among stocks with more severe limits to arbitrage
   \begin{itemize}
   \item Using institutional ownership as proxy for short-sale constraints, Nagel (2005) finds the short-leg of anomalies is stronger among stocks with lower institutional ownership
-  \item Using idiosyncratic volatility as proxy for arbitrage risk, Stambaugh, Yu and Yuan (2015) find mispricing is amplified among stocks with highest idiosyncratic volatility
+  \item Using idiosyncratic volatility as proxy for arbitrage risk, Stambaugh, Yu, and Yuan (2015) find mispricing is amplified among stocks with highest idiosyncratic volatility
   \end{itemize}
 \end{itemize}
-\vfill
+\column{0.50\textwidth}
 \centering
-\includegraphics[width=0.55\textwidth]{figures/slide21_pic1.jpg}\\[0.2em]
-\footnotesize Stambaugh, Yu and Yuan (2015)
+\includegraphics[width=\textwidth]{figures/slide21_pic1.jpg}\\[0.2em]
+{\footnotesize Stambaugh, Yu and Yuan (2015)}
+\end{columns}
 \end{frame}
 
+
 % --- Slide 22: Causal effects ---
-\begin{frame}{The Causal Effects of Limits to Arbitrage}
+\begin{frame}[shrink=10]{The Causal Effects of Limits to Arbitrage}
 \begin{itemize}
 \item Chu, Hirshleifer and Ma (2020) show the causal effects of limits to arbitrage on asset pricing anomalies
 \item They use Regulation SHO as a quasi-experiment:
@@ -422,25 +530,91 @@
 \end{itemize}
 \end{frame}
 
+
+% ---------- Slide: Main DiD specification ----------
+\begin{frame}{The Causal Effects of Limits to Arbitrage, ctd.}
+	The main difference-in-differences test employs the following specification:
+	\begin{equation}
+		r_{it} = \alpha_t + \beta\, Pilot_i \times During_t + \beta_1 Pilot_i + \epsilon_{it},
+		\label{eq:did}
+	\end{equation}
+	where $r_{it}$ is the monthly return of portfolio $i$, which can be the long leg, the short leg, or the long-short portfolio of an anomaly, in month $t$; $\alpha_t$ is the time fixed effects; $Pilot_i$ is a dummy variable which is equal to one if portfolio $i$ is formed on pilot firms, and zero otherwise; $During_t$ is a dummy variable which equals to one if month $t$ is between June 2005 and July 2007, i.e.\ when the pilot program of Regulation SHO takes action.
+\end{frame}
+
+
 % --- Slide 23: Causal effects, ctd. ---
 \begin{frame}{The Causal Effects of Limits to Arbitrage, ctd.}
 \vfill
 \centering
-\includegraphics[width=0.75\textwidth]{figures/slide23_pic1.jpg}\\[0.2em]
-\footnotesize Chu, Hirshleifer, and Ma (2020)
+\includegraphics[width=0.80\textwidth]{figures/RegSHO_anomaly.png}\\[0.4em]
+\footnotesize Chu, Hirshleifer and Ma (JF 2020)
 \vfill
 \end{frame}
 
-% --- Slide 24: Information processing costs ---
-\begin{frame}[shrink=5]{Information Processing Costs as Limit to Arbitrage}
-\begin{itemize}
-\item Bowles, Reed, Ringgenberg and Thornock (JF 2024)
-\item Anomaly returns are concentrated in the first month after anomaly-relevant information is first released, and the returns decay quickly thereafter
-\end{itemize}
-\vfill
-\centering
-\includegraphics[width=0.75\textwidth]{figures/slide24_pic1.png}
+
+
+\begin{frame}{Learning Costs as Limit to Arbitrage}
+	\begin{columns}
+		\column{0.42\textwidth}
+		\begin{itemize}
+			\item 	McLean and Pontiff (JF 2016) show the average monthly long-short return of the 97 predictor portfolios across the three periods: 0.582\% in-sample → 0.402\% out-of-sample (pre-publication) → 0.264\% post-publication. 
+		\end{itemize}
+		\column{0.56\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/McLeanPontiff_main_result.png}\\[0.2em] 
+	\end{columns}
 \end{frame}
+
+% --- Slide 24: Information processing costs ---
+\begin{frame}{Information Processing Costs as Limit to Arbitrage}
+\begin{columns}
+\column{0.42\textwidth}
+\begin{itemize}
+\item Bowles, Reed, Ringgenberg and Thornock (2024)
+\item Anomaly returns are concentrated in the first month after anomaly-relevant information is released, and the returns decay quickly thereafter
+\end{itemize}
+\column{0.56\textwidth}
+\centering
+\includegraphics[width=\textwidth]{figures/slide24_pic1.png}\\[0.2em]
+{\footnotesize Bowles, Reed, Ringgenberg and Thornock (2024)}
+\end{columns}
+\end{frame}
+
+
+% --- Slide 24: Information processing costs ---
+\begin{frame}{My Research: Analyst Bias as Limits to Arbitrage}
+	\begin{columns}
+		\column{0.42\textwidth}
+		\begin{itemize}
+			\item \textbf{Li, Guo, and Wei (JFE 2020)}  
+			\item Consensus recommendations are more favorable for stocks classified as overvalued, and these stocks underperform more severely afterward  
+		\end{itemize}
+		\column{0.56\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/Figure1_GuoLiWei_recommendations_across_quintiles.png}\\[0.2em]
+		{\footnotesize Li, Guo, and Wei (JFE 2020)}
+	\end{columns}
+\end{frame}
+
+
+% --- Slide 24: Information processing costs ---
+\begin{frame}{My Research: Analyst Bias as Limits to Arbitrage}
+	\begin{columns}
+		\column{0.42\textwidth}
+		\begin{itemize}
+			\item \textbf{Li, Guo, and Wei (JFE 2020)}  
+			\item When recommendations contradict anomaly signals, anomaly returns are amplified 
+			\item \textbf{Implication:} Biased recommendations are themselves a friction that impedes correction of the anomalies 
+		\end{itemize}
+		\column{0.56\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/Figure2_GuoLiWei_amplification_consistent_vs_inconsistent.png}\\[0.2em]
+		{\footnotesize Li, Guo, and Wei (JFE 2020)}
+	\end{columns}
+\end{frame}
+
+
+
 
 % --- Slide 25: Summary ---
 \section{Summary}
@@ -452,11 +626,13 @@
   \item There is now wide agreement among academics (and practitioners) that arbitrage is limited
   \item Albeit some disagreement as to how limited it is
   \end{itemize}
-\item This success was one reason why behavioural finance ``took off'' in the 1990s
+\item This success was one reason why Behavioral finance ``took off'' in the 1990s
 \item Still, we should not be complacent
   \begin{itemize}
   \item Whenever we argue that irrational investors' demand affect prices, we should ask if arbitrage is truly limited
   \end{itemize}
+\item \textbf{Discussion:} With new technologies that expediate information collection and processing, which friction do you expect to matter less and what will remain? 
+\item \textit{Next (Lecture 3)}: What are the sources of these noise-trader demands?  
 \end{itemize}
 \end{frame}
 
