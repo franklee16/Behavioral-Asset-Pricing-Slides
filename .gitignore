@@ -39,3 +39,12 @@ WhatILearned_LaTeX/
 What_I_Learned_About_Asset_Pricing.md
 SESSION_REPORT.md
 *.bcf
+*.vrb
+
+# AIGC lecture transcripts (kept local)
+Transcript/
+
+# Lecture 7 (Behavioral Finance at 40): derived from N. Barberis's 2025 AFA slides
+# (figures extracted from his PDFs) - kept local pending copyright decision; remove
+# this line if publishing is approved
+Lecture7_LaTeX/
