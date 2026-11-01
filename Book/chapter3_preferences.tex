@@ -2,6 +2,10 @@
 % Chapter 3 — Preferences Under Uncertainty
 % Converted from Slides/Lecture3_LaTeX/Lecture3_Preferences.tex
 % Figures reproduced in figures/ (original slide assets).
+% Synced with revised deck 2026-10-12: corrected Wang--Yan risk-return
+% figures (capital gains + capital losses), Barberis--Mukherjee--Wang
+% conceptual framework (TK measure construction and pricing model),
+% asymmetric-correlation explanation of market skewness.
 % ============================================================
 \chapter{Preferences Under Uncertainty}
 \label{ch:preferences}
@@ -88,7 +92,7 @@ These are the four pillars of prospect theory. Each is well-documented in labora
 
 \subsection{The Framework}
 
-\citet{kahneman1979} propose the following modification of EU. A prospect is a sequence $(x_i, p_i)$ of outcomes $x_i$ and their objective probabilities $p_i$. To evaluate a prospect, the agent first rewrites the outcome space around a \emph{reference point} (typically the status quo or recent expectation), separating it into gains and losses. The agent then applies two transformations:
+\citet{kahneman1979} propose the following modification of EU. A prospect is a sequence $(x_i, p_i)$ of outcomes $x_i$ and their objective probabilities $p_i$. To evaluate a prospect, the agent first rewrites the outcome space around a \emph{reference point} (typically the status quo or recent expectation), separating it into gains and losses. The sensory analogue is instructive: hold one hand in hot water and the other in cold water for half a minute, then place both in the same lukewarm water---the hot hand feels it as cold and the cold hand as hot. Perception is keyed to the change from the prior state, not to the absolute level, and the value function inherits that property. The agent then applies two transformations:
 \begin{enumerate}[label=(\roman*),itemsep=1pt]
   \item A \emph{value function} $v(\cdot)$, defined on gains and losses, with $v(0) = 0$, $v$ concave over gains, convex over losses, and steeper for losses than for gains at every absolute level.
   \item A \emph{decision-weight function} $w(\cdot)$ that transforms the cumulative probabilities of gains and losses separately into \emph{decision weights}, which then play the role of probabilities in the value computation.
@@ -232,7 +236,7 @@ CPT predicts something different. Because agents overweight small probabilities,
 \label{fig:barberishuang}
 \end{figure}
 
-Figure~\ref{fig:barberishuang} shows the utility from a tilted position for two different mean returns on the new security. The investor is willing to take an undiversified position precisely because the skewness is large; for a Normal security the optimal position would be a near-zero allocation. The model generates both a low premium on positively skewed stocks and a high premium on the aggregate market, which is negatively skewed---a feature to which Section~\ref{sec:aggregate} returns.
+Figure~\ref{fig:barberishuang} shows the utility from a tilted position for two different mean returns on the new security. The investor is willing to take an undiversified position precisely because the skewness is large; for a Normal security the optimal position would be a near-zero allocation. The model generates both a low premium on positively skewed stocks and a high premium on the aggregate market, which is negatively skewed---a feature to which Section~\ref{sec:ptaggregate} returns.
 
 \subsection{Tests of the Skewness Channel}
 
@@ -306,6 +310,16 @@ The lottery preference also predicts that retail investors should hold under-div
 
 The most direct test of prospect theory in the cross-section is to compute the prospect-theory value of each stock using its historical return distribution and ask whether high-PT-value stocks underperform subsequently. \citet{barberis2016} do exactly this, computing the Tversky--Kahneman PT value of each stock's prior return distribution and sorting on it. Figure~\ref{fig:barberismw} shows the basic pattern: high-PT-value stocks earn lower subsequent returns, low-PT-value stocks earn higher subsequent returns, and the high-minus-low spread is roughly $-1.2\%$ per month. The interpretation is that CPT investors find high-PT-value stocks appealing (high skewness, high probability of a large gain), tilt toward them, and thereby bid them up; the stocks become overvalued and earn low subsequent returns.
 
+The test rests on a \emph{joint hypothesis}: some investors mentally \emph{represent} a stock by the distribution of its past returns, and they \emph{evaluate} that distribution of gains and losses according to cumulative prospect theory. Valuation is the easy step---\citet{tversky1992} supply the formulas and the parameters ($\alpha = 0.88$, $\lambda = 2.25$, $\gamma = 0.61$, $\delta = 0.69$). Representation is the hard step: how does an investor summarize a stock in their mind? \citet{barberis2016} answer: by the distribution of \emph{monthly returns in excess of the market over the past five years}---60 excess returns, each assigned probability $1/60$---a choice guided by how price charts appear in investment handbooks, where monthly fluctuations over roughly a five-year window are discernible and daily or weekly moves are not, and by the judgment-and-decision finding that people passively accept the representation put in front of them. Applying cumulative prospect theory to this distribution, with gains and losses weighted separately by the weighting functions $w^{+}$ and $w^{-}$, produces the stock's \emph{TK} (Tversky--Kahneman) value. Two properties of the construction are worth noting. First, TK does not depend on the \emph{time order} of the 60 returns: it is a quick, passive reaction to the chart as an integral whole rather than a computed statistic. Second, with the estimated parameters the value function is close to piecewise linear, so the concavity and convexity of $v$ play only a minor role; the measure is powered principally by loss aversion and the overweighting of tail outcomes.
+
+The pricing model behind the test is deliberately spare. A mean-variance economy contains two types of investors: traditional mean-variance investors who hold the tangency portfolio, and prospect-theory investors who start from the tangency portfolio and tilt toward stocks with above-average TK values and away from stocks with below-average TK values. In equilibrium, the tilt depresses the expected returns of appealing stocks. If $\eta$ measures the weight of prospect-theory traders, $\overline{\mathrm{TK}}$ the cross-sectional average of TK, $s_j^2$ stock $j$'s idiosyncratic variance, and $\beta_{\mathrm{TK}}$ the market beta of the TK-tilted portfolio, then, under a diagonal covariance structure,
+\[
+\frac{\mu_j - r_f}{\mu_m - r_f}
+\;=\;
+\beta_j \;-\; \frac{\eta\,\left(\mathrm{TK}_j - \overline{\mathrm{TK}}\right) s_j^2}{\sigma_m^2\left(1 - \eta\,\beta_{\mathrm{TK}}\right)}.
+\]
+The first term is the CAPM; the second is the prospect-theory correction, proportional to how far the stock's TK exceeds the average. Stocks whose past return distributions are attractive to prospect-theory investors earn lower expected returns than beta alone implies---the prediction that the sorting evidence confirms. A multiperiod extension also implies that the expected \emph{change} in a stock's TK (a very good return 60 months ago rolling out of the window) should predict its return, but simulations show this second prediction is fragile to small misspecifications; the one-period prediction---high TK, low subsequent returns---is robust, and is the one the paper tests.
+
 \subsection{Quantitative Performance: \texorpdfstring{\citet{barberis2021}}{Barberis, Jin, and Wang (2021)}}
 
 \citet{barberis2021} push the test further. Using the same parameters as \citet{tversky1992} for $v$ and $w$, the authors compute the prospect-theory value of each stock's return distribution and ask whether the model can predict the cross-sectional alpha of 23 anomaly-sorted decile portfolios. The result is mixed.
@@ -330,12 +344,28 @@ For four prominent anomalies---momentum, failure probability, idiosyncratic vola
 
 \begin{figure}[htbp]
 \centering
+\includegraphics[width=0.62\textwidth]{slide16_pic1.png}
+\caption[PT utility and the risk--return trade-off: capital gains]{PT utility and the risk--return trade-off: capital gains. Investors bought one share each of stocks C and D at \$20; the price of each is now \$25, so they face capital gains and are risk averse. One period later, stock C is worth \$38 or \$23 and stock D \$40 or \$21, each with equal probability: the two stocks have the same mean next-period price but different volatility. In the concave gain region of the value function, the investor holding at a gain prefers the less volatile stock. \textit{Source:} \citet{wang2016}, Figure~3.}
+\label{fig:pt_gains}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.62\textwidth]{slide16_pic2.png}
+\caption[PT utility and the risk--return trade-off: capital losses]{PT utility and the risk--return trade-off: capital losses. Investors bought one share each of stocks A and B at \$20; the price of each is now \$15, so they face capital losses and are risk seeking. One period later, stock A is worth \$20 or \$10 and stock B \$18 or \$12, each with equal probability---again the same mean, different volatility. In the convex loss region, the investor holding at a loss prefers the more volatile stock: only the wide distribution offers a chance of getting back to the reference point. \textit{Source:} \citet{wang2016}, Figure~2.}
+\label{fig:pt_losses}
+\end{figure}
+
+Figures~\ref{fig:pt_gains} and \ref{fig:pt_losses} show the geometry behind a preference that standard theory cannot produce: given the same mean payoff, investors prefer \emph{less} volatile stocks in the domain of capital gains and \emph{more} volatile stocks in the domain of capital losses. Expected utility with concave utility over final wealth delivers the first preference unconditionally and the second never.
+
+\begin{figure}[htbp]
+\centering
 \includegraphics[width=0.9\textwidth]{Table3_return_vs_risk_by_CGO.png}
 \caption[Reference-dependent preferences and the risk--return trade-off]{Reference-dependent preferences and the risk--return trade-off. The table reports estimates of risk--return trade-off coefficients across capital gain overhang (CGO) portfolios. The trade-off is positive for high-CGO stocks, in which investors face prior gains and are risk averse, and negative for low-CGO stocks, in which investors face prior losses and are risk seeking; the difference is statistically significant. \textit{Source:} \citet{wang2016}, Table~III.}
 \label{fig:wangyan}
 \end{figure}
 
-The asymmetric value function also has implications for the cross-sectional risk--return relation. \citet{wang2016} measure the capital gain overhang (CGO) of each stock---the unrealized gain or loss of the average investor---and ask how the cross-sectional risk--return relation depends on the sign of the overhang. Figure~\ref{fig:wangyan} shows the result: the trade-off is positive among stocks where investors face prior gains (and are therefore risk averse) and negative among stocks where investors face prior losses (and are therefore risk seeking). The two-pronged effect breaks the linear positive risk--return relation that the CAPM predicts, and offers a PT-based reading of the high-risk-low-alpha puzzle of Chapter~\ref{ch:intro}.
+The asymmetric value function also has implications for the cross-sectional risk--return relation. \citet{wang2016} measure the capital gain overhang (CGO) of each stock---the unrealized gain or loss of the average investor---and ask how the cross-sectional risk--return relation depends on the sign of the overhang. The preference pair in Figures~\ref{fig:pt_gains} and \ref{fig:pt_losses} predicts exactly a sign flip. Figure~\ref{fig:wangyan} shows the result: the trade-off is positive among stocks where investors face prior gains (and are therefore risk averse) and negative among stocks where investors face prior losses (and are therefore risk seeking). The two-pronged effect breaks the linear positive risk--return relation that the CAPM predicts, and offers a PT-based reading of the high-risk-low-alpha puzzle of Chapter~\ref{ch:intro}.
 
 \subsection{My Research: Stock Splits as Behavioral Signals}
 \label{sec:splits}
@@ -352,14 +382,7 @@ The evidence comes from China. Investors turn more optimistic after splits, high
 
 \citet{benartzi1995} propose a parsimonious model of the equity premium puzzle. The three ingredients are (i) prospect-theory preferences, (ii) evaluation of gains and losses \emph{frequently} rather than at the end of an investor's lifetime (the \emph{myopia}), and (iii) narrow framing, so that gains and losses are evaluated separately for each asset rather than aggregated across the portfolio. With these ingredients, the historical distribution of annual U.S.\ stock market returns has approximately the same prospect-theory value as the historical distribution of annual bond returns. The greater volatility of stocks lowers the stock market's prospect value; the much higher mean raises it. The two forces approximately cancel.
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.62\textwidth]{slide16_pic1.jpg}
-\caption[Risk--return trade-off with PT utility and capital gains]{Risk--return trade-off with PT utility. The figure plots PT utility against stock price for two stocks purchased at \$20 with current prices \$18 (Stock C) and \$5 (Stock D). Investors holding Stock C at a small capital loss sit just below the reference point, where the value function is steepest; investors holding Stock D at a large capital loss sit deep in the convex loss region, where diminishing sensitivity makes them risk-seeking over additional downside. The two curves show how PT utility varies with the holding-period price under different return distributions. \textit{Source:} \citet{wang2016}, Figure~3.}
-\label{fig:riskreturn}
-\end{figure}
-
-The mechanism is intuitive. EU agents with concave utility over consumption evaluate a stream of returns by the discounted expected utility of consumption, and the relatively small variation in consumption makes stocks look only modestly riskier than bonds. PT agents with frequent evaluation, narrow framing, and steep loss aversion see a stream of annual gains and losses; the loss-aversion parameter $\lambda \approx 2$ makes each loss hurt twice as much as an equivalent gain pleases, and the result is a much larger effective equity premium. The stock market earns a high average return to compensate investors for bearing what prospect theory says is a much more painful stream of year-to-year losses. Figure~\ref{fig:riskreturn} illustrates the geometry for the trade-off within a single holding period.
+The mechanism is intuitive. EU agents with concave utility over consumption evaluate a stream of returns by the discounted expected utility of consumption, and the relatively small variation in consumption makes stocks look only modestly riskier than bonds. PT agents with frequent evaluation, narrow framing, and steep loss aversion see a stream of annual gains and losses; the loss-aversion parameter $\lambda \approx 2$ makes each loss hurt twice as much as an equivalent gain pleases, and the result is a much larger effective equity premium. The stock market earns a high average return to compensate investors for bearing what prospect theory says is a much more painful stream of year-to-year losses.
 
 \subsection{The Role of Narrow Framing}
 
@@ -367,7 +390,7 @@ The mechanism is intuitive. EU agents with concave utility over consumption eval
 
 \subsection{The Role of Probability Weighting}
 
-\citet{degiorgi2012} add probability weighting to the analysis. The aggregate stock market is negatively skewed: it is subject to occasional large crashes, and the probability of a large crash is small. Under probability weighting, the small probability is overweighted and the prospect value of the stock market falls. Adding probability weighting on top of loss aversion substantially raises the model's predicted equity premium, and it does so without sacrificing the consumption-side fit of the consumption-based model.
+\citet{degiorgi2012} add probability weighting to the analysis. The aggregate stock market is negatively skewed: it is subject to occasional large crashes, and the probability of a large crash is small. The sign is the opposite of the individual-stock case, and the contrast is worth a moment. Individual stocks are mostly positively skewed---occasional large upward jumps---yet the market they aggregate into is left-tailed. The reason is asymmetric correlation. In normal times, correlations across stocks are modest, so the positive jumps of individual stocks arrive at different times and diversify away; they do not aggregate into market-level jumps. In a crisis, correlations rise toward one and every stock falls together, so the crashes \emph{do} aggregate. Upside extremes cancel across stocks; downside extremes compound. Under probability weighting, the small probability of the compounding event is overweighted and the prospect value of the stock market falls. Adding probability weighting on top of loss aversion substantially raises the model's predicted equity premium, and it does so without sacrificing the consumption-side fit of the consumption-based model.
 
 \subsection{Reading the Application}
 

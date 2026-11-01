@@ -5,6 +5,9 @@
 % Synced with revised deck 2026-09-25: individualism, DOX, SPF
 % dispersion, resale-option, forecast-dispersion, beta/alpha and
 % Hong--Sraer figures; two "My Research" subsections added.
+% Synced with revised deck 2026-10-12: Bordalo--Gennaioli--La Porta--
+% Shleifer (2025) expectations-based returns figure; Bali--Kelly--M\"orke--
+% Rahman (RFS 2026) machine forecast disagreement subsection.
 % ============================================================
 \chapter{Biased Beliefs}
 \label{ch:beliefs}
@@ -174,6 +177,15 @@ A parallel stream of evidence concerns the extrapolation of fundamentals rather 
 \includegraphics[width=\textwidth]{slide18_pic3.png}
 \caption[LTG expectations, the price--dividend ratio, and returns]{\textbf{Fundamentals extrapolation.} The figure overlays a measure of long-term earnings-growth (LTG) expectations (red) with the price--dividend ratio (green) and five-year-ahead realized stock returns (black). LTG expectations track the price--dividend ratio and predict low subsequent returns, consistent with extrapolative beliefs. \textit{Source:} \citet{bordalo2023}.}
 \label{fig:ltg}
+\end{figure}
+
+\citet{bordalo2025} take the logic to the cross-section. Every test of an asset pricing model faces a joint hypothesis problem: a return spread can reflect either distorted beliefs \emph{or} a premium for some exotic risk. Their resolution is to shut the risk channel down by construction. They build a firm-level measure of \emph{expectations based returns} (EBRs) from analyst forecast errors and revisions---the return each stock would earn if all cross-sectional variation in expected returns came from beliefs about future cash flows and none from differences in required returns. If pure expectation-driven returns of this kind account for the observed factor spreads, the spreads do not require exotic risk premia. They do: variation in EBRs accounts for a large share of the return spreads on value (HML), size (SMB), investment (CMA), profitability (RMW), and momentum (WML) portfolios (Figure~\ref{fig:ebr}). The paper's title states the conclusion---\emph{finance without exotic risk}---and it marks a shift in the extrapolation literature from documenting belief distortions to showing that measured beliefs, alone, quantitatively carry the cross-section.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{slide19.png}
+\caption[Actual and expectations-based return spreads]{\textbf{Expectations-based returns.} One-year log returns (black) and expectations-based returns (EBRs, red) for the long-short value (HML), size (SMB), investment (CMA), profitability (RMW), and momentum (WML) portfolios, December 1981--December 2023. EBRs are computed from analyst forecast errors and revisions and shut down cross-sectional differences in required returns; variation in EBRs accounts for a large share of the realized factor spreads. \textit{Source:} \citet{bordalo2025}, Figure~1.}
+\label{fig:ebr}
 \end{figure}
 
 \subsection{My Research: Na\"ive Earnings Growth Extrapolation}
@@ -368,6 +380,14 @@ The heterogeneous-beliefs model with short-sale constraints also predicts a cros
 \label{fig:dms}
 \end{figure}
 
+\subsection{Machine Forecast Disagreement}
+
+Disagreement itself is unobservable; the analyst-dispersion proxy inherits the limits of the I/B/E/S data---coverage is thin outside the large caps, so small and micro-cap stocks are effectively unmeasured, and the dispersion of human forecasts is itself contaminated by the biases of Section~\ref{sec:overconfidence}. \citet{bali2026} propose measuring disagreement by \emph{simulating} the investors. Each of $K = 100$ ``investors'' is a random forest that forecasts next-month returns from a common information set of 152 stock characteristics, but each draws its own random 50\% subset of the features (differences in information) and its own bootstrap and dropout draws (differences in priors). Between them, the 100 models span the three canonical sources of heterogeneous beliefs---different priors, different information, and different processing of the same information---while each individual model remains sophisticated. The dispersion of the 100 forecasts is the stock's \emph{machine forecast disagreement} (MFD), computed on a rolling ten-year window refit annually and available for the full cross-section over the entire sample.
+
+MFD prices exactly as the Miller mechanism predicts. High-MFD stocks earn significantly lower subsequent returns: the decile long-short portfolio that buys low-MFD and shorts high-MFD stocks earns about 13\% per year value-weighted, and the result is robust to 19 variations of the simulation design. The mechanism evidence identifies the discount as mispricing rather than risk compensation. The high-minus-low MFD return spread is far more negative among stocks that are expensive to short ($-2.36\%$ per month among high-borrow-fee stocks versus $-0.12\%$ among low-fee stocks; difference $-2.24$, $t = -6.06$), is amplified among stocks with high retail ownership ($-1.10\%$ versus $-0.31\%$, $t = 4.53$) and among stocks with high \citet{stambaughyuyuan2012} mispricing scores, and the correction concentrates on earnings announcement days, consistent with limits to arbitrage delaying the repricing. An earnings-based variant---dispersion of machine forecasts of earnings rather than returns---also predicts returns and correlates more strongly with analyst dispersion.
+
+The methodological point outlasts the specific paper. Belief dispersion has always been measured by asking people; \citet{bali2026} show it can be \emph{generated}---a population of heterogeneous yet individually reasonable forecasting models produces a belief distribution whose cross-sectional pricing signature matches what survey-based disagreement measures deliver on their best-covered subsamples. As machine-learned and language-model-based forecasts become standard inputs to research, simulated disagreement is likely to become a standard instrument for the unobservable it proxies.
+
 \subsection{Aggregate Stock Market}
 
 The same mechanism predicts a relation at the aggregate level: when aggregate disagreement is high, the market as a whole should be more overpriced and earn lower subsequent returns. \citet{yu2011} measures aggregate disagreement as the value-weighted average of stock-level forecast dispersion and shows that high-dispersion periods are followed by low returns on the aggregate market index.
@@ -473,7 +493,7 @@ Two strands of evidence keep the behavioral reading honest.
 
 First, the cognitive biases catalogued in Sections~\ref{sec:representativeness}--\ref{sec:otherbiases} are individually well-documented in laboratory data, but their \emph{quantitative} contribution to asset prices is harder to pin down. The disposition effect of Chapter~\ref{ch:preferences} and the trading-cost evidence of Section~\ref{sec:overconfidence} are reasonably direct: investors' biases translate into overtrading and into measurable return patterns. The over-extrapolation evidence is stronger at the survey level than at the trading level: the Greenwood--Shleifer correlations are tight, but the contribution of extrapolative beliefs to the cross-section of stock returns is harder to estimate cleanly. The bias-by-bias literature must be aggregated across biases that may or may not interact, and the empirical case is uneven.
 
-Second, the heterogeneous-beliefs models with short-sale constraints are competitive with rational explanations in several applications. The cross-sectional disagreement result of \citet{diether2003} admits a risk-based interpretation: high-dispersion stocks are also stocks with high fundamental uncertainty, and the low returns may be compensation for that uncertainty rather than the result of overpricing. The warrant-bubble evidence of \citet{xiong2011} is sharper, but it remains a single market; the macro-factor extension of \citet{li2016} is suggestive rather than conclusive. The causal EDGAR evidence of \citet{chang2022} is the strongest single piece of evidence, but it speaks to one channel (information costs and disagreement) rather than to the broader class of bias-driven models.
+Second, the heterogeneous-beliefs models with short-sale constraints are competitive with rational explanations in several applications. The cross-sectional disagreement result of \citet{diether2003} admits a risk-based interpretation: high-dispersion stocks are also stocks with high fundamental uncertainty, and the low returns may be compensation for that uncertainty rather than the result of overpricing. The warrant-bubble evidence of \citet{xiong2011} is sharper, but it remains a single market; the macro-factor extension of \citet{li2016} is suggestive rather than conclusive. The causal EDGAR evidence of \citet{chang2022} is the strongest single piece of evidence, but it speaks to one channel (information costs and disagreement) rather than to the broader class of bias-driven models. The machine-forecast-disagreement evidence of \citet{bali2026} extends the overpricing result to a simulated measure available for the entire cross-section, but its mechanism tests remain conditional correlations rather than experiments.
 
 The methodological lesson is the same as in the earlier chapters: a behavioral model earns credibility when it predicts something not used to fit it, and when that prediction survives out-of-sample tests. The strongest out-of-sample predictions of the biased-beliefs program are the disposition effect and the trading-cost evidence of overconfidence, the Greenwood--Shleifer correlations of survey expectations and returns, the warrant-bubble evidence on resale-option values, and the EDGAR causal evidence on disagreement. The rest of the literature is competitive with rational alternatives.
 

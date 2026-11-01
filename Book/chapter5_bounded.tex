@@ -10,7 +10,7 @@ The behavioral theories developed in Chapters~\ref{ch:preferences} and \ref{ch:b
 
 The first half (Sections~\ref{sec:att1}--\ref{sec:attcausal}) develops \emph{bounded rationality}: investors have limited capacity for gathering and processing information, and they end up with a stylized version of the data---one in which salient news is incorporated promptly and subtle news is incorporated slowly or not at all. The systematic consequence is that prices underreact to news, with the degree of underreaction depending on whether the news is prominent or quiet. The behavioral signature is not a wrong belief about cash flows but a slow belief about what has just been released.
 
-The second half (Sections~\ref{sec:cat}--\ref{sec:creditcycle}) develops \emph{psychology-free models}: behavioral predictions that require no psychological assumption at all, beyond the central observation that some investors trade on noisy signals while others have limited capital and short horizons. The standard architecture is \citet{delong1990}: less than fully rational \emph{noise traders} interact with more rational \emph{arbitrageurs} whose corrections of mispricing are themselves imperfect and informative. The framework makes contact with a wide range of facts---the trades of sophisticated agents forecast returns in the direction opposite to the trades of unsophisticated agents, and aggregate \emph{investor sentiment} moves with the cross-sectional and time-series properties of returns---without requiring any assumption about why noise traders are wrong. Section~\ref{sec:attcontested} catalogues what remains contested, and Section~\ref{sec:attahead} closes the chapter.
+The second half (Sections~\ref{sec:cat}--\ref{sec:creditcycle}) develops \emph{psychology-free models}: behavioral predictions that require no psychological assumption at all, beyond the central observation that some investors trade on noisy signals while others have limited capital and short horizons. The standard architecture is \citet{delong1990}: less than fully rational \emph{noise traders} interact with more rational \emph{arbitrageurs} whose corrections of mispricing are themselves imperfect and informative. The framework makes contact with a wide range of facts---the trades of sophisticated agents forecast returns in the direction opposite to the trades of unsophisticated agents, and aggregate \emph{investor sentiment} moves with the cross-sectional and time-series properties of returns---without requiring any assumption about why noise traders are wrong. Two extensions close the empirical arc. Language models trained on the same news human forecasters read can be prompted for their beliefs, which produces a sentiment measure that runs for a century at daily frequency and identifies bubbles that survey-based indices could not reach \citep{bybee2025}. And the credit market, where sentiment is a measure of perceived default risk rather than of expected growth, carries the larger macroeconomic signal \citep{krishnamurthy2025}. Section~\ref{sec:attcontested} catalogues what remains contested, and Section~\ref{sec:attahead} closes the chapter.
 
 % ============================================================
 \section{Limited Attention: The General Pattern}
@@ -67,7 +67,9 @@ The empirical patterns bear out the interpretation. Silence after routine sellin
 
 A growing literature documents that investors underreact to news of economically linked peers. The pattern is often called the \emph{momentum spillover effect}: positive news for a customer spills over to the supplier and vice versa, but the spillover is incomplete and gradual.
 
-\paragraph{Customer--supplier links.} \citet{cohenfrazzini2008} identify firms' major customers using the regulatory requirement that firms report any customer accounting for more than 10\% of sales. They then show that when a customer announces good news, the supplier's price moves only weakly on the announcement and continues to drift upward for months afterwards. The information is publicly available and easy to compute---the linkage is disclosed in 10-K filings---but the market underreacts.
+The structure of the argument generalizes beyond any single linkage. For an underreaction to appear, three conditions must hold, and each identifies a separate research design. First, the two firms must be linked economically, so that news about one is news about the other---this is what makes the spillover a mispricing rather than two unrelated price adjustments. Second, the linkage must be costly to compute, since a linkage that investors can assemble at no effort is one they will have assembled. Third, the linkage must be hard for arbitrageurs to exploit, since mispricing that can be arbitraged away is not mispricing. The first condition is established by the economic argument for the link; the second by the difficulty of assembling the data (customer identities come from 10-K filings, peer identities from annual-report text, establishment locations from regulatory filings at the plant level); the third by the characteristics of the firms that are hard to arbitrage and costly to short.
+
+\paragraph{Customer--supplier links.} \citet{cohenfrazzini2008} identify firms' major customers using the regulatory requirement that firms report any customer accounting for more than 10\% of sales. They then show that when a customer announces good news, the supplier's price moves only weakly on the announcement and continues to drift upward for months afterwards. The information is publicly available and easy to compute---the linkage is disclosed in 10-K filings---but the market underreacts. The customer-supplier case is the cleanest of the linkages because the economic link is contractual and the data are disclosed by the customer itself, which also means some sophisticated investors do recognize the link; the underreaction is a matter of degree, with the supplier's return catching up to the customer's over roughly a six-month window rather than immediately.
 
 \begin{figure}[htbp]
 \centering
@@ -134,6 +136,45 @@ A structural model of limited attention is \citet{hong1999}. The model combines 
 \end{itemize}
 Newswatchers update gradually because information diffuses slowly through the newswatcher population: at any date only a fraction of newswatchers have observed the signal, so the price response is partial, and the next newswatcher to observe it pushes the price further in the same direction. In an economy with only newswatchers, the dynamics would produce pure momentum: prices drift in the direction of the news until all newswatchers have updated. The momentum traders add a second effect: they buy as prices rise, and because they continue to buy even after the private information is fully incorporated, the price eventually overshoots. The combination produces both short-horizon momentum (the newswatchers' gradual incorporation) and long-horizon reversal (the momentum traders' overshoot).
 
+The two investor types generate these effects for different reasons, and the distinction is what makes the model's predictions testable. The newswatchers process only private firm-specific signals and cannot read prices; their demand is a function of what they know, which is what makes the diffusion of that knowledge into prices gradual. The momentum traders process only past price changes and cannot distinguish fresh news from the price momentum itself; their demand is a purely univariate function of the past return, which is what allows them to keep buying into a price that has already moved past its fundamental value. The externality that generates reversal is therefore not a mistake in either group's information. It is a consequence of two groups holding different information and of one group's trading rule being blind to the distinction between news and trading.
+
+Because the momentum traders trade on a signal that is a linear function of the past return, their aggressiveness is determined in equilibrium rather than imposed from outside. Each generation of momentum traders holds its position for $j$ periods and trades on the univariate signal $F_t = A + \phi\,\Delta P_{t-1}$, and the aggressiveness $\phi$ solves a fixed-point condition: it equals the risk-tolerance-scaled profitability of trend-chasing given the price dynamics that trend-chasing itself produces,
+\[
+\phi \;=\; \frac{\gamma\,\operatorname{cov}\!\left(P_{t+j}-P_t,\;\Delta P_{t-1}\right)}{\operatorname{var}(\Delta P)\,\operatorname{var}_{M}\!\left(P_{t+j}-P_t\right)},
+\]
+where $\gamma$ is aggregate risk tolerance and $\operatorname{var}_{M}$ is the variance the momentum traders perceive. The numerator is positive whenever the newswatchers' slow diffusion leaves predictable drift to capture, so $\phi > 0$ in equilibrium: rational momentum traders must trend-chase, and their buying then feeds the price further in the same direction.
+
+The resulting impulse response is hump-shaped (Figure~\ref{fig:hsir}). With newswatchers alone, the price moves smoothly toward its long-run value and stays there. With momentum traders, the price rises above the long-run value at an intermediate horizon and then converges back through damped oscillations, and the positive short-run autocorrelation of returns implies eventual negative autocorrelation under risk neutrality.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\definecolor{hsnavy}{RGB}{0,51,102}
+\definecolor{hsverm}{RGB}{178,34,34}
+\begin{axis}[
+  width=0.62\textwidth, height=0.36\textwidth,
+  xlabel={months after news}, ylabel={cumulative response},
+  xmin=0, xmax=24, ymin=0.72, ymax=1.48,
+  xtick={0,6,12,18,24}, ytick={0.8,1.0,1.2,1.4},
+  axis lines=left,
+  legend style={font=\small, at={(0.03,0.97)}, anchor=north west, draw=none, fill=none},
+  every axis plot/.append style={thick},
+  tick label style={font=\small}, label style={font=\small}
+]
+\addplot[hsnavy, dashed] coordinates {(0,0.70) (12,1) (24,1)};
+\addplot[hsverm] coordinates {(0,0.72) (3,0.80) (6,0.89) (9,0.98) (12,1.24) (15,1.06) (18,1.11) (21,1.00) (24,1.01)};
+\addplot[gray, dotted] coordinates {(0,1) (24,1)};
+\legend{newswatchers only, with momentum traders, long-run value}
+\end{axis}
+\end{tikzpicture}
+\caption[Hump-shaped impulse response in the Hong--Stein model]{\textbf{Underreaction, overshoot, and reversal.} Cumulative price response to a news shock in \citet{hong1999}. With newswatchers alone (dashed), the price adjusts gradually to the new fundamental value (dotted). Adding momentum traders (solid) accelerates the initial adjustment but overshoots the long-run value at an intermediate horizon before converging back through damped oscillations. \textit{Source:} schematic, after \citet{hong1999}.}
+\label{fig:hsir}
+\end{figure}
+
+The comparative statics follow from the model's structure. A longer holding horizon of the momentum traders delays the first negative autocorrelation and ties the timing of the peak to that horizon. Greater aggregate risk tolerance raises the aggressiveness of momentum trading, which raises volatility and the size of the overshoot, and makes the pricing error U-shaped in the aggressiveness parameter. Slower diffusion of news creates larger momentum opportunities, stronger continuation, and more pronounced reversals. And a contrarian or smart-money arbitrageur attenuates the dynamics without eliminating them unless arbitrage capacity is unlimited.
+
+The cross-sectional implications are the sharpest, because they identify where the mechanism must be strongest if it is the one at work. Momentum should be strongest among small, low-analyst-coverage stocks, where the newswatcher population is thinnest and information diffuses most slowly, and the same stocks should be the most reversal-prone at longer horizons. Public news may drift without producing the same overreaction, since traders who can condition on announcement dates can distinguish news from momentum trades. And higher trading costs, or longer horizons, keep return autocorrelations positive for longer.
+
 \citet{honglimstein2000} test the central prediction. If momentum arises from slow diffusion of private information, the effect should be stronger where newswatcher coverage is thinner. The data confirm the prediction: momentum is stronger among small stocks and stocks with low analyst coverage, exactly the stocks where the newswatcher population is plausibly smaller and information diffuses more slowly.
 
 \begin{figure}[htbp]
@@ -189,8 +230,14 @@ A sizeable literature supports the prediction. \citet{barberiswurgler2005} docum
 \end{figure}
 
 % ============================================================
+% The running head for this section would otherwise carry the full De Long
+% title, which overflows the header width. Shorten the mark for this one
+% section only, then restore the class default.
+\begingroup
+\renewcommand{\sectionmark}[1]{\markright{\MakeUppercase{\thesection. Psychology-free Approaches}}}
 \section{Psychology-free Approaches: The De Long--Shleifer--Summers--Waldmann Framework}
 \label{sec:psychfree}
+\endgroup
 
 The approaches developed so far have all been rooted in a specific psychology: a cognitive bias, an emotional response, or a category. Some behavioral finance models produce testable predictions without appealing to any particular psychology, and these models form a distinct---and in many ways the most theoretically parsimonious---branch of the literature.
 
@@ -219,6 +266,8 @@ If some assets are mispriced, the trades of sophisticated investors who act agai
 \paragraph{Hedge funds.} \citet{chendahuang2018} construct a measure of \emph{net arbitrage trading} (NAT) by hedge funds and show that NAT strongly predicts stock returns in the cross-section. The pattern is consistent with hedge funds betting against overvalued stocks and earning profits as the overpricing subsequently closes.
 
 \paragraph{Analysts.} \citet{leeso2017} document that abnormal analyst coverage---sudden additions of analyst coverage---positively predicts subsequent returns, consistent with the interpretation that analyst attention identifies underpriced stocks that subsequently revert as the information is incorporated.
+
+Analysts also face an incentive conflict that constrains what their published recommendations can reveal. A recommendation carries the firm's name, and the brokerage earns revenue from the covered issuer, so the analyst's public statements are filtered by the issuer's interest in them. The coverage decisions themselves escape that filter, and they carry information the ratings do not. \citet{mcnicholsobrien1997} document the self-selection: analysts concentrate coverage on firms with favorable prospects and drop firms with poor ones, so the set of firms an analyst covers and the set it abandons each carry a signal. An analyst who stops covering a firm has revealed information without publishing a rating, which is why the analyst's actions rather than the analyst's words are the more informative object for a sophisticated investor to track.
 
 \subsection{Aggregate Predictions}
 
@@ -289,6 +338,8 @@ Each of these measures has been proposed by prior studies as capturing investor 
 \subsection{Sentiment and Aggregate Market Returns}
 
 \citet{bakerwurgler2007} show that sentiment predicts market returns with a negative sign: high sentiment today forecasts low market returns over the next one to three years. The pattern is consistent with the mispricing interpretation: high sentiment is associated with elevated prices that subsequently revert, and the reversion shows up as low future returns.
+
+The time-series evidence is the weaker half of the sentiment result, and the weakness is informative. The predictive coefficient on the index is negative and economically large, but its statistical precision in the full sample is poor, because the sentiment index is built from proxies that each carry noise of their own and because the aggregate signal it contains varies only slowly. The cross-sectional evidence is the stronger half: the same index sorts stocks by subsequent return with a monotone gradient. The interpretation that reconciles the two is that the index measures a slow-moving component of mispricing---valuation uncertainty that resolves over long horizons---so its information shows up in relative prices across stocks far more cleanly than in the level of the index over time.
 
 \begin{figure}[htbp]
 \centering
@@ -369,11 +420,50 @@ The Baker--Wurgler index and its refinements are the canonical sentiment measure
 
 \paragraph{Manager sentiment.} \citet{jiangetal2019} construct a manager sentiment index from the aggregated textual tone in 10-K filings, 10-Q filings, and conference call transcripts. Manager sentiment is a strong negative predictor of future aggregate stock market returns---a finding that is interesting precisely because managers are sophisticated agents whose communications are observable to investors. The result suggests that even sophisticated agents' revealed sentiment (as opposed to their actions) carries incremental information for prices.
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.55\textwidth]{slide37_pic4.png}
+\caption[Manager sentiment and future returns]{\textbf{Manager sentiment forecasts aggregate returns.} The figure illustrates the central finding of \citet{jiangetal2019}: a sentiment index built from the textual tone of 10-K filings, 10-Q filings, and conference call transcripts is a strong negative predictor of future aggregate stock market returns. \textit{Source:} \citet{jiangetal2019}, reproduced from the original article.}
+\label{fig:mgrsent}
+\end{figure}
+
 \paragraph{Aggregate short interest.} Short sellers are sophisticated investors who can correct mispricing induced by sentiment traders; the aggregate short-interest position is therefore a contrarian signal. \citet{rapachringgenbergzhou2016} and others document that short interest aggregated to the market level is a strong contrarian predictor of future market returns.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.55\textwidth]{slide38_pic4.png}
+\caption[Aggregate short interest and future returns]{\textbf{Aggregate short interest is contrarian.} The figure illustrates the central finding of \citet{rapachringgenbergzhou2016}: the aggregate short-interest position is a strong contrarian predictor of future market returns, consistent with short sellers as sophisticated investors who correct sentiment-induced mispricing. \textit{Source:} \citet{rapachringgenbergzhou2016}, reproduced from the original article.}
+\label{fig:shortint}
+\end{figure}
 
 \paragraph{Leveraged ETF flows.} \citet{davies2022} constructs a Speculative Sentiment Index (SSI) based on the difference between share change in leveraged-long ETFs and share change in leveraged-short ETFs. The index captures the speculative component of market demand: leveraged ETFs are heavily traded by investors who bet on the direction of future market movement, and the difference in flows between the long and short sides is a clean measure of speculative demand. A one-standard-deviation increase in the monthly index is associated with a 1.14--1.67\% decline in broad-market stock returns over the next month.
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.55\textwidth]{slide39_pic5.png}
+\caption[Speculative sentiment index]{\textbf{Leveraged ETF flows measure speculative demand.} The figure illustrates the central finding of \citet{davies2022}: the Speculative Sentiment Index, built from the difference between share changes in leveraged-long and leveraged-short ETFs, predicts lower broad-market stock returns over the following month. \textit{Source:} \citet{davies2022}, reproduced from the original article.}
+\label{fig:ssi}
+\end{figure}
+
 \paragraph{Music sentiment.} \citet{edmans2022} propose a real-time, continuous measure of national sentiment based on the positivity of songs that individuals choose to listen to. Music sentiment has three attractive properties as a sentiment measure: it is real-time, language-free, and comparable across countries, and exogenous to financial market events. Music sentiment is positively correlated with same-week equity market returns and negatively correlated with next-week returns; it also predicts increases in net mutual fund flows and a rise in stock market volatility. Music sentiment is negatively associated with government bond returns, consistent with a flight to safety when sentiment deteriorates.
+
+\subsection{LLM-Generated Beliefs}
+
+The survey measures that anchor the sentiment literature share a limitation that matters for long-horizon applications: they cover a short period and a small set of respondents, so a sentiment index built from them cannot say much about episodes before the survey began. \citet{bybee2025} propose a way around the constraint. Language models trained on large corpora absorb the same world models and the same biases that human forecasters carry, so a model queried with a news article can be asked for its beliefs about the direction, confidence, and magnitude of the change in a set of financial and macroeconomic variables. The article-level beliefs are then aggregated into a belief series.
+
+The construction has three steps. From each month of \emph{Wall Street Journal} articles over 1984--2021, 300 articles are sampled at random and fed to GPT-3.5 with a prompt requesting a direction, a confidence, a magnitude, and an explanation for each of a set of macro and financial series. The resulting beliefs are collapsed into a balance statistic for each series, weighting by the model's stated confidence. Because a GPT-3.5 query returns one response, the model cannot cover the full corpus on its own, so a BERT encoder with ridge transfer learning infills expectations for the articles not queried; a \emph{New York Times} corpus then extends the sample back to 1900.
+
+The validation is what makes the approach more than a demonstration. Generated expectations correlate with the AAII and Duke CFO Survey return-expectation measures at 0.47 on average over a three-month aggregation window, against 0.43 for the correlation among the surveys themselves, and they track Survey of Professional Forecasters revisions for all but two of the thirteen macroeconomic series examined. The generated expectations also reproduce the deviations from full-information rational expectations that the surveys display: they are extrapolative, they correlate with equity fund flows, they are disconnected from objective expected-return proxies such as the dividend-price ratio and the consumption-wealth ratio, and they are negatively correlated with subsequent realized returns. The errors have a traceable origin. The model expects high future returns because it expects high future earnings, a neglect of general equilibrium of the kind that human survey participants show as well \citep{andre2026}. Using articles that postdate the model's training window leaves the correlations with survey measures intact, which is the evidence that the model generalizes rather than recalls.
+
+Extending the sample backward yields 120 years of economic sentiment. The extraction proceeds from a factor model of expectations in which each series' expectation decomposes into a rational component and a sentiment component. The sentiment component is recovered by orthogonalizing each expectation series against a rational forecast and then taking the first principal component of the orthogonalized series. The resulting measure behaves as a sentiment index should: it responds positively to past returns and negatively predicts future returns, with a correlation of $-0.41$ at the 24-month horizon in the recent sample. Its turning points line up with history. The spikes are negative at the 1929 crash, at the collapse of Lehman Brothers, and at Covid; they are positive at the dot-com bubble and at the 1936 landslide election of Franklin Roosevelt. The series correlates 0.54 with Shiller's CAPE, and the two measures catch many of the same episodes.
+
+\subsection{Bubbles through the Lens of Generated Beliefs}
+
+The extended sample makes it possible to ask whether sentiment helps identify bubbles, which is the application that survey-based sentiment indices could not support. \citet{bybee2025} construct a mispricing proxy by running rolling regressions of industry returns on daily sentiment and extracting the time-varying sentiment beta of each industry. The test uses the run-up dataset of \citet{greenwoodshleiferyou2019}, which identifies 40 industry-level price run-ups between 1926 and 2014, of which 21 end in a crash in the form of a 40\% drawdown over the following two years.
+
+Two findings carry the application. First, the sentiment betas are significantly higher during the run-ups that crash than during those that do not, so an industry's exposure to economic sentiment is a marker of the mispricing that precedes its collapse. Second, the feedback between returns and sentiment is stronger in the crashing run-ups: the response of sentiment to a return shock is significantly larger there, which identifies return extrapolation as a key mechanism behind the bubbles. The economic payoff is a threshold strategy that holds the industry portfolios the sentiment beta predicts will not crash; it predicts roughly 80\% of the crashes correctly and earns significant returns against the strategy that holds all run-ups.
+
+The methodological point generalizes beyond this paper. Once the mechanism that produces human sentiment is understood well enough to specify, a language model can be asked to reproduce it. That extends a sentiment measure to any market with a news archive, over any period the archive covers, and it does so at daily frequency rather than monthly. The tool is new enough that its validation rests on agreement with existing survey measures rather than on independent evidence, and the extrapolation of a trained model's biases is a replication of human biases rather than a test of them.
 
 % ============================================================
 \section{Credit Market Sentiment}
@@ -392,9 +482,16 @@ Equity market sentiment is one thing; credit market sentiment is another. The tw
 
 The economic magnitudes are substantial. A one-standard-deviation increase in the issuer credit-quality differential implies cumulative excess bond returns that fall by 7.30 percentage points over the following two years.
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.55\textwidth]{l5_slide43_pic5.png}
+\caption[Credit sentiment and excess bond returns]{\textbf{Credit sentiment forecasts excess bond returns.} The figure illustrates the central finding of \citet{greenwoodhanson2013}: periods in which firms with falling credit quality are heavily issuing debt are periods of credit market overheating, with subsequent low excess bond returns. \textit{Source:} \citet{greenwoodhanson2013}, reproduced from the original article.}
+\label{fig:edf}
+\end{figure}
+
 \subsection{Credit Sentiment and Economic Growth}
 
-Credit market overheating is associated with a higher probability of a future financial crisis and a subsequent economic downturn. \citet{schularicktaylor2012} document that credit growth is a robust predictor of financial crises in a long historical sample. \citet{lopezsalidosteinzakrajsek2017} document the same pattern in U.S.\ postwar data. \citet{baronxiong2017} show that bank credit expansion predicts increased bank equity crash risk: despite the elevated crash risk, credit expansion predicts lower mean bank equity returns over the subsequent one to three years. Bank credit expansion is distinct from equity market sentiment as captured by the dividend yield, suggesting that credit and equity markets are only partially integrated.
+Credit market overheating is associated with a higher probability of a future financial crisis and a subsequent economic downturn. \citet{schularicktaylor2012} document that credit growth is a robust predictor of financial crises in a long historical sample. \citet{lopezsalidosteinzakrajsek2017} document the same pattern in U.S.\ postwar data. \citet{baronxiong2017} show that bank credit expansion predicts increased bank equity crash risk: despite the elevated crash risk, credit expansion predicts lower mean bank equity returns over the subsequent one to three years. Bank credit expansion is distinct from equity market sentiment as captured by the dividend yield, suggesting that credit and equity markets are only partially integrated. The framing is one of neglected risk: the risk of a banking crisis is underweighted by bank equity investors during a credit expansion, and the mispricing of that neglected risk shows up in the crash risk that follows.
 
 \begin{figure}[htbp]
 \centering
@@ -417,6 +514,28 @@ Credit market overheating is associated with a higher probability of a future fi
 \subsection{Credit versus Equity Sentiment}
 
 Empirical measures of credit market sentiment are only modestly correlated with measures of equity market sentiment. The low correlation suggests that equity and credit markets should not be thought of as fully integrated: each market has its own investor population, its own information flows, and its own sentiment dynamics. The macroeconomic implication is important: measures of expected returns on the stock market (such as Shiller's CAPE) do not predict future GDP growth, while measures of credit market overheating do. Credit market sentiment therefore has potentially greater macroeconomic significance than equity market sentiment.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.46\textwidth]{credit_sent.png}
+\caption[Credit market versus equity market sentiment]{\textbf{Credit and equity sentiment are distinct measures.} The figure illustrates the low correlation between empirical measures of credit market sentiment and measures of equity market sentiment, consistent with the interpretation that the two markets have their own investor populations and their own sentiment dynamics. \textit{Source:} EF8083 course materials, after \citet{lopezsalidosteinzakrajsek2017}.}
+\label{fig:creditsent}
+\end{figure}
+
+The reason for the difference in macroeconomic power lies in the payoff structure of the two claims. Equity investors care about the upside---how good the state of the world will be---and a change in that assessment moves prices in either direction. Creditors do not: the promised coupon and principal are fixed, so what matters to a creditor is the probability of default. Credit sentiment is therefore a measure of perceived tail risk rather than of expected growth, and the variable that damages the real economy is the collapse of a tail rather than the failure of an expansion to arrive. This is also why leverage amplifies credit sentiment into real activity. Firms that have levered up have promised their creditors a fixed payment out of a cyclical cash flow stream; a small negative shock raises the probability that the payment is missed, and the resulting defaults cut credit supply, which forces other levered borrowers to cut back as well.
+
+\subsection{Credit Cycles across a Financial Crisis}
+
+\citet{krishnamurthy2025} characterize the credit cycle in the data rather than in narrative, using credit spreads and credit growth around financial crises in a long international sample. Their evidence reverses the natural reading of the price and quantity dynamics. Spreads fall ahead of a crisis and appear too low relative to the credit being extended, and credit grows as the crisis approaches. A rise in spreads at the crisis itself marks a dramatic shift in expectations that arrives as a surprise rather than as a gradual repricing. The severity of the crisis that follows is forecast by the size of the credit losses, proxied by the change in spreads, together with the fragility of the financial sector, proxied by pre-crisis credit growth, and the interaction of the two is what distinguishes crises that are severe from those that are not. Recessions in the aftermath of financial crises are both severe and protracted.
+
+The reading these results support is that credit supply expansion is the precursor to a crisis, not the response to one. Investors extend credit on terms that look attractive because prices are high and defaults have been few; the credit that is extended is increasingly held by borrowers whose own positions have deteriorated; the boom sustains itself until a shock arrives that the accumulated leverage cannot absorb.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.45\textwidth]{credit_cycle.png}
+\caption[Spreads and credit growth around a crisis]{\textbf{Spreads fall and credit grows ahead of a crisis.} The figure illustrates the central finding of \citet{krishnamurthy2025}: credit spreads drop to low levels ahead of a financial crisis while credit growth accelerates, so credit supply expansion is a precursor to the crisis rather than a response to it. \textit{Source:} \citet{krishnamurthy2025}, reproduced from the original article.}
+\label{fig:creditcycle}
+\end{figure}
 
 \subsection{Determinants of Credit Market Sentiment}
 
@@ -456,6 +575,8 @@ Three strands of evidence keep the bounded-rationality and psychology-free progr
 \emph{Third, the psychology-free framework is silent on the source of noise-trader demand.} The De Long--Shleifer--Summers--Waldmann architecture makes contact with a wide range of facts without requiring any assumption about why noise traders are wrong. The strength of the framework is also its limitation: it does not adjudicate among the competing sources of noise-trader demand, and the predictions of the framework depend on how the noise-trader component is modeled. When the framework is used to interpret sentiment indices (Baker--Wurgler, FEARS, manager sentiment), the inference is from the predictive coefficient on subsequent returns; when it is used to interpret sophisticated-agent trades (insiders, short sellers, hedge funds), the inference is from the correlation of trades with subsequent returns. The two inferences are correlated and reinforce one another, but neither pins down the underlying source of noise-trader demand.
 
 The methodological lesson is the same as in earlier chapters: a behavioral or psychology-free model earns credibility when it predicts something not used to fit it, and when that prediction survives out-of-sample tests. The strongest out-of-sample predictions of this chapter are the cross-sectional amplification of anomalies following high sentiment \citep{stambaughyuyuan2012}, the predictability of credit returns from credit-market sentiment measures \citep{greenwoodhanson2013}, the EDGAR-based evidence on information acquisition and disagreement \citep{lisun2022,chang2022}, and the causal evidence on attention from the Chinese listing-code instrument \citep{chenawy2023}. The rest of the literature is competitive with rational alternatives.
+
+A fourth consideration is specific to the LLM-generated belief evidence, and it cuts differently from the three above. The validation of \citet{bybee2025} against survey measures is an out-of-sample test in the sense that the generated expectations were never fitted to the surveys. But the model used to generate them was trained on the same news that human forecasters read, so the agreement with human biases is closer to a replication than to an independent test of the mechanism. What the evidence establishes is that human sentiment can be reproduced and extended in time and cross-section; what it does not establish is that the reproduced biases are the biases a specific human forecaster held, and the replication itself carries the extrapolation of the training corpus into the measurement.
 
 % ============================================================
 \section{The Road Ahead}

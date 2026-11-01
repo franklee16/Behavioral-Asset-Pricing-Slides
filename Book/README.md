@@ -15,9 +15,9 @@ added later as `chapter6_*.tex` and `\input` into `main.tex`.
 | `chapter3_preferences.tex` | Ch. 3 — Preferences Under Uncertainty, converted from `../Lecture3_LaTeX/Lecture3_Preferences.tex` |
 | `chapter4_beliefs.tex` | Ch. 4 — Biased Beliefs, converted from `../Lecture4_LaTeX/Lecture4_Beliefs.tex` |
 | `chapter5_bounded.tex` | Ch. 5 — Bounded Rationality and Psychology-free Models, converted from `../Lecture5_LaTeX/Lecture5_BoundedRationality.tex` |
-| `references.bib` | Verified entries (all citations across Ch. 1–5; 226 entries as of 2026-09-25) |
-| `figures/` | Figures copied from `../LectureN_LaTeX/figures/` (original slide assets). Note: Lectures 4 and 5 share some filenames with different content — the plain filename holds the Lecture 4 version; Lecture 5 versions live under `l5_`-prefixed names (referenced only by `chapter5_bounded.tex`) |
-| `main.pdf` | Compiled book (146 pages, Ch. 1–5) |
+| `references.bib` | Verified entries (all citations across Ch. 1–5; CrossRef re-verification synced 2026-11-01) |
+| `figures/` | Deck-only figures copied from `../LectureN_LaTeX/figures/` plus fallback copies of script-generated figures (their masters live in `../../Output/Figures/` in the private working tree, resolved first via `\graphicspath` in `main.tex`; changed 2026-10-30 — the fallback copies keep this public folder compiling standalone). Note: Lectures 4 and 5 share some filenames with different content — the plain filename holds the Lecture 4 version; Lecture 5 versions live under `l5_`-prefixed names (referenced only by `chapter5_bounded.tex`) |
+| `main.pdf` | Compiled book (Ch. 1–5) |
 
 ## Build
 
@@ -48,9 +48,36 @@ Requires a TeX distribution with `pdflatex` and `biber` (TeX Live, MiKTeX, or Ma
     of Arbitrage," JFE 102(1), 62–80.
   - Guo/Li/Wei (JFE 2020) cited in published author order Guo, Li, and Wei,
     correcting the deck's "Li, Guo, and Wei" (added 2026-09-25).
+- **CrossRef re-verification (2026-11-01):** 13 entries corrected in the
+  root `books/references.bib` and synced here the same day (wrong journal or
+  wrong paper in `diether2003`, `barberis1998`, `barberodeanzhu2009`,
+  `chendahuang2018`, `shenyuzhao2017`, `li2016`, `jinli2024`, `wang2020`,
+  `sui2025`, `goldman2025`, `hong2016`,
+  `antonioudoukassubrahmanyam2016`, `licuipangxie`) — see the root
+  `books/README.md` for the full list. The two bib copies are byte-identical
+  since 2026-11-01 (`bali2026`/`bordalo2025` now live in both; the root book
+  ported Chs. 3–4 from here the same day).
 - Chapters were re-synced to the 2026-09-25 slide revisions (paper-quality
   figures replace legacy screenshots; LTCM case study, index effect, learning
   costs, and *My Research* sections added in Ch. 2–5).
+- Chs. 3–4 re-synced to the 2026-10-12 slide revisions: Ch. 3 gains the
+  Barberis–Mukherjee–Wang (2016) conceptual framework (TK construction and
+  pricing equation), corrected Wang–Yan–Yu (2017) Figures 2–3 (moved to the
+  risk–return subsection; the earlier caption described prices not in the
+  figure), and the asymmetric-correlation explanation of market skewness;
+  Ch. 4 gains Bordalo–Gennaioli–La Porta–Shleifer (2025, JFE) expectations-
+  based returns and Bali–Kelly–Mörke–Rahman (RFS 2026, forthcoming) machine
+  forecast disagreement.
+- Ch. 5 synced with the 2026-10-31 deck revisions (2026-11-01): the
+  Hong--Stein (`sec:att3`) exposition now carries the momentum-trader signal
+  $F_t = A + \phi\Delta P_{t-1}$, the equilibrium fixed point for $\phi$, and
+  the hump-shaped impulse-response figure (`fig:hsir`, inline pgfplots); the
+  comparative statics were already in prose. The Bybee (2025) LLM-beliefs
+  subsections (`sec:sentiment`) were already complete. Same edits applied to
+  the root `books/` copy, so Ch. 5 differs between the two builds only in the
+  section-running-head mechanism (this build's `\markright` shortening is
+  required: the full De Long title overflows the letter-page running head,
+  which the root build's chapter-only header never shows).
 - `slide38_chart.png` exists in the Lecture 1 figures folder but is not used
   by the current Lecture 1 `.tex`; it was not copied.
 
