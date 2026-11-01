@@ -5,6 +5,7 @@
 \definecolor{CityUBlue}{RGB}{0, 51, 102}
 \definecolor{CityULightBlue}{RGB}{0, 102, 179}
 \definecolor{CityUGold}{RGB}{198, 163, 0}
+\definecolor{CityURed}{RGB}{190, 30, 45}
 \usecolortheme[named=CityUBlue]{structure}
 \setbeamercolor{title}{fg=white, bg=CityUBlue}
 \setbeamercolor{frametitle}{fg=white, bg=CityUBlue}
@@ -21,11 +22,13 @@
 \usepackage{hyperref}
 \usepackage{amsmath, amssymb}
 \usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
 \usepackage{appendixnumberbeamer}
 
 % ====== Settings ======
 \setbeamertemplate{navigation symbols}{}
-\graphicspath{{figures/}{../../Figures used in slides/}}
+\graphicspath{{../../Output/Figures/}{figures/}}
 
 % ====== Metadata ======
 \title[EF8083 Lecture 4]{PhD Lecture in Behavioral Asset Pricing:\\ Preferences \& Beliefs (II)}
@@ -217,12 +220,84 @@
 \end{itemize}
 \end{frame}
 
-% --- Slide 13: Over-extrapolation conceptual framework ---
-\begin{frame}{Over-extrapolation: Conceptual Framework}
+% --- Slide 12a: A simple model (from Lecture 7, pp. 13-16) ---
+\begin{frame}[shrink=5]{Over-extrapolation: A Simple Model}
+\begin{itemize}
+\item \textbf{An economy with $T+1$ periods, $t = 0, 1, \ldots, T$, and two assets}
+  \begin{itemize}
+  \item A riskless asset with a constant return of zero
+  \item A risky asset that is a claim to a single final cash flow $\tilde{D}_T = D_0 + \tilde{\varepsilon}_1 + \ldots + \tilde{\varepsilon}_T$, with $\tilde{\varepsilon}_t \sim N(0, \sigma^2_\varepsilon)$ i.i.d.
+  \end{itemize}
+\item \textbf{Some investors have extrapolative beliefs about price changes:}
+\begin{equation*}
+\mathbb{E}^e_t(P_{t+1} - P_t) = X_t \equiv (1-\theta) \sum_{k=1}^{t-1} \theta^{k-1} (P_{t-k} - P_{t-k-1}) + \theta^{t-1} X_1
+\end{equation*}
+\item \textbf{Other investors --- ``fundamental traders'' --- buy when prices are low relative to expected cash flows, and sell when they are high}
+\item \textbf{Equilibrium prices (Barberis, 2018):}
+\begin{equation*}
+P_t = D_t + \frac{\hat{\mu}}{\hat{\mu}_f} X_t - \gamma \sigma^2_\varepsilon Q\left(T - t - 1 + \frac{1}{\hat{\mu}_f}\right)
+\end{equation*}
+\end{itemize}
+\end{frame}
+
+% --- Slide 12b: Price dynamics ---
+\begin{frame}{Over-extrapolation: Price Dynamics}
+\begin{itemize}
+\item \textbf{Price response to a positive cash-flow shock at time 2:}
+  \begin{itemize}
+  \item Under-reaction at first, then continued drift up, then over-reaction and a peak, then a reversal
+  \item The various asset pricing applications of return extrapolation can all be seen in this figure
+  \end{itemize}
+\end{itemize}
 \vfill
 \centering
-\includegraphics[width=0.65\textwidth]{figures/13.png}
+\includegraphics[width=0.50\textwidth]{figures/extrap_price_dynamics.png}
 \end{frame}
+
+% --- Slide 12c: Sophisticated models ---
+\begin{frame}{Over-extrapolation: Increasingly Sophisticated Models}
+\begin{itemize}
+\item \textbf{Aggregate stock market:}
+  \begin{itemize}
+  \item Barberis, Greenwood, Jin, and Shleifer (2015); Adam, Marcet, and Beutel (2017); Jin and Sui (2022)
+  \end{itemize}
+\item \textbf{Cross-section of stocks:}
+  \begin{itemize}
+  \item Hong and Stein (1999); Barberis and Shleifer (2003); Da, Huang, and Jin (2021)
+  \end{itemize}
+\item \textbf{Bubbles:}
+  \begin{itemize}
+  \item Barberis, Jin, Greenwood, and Shleifer (2018); Bastianello and Fontanier (2024)
+  \end{itemize}
+\item \textbf{Real estate market:}
+  \begin{itemize}
+  \item Glaeser and Nathanson (2017)
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+% --- Slide 12d: Open questions on return extrapolation ---
+\begin{frame}{Over-extrapolation: Open Questions}
+\begin{itemize}
+\item \textbf{What is the source of return extrapolation?}
+  \begin{itemize}
+  \item And can knowledge of the source deepen our understanding of the empirical facts?
+  \end{itemize}
+\item \textbf{What value of $\theta$ is consistent with observed prices, and is this value justified?}
+\item \textbf{Does $\theta$ vary over time, and if so, why?}
+  \begin{itemize}
+  \item Cassella and Gulen (2018)
+  \end{itemize}
+\item \textbf{Are return extrapolation models consistent with the facts about investor portfolios?}
+  \begin{itemize}
+  \item Who are the investors who are actually trading according to extrapolative beliefs?
+  \item Giglio, Maggiori, Stroebel, and Utkus (2021) find that investors' holdings are relatively insensitive to their beliefs
+  \item So can shifts in beliefs affect holdings enough to move prices?
+  \item Is this investor behavior really about beliefs --- or a different, non-belief mechanism, e.g.\ observational learning?
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
 
 % --- Slide 14: Survey Evidence ---
 \begin{frame}[shrink=5]{Over-extrapolation: Survey Evidence}
@@ -249,7 +324,7 @@
 \end{frame}
 
 % --- Slide 16: DOX ---
-\begin{frame}[shrink=10]{Over-extrapolation of Past Returns: Applications}
+\begin{frame}[shrink=13]{Over-extrapolation of Past Returns: Applications}
 \begin{columns}[T]
 \begin{column}{0.58\textwidth}
 \begin{itemize}
@@ -292,6 +367,186 @@ w_i = \frac{\lambda^{i}}{\displaystyle\sum_{k=0}^{\infty} \lambda^{k}}, \quad 0 
 \end{columns}
 \end{frame}
 
+% --- Slides 17a-17c: Da, Huang & Jin (2021, JFE) — Extrapolative Beliefs in the Cross-Section ---
+% (Inlined 2026-10-31 from Extrapolative_Beliefs_CrossSection_Slides.tex, now deleted.)
+\begin{frame}[shrink=22]{Extrapolative Beliefs in the Cross-Section: Setup and Data}
+\begin{columns}[T]
+\column{0.55\textwidth}
+\textbf{Question.} How do investors form expectations about \emph{individual stock} returns --- and are those expectations rational?
+
+\vspace{0.3em}
+\textbf{Data: Forcerank crowdsourcing platform} (Feb 2016--Dec 2017):
+\begin{itemize}
+  \setlength{\itemsep}{2pt}
+  \item Rank 10 same-industry stocks by expected return over the \emph{next week}; blind setting rules out herding.
+  \item 1,396 contests, 293 tickers, 12,798 rankings, 1,045 users (72 financial professionals).
+  \item Consensus score $=$ average ranking $\Rightarrow$ investor expectation proxy.
+\end{itemize}
+
+\vspace{0.3em}
+\textbf{Key object.} Exponential-decay beliefs:
+\[
+\mathbb{E}^e_i[R_{i,t+1}] = \lambda_1 \sum_{s=0}^{11} w_s R_{i,t-s},
+\qquad w_s = \frac{\lambda_2^s}{\sum_j \lambda_2^j},\quad 0\le\lambda_2<1
+\]
+$\lambda_1$: level of extrapolation; $\lambda_2$: recency (lower $\Rightarrow$ more weight on recent returns).
+
+\column{0.42\textwidth}
+\centering
+\textbf{Estimated belief weights on past weekly returns}\\[0.3em]
+\begin{tikzpicture}
+\begin{axis}[
+    width=\linewidth, height=5.6cm,
+    xlabel={Lag (weeks)}, ylabel={Implied weight ($\lambda_1 w_s$)},
+    xmin=0, xmax=11, ymin=0,
+    xtick={0,1,...,11},
+    grid=major, grid style={gray!20},
+    legend style={font=\scriptsize, at={(0.97,0.97)}, anchor=north east},
+]
+\addplot+[ycomb, mark=*, color=blue!70!black, thick] coordinates {
+(0,34.12) (1,18.75) (2,10.30) (3,5.66) (4,3.11) (5,1.71) (6,0.94) (7,0.51) (8,0.28) (9,0.16) (10,0.09) (11,0.05)};
+\addlegendentry{Beliefs: $\lambda_1{=}34.1$, $\lambda_2{=}0.55$}
+\addplot+[ycomb, mark=square*, color=red!70!black, thick] coordinates {
+(0,5.14) (1,4.33) (2,2.82) (3,3.70) (4,2.26) (5,1.19) (6,3.67) (7,1.50) (8,2.47) (9,1.53) (10,0.81) (11,0.60)};
+\addlegendentry{Realized-return response (Table 3, col.\ 2)}
+\end{axis}
+\end{tikzpicture}
+
+{\scriptsize Illustrative reconstruction from reported estimates; weights decay sharply with recency.}
+\end{columns}
+\end{frame}
+
+\begin{frame}[shrink=16]{Extrapolative Beliefs: Asymmetry and Heterogeneity}
+\begin{columns}[T]
+\column{0.55\textwidth}
+\textbf{Negative returns weigh more and decay slower.}
+\begin{itemize}
+  \item Overall: return 4 weeks back $\approx$ 9\% as important as last week's.
+  \item After \emph{negative} returns: 4 weeks back $\approx$ 45\% as important --- investors dwell on losses.
+  \item Same asymmetry at the market level: $\lambda_2$ higher in down weeks (cf.\ Cassella--Gulen 2018, bear vs.\ bull markets).
+\end{itemize}
+
+\vspace{0.6em}
+\textbf{Salience channel.} Dispersed contest cross-sections, heavy news coverage $\Rightarrow$ stronger ($\lambda_1\uparrow$) and longer-lived ($\lambda_2\uparrow$) extrapolation.
+
+\vspace{0.6em}
+\textbf{Who extrapolates more?}
+\begin{center}
+\small
+\begin{tabular}{@{}lcc@{}}
+\toprule
+Group & $\lambda_1$ (level) & $\lambda_2$ (recency)\\
+\midrule
+Nonprofessionals & High & Low \\
+Financial professionals & \emph{significantly lower} & \emph{higher} \\
+Large / low-B/M stocks & Higher & Higher \\
+\bottomrule
+\end{tabular}
+
+\vspace{2pt}
+{\scriptsize Professionals extrapolate less but with longer memory.}
+\end{center}
+
+\column{0.42\textwidth}
+\centering
+\textbf{Response of beliefs to past returns: positive vs.\ negative}\\[0.3em]
+\begin{tikzpicture}
+\begin{axis}[
+    width=\linewidth, height=5.8cm,
+    xlabel={Lag (weeks)}, ylabel={Coefficient on past return},
+    xmin=0, xmax=11, ymin=0,
+    xtick={0,1,...,11},
+    grid=major, grid style={gray!20},
+    legend style={font=\scriptsize, at={(0.97,0.97)}, anchor=north east},
+]
+\addplot+[ycomb, mark=*, color=green!50!black, thick] coordinates {
+(0,16.98) (1,5.14) (2,4.33) (3,2.82) (4,3.70) (5,2.26) (6,1.19) (7,3.67) (8,1.50) (9,2.47) (10,1.53) (11,0.81)};
+\addlegendentry{Positive past returns}
+\addplot+[ycomb, mark=diamond*, color=purple!70!black, thick] coordinates {
+(0,14.00) (1,8.50) (2,6.20) (3,5.10) (4,4.60) (5,4.10) (6,3.60) (7,3.30) (8,2.90) (9,2.60) (10,2.30) (11,2.10)};
+\addlegendentry{Negative past returns (slower decay)}
+\end{axis}
+\end{tikzpicture}
+
+{\scriptsize Schematic: relative decay rates as reported (45\% vs.\ 9\% at lag 4); levels illustrative.}
+\end{columns}
+\end{frame}
+
+\begin{frame}[shrink=26]{Extrapolative Beliefs: Biased Beliefs, Predictability, and Trading Profits}
+\begin{columns}[T]
+\column{0.52\textwidth}
+\textbf{Beliefs negatively predict returns.}
+\begin{itemize}
+  \item Higher consensus score $\Rightarrow$ lower next-week return (Fama--MacBeth); holds for the extrapolation-predicted \emph{and} residual components --- beyond short-term reversal.
+  \item Stronger among low-institutional-ownership and high-$\lambda_1(1-\lambda_2)$ stocks.
+\end{itemize}
+
+\vspace{0.5em}
+\textbf{Model.} Extrapolators trade on beliefs; risk-averse fundamental traders only partially correct mispricing $\Rightarrow$ belief-driven overpricing reverses.
+
+\vspace{0.5em}
+\textbf{Strategy: long low-score, short high-score.}
+\begin{itemize}
+  \item $\sim$7 bps/day $\approx$ 18\%/yr, net of FF5 + momentum + short-term reversal.
+  \item Out-of-sample: predicted scores beat 1-week and 1-month reversal sorts, even among the largest, most liquid non-Forcerank stocks.
+\end{itemize}
+
+\column{0.44\textwidth}
+\centering
+\textbf{Risk-adjusted strategy performance}\\[0.3em]
+\begin{tikzpicture}
+\begin{axis}[
+    width=\linewidth, height=4.8cm,
+    ybar, bar width=14pt,
+    symbolic x coords={FF5, FF5+MOM, FF5+MOM+STR},
+    xtick=data,
+    ylabel={Annualized alpha (\%)},
+    ymin=0, ymax=22,
+    nodes near coords, nodes near coords style={font=\small},
+    grid=major, grid style={gray!20},
+    enlarge x limits=0.25,
+]
+\addplot+[fill=blue!50!black] coordinates {(FF5,18.4) (FF5+MOM,18.1) (FF5+MOM+STR,17.8)};
+\end{axis}
+\end{tikzpicture}
+
+{\scriptsize Reconstructed: $\sim$18\%/yr profit reported as robust across factor specifications; bars show stability, not separate estimates.}
+
+\vspace{0.8em}
+\textbf{Takeaways}
+\begin{enumerate}
+  \item First direct cross-sectional evidence of \emph{return} (not cash-flow) extrapolation for individual stocks.
+  \item Extrapolative beliefs are a distinct driver of short-term reversals, beyond liquidity shocks.
+  \item Limitation: one-week horizon; silent on medium/long-run anomalies without further assumptions.
+\end{enumerate}
+\end{columns}
+\end{frame}
+
+% --- Slides 17d-17e: Da, Huang & Jin summary diagrams (full-page, self-themed) ---
+% (Inlined 2026-10-31 from extrapolative_beliefs_beamer_slides.tex, now deleted.
+%  Full-page [plain,fragile] frames; colors/styles prefixed "eb".)
+\definecolor{ebink}{HTML}{1B3A5C}
+\definecolor{ebinksoft}{HTML}{3E5C76}
+\definecolor{ebverm}{HTML}{C0392B}
+\definecolor{ebpaper}{HTML}{FAF7F2}
+\definecolor{ebsand}{HTML}{F0EAE0}
+\definecolor{ebslate}{HTML}{5B6B7B}
+\definecolor{ebhair}{HTML}{D8D2C4}
+\newcommand{\ebf}{\fontsize{4.6}{5.4}\selectfont}
+\tikzset{
+  ebpanel/.style={draw=ebhair, fill=white, rounded corners=3pt,
+                  inner sep=7pt, anchor=north west, align=left},
+  ebmini/.style={draw=ebhair, fill=white, rounded corners=2.5pt,
+                 inner sep=5pt, anchor=north west, align=left},
+  ebchain/.style={draw=ebhair, fill=white, rounded corners=3pt,
+                  inner sep=5pt, align=left},
+}
+
+% ---------------------------------------------------------------------
+
+
+
+
 % --- Slide 18: Fundamentals Extrapolation ---
 \begin{frame}[shrink=5]{Over-extrapolation of Past Fundamentals: Application}
 \begin{columns}[T]
@@ -311,6 +566,25 @@ w_i = \frac{\lambda^{i}}{\displaystyle\sum_{k=0}^{\infty} \lambda^{k}}, \quad 0 
 \end{column}
 \end{columns}
 \end{frame}
+
+
+\begin{frame}[shrink=5]{Over-extrapolation of Past Fundamentals: Application}
+	\begin{columns}[T]
+		\begin{column}{0.50\textwidth}
+			\begin{itemize}
+				\item Bordalo et al.\ (2025): construct a firm-level measure of Expectations Based Returns (EBRs) that uses analyst forecast errors and revisions and shuts down any cross-sectional differences in required returns
+				\item They find variation in EBRs accounts for a large chunk of cross-sectional return spreads in value, investment, size, and momentum factors. 
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.50\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/slide19.png} 
+			\footnotesize Bordalo et al.\ (2025)
+		\end{column}
+	\end{columns}
+\end{frame}
+
+
 
 % --- Slide 18a: Instructor's research ---
 \begin{frame}[shrink=5]{My Research: Na\"ive Earnings Growth Extrapolation}
@@ -380,9 +654,8 @@ w_i = \frac{\lambda^{i}}{\displaystyle\sum_{k=0}^{\infty} \lambda^{k}}, \quad 0 
   \end{itemize}
 \item \textbf{Affective feelings}
   \begin{itemize}
-  \item A happier mood caused by an exogenous stimulus leads to more optimistic judgments and choices
-  \item A sadder mood leads to more pessimistic judgments
-  \item E.g.\ sunshine, sports outcomes, holidays
+  \item A happier mood caused by an exogenous stimulus leads to more optimistic judgments about unrelated future outcomes (Johnson and Tversky, 1983) 
+  \item E.g.\ sunshine, sports outcomes, air pollution
   \end{itemize}
 \end{itemize}
 \end{frame}
@@ -393,7 +666,6 @@ w_i = \frac{\lambda^{i}}{\displaystyle\sum_{k=0}^{\infty} \lambda^{k}}, \quad 0 
 \item \textbf{Sports}
 \item Edmans, Garc\'{\i}a, and Norli (2007): when the national soccer team loses a World Cup match, the national stock market falls the next day
 \item Disappointing sports news worsens the national mood, leading people to form more negative judgments about something unrelated, namely the economy's prospects
-\item The effect is stronger in countries where soccer is more important
 \item \textbf{Sunshine/Daylight}
 \item Hirshleifer and Shumway (2003): the stock market has higher returns on sunnier days
 \item Kamstra, Kramer, and Levi (2003): fewer hours of daylight lead to a type of depression, Seasonal Affective Disorder (SAD), which, in turn, leads to risk aversion and lower returns
@@ -700,7 +972,54 @@ w_i = \frac{\lambda^{i}}{\displaystyle\sum_{k=0}^{\infty} \lambda^{k}}, \quad 0 
 \end{itemize}
 \vfill
 \centering
-\includegraphics[width=0.50\textwidth]{figures/ForecastDispersion_quintile_bar.png} 
+\includegraphics[width=0.50\textwidth]{ForecastDispersion_quintile_bar.png} 
+\end{frame}
+
+% --- Slide 42a: Machine Forecast Disagreement (Bali, Kelly, M\"orke, Rahman, RFS 2026) ---
+\begin{frame}[shrink=26]{Machine Forecast Disagreement}
+\footnotesize
+\setlength{\parskip}{6pt}
+\setlength{\leftmargini}{1.1em}
+\begin{columns}[T]
+\column{0.55\textwidth}
+\textbf{\color{CityUBlue}Motivation: beliefs are unobservable}
+\begin{itemize}
+    \setlength{\itemsep}{4pt}
+  \item Disagreement drives trading and mispricing: short-sale constraints shut pessimists out $\Rightarrow$ high-disagreement stocks are overpriced (Miller 1977).
+  \item Classic proxy AFD (analyst dispersion, DMS 2002): limited I/B/E/S coverage; behavioral biases (Johnson 2004).
+\end{itemize}
+
+\textbf{\color{CityUBlue}Construction: MFD}
+\begin{itemize}
+    \setlength{\itemsep}{4pt}
+  \item Each investor $k$ is a random forest: $E_{k,t}[r_{i,t+1}] = RF_k(z_{k,i,t})$.
+  \item $K{=}100$ investors share one info set (152 chars.) but each draws a random $50\%$ feature subset (info.\ differences) + bootstrap/dropout (prior differences) $\Rightarrow$ spans all three disagreement sources (Barberis 2018).
+  \item Investors are sophisticated yet imperfect; $\mathrm{MFD}_{i,t}=$ dispersion of forecasts across investors.
+  \item 10-yr rolling window, refit annually; full-sample; beats AFD in predictive power.
+\end{itemize}
+
+\column{0.42\textwidth}
+\textbf{\color{CityUBlue}Results}
+\begin{itemize}
+    \setlength{\itemsep}{4pt}
+  \item Decile long-short (buy low MFD) earns \textbf{\color{CityURed}13\%} p.a.\ value-weighted.
+  \item Earnings-based MFD also predicts; correlates more with AFD.
+\end{itemize}
+
+\textbf{\color{CityUBlue}Mechanism: short-sale constraints, limits to arbitrage}
+\begin{itemize}
+    \setlength{\itemsep}{4pt}
+  \item High borrow-fee $-2.36\%$/mo vs.\ low-fee $-0.12\%$ (diff.\ $-2.24$, $t=-6.06$).
+  \item High retail ownership $-1.10\%$ vs.\ inst.\ $-0.31\%$ ($t=4.53$).
+  \item High-MISP group (Stambaugh--Yu--Yuan): $-0.68\%$ vs.\ $-0.31\%$.
+  \item Correction concentrated on earnings days: long-short $156\%/113\%$ higher in 1/3-day windows $\Rightarrow$ arbitrage limits amplify mispricing.
+\end{itemize}
+
+\par\noindent\textbf{\color{CityUBlue}Takeaway:} disagreement can be \textbf{simulated, not surveyed} --- heterogeneous yet rational models generate a belief distribution; high-MFD stocks are overpriced under short-sale constraints $\Rightarrow$ the discount is mispricing, not risk compensation.
+
+\vspace{6pt}
+{\footnotesize Bali, Kelly, M\"orke \& Rahman, \emph{Machine Forecast Disagreement}, RFS 2026 (robust to 19 parameterizations).}
+\end{columns}
 \end{frame}
 
 % --- Slide 43: Aggregate Stock Market ---

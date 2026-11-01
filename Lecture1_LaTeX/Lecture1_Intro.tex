@@ -25,7 +25,7 @@
 
 % ====== Settings ======
 \setbeamertemplate{navigation symbols}{}
-\graphicspath{{figures/}{../../Figures used in slides/}}
+\graphicspath{{../../Output/Figures/}{figures/}}
 
 % ====== Metadata ======
 \title[EF8083 Lecture 1]{PhD Lecture in Behavioral Asset Pricing:\\ Introduction}
@@ -217,7 +217,7 @@
 \end{column}
 \begin{column}{0.46\textwidth}
 \centering
-\includegraphics[width=0.92\textwidth]{figures/cape_vs_10yr_real_return.png}
+\includegraphics[width=0.92\textwidth]{cape_vs_10yr_real_return.png}
 
 \vspace{0.3em}
 \footnotesize
@@ -310,7 +310,7 @@
 \end{itemize}
 \vfill
 \centering
-\includegraphics[width=0.55\textwidth]{figures/Mom12m_decile_bar.png}
+\includegraphics[width=0.55\textwidth]{Mom12m_decile_bar.png}
 \end{frame}
 
 % --- Slide 15: Cross-section, ctd. ---
@@ -344,7 +344,7 @@
 \end{itemize}
 \vfill
 \centering
-\includegraphics[width=0.68\textwidth]{figures/BM_decile_bar.png}
+\includegraphics[width=0.68\textwidth]{BM_decile_bar.png}
 \end{frame}
 
 % --- Slide 17: Cross-section, ctd. ---
@@ -387,7 +387,7 @@
 	\end{itemize}
 	\vfill
 	\centering
-	\includegraphics[width=0.70\textwidth]{figures/ShareIss_quintile_bar.png}
+	\includegraphics[width=0.70\textwidth]{ShareIss_quintile_bar.png}
 \end{frame}
 
 
@@ -415,7 +415,7 @@
 \end{itemize}
 \vfill
 \centering
-\includegraphics[width=0.54\textwidth]{figures/GP_decile_bar.png}
+\includegraphics[width=0.54\textwidth]{GP_decile_bar.png}
 \end{frame}
 
 % --- Slide 22: Cross-section, ctd. ---
@@ -480,7 +480,7 @@
 	\end{itemize}
 	\vfill
 	\centering
-	\includegraphics[width=0.70\textwidth]{figures/Accruals_NOA_decile_bar.png} 
+	\includegraphics[width=0.70\textwidth]{Accruals_NOA_decile_bar.png} 
 \end{frame} 
 
 
@@ -633,25 +633,17 @@
 
 \begin{frame}{Investor Trading and Portfolio Choice}
 \begin{itemize}
-\item \textbf{Individual investors}
-  \begin{itemize}
   \item Non-participation
   \item Buying high and selling low
   \item Under-diversification
   \item Excessive trading
   \item Sell winners too quickly and hold on to losers for too long (``disposition effect'')
-  \end{itemize}
-\item \textbf{Institutional investors}
-  \begin{itemize}
-  \item Average performance
-  \item Trade against anomalies
-  \item Sentiment-driven trading
-  \end{itemize}
+  \item Trade against anomalies 
 \end{itemize}
 \end{frame}
 
 % --- Slide 36: Individual Investors ---
-\section{Individual Investors}
+\section{Individual Investors: Non-participation}
 
 \begin{frame}{Individual Investors}
 \begin{itemize}
@@ -672,7 +664,7 @@
 \end{frame}
 
 % --- Slide 37: Individual Investors, ctd. ---
-\begin{frame}{Individual Investors, ctd.}
+\begin{frame}{Individual Investors: Bad Market Timing}
 \begin{itemize}
 \item \textbf{Buying high, selling low}
   \begin{itemize}
@@ -685,7 +677,7 @@
 \end{frame}
 
 % --- Slide 38: Individual Investors, ctd. ---
-\begin{frame}[shrink=10]{Individual Investors, ctd.}
+\begin{frame}[shrink=10]{Individual Investors: Under-diversification}
 \footnotesize
 \begin{itemize}
 \item Many households seem to be less diversified than recommended by traditional models of portfolio choice
@@ -707,7 +699,7 @@
 \end{frame}
 
 % --- Slide 39: Individual Investors, ctd. ---
-\begin{frame}[shrink=10]{Individual Investors, ctd.}
+\begin{frame}[shrink=10]{Individual Investors: Under-diversification}
 \begin{columns}[T]
 \begin{column}{0.58\textwidth}
 \begin{itemize}
@@ -729,7 +721,7 @@
 \end{frame}
 
 % --- Slide 40: Individual Investors, ctd. ---
-\begin{frame}{Individual Investors, ctd.}
+\begin{frame}{Individual Investors: Excessive trading}
 \begin{itemize}
 \item \textbf{Excessive trading}
   \begin{itemize}
@@ -742,7 +734,7 @@
 \end{frame}
 
 % --- Slide 41: Individual Investors, ctd. ---
-\begin{frame}{Individual Investors, ctd.}
+\begin{frame}{Individual Investors: Disposition effect}
 \begin{itemize}
 \item \textbf{Disposition effect}
   \begin{itemize}
@@ -757,7 +749,7 @@
 \end{frame}
 
 % --- Slide 42: Individual Investors, ctd. ---
-\begin{frame}{Individual Investors, ctd.}
+\begin{frame}{Individual Investors: Disposition effect}
 \begin{itemize}
 \item A similar effect is present among mutual fund managers (Frazzini, 2006) and also in the housing market (Genesove and Mayer, 2001)
 \item The most obvious potential explanations, e.g.\ informed trading, fail to capture important features of the data
@@ -769,7 +761,7 @@
 \end{frame}
 
 % --- Slide 43: Individual Investors, ctd. ---
-\begin{frame}{Individual Investors, ctd.}
+\begin{frame}{Individual Investors: Trading aginst anomalies}
 \begin{itemize}
 \item Firms and short sellers tend to be the smart money---both sell stocks with \textbf{low-forecasted returns}, retail investors systematically take the wrong side, and institutions largely trade as noise 
 \end{itemize}
@@ -779,39 +771,6 @@
 \footnotesize McLean, Pontiff, and Reilly (2025)
 \end{frame}
 
-% --- Slide 44: Institutional Investors ---
-\section{Institutional Investors}
-
-\begin{frame}{Institutional Investors}
-\begin{itemize}
-\item \textbf{Average performance}
-  \begin{itemize}
-  \item A basic frictionless model with skilled managers and rational investors (Berk and Green, 2004) predicts that:
-    \begin{itemize}
-    \item Managers' gross alpha will be positive, on average
-    \item And their net alpha will be zero, on average
-    \end{itemize}
-  \item In practice, the gross alpha of mutual funds appears to be positive, but not substantially so
-  \item Does this suggest there is no mispricing?
-    \begin{itemize}
-    \item No one earns abnormal profits, consistent with prices being correct
-    \end{itemize}
-  \end{itemize}
-\end{itemize}
-\end{frame}
-
-% --- Slide 45: Institutional Investors, ctd. ---
-\begin{frame}{Institutional Investors, ctd.}
-\begin{itemize}
-\item \textbf{Trading against anomalies}
-  \begin{itemize}
-  \item Lewellen (2011) finds that institutional investors in aggregate essentially hold the market portfolio, with no discernible tilt to take advantage of well-known stock return anomalies
-  \item Also shown in McLean, Pontiff, and Reilly (2025) 
-  \item Edelen, Ince, and Kadlec (2016) find a more striking result: institutions have a strong tendency to buy overvalued stocks during portfolio formation
-  \item Some heterogeneity does exist: hedge funds and institutions with high turnover seem to exploit anomalies more than other institutions
-  \end{itemize}
-\end{itemize}
-\end{frame}
 
 % --- Slide 46: Closing / preview of Lecture 2 ---
 \section{Closing}

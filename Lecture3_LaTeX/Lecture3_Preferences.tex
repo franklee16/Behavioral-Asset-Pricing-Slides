@@ -5,6 +5,8 @@
 \definecolor{CityUBlue}{RGB}{0, 51, 102}
 \definecolor{CityULightBlue}{RGB}{0, 102, 179}
 \definecolor{CityUGold}{RGB}{198, 163, 0}
+% Color used by the Barberis--Mukherjee--Wang (RFS 2016) appendix frames
+\definecolor{cinnabar}{RGB}{196, 30, 58}
 \usecolortheme[named=CityUBlue]{structure}
 \setbeamercolor{title}{fg=white, bg=CityUBlue}
 \setbeamercolor{frametitle}{fg=white, bg=CityUBlue}
@@ -25,7 +27,7 @@
 
 % ====== Settings ======
 \setbeamertemplate{navigation symbols}{}
-\graphicspath{{figures/}{../../Figures used in slides/}}
+\graphicspath{{../../Output/Figures/}{figures/}}
 
 % ====== Metadata ======
 \title[EF8083 Lecture 3]{PhD Lecture in Behavioral Asset Pricing:\\ Preferences \& Beliefs (I)}
@@ -285,19 +287,21 @@ w(p) \cdot v(x) + w(q) \cdot v(y)
 \begin{column}{0.50\textwidth}
 \begin{itemize}
 \item Risk aversion over gains, risk seeking over losses
-\item Prefer more volatile stocks in the domain of capital losses
-\item Prefer less volatile stocks in the domain of capital gains
+\item Given the same mean payoff, investors refer less volatile stocks in the domain of capital gains
+\item And prefer more volatile stocks in the domain of capital losses
 \end{itemize}
 \end{column}
 \begin{column}{0.48\textwidth}
 \centering
-\includegraphics[width=\textwidth]{figures/slide16_pic1.jpg}
+\includegraphics[width=\textwidth]{figures/slide16_pic1.png}
 \end{column}
 \end{columns}
 \end{frame}
 
 % --- Slide 17: Four-fold Pattern ---
 \begin{frame}{Prospect Theory, ctd.}
+\begin{columns}[T]
+\begin{column}{0.55\textwidth}
 \begin{itemize}
 \item Prospect theory captures a ``four-fold pattern'' of risk attitudes:
   \begin{itemize}
@@ -308,6 +312,12 @@ w(p) \cdot v(x) + w(q) \cdot v(y)
   \end{itemize}
 \item Having preferences different from standard rational theory is not a `mistake'
 \end{itemize}
+\end{column}
+\begin{column}{0.42\textwidth}
+\centering
+\includegraphics[width=\textwidth]{figures/slide16_pic2.png}
+\end{column}
+\end{columns}
 \end{frame}
 
 % --- Slide 18: Narrow Framing ---
@@ -498,7 +508,7 @@ w(p) \cdot v(x) + w(q) \cdot v(y)
 \end{itemize}
 \vfill
 \centering
-\includegraphics[width=0.45\textwidth]{figures/MaxRet_decile_bar.png}
+\includegraphics[width=0.45\textwidth]{MaxRet_decile_bar.png}
 \end{frame}
 
 % --- Slide 27: Lottery Preference Evidence ---
@@ -591,7 +601,7 @@ w(p) \cdot v(x) + w(q) \cdot v(y)
 
 % --- Slide 32: Direct Test ---
 \begin{frame}[shrink=5]{Direct Test of Prospect Theory in the Cross-Section}
-\textbf{Barberis, Mukerjee, and Wang (RFS 2016):}
+\textbf{Barberis, Mukerjee, and Wang (RFS 2016):}\hfill\hyperlink{apx_pt_framework}{\beamerbutton{Conceptual Framework (Appendix)}}\\
 \begin{itemize}
 \item Investors evaluate the attractiveness of individual stocks based on prospect theory
 \item They compute the prospect theory value for each stock using its historical return distribution
@@ -769,6 +779,225 @@ w(p) \cdot v(x) + w(q) \cdot v(y)
   \item Individuals view the returns of the domestic stock market, locally-headquartered stocks, and their own company stock as less ambiguous than foreign stock markets, distant stocks, and non-company stocks, respectively (Uppal and Wang, 2003)
   \end{itemize}
 \end{itemize}
+\end{frame}
+
+% ==============================================================================
+% Appendix: Barberis, Mukherjee, Wang (RFS 2016) -- Conceptual Framework
+% ==============================================================================
+\appendix
+\section*{Appendix: Barberis, Mukherjee, Wang (RFS 2016)}
+\addcontentsline{toc}{section}{Appendix: Barberis, Mukherjee, Wang (RFS 2016)}
+
+% (Inlined 2026-10-31 from PT_Conceptual_Framework_frames.tex, now deleted)
+% ============================
+\begin{frame}[shrink=8,label=apx_pt_framework]{Appendix: Prospect Theory and Stock Returns (Barberis, Mukherjee, Wang, RFS 2016) --- Section 1: Conceptual Framework}
+\framesubtitle{Two steps: representation and valuation}
+\begin{block}{Joint hypothesis}
+\begin{itemize}
+  \item Some investors \alert{mentally represent a stock} by the \textbf{distribution of its past returns}.
+  \item They \alert{evaluate} this distribution of gains and losses according to \textbf{prospect theory} (Tversky--Kahneman 1992).
+\end{itemize}
+\end{block}
+\vspace{0.3em}
+\textbf{Valuation} is straightforward: Tversky and Kahneman (1992) provide the formulas.\\[0.3em]
+\textbf{Representation} is the hard step: how do investors represent a stock in their minds?\\[0.3em]
+Our answer: the distribution of \textbf{monthly returns in excess of the market over the past five years}.\\[0.5em]
+\begin{block}{Main empirical prediction (tested in Section 2)}
+Stocks whose past return distributions have \alert{high (low) prospect theory values} will have \alert{low (high) subsequent returns}, on average --- primarily among small-cap stocks.
+\end{block}
+\end{frame}
+
+% ============================
+\begin{frame}[shrink=8]{1.1 Prospect Theory: Setup}
+\begin{itemize}
+  \item Cumulative prospect theory (Tversky--Kahneman 1992) resolves two limitations of the original 1979 version: applies to gambles with more than two nonzero outcomes; no dominated-gamble choices.
+  \item Consider the gamble
+\end{itemize}
+\begin{equation}
+(x_{-m},p_{-m};\ldots;x_{-1},p_{-1};x_{0},p_{0};x_{1},p_{1};\ldots;x_{n},p_{n}),
+\tag{1}
+\end{equation}
+read as ``gain or lose $x_{-m}$ with probability $p_{-m}$, $x_{-m+1}$ with probability $p_{m+1}$, and so on,'' where $x_i<x_j$ for $i<j$, $x_0=0$ (so $x_{-m}$--$x_{-1}$ are losses, $x_1$--$x_n$ gains), and $\sum_{i=-m}^{n}p_i=1$.\\[0.5em]
+\emph{Example}: a 50:50 bet to win \$110 or lose \$100 is $(-\$100,\tfrac12;\$110,\tfrac12)$.\\[0.7em]
+\textbf{Expected utility} individual with utility $U(\cdot)$ and wealth $W$ computes
+\begin{equation}
+\sum_{i=-m}^{n} p_i\, U(W+x_i).
+\tag{2}
+\end{equation}
+\textbf{Cumulative prospect theory} individual assigns the value
+\begin{equation}
+\sum_{i=-m}^{n} \pi_i\, v(x_i),
+\tag{3}
+\end{equation}
+\end{frame}
+
+% ============================
+\begin{frame}{1.1 Prospect Theory: Decision Weights}
+\begin{equation}
+\pi_i=
+\begin{cases}
+w^{+}\!\left(p_i+\ldots+p_n\right)-w^{+}\!\left(p_{i+1}+\ldots+p_n\right), & 0\le i\le n,\\[1em]
+w^{-}\!\left(p_{-m}+\ldots+p_i\right)-w^{-}\!\left(p_{-m}+\ldots+p_{i-1}\right), & -m\le i<0,
+\end{cases}
+\tag{4}
+\end{equation}
+where $v(\cdot)$ is the \textbf{value function}, $w^{+}(\cdot)$ and $w^{-}(\cdot)$ the \textbf{probability weighting functions}.\\[0.3em]
+\footnotesize (Boundary cases: $\pi_n=w^{+}(p_n)$, $\pi_{-m}=w^{-}(p_{-m})$.)\\[0.8em]
+\alert{Intuition for $x_i\ge 0$:} weight = weighted probability of all outcomes $\ge x_i$ minus that of outcomes $> x_i$. For losses: weighted probability of outcomes $\le x_i$ minus that of outcomes $< x_i$.
+\end{frame}
+
+% ============================
+\begin{frame}{1.1 Functional Forms (Tversky--Kahneman 1992)}
+Value function:
+\begin{equation}
+v(x)=
+\begin{cases}
+x^{\alpha}, & x\ge 0,\\
+-\lambda(-x)^{\alpha}, & x<0,
+\end{cases}
+\tag{5}
+\end{equation}
+Probability weighting functions:
+\begin{equation}
+w^{+}(P)=\frac{P^{\gamma}}{\left(P^{\gamma}+(1-P)^{\gamma}\right)^{1/\gamma}},
+\qquad
+w^{-}(P)=\frac{P^{\delta}}{\left(P^{\delta}+(1-P)^{\delta}\right)^{1/\delta}},
+\tag{6}
+\end{equation}
+where $\alpha,\gamma,\delta\in(0,1)$ and $\lambda>1$; and $v(0)=0$, $w^{+}(0)=w^{-}(0)=0$, $w^{+}(1)=w^{-}(1)=1$.\\[1em]
+\textbf{Estimated parameters} (median subject): $\alpha=0.88$, $\lambda=2.25$, $\gamma=0.61$, $\delta=0.69$.\\[0.5em]
+$\Rightarrow$ To a first approximation, $v(\cdot)$ is \alert{piecewise-linear}; concavity/convexity plays only a minor role.
+\end{frame}
+
+% ============================
+\begin{frame}{1.1 Four Differences from Expected Utility}
+\begin{enumerate}
+  \item \textbf{Carriers of value}: gains and losses, not final wealth --- argument of $v(\cdot)$ is $x_i$, not $W+x_i$.
+  \item \textbf{Loss aversion}: $v(\cdot)$ is \alert{kinked at the origin}; more sensitive to losses than to gains of the same magnitude. Severity governed by $\lambda$ (est.\ 2.25); captures aversion to $(-\$100,\tfrac12;\$110,\tfrac12)$.
+  \item \textbf{Diminishing sensitivity}: $v(\cdot)$ concave over gains, \alert{convex over losses}.
+  \item \textbf{Probability weighting}: objective probabilities replaced by transformed weights $w^{+},w^{-}$; most extreme outcomes $x_{-m},x_n$ get weights $w^{-}(p_{-m})$, $w^{+}(p_n)$.
+\end{enumerate}
+\vspace{0.5em}
+\begin{block}{Main consequence: overweighting of tails}
+For $\gamma,\delta\in(0,1)$, $w^{-}(P)>P$ and $w^{+}(P)>P$ for low positive $P$. If $p_{-m},p_n$ small: $w^{-}(p_{-m})>p_{-m}$, $w^{+}(p_n)>p_n$ --- tail outcomes are \alert{overweighted}. Captures simultaneous demand for lotteries \emph{and} insurance: prefer $(\$5000,0.001)$ to a certain \$5, but prefer a certain loss of \$5 to $(-\$5000,0.001)$. Lower $\gamma,\delta$ $\Rightarrow$ more overweighting.
+\end{block}
+\end{frame}
+
+% ============================
+\begin{frame}{1.2 Construction of Return Distributions}
+\begin{itemize}
+  \item Representation = \textbf{distribution of monthly returns over the past five years}, guided by how price charts appear in investment handbooks (e.g., Value Line): average window $\approx$ 5 years; monthly fluctuations are discernible, daily/weekly are not.
+  \item Judgment \& decision-making evidence: people passively accept the representation put in front of them.
+  \item Returns: benchmark uses \textbf{excess returns over the market}; robustness with raw returns and excess of risk-free rate.
+  \item Procedure: record each of the previous \textbf{60 monthly excess returns}, sort ascending: most negative $r_{-m}$, \ldots, most positive $r_n$, with $n=60-m$.
+\end{itemize}
+\vspace{0.3em}
+Historical return distribution (equal probability $\tfrac{1}{60}$ on each return):
+\begin{equation}
+\left(r_{-m},\tfrac{1}{60};\, r_{-m+1},\tfrac{1}{60};\, \ldots;\, r_{-1},\tfrac{1}{60};\, r_{1},\tfrac{1}{60};\, \ldots;\, r_{n},\tfrac{1}{60}\right).
+\tag{7}
+\end{equation}
+\end{frame}
+
+% ============================
+\begin{frame}{1.2 The TK Measure}
+Prospect theory value of the distribution in (7):
+\begin{equation}
+\mathrm{TK}\equiv
+\sum_{i=-m}^{-1} v(r_i)\left[w^{-}\!\left(\tfrac{i+m+1}{60}\right)-w^{-}\!\left(\tfrac{i+m}{60}\right)\right]
++\sum_{i=1}^{n} v(r_i)\left[w^{+}\!\left(\tfrac{n-i+1}{60}\right)-w^{+}\!\left(\tfrac{n-i}{60}\right)\right].
+\tag{8}
+\end{equation}
+\vspace{0.3em}
+\begin{itemize}
+  \item ``TK'' stands for \textbf{Tversky and Kahneman (1992)}.
+  \item Parameters: $\alpha=0.88$, $\lambda=2.25$, $\gamma=0.61$, $\delta=0.69$; later estimates (Gonzalez--Wu 1999; Abdellaoui 2000) similar.
+  \item TK does not depend on the \emph{time order} of the 60 returns --- a quick, passive reaction to the chart as an integral whole.
+\end{itemize}
+\vspace{0.3em}
+Time-discounted variant: if $t(i)$ = number of months ago that $r_i$ was realized,
+\begin{equation}
+\mathrm{TK}(\rho)\equiv
+\frac{1}{\varphi}\sum_{i=-m}^{-1} \rho^{t(i)} v(r_i)\left[w^{-}\!\left(\tfrac{i+m+1}{60}\right)-w^{-}\!\left(\tfrac{i+m}{60}\right)\right]
++\frac{1}{\varphi}\sum_{i=1}^{n} \rho^{t(i)} v(r_i)\left[w^{+}\!\left(\tfrac{n-i+1}{60}\right)-w^{+}\!\left(\tfrac{n-i}{60}\right)\right],
+\tag{9}
+\end{equation}
+where $\rho\in(0,1)$ and $\varphi=\rho+\ldots+\rho^{60}$.
+\end{frame}
+
+% ============================
+\begin{frame}[shrink=6]{1.3 Model: Setup and Traders}
+\begin{itemize}
+  \item Mean-variance framework. Risk-free asset with fixed return $r_f$; $J$ risky assets, $j\in\{1,\ldots,J\}$; asset $j$ has return $\tilde{r}_j$ with mean $\mu_j$, s.d.\ $\sigma_j$; covariance $\sigma_{i,j}$. For portfolio $p$: $\tilde{r}_p$, $\mu_p$, $\sigma_p$, $\sigma_{p,q}$.
+  \item \textbf{Type 1:} traditional mean-variance investors holding the \alert{tangency portfolio} $\omega_t$ (return $\tilde{r}_t$).
+  \item \textbf{Type 2: prospect theory investors.} Start from $\omega_t$ and tilt toward high-TK, away from low-TK stocks:
+\end{itemize}
+\begin{equation}
+\omega_p=\omega_t+k\,\omega_{\mathrm{TK}}, \qquad k>0,
+\tag{10}
+\end{equation}
+\begin{equation}
+\omega_{\mathrm{TK},j}=\mathrm{TK}_j-\overline{\mathrm{TK}},
+\qquad
+\overline{\mathrm{TK}}=\frac{1}{J}\sum_{j=1}^{J}\mathrm{TK}_j,
+\tag{11}
+\end{equation}
+where $\mathrm{TK}_j$ is the prospect theory value (8) of stock $j$'s 60 past monthly returns in excess of the market.\\[0.5em]
+If the fraction of traditional investors is $\pi$ (fraction $1-\pi$ of PT investors), the market portfolio is
+\begin{equation}
+\omega_m=\pi\omega_t+(1-\pi)\left(\omega_t+k\omega_{\mathrm{TK}}\right)=\omega_t+\eta\,\omega_{\mathrm{TK}},
+\qquad \eta=(1-\pi)k.
+\tag{12}
+\end{equation}
+\end{frame}
+
+% ============================
+\begin{frame}[shrink=10]{1.3 Model: Pricing Proposition}
+\begin{block}{Proposition 1}
+With $\beta_x$ the market beta of asset/portfolio $x$, and ``portfolio TK'' the portfolio with weights $\omega_{\mathrm{TK}}$, the mean return $\mu_j$ of asset $j$ satisfies
+\begin{equation}
+\frac{\mu_j-r_f}{\mu_m-r_f}=\beta_j-\frac{\eta\, s_{j,\mathrm{TK}}}{\sigma_m^2\left(1-\eta\,\beta_{\mathrm{TK}}\right)},
+\tag{13}
+\end{equation}
+where $s_{j,\mathrm{TK}}=\mathrm{Cov}(\tilde{\varepsilon}_j,\tilde{\varepsilon}_{\mathrm{TK}})$ from the market-model regressions
+\begin{equation}
+\tilde{r}_j=r_f+\beta_j(\tilde{r}_m-r_f)+\tilde{\varepsilon}_j,
+\tag{14}
+\end{equation}
+\begin{equation}
+\tilde{r}_{\mathrm{TK}}=r_f+\beta_{\mathrm{TK}}(\tilde{r}_m-r_f)+\tilde{\varepsilon}_{\mathrm{TK}}.
+\tag{15}
+\end{equation}
+\end{block}
+\vspace{0.3em}
+Under the additional assumption $\mathrm{Cov}(\tilde{\varepsilon}_i,\tilde{\varepsilon}_j)=0$ for $i\neq j$:
+\begin{equation}
+\frac{\mu_j-r_f}{\mu_m-r_f}=\beta_j-\frac{\eta\,\omega_{\mathrm{TK},j}\,s_j^2}{\sigma_m^2\left(1-\eta\,\beta_{\mathrm{TK}}\right)}
+=\beta_j-\frac{\eta\left(\mathrm{TK}_j-\overline{\mathrm{TK}}\right)s_j^2}{\sigma_m^2\left(1-\eta\,\beta_{\mathrm{TK}}\right)},
+\tag{16}
+\end{equation}
+where $s_j^2=\mathrm{Var}(\tilde{\varepsilon}_j)$ in (14).
+\end{frame}
+
+% ============================
+\begin{frame}{1.3 Model: Testable Prediction and Robustness}
+\begin{block}{Prediction tested in Section 2}
+Eq.~(16): stocks with \alert{higher $\mathrm{TK}_j$ than average have lower alphas} --- the prospect theory value of the past return distribution negatively predicts subsequent returns in the cross-section.
+\end{block}
+\vspace{0.5em}
+\textbf{Intuition:} high-TK stocks appeal to PT investors $\Rightarrow$ they tilt toward them $\Rightarrow$ overvaluation $\Rightarrow$ low subsequent returns.\\[0.7em]
+\textbf{Multiperiod extension:} the expected \emph{change} in a stock's TK over the next month should positively predict its return (a very good return 60 months ago rolls out of the window).\\[0.5em]
+\alert{However}, simulations show this second prediction is \alert{not robust} to small misspecifications (e.g., assuming 4 instead of 5 years of data). The one-period prediction --- TK negatively predicts subsequent returns --- \textbf{is} robust. We therefore focus on the latter.
+\end{frame}
+
+% ============================
+\begin{frame}{Summary of Barberis, Mukherjee, Wang (2016)}
+\begin{enumerate}
+  \item \textbf{1.1 Prospect theory:} value $\sum_i\pi_i v(x_i)$ with kinked value function (loss aversion, diminishing sensitivity) and probability weighting (tail overweighting); parameters $\alpha=0.88$, $\lambda=2.25$, $\gamma=0.61$, $\delta=0.69$.
+  \item \textbf{1.2 Construction:} mental representation = 60 monthly returns in excess of the market over the past five years; the \alert{TK} measure in Eq.~(8) computes the prospect theory value of this distribution.
+  \item \textbf{1.3 Model:} mean-variance economy with traditional and prospect-theory traders; Proposition 1 (Eqs.~13--16) implies high-TK stocks earn low subsequent returns.
+\end{enumerate}
+\vspace{0.8em}
 \end{frame}
 
 \end{document}

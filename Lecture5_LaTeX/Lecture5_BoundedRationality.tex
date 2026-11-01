@@ -5,13 +5,26 @@
 \definecolor{CityUBlue}{RGB}{0, 51, 102}
 \definecolor{CityULightBlue}{RGB}{0, 102, 179}
 \definecolor{CityUGold}{RGB}{198, 163, 0}
+\definecolor{cinnabar}{RGB}{196, 30, 58}
 \usecolortheme[named=CityUBlue]{structure}
 \setbeamercolor{title}{fg=white, bg=CityUBlue}
 \setbeamercolor{frametitle}{fg=white, bg=CityUBlue}
 \setbeamercolor{block title}{bg=CityUBlue, fg=white}
 \setbeamercolor{block body}{bg=CityUBlue!10, fg=black}
+\setbeamercolor{alertblock title}{bg=cinnabar, fg=white}
+\setbeamercolor{alertblock body}{bg=cinnabar!10, fg=black}
+\setbeamercolor{exampleblock title}{bg=CityUGold, fg=black}
+\setbeamercolor{exampleblock body}{bg=CityUGold!15, fg=black}
 \setbeamercolor{item}{fg=CityUBlue}
 \setbeamercolor{subitem}{fg=CityULightBlue}
+
+% ====== Shared helpers ======
+\newenvironment{ctight}{%
+  \begin{itemize}%
+  \setlength{\itemsep}{0.10em}%
+  \setlength{\parskip}{0pt}%
+  \setlength{\topsep}{0pt}%
+}{\end{itemize}}
 
 % ====== Packages ======
 \usepackage[T1]{fontenc}
@@ -21,11 +34,15 @@
 \usepackage{hyperref}
 \usepackage{amsmath, amssymb}
 \usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{tcolorbox}
 \usepackage{appendixnumberbeamer}
 
 % ====== Settings ======
 \setbeamertemplate{navigation symbols}{}
-\graphicspath{{figures/}{../../Figures used in slides/}}
+\graphicspath{{../../Output/Figures/}{figures/}}
 
 % ====== Metadata ======
 \title[EF8083 Lecture 5]{PhD Lecture in Behavioral Asset Pricing:\\ Bounded Rationality and Psychology-free Models}
@@ -104,7 +121,7 @@
 \begin{columns}[T]
 \begin{column}{0.34\textwidth}
 \centering
-\includegraphics[width=\textwidth]{figures/Friday_EA.png}
+\includegraphics[width=\textwidth]{figures/friday_EA.png}
 \end{column}
 \begin{column}{0.62\textwidth}
 \vspace{1.5em}
@@ -123,10 +140,20 @@
   \item Momentum is stronger when information arrives continuously as opposed to discretely
   \end{itemize}
 \end{itemize}
-\vfill
+
+\vspace{0.4em}
+\begin{columns}[c]
+\begin{column}{0.55\textwidth}
 \centering
-\includegraphics[width=0.45\textwidth]{figures/slide05_pic4.jpg}%
-\hspace{0.6em}%
+\includegraphics[height=0.30\textheight,keepaspectratio]{figures/slide05_pic4.jpg}\\[0.3em]
+{\footnotesize \emph{Frog in the pan}: small, continuous, overlooked}
+\end{column}
+\hfill
+\begin{column}{0.42\textwidth}
+\centering
+\includegraphics[height=0.45\textheight,keepaspectratio]{figures/slide05_pic9.png}\\[0.3em]
+\end{column}
+\end{columns}
 \end{frame}
 
 % --- Slide 6: Underreaction to subtle news ---
@@ -308,29 +335,158 @@
 \end{frame}
 
 % --- Slide 13: Limited Attention III ---
-\begin{frame}{Limited Attention III}
-\begin{itemize}
-\item Because of limited processing capacity, investors may only pay attention to one kind of information
-\item \textbf{Hong and Stein (1999)}
-\item Two types of investors:
-  \begin{itemize}
-  \item Newswatchers, who only process private information
-  \item Momentum traders, who only track past prices, and whose demand is a function of the past price change
-  \end{itemize}
-\item Assume that private information diffuses slowly through the newswatcher population
-  \begin{itemize}
-  \item In an economy with only newswatchers, this would generate momentum
-  \end{itemize}
-\item In an economy with both kinds of investors, we can generate both momentum and long-term reversals
-  \begin{itemize}
-  \item It is optimal for momentum traders' demand to be a positive function of the past price change
-  \item Price eventually overshoots because momentum traders keep buying even after (positive) private information is fully incorporated into prices
-  \end{itemize}
-\end{itemize}
+\begin{frame}[shrink=25]{Limited Attention III: Hong and Stein (1999)}
+\vspace{-0.12cm}
+\setlength{\abovedisplayskip}{3pt}
+\setlength{\belowdisplayskip}{3pt}
+\setlength{\abovedisplayshortskip}{3pt}
+\setlength{\belowdisplayshortskip}{3pt}
+{\footnotesize\textbf{One primitive shock:} news about future fundamentals diffuses gradually across investors.}
+\vspace{0.12cm}
+\begin{columns}[T,onlytextwidth]
+\column{0.53\textwidth}
+\begin{block}{\footnotesize 1. Newswatchers: gradual information diffusion}
+{\footnotesize
+\begin{ctight}
+  \item Population split into $z$ groups; each period another group observes a subinnovation of
+  \[
+    D_T=D_0+\sum_{\tau=1}^{T}\varepsilon_\tau,\qquad
+    \varepsilon_\tau=\varepsilon_{\tau,1}+\cdots+\varepsilon_{\tau,z}.
+  \]
+  \item CARA traders use private signals, but \alert{not current or past prices}; they trade as if buy-and-hold.
+  \item Hence price incorporates news linearly over $z$ periods:
+  \[
+    P_t=D_t+\frac{(z-1)\varepsilon_{t+1}+(z-2)\varepsilon_{t+2}+\cdots+\varepsilon_{t+z-1}}{z}-\theta Q.
+  \]
+  giving \alert{underreaction}: positive short-run autocorrelation, no overshoot.
+\end{ctight}}
+\end{block}
+
+\vspace{-0.10cm}
+\begin{block}{\footnotesize 2. Momentum traders: simple trend-chasing}
+{\footnotesize
+\begin{ctight}
+  \item Each generation holds for $j$ periods and uses only a \alert{univariate} signal:
+  \[
+    F_t=A+\phi\Delta P_{t-1},\qquad \phi>0.
+  \]
+  \item They cannot tell whether $\Delta P_{t-1}$ reflects fresh news or past momentum trades.
+\end{ctight}}
+\end{block}
+
+\column{0.44\textwidth}
+\vspace{-0.05cm}
+\begin{center}
+\begin{tikzpicture}[
+  font=\tiny,
+  node distance=0.08cm,
+  box/.style={draw=CityUBlue,fill=white,rounded corners=1.5pt,align=center,minimum height=0.42cm,text width=3.0cm,inner sep=1.1pt},
+  shock/.style={draw=cinnabar,fill=cinnabar!8,rounded corners=1.5pt,align=center,minimum height=0.42cm,text width=3.0cm,inner sep=1.1pt},
+  arr/.style={-{Latex[length=1.8mm]},thick,draw=CityUBlue}
+]
+\node[shock] (news) {\textbf{News shock}\\ private fundamental information};
+\node[box,below=of news] (nw) {\textbf{Newswatchers}\\ observe private signals; do not read prices};
+\node[box,below=of nw] (under) {\textbf{Initial underreaction}\\ prices move too slowly};
+\node[box,below=of under] (mom) {\textbf{Momentum traders}\\ chase simple price trends};
+\node[box,below=of mom] (over) {\textbf{Overreaction}\\ cumulative buying overshoots fundamentals};
+\node[box,below=of over] (rev) {\textbf{Unwind and reversal}\\ late traders lose money};
+\draw[arr] (news) -- (nw);
+\draw[arr] (nw) -- (under);
+\draw[arr] (under) -- (mom);
+\draw[arr] (mom) -- (over);
+\draw[arr] (over) -- (rev);
+\draw[arr,cinnabar,dashed] (mom.east) .. controls +(0.55,0.10) and +(0.55,-0.10) .. (rev.east);
+\end{tikzpicture}
+\end{center}
+
+\vspace{-0.10cm}
+{\footnotesize\textbf{\textcolor{cinnabar}{Core mechanism}} Momentum trading accelerates the initial adjustment, but simple strategies convert underreaction into overshooting and reversals. The dashed arrow is the externality: early momentum traders induce late traders to buy.}
+
+\vspace{0.08cm}
+{\footnotesize\emph{Classroom hook:} underreaction is not eliminated by arbitrage; it generates the profit opportunity that draws in momentum traders.}
+
+{\scriptsize Source: Hong and Stein (1999), \emph{Journal of Finance} 54(6), 2143--2184}
+\end{columns}
+\end{frame}
+
+% --- Slide 13b: Hong-Stein predictions ---
+\begin{frame}[shrink=15]{Limited Attention III: Predictions and Comparative Statics}
+\vspace{-0.12cm}
+\begin{columns}[T,onlytextwidth]
+\column{0.52\textwidth}
+\begin{block}{\footnotesize Equilibrium fixed point}
+{\footnotesize
+Momentum-trader aggressiveness $\phi$ solves
+\[
+  \phi=
+  \frac{\gamma\,\operatorname{cov}\!\left(P_{t+j}-P_t,\Delta P_{t-1}\right)}
+       {\operatorname{var}(\Delta P)\,\operatorname{var}_M\!\left(P_{t+j}-P_t\right)},
+\]
+where $\gamma$ is aggregate risk tolerance. In equilibrium, $\phi>0$: rational momentum traders must trend-chase.}
+\end{block}
+
+\vspace{-0.08cm}
+\begin{block}{\footnotesize Model output: hump-shaped impulse response}
+{\footnotesize
+\begin{ctight}
+  \item Newswatchers only: gradual adjustment to long-run value.
+  \item Momentum traders: prices peak above fundamentals, then converge back through damped oscillations.
+  \item Positive short-run correlation implies eventual negative autocorrelation under risk neutrality.
+\end{ctight}}
+\vspace{-0.10cm}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=5.9cm,height=2.9cm,
+  xlabel={\tiny months after news},ylabel={\tiny cumulative response},
+  xmin=0,xmax=24,ymin=0.72,ymax=1.48,
+  xtick={0,6,12,18,24},ytick={0.8,1.0,1.2},
+  ticklabel style={font=\tiny},label style={font=\tiny},
+  axis lines=left,
+  legend style={font=\tiny,at={(0.03,0.97)},anchor=north west,draw=none,fill=none},
+  every axis plot/.append style={thick}
+]
+\addplot[CityUBlue,dashed] coordinates {(0,0.70) (12,1) (24,1)};
+\addplot[cinnabar] coordinates {(0,0.72) (3,0.80) (6,0.89) (9,0.98) (12,1.24) (15,1.06) (18,1.11) (21,1.00) (24,1.01)};
+\addplot[gray,dotted] coordinates {(0,1) (24,1)};
+\node[font=\tiny,text=CityUBlue,anchor=west] at (axis cs:12.4,0.865) {newswatchers only};
+\node[font=\tiny,text=cinnabar,anchor=west] at (axis cs:12.4,1.30) {with momentum};
+\end{axis}
+\end{tikzpicture}
+\end{block}
+
+\column{0.45\textwidth}
+\begin{block}{\footnotesize Comparative statics}
+{\footnotesize
+\begin{ctight}
+  \item \textbf{Horizon $j$:} longer horizons generally delay the first negative autocorrelation; peak timing is tied to $j$.
+  \item \textbf{Risk tolerance $\gamma$:} more aggressive momentum trading raises volatility and peak overshoot; pricing error is U-shaped.
+  \item \textbf{Slower diffusion $z$:} larger momentum opportunities, stronger continuation, and more pronounced reversals.
+  \item \textbf{Contrarian/smart-money arbitrage:} attenuates, but does not eliminate, the dynamics unless arbitrage capacity is unlimited.
+\end{ctight}}
+\end{block}
+
+\vspace{-0.08cm}
+\begin{alertblock}{\footnotesize Testable cross-sectional implications}
+{\footnotesize
+\begin{ctight}
+  \item Momentum is strongest among \alert{small, low-analyst-coverage} stocks where information diffuses slowly.
+  \item The same stocks should also be most \alert{reversal-prone} at longer horizons.
+  \item Public news may drift without the same overreaction if traders can condition on announcement dates.
+  \item Higher trading costs / longer horizons keep return autocorrelations positive longer.
+\end{ctight}}
+\end{alertblock}
+
+\vspace{-0.08cm}
+\begin{exampleblock}{\footnotesize Takeaway}
+\footnotesize The model unifies momentum and reversal through \emph{heterogeneous-agent interaction}, not a single representative-agent bias.
+\end{exampleblock}
+\end{columns}
+\vspace{-0.10cm}
 \end{frame}
 
 % --- Slide 14: Hong Lim Stein ---
-\begin{frame}{Limited Attention III, ctd.}
+\begin{frame}{Limited Attention III: Empirical Test}
 \begin{itemize}
 \item Hong, Lim, and Stein (2000)
 \item Test the Hong and Stein (1999) hypothesis that momentum is due to slow infusion of private information
@@ -571,7 +727,7 @@ R_{j,t} = \alpha_j + \beta_{j,\text{SP500}}\, R_{\text{SP500},t} + \beta_{j,\tex
 \begin{frame}[shrink=5]{Baker and Wurgler Sentiment Index}
 \vfill
 \centering
-\includegraphics[width=0.80\textwidth]{figures/BW_sentiment_index.png}\\[0.2em]
+\includegraphics[width=0.80\textwidth]{BW_sentiment_index.png}\\[0.2em]
 \footnotesize Source: Baker and Wurgler (2006); Huang, Jiang, Tu, and Zhou (2015)
 \vfill
 \end{frame}
@@ -771,6 +927,67 @@ R_{j,t} = \alpha_j + \beta_{j,\text{SP500}}\, R_{\text{SP500},t} + \beta_{j,\tex
 \end{columns}
 \end{frame}
 
+% --- Slide 39a: LLM-generated beliefs (Bybee 2025) ---
+\begin{frame}[shrink=5]{Other Measures of Aggregate Sentiment --- LLM-Generated Beliefs (I)}
+\framesubtitle{\footnotesize Bybee (U.\ Chicago Booth), Feb.\ 2025, ``The Ghost in the Machine'' \quad|\quad Can LLMs serve as \emph{measurable proxies for human beliefs}?}
+
+\vspace{-0.2em}
+\begin{columns}[T,onlytextwidth]
+\column{0.49\textwidth}
+\begin{beamercolorbox}[rounded=true,sep=4pt]{block body}
+\color{CityUBlue}\textbf{\small 1. Method: beliefs from text}
+\begin{itemize}\setlength{\itemsep}{1pt}\footnotesize
+  \item Beliefs are encoded in text $\Rightarrow$ LLMs trained on massive corpora absorb the same world models \emph{and biases}
+  \item Input: 300 WSJ articles/month (1984--2021) $\to$ GPT-3.5 prompted for \{\emph{increase/decrease}, confidence, magnitude, explanation\} on 14 macro/finance series
+  \item Aggregate to a \emph{balance statistic}: confidence-weighted $\big(\#\text{``increase''} - \#\text{``decrease''}\big) \big/ \big(\#\text{``increase''} + \#\text{``decrease''}\big)$ for each series
+  \item BERT + ridge \emph{transfer learning} infills full corpus; NYT extends sample back to 1900
+\end{itemize}
+\end{beamercolorbox}
+
+\column{0.49\textwidth}
+\begin{beamercolorbox}[rounded=true,sep=4pt]{block body}
+\color{CityUBlue}\textbf{\small 2. Validation: GPT $\approx$ human surveys}
+\begin{itemize}\setlength{\itemsep}{1pt}\footnotesize
+  \item Correlates with AAII \& CFO surveys (avg.\ $0.47$ vs.\ $0.43$ between surveys); matches SPF revisions in 11/13 series
+  \item Reproduces \textcolor{cinnabar}{deviations from FIRE}: extrapolative ($+$ past returns), $+$ fund flows, $-$ objective ER proxies (D/P, CAY), \textcolor{cinnabar}{$-$ future returns}
+  \item Mistakes traceable: GPT expects high future returns because of high future \emph{earnings} --- \textcolor{cinnabar}{neglect of general equilibrium} (cf.\ Andre et al.\ 2024)
+  \item Out-of-sample (post-training news): correlations persist $\Rightarrow$ not look-ahead bias
+\end{itemize}
+\end{beamercolorbox}
+\end{columns}
+\end{frame}
+
+% --- Slide 39b: LLM-generated beliefs (Bybee 2025), ctd. ---
+\begin{frame}[shrink=10]{Other Measures of Aggregate Sentiment --- LLM-Generated Beliefs (II)}
+\begin{columns}[T,onlytextwidth]
+\column{0.49\textwidth}
+\begin{beamercolorbox}[rounded=true,sep=4pt]{block body}
+\color{CityUBlue}\textbf{\small 3. 120 years of economic sentiment}
+\begin{itemize}\setlength{\itemsep}{1pt}\footnotesize
+  \item Factor model of GPT expectations: extract sentiment $\delta_t$ as the first principal component, orthogonalized w.r.t.\ the rational forecast (ex-ante dynamic factor / ex-post realizations)
+  \item Spikes at sensible events: 1929, Lehman, Covid ($-$); dot-com, FDR 1936 ($+$); corr.\ $0.54$ with Shiller CAPE
+  \item Responds $+$ to past returns; \textcolor{cinnabar}{$-$ predicts future returns} ($-0.41$ @ 24m, recent sample)
+\end{itemize}
+\end{beamercolorbox}
+
+\column{0.49\textwidth}
+\begin{beamercolorbox}[rounded=true,sep=4pt]{block body}
+\color{CityUBlue}\textbf{\small 4. Application: behavioral bubbles}
+\begin{itemize}\setlength{\itemsep}{1pt}\footnotesize
+  \item Mispricing proxy: rolling sentiment betas (sensitivity of industry dividend growth to $\delta_t$) on Greenwood et al.\ (2019) 40 industry run-ups
+  \item Run-ups that \emph{crash} have \textcolor{cinnabar}{higher sentiment betas} $\Rightarrow$ higher crash prob., lower future returns (robust to controls)
+  \item Stronger \textcolor{cinnabar}{return $\to$ sentiment feedback} during crashing run-ups $\Rightarrow$ extrapolation as a key mechanism
+  \item Threshold strategy avoids $\sim$\!80\% of crashes, earns significant abnormal returns
+\end{itemize}
+\end{beamercolorbox}
+\end{columns}
+
+\vspace{0.4em}
+\begin{tcolorbox}[colback=cinnabar!8,colframe=cinnabar,boxrule=0.6pt,arc=2pt,left=4pt,right=4pt,top=3pt,bottom=3pt]
+\footnotesize\textbf{\textcolor{cinnabar}{Takeaway:}} LLMs are not super-forecasters --- they generate \emph{human-like beliefs, biases included}. This gives us measurable expectations wherever news exists, at daily frequency, over a century+ --- a new tool for studying extrapolation, sentiment, and bubbles.
+\end{tcolorbox}
+\end{frame}
+
 % --- Slide 40: Music Sentiment ---
 \begin{frame}{Measuring Investor Mood/Emotions}
 \begin{itemize}
@@ -881,6 +1098,8 @@ R_{j,t} = \alpha_j + \beta_{j,\text{SP500}}\, R_{\text{SP500},t} + \beta_{j,\tex
 
 % --- Slide 47: Credit vs Equity Sentiment ---
 \begin{frame}{Credit Market vs.\ Equity Market Sentiment}
+\begin{columns}
+\begin{column}{0.5\textwidth}
 \begin{itemize}
 \item Empirical measures of credit market sentiment are only modestly correlated with measures of equity market sentiment
   \begin{itemize}
@@ -891,6 +1110,12 @@ R_{j,t} = \alpha_j + \beta_{j,\text{SP500}}\, R_{\text{SP500},t} + \beta_{j,\tex
   \item Suggests credit market sentiment has potentially greater macroeconomic significance
   \end{itemize}
 \end{itemize}
+\end{column}
+\begin{column}{0.46\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=0.75\textheight,keepaspectratio]{figures/credit_sent.png}
+\end{column}
+\end{columns}
 \end{frame}
 
 % --- Slide 48: Determinants of Credit Sentiment ---
@@ -905,6 +1130,18 @@ R_{j,t} = \alpha_j + \beta_{j,\text{SP500}}\, R_{\text{SP500},t} + \beta_{j,\tex
 \item This credit boom incentivizes low-quality firms to take on excessive leverage, making them vulnerable to even small external shocks
 \item Consistent with empirical evidence on the boom-bust credit cycle
 \end{itemize}
+\end{frame}
+
+\begin{frame}[shrink=5]{How Credit Cycles across a Financial Crisis}
+	\begin{itemize}
+		\item Krishnamurthy and Muir (JF 2025)
+		\item Analyze the behavior of credit and output in financial crises using data on credit spreads and credit growth
+		\item Precrisis spreads tend to drop to low levels while credit
+		growth accelerates
+	\end{itemize}
+	\vfill
+	\centering
+	\includegraphics[width=0.45\textwidth]{figures/credit_cycle.png}
 \end{frame}
 
 % --- Slide 49: Early Indicator ---
